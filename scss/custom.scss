@@ -1,0 +1,16 @@
+$primary: #0089d9;
+$danger: #ff4136;
+$cyan: #0dcaf0 !default;
+$theme-colors: (
+  "primary": $primary,
+  "danger": $danger,
+);
+
+$custom-colors: (
+  "c-red": #ee5050,
+);
+
+//merge custom color to theme-colors
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
