@@ -1,0 +1,80 @@
+
+
+/***********************************
+########## Section ##########
+***********************************/
+
+
+.footer_title::after,
+.section_title::after{
+    content: " ";
+    display: block;
+    height: 7px;
+    width: 100px;
+    background-color: $success;
+    margin: 3px auto 0 auto;
+}
+
+.footer_title::after{
+    margin-left: 0;
+    width: 30px;
+}
+
+.text_shadow .section_title::after{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.28);
+}
+
+
+
+/***********************************
+########## comments ##########
+***********************************/
+
+.comm_avatar{
+    width: 68px;
+    height: 68px;
+}
+
+.comm_avatar:hover img{
+    @include ed_scale(1.1);
+}
+
+
+
+
+/***********************************
+########## Product Single ##########
+***********************************/
+
+.product_elements li:before{
+    display: inline-block;
+    font-family: "Font Awesome 5 Free" !important;
+    content: "\f058" !important;
+    margin-right: 2px;
+    color: $success;
+}
+
+
+
+/***********************************
+########## Custom ##########
+***********************************/
+
+.breadcrumb-item+.breadcrumb-item::before{
+    color: $white !important;
+}
+
+
+
+/***********************************
+########## Footer ##########
+***********************************/
+
+.main_footer ul li{
+    width: 100%;
+}
+
+
+.teste{
+    border: 10px solid red !important;
+}

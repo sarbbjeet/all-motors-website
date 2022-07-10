@@ -1,0 +1,61 @@
+@mixin sm{
+    @media (min-width: 576px) { 
+        @content;
+    }
+}
+
+@mixin md{
+    @media (min-width: 768px) { 
+        @content;
+    }
+}
+
+@mixin lg{
+    @media (min-width: 992px) { 
+        @content;
+    }
+}
+
+@mixin xl{
+    @media (min-width: 1200px) { 
+        @content;
+    }
+}
+
+
+@mixin ed_radius($radius1, $radius2, $radius3, $radius4){
+    border-radius: #{$radius1} #{$radius2} #{$radius3} #{$radius4};
+    -webkit-border-radius: #{$radius1} #{$radius2} #{$radius3} #{$radius4};
+    -moz-border-radius: #{$radius1} #{$radius2} #{$radius3} #{$radius4};
+    -o-border-radius: #{$radius1} #{$radius2} #{$radius3} #{$radius4};
+    -ms-border-radius: #{$radius1} #{$radius2} #{$radius3} #{$radius4};
+}
+
+
+@mixin ed_rotate($dec){
+    -webkit-transform: rotate(#{$dec}deg);
+    -moz-transform:  rotate(#{$dec}deg);
+    -o-transform:  rotate(#{$dec}deg);;
+    transform:  rotate(#{$dec}deg);
+}
+
+@mixin ed_transition($time){
+    -webkit-transition: all #{$time}s ease-out 0s !important;
+    -o-transition: all #{$time}s ease-out 0s !important;
+    transition: all #{$time}s ease-out 0s !important;
+}
+
+@mixin ed_translate($h, $l){
+    -webkit-transform: translate(#{$h}, #{$l});
+    -moz-transform: translate(#{$h}, #{$l});
+    transform: translate(#{$h}, #{$l});
+}
+
+@mixin ed_scale($x){
+    transform: scale(#{$x});
+    -webkit-transform: scale(#{$x});
+    -moz-transform: scale(#{$x});
+    -o-transform: scale(#{$x});
+    -ms-transform: scale(#{$x});
+}
+

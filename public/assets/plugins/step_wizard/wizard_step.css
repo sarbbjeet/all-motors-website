@@ -1,0 +1,349 @@
+.wizard-content .wizard>.steps>ul>li:after,
+.wizard-content .wizard>.steps>ul>li:before {
+    content: '';
+    z-index: 9;
+    display: block;
+    position: absolute;
+
+}
+
+.wizard-content .wizard {
+    width: 100%;
+    overflow: hidden;
+}
+
+.wizard-content .wizard .content {
+    margin: 30px 0 !important;
+}
+
+.wizard-content .wizard>.steps {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.wizard-content .wizard>.steps .current-info {
+    position: absolute;
+    left: -99999px;
+}
+
+.wizard-content .wizard>.steps>ul {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wizard-content .wizard>.steps>ul>li {
+    display: table-cell;
+    width: auto;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+}
+
+.wizard-content .wizard>.steps>ul>li a {
+    position: relative;
+    padding-top: 36px;
+    display: block; 
+}
+
+.wizard-content .wizard>.steps>ul>li:before {
+    left: 0
+}
+
+.wizard-content .wizard>.steps>ul>li:after {
+    right: 0
+}
+
+.wizard-content .wizard>.steps>ul>li:first-child:before,
+.wizard-content .wizard>.steps>ul>li:last-child:after {
+    content: none
+}
+
+.wizard-content .wizard>.steps>ul>li.current>a {
+    color: #2f3d4a;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.wizard-content .wizard>.steps>ul>li.current .step {
+    border-color: #07f;
+    background-color: #fff;
+    color: #07f
+}
+
+.wizard-content .wizard>.steps>ul>li.disabled a,
+.wizard-content .wizard>.steps>ul>li.disabled a:focus,
+.wizard-content .wizard>.steps>ul>li.disabled a:hover {
+    color: #6c757d;
+    cursor: default
+}
+
+.wizard-content .wizard>.steps>ul>li.done a,
+.wizard-content .wizard>.steps>ul>li.done a:focus,
+.wizard-content .wizard>.steps>ul>li.done a:hover {
+    color: #6c757d;
+}
+
+.wizard-content .wizard>.steps>ul>li.done .step {
+    background-color: #07f;
+    border-color: #07f;
+    color: #fff
+}
+
+.wizard-content .wizard>.steps>ul>li.error .step {
+    border-color: #f62d51;
+    color: #f62d51
+}
+
+.wizard-content .wizard>.steps .step {
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform:  translate(-50%, 0%);
+    -o-transform:  translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    z-index: 10;
+    text-align: center
+}
+
+.wizard-content .wizard>.content {
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    padding: 0;
+    margin: 0
+}
+
+.wizard-content .wizard>.content>.title {
+    position: absolute;
+    left: -99999px
+}
+
+
+.wizard-content .wizard>.content>iframe {
+    border: 0;
+    width: 100%;
+    height: 100%
+}
+
+.wizard-content .wizard>.actions {
+    position: relative;
+    display: block;
+}
+
+.wizard-content .wizard>.actions>ul {
+    display: block;
+    width: 100%;
+    text-align: center !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wizard-content .wizard>.actions>ul:after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.wizard-content .wizard>.actions>ul>li {
+    display: inline-block !important;
+}
+
+.wizard-content .wizard>.actions>ul>li+li {
+    margin-left: 10px
+}
+
+.wizard-content .wizard>.actions>ul>li>a {
+    color: #fff;
+    display: block;
+    padding: 7px 20px;
+    border-radius: 4px;
+    border: 1px solid #07f;
+
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    background: #07f;
+}
+
+.wizard-content .wizard>.actions>ul>li>a[href="#previous"],
+.wizard-content .wizard>.actions>ul>li:first-of-type a{
+    background: #fff !important;
+    border: 1px solid #07f !important;
+    color: #07f;
+}
+
+.wizard-content .wizard>.actions>ul>li>a[href="#next"]{
+    display: inline-block !important;
+    background: #07f !important;
+    border: 1px solid #07f !important;
+    color: #fff;
+}
+
+.wizard-content .wizard>.actions>ul>li>a[href="#next"]:hover{
+    background: #05c !important;
+}
+
+.wizard-content .wizard>.actions>ul>li:first-of-type a:hover{
+    background: #07f !important;
+    color: #fff;
+}
+
+.wizard-content .wizard>.actions>ul>li>a:focus,
+.wizard-content .wizard>.actions>ul>li>a:hover {
+    background: #0080E0;
+    text-decoration: none;
+}
+
+.wizard-content .wizard>.actions>ul>li.disabled>a,
+.wizard-content .wizard>.actions>ul>li.disabled>a:focus,
+.wizard-content .wizard>.actions>ul>li.disabled>a:hover {
+    color: #6c757d
+}
+
+.wizard-content .wizard>.actions>ul>li.disabled>a[href="#previous"],
+.wizard-content .wizard>.actions>ul>li.disabled>a[href="#previous"]:focus,
+.wizard-content .wizard>.actions>ul>li.disabled>a[href="#previous"]:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li:after,
+.wizard-content .wizard.wizard-circle>.steps>ul>li:before {
+    top: 17.5px;
+    width: 50%;
+    height: 3px;
+    background-color: #07f
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li .step_title{
+    display: none;
+    font-size: 0.75em;
+    width: 100%;
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li a:hover .step_title{
+    text-decoration: none !important;
+}
+
+@media (min-width: 576px) {
+    .wizard-content .wizard.wizard-circle>.steps>ul>li .step_title{
+        display: block;
+    }
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li.disabled a:hover{
+    text-decoration: none !important;
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li.current .step_title{
+    color: #07f !important;
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li.error .step_title{
+    color: #F62D51 !important;
+}
+
+.wizard-content .wizard.wizard-circle>.steps>ul>li.current:after,
+.wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:after,
+.wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:before {
+    background-color: #F3F3F3
+}
+
+.wizard-content .wizard.wizard-circle>.steps .step {
+    width: 36px;
+    height: 36px;
+    line-height: 31px;
+    border: 3px solid #F3F3F3;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+
+.wizard-content .wizard.wizard-notification>.steps>ul>li:after,
+.wizard-content .wizard.wizard-notification>.steps>ul>li:before {
+    top: 39px;
+    width: 50%;
+    height: 3px;
+    background-color: #07f;
+}
+
+.wizard-content .wizard.wizard-notification>.steps>ul>li.current .step {
+    border: 2px solid #07f;
+    color: #07f;
+    line-height: 36px;
+}
+
+.wizard-content .wizard.wizard-notification>.steps>ul>li.current .step:after,
+.wizard-content .wizard.wizard-notification>.steps>ul>li.done .step:after {
+    border-top-color: #07f;
+}
+
+.wizard-content .wizard.wizard-notification>.steps>ul>li.current:after,
+.wizard-content .wizard.wizard-notification>.steps>ul>li.current~li:after,
+.wizard-content .wizard.wizard-notification>.steps>ul>li.current~li:before {
+    background-color: #F3F3F3;
+}
+
+.wizard-content .wizard.wizard-notification>.steps>ul>li.done .step {
+    color: #FFF;
+}
+
+.wizard-content .wizard.wizard-notification>.steps .step {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    border-radius: 15%;
+    background-color: #F3F3F3;
+}
+
+.wizard-content .wizard.wizard-notification>.steps .step:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    margin-bottom: -8px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid #F3F3F3;
+}
+
+.wizard-content .wizard.vertical>.steps {
+    display: inline;
+    float: left;
+    width: 20%
+}
+
+.wizard-content .wizard.vertical>.steps>ul>li {
+    display: block;
+    width: 100%
+}
+
+.wizard-content .wizard.vertical>.steps>ul>li.current:after,
+.wizard-content .wizard.vertical>.steps>ul>li.current:before,
+.wizard-content .wizard.vertical>.steps>ul>li.current~li:after,
+.wizard-content .wizard.vertical>.steps>ul>li.current~li:before,
+.wizard-content .wizard.vertical>.steps>ul>li:after,
+.wizard-content .wizard.vertical>.steps>ul>li:before {
+    background-color: transparent
+}
+
+.wizard > .actions > ul li:last-of-type{
+    display: none !important;
+}
+
+.wizard > .actions > ul li[class*="disabled"]{
+    display: none !important;
+}

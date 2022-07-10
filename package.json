@@ -13,13 +13,19 @@
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
-    "bootstrap": "^5.1.3",
+    "bootstrap": "4.6",
+    "fortawesome": "^0.0.1-security",
+    "jquery": "^3.6.0",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "sharp": "^0.30.7",
+    "slick": "^1.12.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "eslint": "8.19.0",

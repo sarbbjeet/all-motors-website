@@ -1,0 +1,17 @@
+/*sweetalert*/
+.swal-footer {
+    background-color: #F8F9FA;
+    margin-top: 32px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.swal-text{
+    text-align: center; 
+}
+
+/*sweetalert*/
+.not_allowed{
+    pointer-events: auto! important;
+    cursor: not-allowed! important;
+}

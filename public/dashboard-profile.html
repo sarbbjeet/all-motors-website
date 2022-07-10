@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow"/>
+        <link href="images/favicon.png" rel="shortcut icon"/>
+
+        <title>MaxMotors - Theme for Automotive Store</title>
+
+        <link href="assets/fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="assets/_css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="assets/plugins/jquery/jquery.min.js"></script>
+        <script src="assets/plugins/jquery/jquery.form.min.js"></script>
+        <script src="assets/plugins/jquery/jquery.validate.min.js"></script>
+        <script src="assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap-notify.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+        <script src="assets/plugins/maskinput/maskinput.js"></script>
+        <script src="assets/plugins/maskinput/mask_config.js"></script>
+
+        <link rel="stylesheet" href="assets/_css/dashboard.css"/>
+        <script src="assets/_js/dashboard-base.js"></script>
+        <script src="assets/_js/dashboard-form.js"></script>
+
+        <!--[if lt IE 9]><script src="assets/html5shiv.min.js"></script><![endif]-->
+    </head>
+    <body class="bg-light dashbord_content">
+        <div class="position-relative wrapper_content clearfix d-block float-left w-100">
+            <nav class="navbar navbar-expand-md bg_theme navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="dashboard.html"><img src="images/brand-white.png" title="Dashboard" alt="Dashboard"/></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Open Navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="uinterfaceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    UI Interface
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="uinterfaceDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-resources-sweetalert.html">Sweetalert</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-elements.html">Badges, Labels, Progress</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-notification.html">Notifications, Tooltips, Popover</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-buttons.html">Buttons</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-icons.html">Icons</a>                                    
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="VehiclesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Vehicles
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="VehiclesDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-list.html"><i class="fas fa-home mr-2"></i> My Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-submit.html"><i class="fas fa-sign mr-2"></i> Register Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-report.html"><i class="far fa-list-alt mr-2"></i> Vehicles Report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown notifications_menu">
+
+                                <a class="nav-link dropdown-toggle position-relative" href="#" id="navbarNotification" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-bell"></i> <span class="badge badge-warning j_alert">2</span>                               
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="navbarNotification">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-inactive.html" title="Inactive Vehicles">
+                                        You have 3 inactive Vehicles!                                  
+                                    </a>
+                                    <a class="dropdown-item py-3" href="dashboard-profile.html" title="Inactive Vehicles">
+                                        You need add address in you profile                                 
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-primary py-3" href="dashboard-notification.html">
+                                        View notification details                                     
+                                    </a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello <b>Admin!</b>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right overflow-hidden p-0 overflow-hidden" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-item disabled bg-info py-3 text-center text-white d-block px-lg-5">
+                                        <img class="rounded-circle img-thumbnail profile_img" alt="Admin" title="Admin" src="images/600x600.jpg"/>
+                                        <h5 class="mb-0 mt-2">Admin System</h5>
+                                        <small>Super Admin (adm)</small>
+                                    </div>
+                                    <a class="dropdown-item py-3 active" href="dashboard-profile.html" title="My profile">
+                                        <i class="far fa-id-badge mr-2"></i> My profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <span class="dropdown-item py-3 j_confirm_url" title="Disconnect from System"  data-title="Go out now?" data-icon="warning" data-url="account-login.html" data-textGo="I want to leave now"><i class="fas fa-sign-out-alt"></i> Go out</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- START MAIN CONTAINER -->
+            <div class="container py-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent p-0 text_small">
+                        <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active">My Profile</li>
+                    </ol>
+                </nav>
+
+
+                <section class="mb-5 pb-5">
+                    <header class="border-bottom my-4">
+                        <h3 class="text-primary font-weight-light"><i class="far fa-id-badge"></i> My Profile</h3>
+                    </header>
+
+                    <div class="row py-3">
+                        <div class="col-md-5 col-lg-4 col-xl-3">
+                            <div class="pb-3 text-center px-3">
+
+                                <form class="upload_single" name="user_manager" action="#" method="post" enctype="multipart/form-data">
+                                    <div class="position-relative d-inline-block rounded-circle border">
+                                        <span class="show_image user_thumb bg_cover d-block rounded-circle position-relative"  style="background-image: url(images/600x600.jpg)" data-default="images/no_avatar.jpg"></span>
+                                        <input type="file" class="j_loadimage avatar_input position-absolute slow_3s rounded-circle bg_cover" name="user_thumb" id="user_thumb" accept="image/png, image/jpeg, image/jpg"/>
+                                    </div>
+                                    <label class="d-block w-100 text-muted text_small" for="user_thumb">Image 400x400px (JPG ou PNG):</label>
+                                </form>
+                            </div>
+                            <ul class="nav nav-pills my-3 row" id="pills-tab" role="tablist">
+                                <li class="nav-item col-3 col-md-12 mb-3" role="presentation">
+                                    <a class="btn btn-outline-primary w-100 text-md-left nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">
+                                        <i class="far fa-address-card mr-md-2"></i><span class="d-none d-md-inline-block">About Me</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item col-3 col-md-12 mb-3" role="presentation">
+                                    <a class="btn btn-outline-primary w-100 text-md-left nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                        <i class="far fa-envelope mr-md-2"></i><span class="d-none d-md-inline-block">My Contact</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item col-3 col-md-12 mb-3" role="presentation">
+                                    <a class="btn btn-outline-primary w-100 text-md-left nav-link" id="pills-addr-tab" data-toggle="pill" href="#pills-addr" role="tab" aria-controls="pills-addr" aria-selected="false">
+                                        <i class="far fa-map mr-md-2"></i><span class="d-none d-md-inline-block">My Address</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item col-3 col-md-12 mb-3" role="presentation">
+                                    <a class="btn btn-outline-primary w-100 text-md-left nav-link" id="pills-password-tab" data-toggle="pill" href="#pills-password" role="tab" aria-controls="pills-password" aria-selected="false">
+                                        <i class="fas fa-key mr-md-2"></i><span class="d-none d-md-inline-block">My Password</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-lg-8 col-xl-9">
+                            <div class="tab-content" id="pills-tabContent">
+                                <section class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <header class="border-bottom border-info">
+                                        <h4 class="font-weight-light text-primary"><i class="far fa-address-card"></i> My Profile</h4>
+                                    </header>
+                                    <div class="py-3">
+                                        <form class="auto_save text-muted" name="user_profile" action="#" method="post" enctype="multipart/form-data">
+
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="user_name">First Name:</label>
+                                                        <input class="form-control"  value="" type="text" name="user_name" id="user_name" placeholder="First Name:" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="user_lastname">Last Name:</label>
+                                                        <input class="form-control" value="" type="text" name="user_lastname" id="user_lastname" placeholder="Last Name:" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="user_cpf">Doc:</label>
+                                                        <input class="form-control disabled not_allowed" id="user_cpf" value="888.888.888.88" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <span>Genre:</span>
+                                                    <div class="row py-3">
+                                                        <div class="col-6">
+                                                            <input type="radio" name="user_genre" id="masc" class="input_custom" value="1" checked>
+                                                            <label for="masc">Male</label>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input type="radio" name="user_genre" id="fem"  class="input_custom" value="2" >
+                                                            <label for="fem">Feminine</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right pt-4">
+                                                <button type="submit" class="btn btn-lg btn-primary slow_3s  position-relative px-5">Update now
+                                                    <span class="form_load position-absolute">
+                                                        <span class="spinner-border text-light" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+
+                                <section class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <header class="border-bottom border-info">
+                                        <h4 class="font-weight-light text-primary"><i class="far fa-envelope"></i> My Contact</h4>
+                                    </header>
+                                    <div class="py-3">
+                                        <form class="auto_save text-muted" name="user_manager_contact" action="#" method="post" enctype="multipart/form-data">
+
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="user_email">Email:</label>
+                                                        <input class="form-control"  value="" type="email" name="user_email" id="user_email" placeholder="E-mail:" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="user_telephone">Phone:</label>
+                                                        <input class="form-control formPhone"  value="" type="tel" name="user_telephone" id="user_telephone" placeholder="(88) 8888.8888" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="user_cell">Cell phone:</label>
+                                                        <input class="form-control formPhone" value="" type="tel" name="user_cell" id="user_cell" placeholder="(88) 8888.8888">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right pt-4">
+                                                <button type="submit" class="btn btn-lg btn-primary slow_3s  position-relative px-5">Update now
+                                                    <span class="form_load position-absolute">
+                                                        <span class="spinner-border text-light" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>    
+
+                                    </div>
+                                </section>
+
+                                <section class="tab-pane fade" id="pills-addr" role="tabpanel" aria-labelledby="pills-addr-tab">
+                                    <header class="border-bottom border-info">
+                                        <h4 class="font-weight-light text-primary"><i class="far fa-map"></i> My Address</h4>
+                                    </header>
+                                    <div class="py-3">
+                                        <form class="auto_save text-muted" name="user_add_address" action="#" method="post" enctype="multipart/form-data">
+
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="addr_zipcode">Zip Code:</label>
+                                                        <input type="text" name="addr_zipcode" value="" id="addr_zipcode" class="form-control" placeholder="Zip Code:" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="addr_number">Number:</label>
+                                                        <input type="text" name="addr_number" value="" id="addr_number" class="form-control" placeholder="Número:" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="addr_street">Street:</label>
+                                                        <input type="text" name="addr_street" value="" id="addr_street" class="form-control" placeholder="Street:" required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="addr_district">Neighborhood:</label>
+                                                        <input type="text" name="addr_district" value="" id="addr_district" class="form-control" placeholder="Neighborhood:" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="addr_complement">Complement:</label>
+                                                        <input type="text" name="addr_complement" value="" id="addr_complement" class="form-control" placeholder="House, Apartment or Others please specify:" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4">
+                                                    <div class="form-group">
+                                                        <label for="addr_city">City:</label>
+                                                        <input type="text" class="form-control" name="addr_city" id="addr_city" value="" placeholder="City:" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4">
+                                                    <div class="form-group">
+                                                        <label for="addr_state">Estate (UF):</label>
+                                                        <input type="text" class="form-control" name="addr_state" id="addr_state" value="" maxlength="2" placeholder="SP" required/>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <div class="form-group">
+                                                        <label for="addr_country">Country:</label>
+                                                        <input type="text" name="addr_country" id="addr_country" class="form-control" value="" placeholder="Country:"  required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right pt-4">
+                                                <button type="submit" class="btn btn-lg btn-primary slow_3s  position-relative px-5">Update Address
+                                                    <span class="form_load position-absolute">
+                                                        <span class="spinner-border text-light" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </section>
+
+                                <section class="tab-pane fade" id="pills-password" role="tabpanel" aria-labelledby="pills-password-tab">
+                                    <header class="border-bottom border-info">
+                                        <h4 class="font-weight-light text-primary"><i class="fas fa-key"></i> My Password</h4>
+                                    </header>
+                                    <div class="py-3">
+                                        <form class="submit_form text-muted form_password" name="user_up_password" action="#" method="post" enctype="multipart/form-data">
+
+                                            <div class="form-group">
+                                                <label for="user_password_old">Current password:</label>
+                                                <input type="password" name="user_password_old"  id="user_password_old" class="form-control" placeholder="Current password:" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="user_password">New password:</label>
+                                                <input type="password" name="user_password"  id="user_password" class="form-control" placeholder="New password:" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="user_password_re">Repite new password:</label>
+                                                <input type="password" name="user_password_re"  id="user_password_re" class="form-control" placeholder="Repite new password:" />
+                                            </div>
+
+                                            <div class="text-right pt-4">
+                                                <button type="submit" class="btn btn-lg btn-primary slow_3s  position-relative px-5">Update Password
+                                                    <span class="form_load position-absolute">
+                                                        <span class="spinner-border text-light" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+
+                                        </form>   
+
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+            <!-- END MAIN CONTAINER -->
+
+            <footer class="border-top text-center bg-white text-dark d-block w-100 py-3 main_footer position-absolute text_small">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 text-center text-md-left">
+                            <b  class="text-primary">System Name</b> - User Panel  - By <a href='#' title=''>Your Agency</a>                        
+                        </div>
+                        <div class="col-sm-6 text-center text-md-right">
+                            <b>Version: </b>1.0
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

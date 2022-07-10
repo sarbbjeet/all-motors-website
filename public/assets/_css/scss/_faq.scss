@@ -1,0 +1,15 @@
+/***********************************
+########## Tab faq ##########
+***********************************/
+
+
+.tab_faq .nav-link::before{
+    font-family: "Font Awesome 5 Free" !important;
+    content: "\f07b";
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tab_faq .nav-link.active::before{
+    content: "\f07c";
+}

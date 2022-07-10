@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow"/>
+        <link href="images/favicon.png" rel="shortcut icon"/>
+
+        <title>MaxMotors - Theme for Automotive Store</title>
+
+        <link href="assets/fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="assets/_css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="assets/plugins/jquery/jquery.min.js"></script>
+        <script src="assets/plugins/jquery/jquery.form.min.js"></script>
+        <script src="assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap-notify.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+
+        <link rel="stylesheet" href="assets/_css/dashboard.css"/>
+        <script src="assets/_js/dashboard-base.js"></script>
+
+        <!--[if lt IE 9]><script src="assets/html5shiv.min.js"></script><![endif]-->
+    </head>
+    <body class="bg-light dashbord_content">
+        <div class="position-relative wrapper_content clearfix d-block float-left w-100">
+            <nav class="navbar navbar-expand-md bg_theme navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="dashboard.html"><img src="images/brand-white.png" title="Dashboard" alt="Dashboard"/></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Open Navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="uinterfaceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    UI Interface
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="uinterfaceDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-resources-sweetalert.html">Sweetalert</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-elements.html">Badges, Labels, Progress</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-notification.html">Notifications, Tooltips, Popover</a>
+                                    <a class="dropdown-item py-3 active" href="dashboard-resources-buttons.html">Buttons</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-icons.html">Icons</a>                                    
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="VehiclesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Vehicles
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="VehiclesDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-list.html"><i class="fas fa-home mr-2"></i> My Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-submit.html"><i class="fas fa-sign mr-2"></i> Register Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-report.html"><i class="far fa-list-alt mr-2"></i> Vehicles Report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown notifications_menu">
+
+                                <a class="nav-link dropdown-toggle position-relative" href="#" id="navbarNotification" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-bell"></i> <span class="badge badge-warning j_alert">2</span>                               
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="navbarNotification">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-inactive.html" title="Inactive Vehicles">
+                                        You have 3 inactive Vehicles!                                  
+                                    </a>
+                                    <a class="dropdown-item py-3" href="dashboard-profile.html" title="Inactive Vehicles">
+                                        You need add address in you profile                                 
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-primary py-3" href="dashboard-notification.html">
+                                        View notification details                                     
+                                    </a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello <b>Admin!</b>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right overflow-hidden p-0 overflow-hidden" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-item disabled bg-info py-3 text-center text-white d-block px-lg-5">
+                                        <img class="rounded-circle img-thumbnail profile_img" alt="Admin" title="Admin" src="images/600x600.jpg"/>
+                                        <h5 class="mb-0 mt-2">Admin System</h5>
+                                        <small>Super Admin (adm)</small>
+                                    </div>
+                                    <a class="dropdown-item py-3" href="dashboard-profile.html" title="My profile">
+                                        <i class="far fa-id-badge mr-2"></i> My profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <span class="dropdown-item py-3 j_confirm_url" title="Disconnect from System"  data-title="Go out now?" data-icon="warning" data-url="account-login.html" data-textGo="I want to leave now"><i class="fas fa-sign-out-alt"></i> Go out</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- START MAIN CONTAINER -->
+            <div class="container py-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent p-0 text_small">
+                        <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Buttons</li>
+                    </ol>
+                </nav>
+
+                <section class="mb-5 pb-5">
+                    <header class="border-bottom my-4">
+                        <h3 class="text-primary font-weight-light"><i class="fas fa-layer-group"></i> Buttons</h3>
+                    </header>
+                    <div class="row py-3">
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Buttons Tags</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-primary">Primary</button>
+                                        <button type="button" class="btn btn-secondary">Secondary</button>
+                                        <button type="button" class="btn btn-success">Success</button>
+                                        <button type="button" class="btn btn-danger">Danger</button>
+                                        <button type="button" class="btn btn-warning">Warning</button>
+                                        <button type="button" class="btn btn-info">Info</button>
+                                        <button type="button" class="btn btn-light">Light</button>
+                                        <button type="button" class="btn btn-dark">Dark</button>
+                                        <button type="button" class="btn btn-link">Link</button>
+                                    </div>
+                                    <div class="pb-3">
+                                        <a class="btn btn-primary" href="#" role="button">Link</a>
+                                        <button class="btn btn-primary" type="submit">Button</button>
+                                        <input class="btn btn-primary" type="button" value="Input">
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                        <input class="btn btn-primary" type="reset" value="Reset">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Outline buttons</h2>
+                                </header>
+                                <div class="py-3">
+                                    <button type="button" class="btn btn-outline-primary">Primary</button>
+                                    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                                    <button type="button" class="btn btn-outline-success">Success</button>
+                                    <button type="button" class="btn btn-outline-danger">Danger</button>
+                                    <button type="button" class="btn btn-outline-warning">Warning</button>
+                                    <button type="button" class="btn btn-outline-info">Info</button>
+                                    <button type="button" class="btn btn-outline-light">Light</button>
+                                    <button type="button" class="btn btn-outline-dark">Dark</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Sizes</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+                                        <button type="button" class="btn btn-secondary btn-lg">Large button</button>
+                                    </div>
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+                                        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+                                    </div>
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Active state</h2>
+                                </header>
+                                <div class="py-3">
+                                    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+                                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Disabled state</h2>
+                                </header>
+                                <div class="py-3">
+                                    <a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
+                                    <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Checkbox and radio buttons</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="pb-3">
+                                        <div class="btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-secondary active">
+                                                <input type="checkbox" checked> Checked
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-secondary active">
+                                            <input type="radio" name="options" id="option1" checked> Active
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input type="radio" name="options" id="option2"> Radio
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input type="radio" name="options" id="option3"> Radio
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <section class="col-lg-4 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Button group</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="pb-3">
+                                        <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-secondary">Left</button>
+                                            <button type="button" class="btn btn-secondary">Middle</button>
+                                            <button type="button" class="btn btn-secondary">Right</button>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-secondary">Left</button>
+                                            <button type="button" class="btn btn-secondary">Middle</button>
+                                            <button type="button" class="btn btn-secondary">Right</button>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-secondary">Left</button>
+                                            <button type="button" class="btn btn-secondary">Middle</button>
+                                            <button type="button" class="btn btn-secondary">Right</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-6 col-lg-4 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Nesting</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                        <button type="button" class="btn btn-secondary">1</button>
+                                        <button type="button" class="btn btn-secondary">2</button>
+
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Dropdown
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-6 col-lg-4 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Vertical variation</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="btn-group-vertical">
+                                        <button type="button" class="btn btn-secondary">1</button>
+                                        <button type="button" class="btn btn-secondary">2</button>
+
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Dropdown
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Pagination</h2>
+                                </header>
+                                <div class="row py-3 align-items-center">
+                                    <div class="col-md-6">
+                                        <nav aria-label="...">
+                                            <ul class="pagination">
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item active" aria-current="page">
+                                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#">Next</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav aria-label="...">
+                                            <ul class="pagination pagination-lg">
+                                                <li class="page-item active" aria-current="page">
+                                                    <span class="page-link">
+                                                        1
+                                                        <span class="sr-only">(current)</span>
+                                                    </span>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+
+            </div>
+            <!-- END MAIN CONTAINER -->
+
+
+            <footer class="border-top text-center bg-white text-dark d-block w-100 py-3 main_footer position-absolute text_small">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 text-center text-md-left">
+                            <b  class="text-primary">System Name</b> - User Panel  - By <a href='#' title='' >Your Agency</a>                        
+                        </div>
+                        <div class="col-sm-6 text-center text-md-right">
+                            <b>Version: </b>1.0
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

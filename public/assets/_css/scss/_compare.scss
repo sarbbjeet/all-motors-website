@@ -1,0 +1,89 @@
+/***********************************
+########## Compare ##########
+***********************************/
+
+.compare_box{
+    top: 0;
+    right: -100%;
+    z-index: 888888;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.56);
+
+    &.active{
+        right: 0%;
+    }
+}
+
+.compare_sidebar{
+    top: 0;
+    background-color: $white;
+    right: -240px;
+    width: 240px;
+    height: 100%;
+    z-index: 888;
+
+
+    box-shadow: 0 -2px 4px 0 rgba(0,0,0,0.14),
+        0 -4px 5px 0 rgba(0,0,0,0.12),
+        0 -1px 10px 0 rgba(0,0,0,0.20);
+
+    &.active{
+        right: 0;
+
+        & .btn_side_compare i{
+            @include ed_rotate(180);
+        }
+    }
+}
+
+
+.btn_side_compare{
+    top: 50%;
+    left: -49px;
+    box-shadow: 0 -2px 4px 0 rgba(0,0,0,0.14),
+        0 -4px 5px 0 rgba(0,0,0,0.12),
+        0 -1px 10px 0 rgba(0,0,0,0.20);
+
+    @include ed_translate(0%, -50%);
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    &.active i{
+        @include ed_rotate(360);
+    }
+}
+
+
+.compare_sidebar_container{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    & > div:nth-child(odd){
+        background-color: $light;
+    }
+}
+
+.btn_compare{
+    display: block;
+    top: 0px;
+    right: 20px;
+    color: $white;
+
+    &.active{
+        color: $danger;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.compare_sidebar .btn_compare{
+    top: 0px;
+    right: 0px;
+}
+

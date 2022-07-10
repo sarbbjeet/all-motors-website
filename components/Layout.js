@@ -1,12 +1,12 @@
 import React from "react";
 import AppHead from "../components/Head";
-import AppNav from "../components/AppNav";
+import Header from "../components/Header";
 import AppFooter from "../components/AppFooter";
 export default function Layout({ children }) {
   return (
     <div>
       <AppHead />
-      <AppNav />
+      <Header />
       {children}
       <AppFooter />
     </div>

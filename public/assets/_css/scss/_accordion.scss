@@ -1,0 +1,21 @@
+.accordion button[aria-expanded="true"],
+.accordion ul li a[aria-expanded="true"] {
+    background-color: $dark;
+    color: $white;
+}
+
+.accordion button[aria-expanded="true"]::after{
+    @include ed_rotate(-90);
+}
+
+.accordion button::after{
+    font-family: "Font Awesome 5 Free" !important;
+    content: "\f104";
+    display: inline-block;
+    float: right;
+    font-size: 1em;
+    margin-left: 5px;
+    font-weight: bold;
+
+    @include ed_transition(0.5);
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import Image from "next/image";
 export default function index() {
   return (
     <div>

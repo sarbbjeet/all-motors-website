@@ -1,0 +1,9 @@
+.dropzone {
+    border: 2px dashed rgba(0, 0, 0, 0.3) !important;
+    background: #F8F9FA !important;
+}
+
+.dropzone:hover {
+    border-color: #888 !important;
+    background: #fff !important;
+}

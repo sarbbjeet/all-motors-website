@@ -1,0 +1,58 @@
+/***********************************
+########## Card Post ##########
+***********************************/
+
+
+.post_item{
+    font-size: 1em !important;
+
+    &:hover a {
+        border-color: $primary !important;
+
+        img,
+        & a:hover img{
+            @include ed_scale(1.1);
+            opacity: 0.56;
+        }
+    }
+}
+
+.product_brand{
+    right: 10px;
+    bottom: -30px;
+    width: 70px;
+    height: 70px;
+    border-width: 3px !important;
+
+    &.single{
+        bottom: 20px;
+        right: 30px;
+    }
+}
+
+
+
+.product_observation{
+    top: -10px;
+    left: 10px;
+}
+
+.product_type{
+    bottom: 30px;
+    left: 10px;
+}
+
+
+.post_item.featured{
+    & a{
+        bottom: 0;
+        left: 0;
+        height: 100%;
+
+    }
+
+    &:hover img{
+        @include ed_scale(1.1);
+        opacity: 0.56;
+    }
+}

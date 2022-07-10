@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow"/>
+        <link href="images/favicon.png" rel="shortcut icon"/>
+
+        <title>MaxMotors - Theme for Automotive Store</title>
+
+        <link href="assets/fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="assets/_css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="assets/plugins/jquery/jquery.min.js"></script>
+        <script src="assets/plugins/jquery/jquery.form.min.js"></script>
+        <script src="assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap-notify.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap-notify-custom.js"></script>
+
+
+        <link rel="stylesheet" href="assets/_css/dashboard.css"/>
+        <script src="assets/_js/dashboard-base.js"></script>
+
+        <!--[if lt IE 9]><script src="assets/html5shiv.min.js"></script><![endif]-->
+    </head>
+    <body class="bg-light dashbord_content">
+        <div class="position-relative wrapper_content clearfix d-block float-left w-100">
+            <nav class="navbar navbar-expand-md bg_theme navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="dashboard.html"><img src="images/brand-white.png" title="Dashboard" alt="Dashboard"/></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Open Navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="uinterfaceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    UI Interface
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="uinterfaceDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-resources-sweetalert.html">Sweetalert</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-elements.html">Badges, Labels, Progress</a>
+                                    <a class="dropdown-item py-3 active" href="dashboard-resources-notification.html">Notifications, Tooltips, Popover</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-buttons.html">Buttons</a>
+                                    <a class="dropdown-item py-3" href="dashboard-resources-icons.html">Icons</a>                                    
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="VehiclesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Vehicles
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="VehiclesDropdown">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-list.html"><i class="fas fa-home mr-2"></i> My Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-submit.html"><i class="fas fa-sign mr-2"></i> Register Vehicles</a>
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-report.html"><i class="far fa-list-alt mr-2"></i> Vehicles Report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown notifications_menu">
+
+                                <a class="nav-link dropdown-toggle position-relative" href="#" id="navbarNotification" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-bell"></i> <span class="badge badge-warning j_alert">2</span>                               
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 overflow-hidden" aria-labelledby="navbarNotification">
+                                    <a class="dropdown-item py-3" href="dashboard-vehicles-inactive.html" title="Inactive Vehicles">
+                                        You have 3 inactive Vehicles!                                  
+                                    </a>
+                                    <a class="dropdown-item py-3" href="dashboard-profile.html" title="Inactive Vehicles">
+                                        You need add address in you profile                                 
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-primary py-3" href="dashboard-notification.html">
+                                        View notification details                                     
+                                    </a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello <b>Admin!</b>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right overflow-hidden p-0 overflow-hidden" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-item disabled bg-info py-3 text-center text-white d-block px-lg-5">
+                                        <img class="rounded-circle img-thumbnail profile_img" alt="Admin" title="Admin" src="images/600x600.jpg"/>
+                                        <h5 class="mb-0 mt-2">Admin System</h5>
+                                        <small>Super Admin (adm)</small>
+                                    </div>
+                                    <a class="dropdown-item py-3" href="dashboard-profile.html" title="My profile">
+                                        <i class="far fa-id-badge mr-2"></i> My profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <span class="dropdown-item py-3 j_confirm_url" title="Disconnect from System"  data-title="Go out now?" data-icon="warning" data-url="account-login.html" data-textGo="I want to leave now"><i class="fas fa-sign-out-alt"></i> Go out</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- START MAIN CONTAINER -->
+            <div class="container py-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent p-0 text_small">
+                        <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Buttons</li>
+                    </ol>
+                </nav>
+
+                <section class="mb-5 pb-5">
+                    <header class="border-bottom my-4">
+                        <h3 class="text-primary font-weight-light"><i class="fas fa-layer-group"></i> Notifications, Tooltips, Popover</h3>
+                    </header>
+                    <div class="row py-3">
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Alerts Styles</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="alert alert-primary" role="alert">
+                                        A simple primary alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-secondary" role="alert">
+                                        A simple secondary alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        A simple success alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        A simple danger alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-warning" role="alert">
+                                        A simple warning alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-info" role="alert">
+                                        A simple info alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-light" role="alert">
+                                        A simple light alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                    <div class="alert alert-dark" role="alert">
+                                        A simple dark alert with <a href="#" class="alert-link">an example link</a>. 
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Dismissable Alerts</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="alert alert-primary" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-secondary" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-warning" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-info" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-light" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-dark" role="alert">
+                                        A <strong>simple danger</strong> alert with a close button
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Alert with additional content</h2>
+                                </header>
+                                <div class="py-3">
+                                    <div class="alert alert-info" role="alert">
+                                        <h4 class="alert-heading">
+                                            Well done!
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </h4>
+                                        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                        <hr>
+                                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Notification</h2>
+                                </header>
+                                <div class="py-3 text-center">
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Top Left"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the top left"
+                                                data-placement-from="top" 
+                                                data-placement-align="left" 
+                                                data-color-name="dark"
+                                                >Top Left</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Top Center"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the top center"
+                                                data-placement-from="top" 
+                                                data-placement-align="center" 
+                                                data-color-name="dark"
+                                                >Top Center</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Top Right"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the top right"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="dark"
+                                                >Top Right</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Bottom Left"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the bottom left"
+                                                data-placement-from="bottom" 
+                                                data-placement-align="left" 
+                                                data-color-name="dark"
+                                                >Bottom Left</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Bottom Center"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the bottom center"
+                                                data-placement-from="bottom" 
+                                                data-placement-align="center" 
+                                                data-color-name="dark"
+                                                >Bottom Center</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Bottom Right"
+                                                data-placement-icon="far fa-question-circle"
+                                                data-placement-text="This notify is in the bottom right"
+                                                data-placement-from="bottom" 
+                                                data-placement-align="right" 
+                                                data-color-name="dark"
+                                                >Bottom Right</button>
+                                    </div>
+                                    <div class="pb-3">
+                                        <button type="button" class="btn btn-primary j_notification" 
+                                                data-placement-title="Primary Color"
+                                                data-placement-icon="far fa-heart"
+                                                data-placement-text="This notify is in the primary color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="primary"
+                                                >Primary</button>
+
+                                        <button type="button" class="btn btn-secondary j_notification" 
+                                                data-placement-title="Secondary Color"
+                                                data-placement-icon="far fa-meh-rolling-eyes"
+                                                data-placement-text="This notify is in the secondary color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="secondary"
+                                                >Secondary</button>
+
+                                        <button type="button" class="btn btn-success j_notification" 
+                                                data-placement-title="Success Color"
+                                                data-placement-icon="far fa-check-circle"
+                                                data-placement-text="This notify is in the success color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="success"
+                                                >Success</button>
+
+                                        <button type="button" class="btn btn-danger j_notification" 
+                                                data-placement-title="Danger Color"
+                                                data-placement-icon="far fa-hand-paper"
+                                                data-placement-text="This notify is in the danger color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="danger"
+                                                >Danger</button>
+
+                                        <button type="button" class="btn btn-warning j_notification" 
+                                                data-placement-title="Warning Color"
+                                                data-placement-icon="fas fa-radiation-alt"
+                                                data-placement-text="This notify is in the warning color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="warning"
+                                                >Warning</button>
+
+                                        <button type="button" class="btn btn-info j_notification" 
+                                                data-placement-title="Info Color"
+                                                data-placement-icon="fas fa-exclamation-triangle"
+                                                data-placement-text="This notify is in the info color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="info"
+                                                >Info</button>
+
+                                        <button type="button" class="btn btn-light j_notification" 
+                                                data-placement-title="Light Color"
+                                                data-placement-icon="far fa-smile"
+                                                data-placement-text="This notify is in the light color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="light"
+                                                >Light</button>
+
+                                        <button type="button" class="btn btn-dark j_notification" 
+                                                data-placement-title="Dark Color"
+                                                data-placement-icon="fas fa-moon"
+                                                data-placement-text="This notify is in the dark color"
+                                                data-placement-from="top" 
+                                                data-placement-align="right" 
+                                                data-color-name="dark"
+                                                >Dark</button>
+
+                                        <button type="button" class="btn btn-dark j_notification" 
+                                                >Default
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Tooltips</h2>
+                                </header>
+                                <div class="py-3 text-center">
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-toggle="tooltip" 
+                                            data-placement="top" 
+                                            title="Tooltip on top">
+                                        Tooltip on top
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-toggle="tooltip" 
+                                            data-placement="right" 
+                                            title="Tooltip on right">
+                                        Tooltip on right
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-toggle="tooltip" 
+                                            data-placement="bottom" 
+                                            title="Tooltip on bottom">
+                                        Tooltip on bottom
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-toggle="tooltip" 
+                                            data-placement="left" 
+                                            title="Tooltip on left">
+                                        Tooltip on left
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-12 mb-4">
+                            <div class="bg-white rounded shadow-sm p-3 border-bottom border-primary" style="height: 100%;">
+                                <header class="border-bottom border-primary">
+                                    <h2 class="text-primary h5 font-weight-light">Popovers</h2>
+                                </header>
+                                <div class="py-3 text-center">
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-container="body" 
+                                            data-toggle="popover" 
+                                            data-placement="top" 
+                                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                                        Popover on top
+                                    </button>
+
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-container="body" 
+                                            data-toggle="popover" 
+                                            data-placement="right" 
+                                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                                        Popover on right
+                                    </button>
+
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-container="body" 
+                                            data-toggle="popover" 
+                                            data-placement="bottom" 
+                                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                                        Popover on bottom
+                                    </button>
+
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-container="body" 
+                                            data-toggle="popover" 
+                                            data-placement="left" 
+                                            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                                        Popover on left
+                                    </button>
+
+                                    <div class="pt-3 text-light">
+                                        <button type="button" class="btn btn-lg btn-secondary" 
+                                                data-container="body" 
+                                                data-toggle="popover" 
+                                                data-trigger="focus" 
+                                                title="Dismissible popover" 
+                                                data-content="And here's some amazing content. It's very engaging. Right?">
+                                            Dismissible popover
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                    </div>
+                </section>
+
+
+            </div>
+            <!-- END MAIN CONTAINER -->
+
+
+            <footer class="border-top text-center bg-white text-dark d-block w-100 py-3 main_footer position-absolute text_small">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 text-center text-md-left">
+                            <b  class="text-primary">System Name</b> - User Panel  - By <a href='#' title='' >Your Agency</a>                        
+                        </div>
+                        <div class="col-sm-6 text-center text-md-right">
+                            <b>Version: </b>1.0
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

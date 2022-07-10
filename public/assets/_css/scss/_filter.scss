@@ -1,0 +1,95 @@
+/***********************************
+########## Filter ##########
+***********************************/
+
+.custom-radio:hover{
+    cursor: pointer;
+}
+
+.radiobtn {
+    position: relative;
+    display: inline-block;
+    margin-right: 2px;
+
+
+    & label {
+        text-align: center;
+        vertical-align: middle;
+        display: inline-block;
+        background: $white;
+        color: $secondary;
+        border-radius: 100%;
+        font-size: 0.8575em;
+        font-weight: bold;
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        border: 1px solid $secondary;
+
+        @include ed_transition(0.3);
+    }
+
+    & input[type="radio"] {
+        display: none;
+
+        &:checked + label {
+            background: $primary;
+            color: $white !important;
+            border-color: $primary;
+            @include ed_transition(0.3);
+        }
+
+    }
+
+    &:hover label{
+        background-color: $secondary;
+        color: $white !important;
+    }
+
+
+}
+
+
+/*menu do filtro de busca*/
+@media (max-width: 991px) {
+    .advFilter_box{
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 888880;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.56);
+
+        & .active {
+            left: 0;
+            & .advFilter {left: 0;}
+        }
+    }
+
+
+    .advFilter{
+        border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        -o-border-radius: 0 !important;
+
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 888887;
+
+        width: 280px !important;
+        max-width: 85%;
+        height: 100%;
+
+        @include ed_transition(0.5);
+
+        overflow-y: auto !important;
+        box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 3px rgba(0, 0, 0, 0.12), 0 4px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+}

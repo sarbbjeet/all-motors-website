@@ -1,0 +1,37 @@
+/***********************************
+########## Agents ##########
+***********************************/
+
+.agent_avatar{
+    width: 140px;
+    height: 140px;
+
+    & img{
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -o-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border: 0.5px solid transparent;
+    }
+}
+
+.agent_bg{
+    height: 140px; 
+    filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+.agent_item:hover img{
+    @include ed_scale(1.1);
+}
+
+.agent_item_content{
+    bottom: -100%;
+    left: 0%;    
+}
+
+.agent_item:hover .agent_item_content{
+    bottom: 0%;
+}

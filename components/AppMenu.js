@@ -1,0 +1,215 @@
+import Link from "next/link";
+import React from "react";
+
+export default function AppMenu() {
+  return (
+    <div className="menu_mobile_box position-fixed d-block w-100 slow_3s">
+      <div
+        className="main_nav_mobile position-fixed bg-white accordion py-3"
+        id="accordion_menumobile"
+      >
+        <div className="d-block text-right">
+          <div className="nav-icon menu_action float-right d-block mb-3">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <ul className="list-unstyled mb-0 pr-0">
+          <li className="">
+            <Link href="/">
+              <a
+                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                title="home"
+              >
+                Home
+              </a>
+            </Link>
+            {/* <ul
+              id="collapse-0"
+              className="collapse slow_3s list-unstyled pl-2 py-2 border-bottom border-dark"
+              data-parent="#accordion_menumobile"
+            >
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="index.html"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Home 1
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="home-2.html"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Home 2
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="home-3.html"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Home 3
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="home-4.html"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Home 4
+                </a>
+              </li>
+            </ul> */}
+          </li>
+          <li className="has_sub">
+            <a
+              className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+              title="Vehicles"
+              href="/vehicles/search"
+              data-toggle="collapse"
+              data-target="#collapse-1"
+              aria-expanded="false"
+              aria-controls="collapse-1"
+            >
+              Purchase Vehicle
+            </a>
+            <ul
+              id="collapse-1"
+              className="collapse slow_3s list-unstyled pl-2 py-2 border-bottom border-dark"
+              data-parent="#accordion_menumobile"
+            >
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/vehicles/search"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Search Vehicles
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/vehicles/compare"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Compare Vehicles
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="has_sub">
+            <a
+              className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+              title="Blog"
+              href="services/sellcars"
+              data-toggle="collapse"
+              data-target="#collapse-2"
+              aria-expanded="false"
+              aria-controls="collapse-2"
+            >
+              Services
+            </a>
+            <ul
+              id="collapse-2"
+              className="collapse slow_3s list-unstyled pl-2 py-2 border-bottom border-dark"
+              data-parent="#accordion_menumobile"
+            >
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/services/sellcars"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i> Sell Cars
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/services/parts"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i>Vehicle Parts
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="has_sub">
+            <a
+              href="/about/page"
+              className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+              title="about"
+              data-toggle="collapse"
+              data-target="#collapse-3"
+              aria-expanded="false"
+              aria-controls="collapse-3"
+            >
+              About
+            </a>
+
+            <ul
+              id="collapse-3"
+              className="collapse slow_3s list-unstyled pl-2 py-2 border-bottom border-dark"
+              data-parent="#accordion_menumobile"
+            >
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/about/page"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i>About Us
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                  title=""
+                  href="/about/feedback"
+                >
+                  <i className="fas fa-chevron-right mr-2"></i>Customer
+                  Feedbacks
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="list-inline-item">
+            <Link href="/contact">
+              <a
+                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                title=""
+              >
+                Contact
+              </a>
+            </Link>
+          </li>
+        </ul>
+
+        {/* <div className="px-1 mt-3">
+          <a
+            className="btn btn-block btn-outline-success p-3"
+            href="account-login.html"
+            title="Restrict Area"
+          >
+            Login
+          </a>
+          <a
+            className="btn btn-block btn-success p-3 mt-2"
+            href="landing-page.html"
+          >
+            Submit Vehicles
+          </a>
+        </div> */}
+      </div>
+    </div>
+  );
+}
