@@ -23,11 +23,11 @@ export default function Feedback() {
           </p>
           <h5>Sarbjit Singh </h5>
           <div className="starRating">
-            <i style={{ color: "blue" }} className="fas fa-star p-1"></i>
-            <i style={{ color: "blue" }} className="fas fa-star p-1"></i>
-            <i style={{ color: "blue" }} className="fas fa-star p-1"></i>
-            <i style={{ color: "blue" }} className="fas fa-star p-1"></i>
-            <i style={{ color: "blue" }} className="fas fa-star-half p-1"></i>
+            <i style={{ color: "white" }} className="fas fa-star p-1"></i>
+            <i style={{ color: "white" }} className="fas fa-star p-1"></i>
+            <i style={{ color: "white" }} className="fas fa-star p-1"></i>
+            <i style={{ color: "white" }} className="far fa-star p-1"></i>
+            <i style={{ color: "white" }} className="far fa-star p-1"></i>
           </div>
         </div>
       </div>

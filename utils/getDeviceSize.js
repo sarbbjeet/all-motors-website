@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 export default function getDeviceSize() {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
+  const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
+  const hasWindow = false;
   const handleWindowResize = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
+    hasWindow = typeof window !== "undefined";
+    const width = hasWindow ? window.innerWidth : null;
+    const height = hasWindow ? window.innerHeight : null;
+    setScreenSize({ width, height });
   };
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function getDeviceSize() {
     window.addEventListener("resize", handleWindowResize);
     // unsubscribe from the event on component unmount
     return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
+  }, [hasWindow]);
 
-  return { width, height };
+  return screenSize;
 }

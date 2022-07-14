@@ -32,6 +32,7 @@ export default function MyApp(props) {
       import("../public/assets/_js/slide.js");
       import("../public/assets/_js/base.js");
       import("../public/assets/_js/compare.js");
+      import("../public/assets/_js/search.js");
     });
   }, []);
   return (
@@ -53,6 +54,8 @@ export default function MyApp(props) {
       <Script src="assets/_js/slide.js"></Script>
       <Script src="assets/_js/base.js"></Script>
       <Script src="assets/_js/compare.js"></Script> */}
+
+      <Script src="/assets/_js/search.js"></Script>
     </CacheProvider>
   );
 }

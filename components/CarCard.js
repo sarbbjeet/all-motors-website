@@ -18,17 +18,18 @@ export default function CarCard({
         //   href="vehicles-single.html"
       >
         <div className="position-relative">
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden"
+            style={{ height: "250px", width: "300px" }}
+          >
             <Image
               className="d-block w-100 slow_3s"
               //   src="/images/1200x628.jpg"
               src={img}
-              alt=""
+              alt={img}
               title=""
-              width="100%"
-              height="50%"
-              layout="responsive"
-              objectFit="contain"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
 

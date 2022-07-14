@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import CarCard from "../CarCard";
 import getDeviceSize from "../../utils/getDeviceSize";
 
+import { latestCars } from "../../utils/variables";
+
 export default function LatestCars() {
   //   console.log(getDeviceSize().width);
 
@@ -15,27 +17,32 @@ export default function LatestCars() {
               Our latest Offers
             </h2>
             <p className="tagline text-muted">
-              Diliges proximum tuum sicut te ipsum. Propitius esto tibi. Vivamus
-              hodie iam vivere.
+              These deals are based on newly added cars that are reasonably
+              priced.
             </p>
           </div>
         </div>
       </header>
       <div className="container pb-3">
         <div className="d-flex justify-content-center slide_four slide_max arrow_inner">
-          {[1, 2, 3, 4, 5].map((itm, i) => (
-            <CarCard
-              key={i}
-              img={"/images/1200x628.jpg"}
-              brandLogo={"/images/600x600.jpg"}
-              model={"Toyota GT86"}
-              info={"2.0 16v Power Vip 2p 220cv Automatic Complete"}
-              year={"2021"}
-              fuel={"Flex"}
-              km={"0"}
-              price={"15.00.00"}
-            />
-          ))}
+          {latestCars?.map(
+            (
+              { price, image, model, description, year, fuel, km, brandImage },
+              i
+            ) => (
+              <CarCard
+                key={i}
+                img={image}
+                brandLogo={brandImage}
+                model={model}
+                info={description}
+                year={year}
+                fuel={fuel}
+                km={km}
+                price={price}
+              />
+            )
+          )}
         </div>
       </div>
 

@@ -14,9 +14,9 @@ export default function AppFooter() {
             >
               <Image
                 className="d-block w-100"
-                width="120px"
-                height="40px"
-                src="/images/brand-white.png"
+                width="140px"
+                height="100px"
+                src="/images/logo3_white.png"
                 alt=""
                 title=""
               />
