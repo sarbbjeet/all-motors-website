@@ -27,7 +27,7 @@ export default function Card() {
             <div
               key={i}
               className="col-sm-6 col-md-4 col-lg-3"
-              style={{ minHeight: "600px", overflow: "hidden" }}
+              style={{ minHeight: "520px", overflow: "hidden" }}
             >
               <div
                 className="shadow bg-white cardA"
