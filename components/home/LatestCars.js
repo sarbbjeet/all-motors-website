@@ -6,8 +6,6 @@ import getDeviceSize from "../../utils/getDeviceSize";
 import { latestCars } from "../../utils/variables";
 
 export default function LatestCars() {
-  //   console.log(getDeviceSize().width);
-
   return (
     <section className="section_content py-5">
       <header className="container section_header text-center py-3">
@@ -23,8 +21,11 @@ export default function LatestCars() {
           </div>
         </div>
       </header>
-      <div className="container pb-3">
-        <div className="d-flex justify-content-center slide_four slide_max arrow_inner">
+      <div className="pb-3">
+        <div
+          id=""
+          className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
+        >
           {latestCars?.map(
             (
               { price, image, model, description, year, fuel, km, brandImage },

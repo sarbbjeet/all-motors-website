@@ -23,7 +23,8 @@ export default function AppNav() {
             <h2 className="sr-only">Main Nav</h2>
             <Link className="main_brand d-inline-block" href="/">
               <Image
-                className="d-block w-100"
+                style={{ cursor: "pointer" }}
+                className="d-block w-100 logoA"
                 width="100px"
                 height="60px"
                 src="/images/logo3.png"

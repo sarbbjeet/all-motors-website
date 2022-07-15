@@ -1,4 +1,6 @@
 import Banner1 from "../components/Banner1";
+import Card from "../components/Card";
+import DealMessage from "../components/home/DealMessage";
 import FeatureCars from "../components/home/FeatureCars";
 import Feedback from "../components/home/Feedback";
 import LatestCars from "../components/home/LatestCars";
@@ -15,7 +17,6 @@ export default function Home() {
       <div
         style={{
           width: "100%",
-          height: "90vh",
           overflow: "auto",
           position: "relative",
           zIndex: 1,
@@ -46,7 +47,10 @@ export default function Home() {
         />
       </div>
 
-      <LatestCars />
+      <DealMessage />
+      <Card />
+
+      {/* <LatestCars /> */}
       <Feedback />
       {/* <Slider />
        <FeatureCars /> */}

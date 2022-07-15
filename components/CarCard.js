@@ -11,31 +11,26 @@ export default function CarCard({
   price,
 }) {
   return (
-    <article className="w-100 p-2 " style={{ height: "100%" }}>
+    <article className="p-2" style={{ maxWidth: "500px" }}>
       <div
-        className="bg-white d-block border"
+        className="shadow-sm bg-white d-block border"
         title="Vehicles Datails"
-        //   href="vehicles-single.html"
       >
         <div className="position-relative">
           <div
-            className="overflow-hidden"
-            style={{ height: "250px", width: "300px" }}
+            style={{ position: "relative", width: "100%", height: "350px" }}
+            // className="overflow-hidden"
           >
             <Image
-              className="d-block w-100 slow_3s"
+              // className="d-block w-100 slow_3s"
               //   src="/images/1200x628.jpg"
               src={img}
               alt={img}
-              title=""
               layout="fill"
               objectFit="cover"
             />
           </div>
 
-          {/* <span className="product_observation position-absolute bg-success px-3 py-1 text-white shadow-sm rounded-pill text_small">
-         Detach
-       </span> */}
           <span className="product_brand position-absolute bg-white shadow-sm rounded-circle p-1">
             <Image
               className="rounded-circle d-block slow_7s w-100"
@@ -53,13 +48,13 @@ export default function CarCard({
         <header>
           <h3
             className="d-flex align-items-center px-2 h5 text-dark mt-4 mb-0 text-uppercase"
-            style={{ minHeight: "50px" }}
+            style={{ minHeight: "40px" }}
           >
             {model}
           </h3>
           <p
             className="d-flex align-items-center text-secondary px-2 mb-0"
-            style={{ minHeight: "70px" }}
+            style={{ minHeight: "60px" }}
           >
             {info}
           </p>

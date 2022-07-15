@@ -1,5 +1,6 @@
 //import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AppFooter() {
   return (
@@ -41,49 +42,57 @@ export default function AppFooter() {
 
             <ul className="list-unstyled">
               <li className="list-inline-item w-100">
-                <a
-                  className="btn btn-block btn_height btn-dark text-left border-0 px-1"
-                  href="about.html"
-                  title=""
-                >
-                  <i className="fas fa-angle-double-right"></i> About us
-                </a>
+                <Link href="/about">
+                  <a
+                    className="btn btn-block btn_height btn-dark text-left border-0 px-1"
+                    title=""
+                  >
+                    <i className="fas fa-angle-double-right"></i> About us
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item w-100">
-                <a
-                  className="btn btn-block btn_height btn-dark text-left border-0 px-1"
-                  href="vehicles-search.html"
-                  title=""
-                >
-                  <i className="fas fa-angle-double-right"></i> Vehicles Search
-                </a>
+                <Link href="/vehicals/search">
+                  <a
+                    className="btn btn-block btn_height btn-dark text-left border-0 px-1"
+                    title=""
+                  >
+                    <i className="fas fa-angle-double-right"></i> Vehicles
+                    Search
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item w-100">
-                <a
-                  className="btn btn-block btn_height btn-dark text-left border-0 px-1"
-                  href="landing-page.html"
-                  title=""
-                >
-                  <i className="fas fa-angle-double-right"></i> Submit Vehicles
-                </a>
+                <Link href="/vehicle/compare">
+                  <a
+                    className="btn btn-block btn_height btn-dark text-left border-0 px-1"
+                    href="/vehicle/compare"
+                    title=""
+                  >
+                    <i className="fas fa-angle-double-right"></i> Compare
+                    Vehicles
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item w-100">
-                <a
-                  className="btn btn-block btn_height btn-dark text-left border-0 px-1"
-                  href="blog-home.html"
-                  title=""
-                >
-                  <i className="fas fa-angle-double-right"></i> Blog
-                </a>
+                <Link href="/about/reviews/">
+                  <a
+                    className="btn btn-block btn_height btn-dark text-left border-0 px-1"
+                    title=""
+                  >
+                    <i className="fas fa-angle-double-right"></i> Reviews
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item w-100">
-                <a
-                  className="btn btn-block btn_height btn-dark text-left border-0 px-1"
-                  href="contact.html"
-                  title=""
-                >
-                  <i className="fas fa-angle-double-right"></i> Contact us
-                </a>
+                <Link href="/contact">
+                  <a
+                    className="btn btn-block btn_height btn-dark text-left border-0 px-1"
+                    title=""
+                  >
+                    <i className="fas fa-angle-double-right"></i> Contact us
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
