@@ -1,0 +1,35 @@
+.itemWrapper {
+  display: flex;
+  flex: 0 0 25%;
+  margin-bottom: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headerText {
+  font: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: capitalize;
+  color: #0077da;
+}
+
+@media screen and (max-width: 768px) {
+  .itemWrapper {
+    display: flex;
+    flex: 0 0 33%;
+    margin-bottom: 1rem;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .itemWrapper {
+    display: flex;
+    flex: 0 0 50%;
+    margin-bottom: 1rem;
+    align-items: center;
+    flex-direction: column;
+  }
+}

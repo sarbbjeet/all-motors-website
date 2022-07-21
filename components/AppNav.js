@@ -22,17 +22,22 @@ export default function AppNav() {
           <nav className="d-flex justify-content-between no-gutters align-items-center">
             <h2 className="sr-only">Main Nav</h2>
             <Link className="main_brand d-inline-block" href="/">
-              <Image
-                style={{ cursor: "pointer" }}
-                className="d-block w-100 logoA"
-                width="100px"
-                height="60px"
-                src="/images/logo3.png"
-                alt="MaxMotors"
-                title="MaxMotors"
-              />
+              <div
+                className="position-relative"
+                style={{ display: "flex", height: "4.3rem", width: "5rem" }}
+              >
+                <Image
+                  style={{ cursor: "pointer" }}
+                  className="d-block w-100 logoA"
+                  layout="fill"
+                  objectFit="contain"
+                  src="/images/logo3.png"
+                  alt="MaxMotors"
+                  title="MaxMotors"
+                />
+              </div>
             </Link>
-            <div className="d-none d-md-inline-block">
+            <div className="d-none d-lg-inline-block">
               <ul
                 style={{ fontSize: "18px" }}
                 className="main_nav list-unstyled mb-0 pr-0"
@@ -44,7 +49,7 @@ export default function AppNav() {
                     href="/"
                     as="/"
                   >
-                    <a className="btn btn-outline-dark border-0 py-3 font-weight-bold">
+                    <a className="btn uppercase btn-outline-dark border-0 py-3 font-weight-bold">
                       Home
                     </a>
                   </Link>
@@ -53,38 +58,49 @@ export default function AppNav() {
                   <a
                     className="btn btn-outline-dark border-0 py-3 font-weight-bold"
                     title=""
-                    href="/vehicles/search"
+                    href="#"
                   >
                     Purchase Cars
                   </a>
                   <ul className="list-unstyled position-absolute slow_3s shadow-8dp">
                     <li className="w-100">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/vehicals/search"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> Search
-                        Vehicles
-                      </a>
+                      <Link href="/vehicles/search">
+                        <a
+                          className="btn btn-dark w-100 text-left py-3"
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> Search
+                          Vehicles
+                        </a>
+                      </Link>
                     </li>
                     <li className="w-100">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/vehicles/compare"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> Compare
-                        Vehicles
-                      </a>
+                      <Link href="/vehicles/compare">
+                        <a
+                          className="btn btn-dark w-100 text-left py-3"
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> Compare
+                          Vehicles
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
+
+                <li className="float-left position-relative mx-2">
+                  <Link href="/finance">
+                    <a className="btn uppercase btn-outline-dark border-0 py-3 font-weight-bold">
+                      Finance
+                    </a>
+                  </Link>
+                </li>
+
                 <li className="float-left position-relative has_sub mx-2">
                   <a
                     className="btn btn-outline-dark border-0 py-3 font-weight-bold"
                     title=""
-                    href="/services/sellcars"
+                    href="#"
                   >
                     Services
                   </a>
@@ -111,30 +127,35 @@ export default function AppNav() {
                   </ul>
                 </li>
                 <li className="float-left position-relative has_sub mx-2">
-                  <Link title="" href="/about">
-                    <a className="btn btn-outline-dark border-0 py-3 font-weight-bold">
-                      About
-                    </a>
-                  </Link>
+                  <a
+                    title="about"
+                    href="#"
+                    className="btn btn-outline-dark border-0 py-3 font-weight-bold"
+                  >
+                    About
+                  </a>
+
                   <ul className="list-unstyled position-absolute slow_3s shadow-8dp">
                     <li className="list-inline-item">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/about/page"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> About Us
-                      </a>
+                      <Link href="/about/page">
+                        <a
+                          className="btn btn-dark w-100 text-left py-3"
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> About Us
+                        </a>
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/about/reviews"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> Customer
-                        Reviews
-                      </a>
+                      <Link href="/about/reviews">
+                        <a
+                          className="btn btn-dark w-100 text-left py-3"
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> Customer
+                          Reviews
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -175,7 +196,7 @@ export default function AppNav() {
               <div style={{ fontSize: "16px", color: "#666" }}>Browse</div>
             </div>
 
-            <div className="d-md-none">
+            <div className="d-lg-none">
               <div className="nav-icon menu_action">
                 <span></span>
                 <span></span>
@@ -188,7 +209,7 @@ export default function AppNav() {
       </div>
 
       <div
-        className={`d-md-none  ${browse ? "" : "d-none"}`}
+        className={`d-lg-none  ${browse ? "" : "d-none"}`}
         style={{
           width: "100%",
           height: "100%",

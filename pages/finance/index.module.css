@@ -1,0 +1,35 @@
+.boldText {
+  font-size: inherit;
+  font-weight: 600;
+  word-spacing: 1px;
+  /* line-height: 10px; */
+  font-size: 1.3rem;
+}
+
+.supportText {
+  font-weight: 500;
+  /* font: inherit; */
+  font-family: sans-serif;
+  color: #555;
+  /* letter-spacing: 1px; */
+  font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .boldText {
+    font-size: inherit;
+    font-weight: 600;
+    word-spacing: 0;
+    /* line-height: 10px; */
+    font-size: 1rem;
+  }
+
+  .supportText {
+    font-weight: 500;
+    /* font: inherit; */
+    font-family: sans-serif;
+    color: #555;
+    letter-spacing: 0px;
+    font-size: 0.9rem;
+  }
+}

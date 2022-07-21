@@ -32,13 +32,13 @@ export default function Banner1() {
       style={{ overflow: "hidden" }}
     >
       <div className="carousel-inner">
-        <div style={{ height: "570px" }} className="carousel-item active">
+        <div style={{ height: "700px" }} className="carousel-item active">
           <Slide image={"/images/banner1.jpg"} />
         </div>
-        <div style={{ height: "570px" }} className="carousel-item">
+        <div style={{ height: "700px" }} className="carousel-item">
           <Slide image={"/images/feedback.jpeg"} />
         </div>
-        <div style={{ height: "570px" }} className="carousel-item">
+        <div style={{ height: "700px" }} className="carousel-item">
           <Slide image={"/images/feedback.jpeg"} />
         </div>
       </div>

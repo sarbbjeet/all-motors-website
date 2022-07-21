@@ -15,5 +15,4 @@ const styleQuery = (width) => {
   //   slider1.className = "";
   //   slider1.className = "d-flex flex-column";
   // }
-  console.log(width);
 };

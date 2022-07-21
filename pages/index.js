@@ -48,9 +48,9 @@ export default function Home() {
       </div>
 
       <DealMessage />
-      <Card />
+      {/* <Card /> */}
 
-      {/* <LatestCars /> */}
+      <LatestCars />
       <Feedback />
       {/* <Slider />
        <FeatureCars /> */}

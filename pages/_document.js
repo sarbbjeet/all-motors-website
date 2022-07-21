@@ -20,7 +20,8 @@ export default class MyDocument extends Document {
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>
-        <body>
+        {/* fixed position sticky problem  */}
+        <body style={{ overflow: "unset !important" }}>
           <Main />
           <NextScript />
         </body>

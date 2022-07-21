@@ -1,0 +1,41 @@
+.wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* .wrapper:focus {
+  background-color: #333;
+} */
+
+.wrapper:hover {
+  background-color: #ddd;
+}
+.wrapper:active {
+  background-color: #aaa;
+}
+.wrapper:hover > .arrow {
+  /* border-color: rgba(0, 68, 255, 0.8); */
+}
+.arrow {
+  border: solid green;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}

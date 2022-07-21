@@ -1,6 +1,7 @@
 import $ from "jquery";
+const lightbox = require("../plugins/lightbox/lightbox.min.js");
 
-$(document).ready(function () {
+$(function () {
   //slide
   if ($(".slide_detach").length) {
     $(".slide_detach").slick({

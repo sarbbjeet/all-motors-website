@@ -1,4 +1,4 @@
-export default function ToggleSwitch({ checked }) {
+export default function ToggleSwitch({ checked = () => {} }) {
   return (
     <div>
       <label className="switch">

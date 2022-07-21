@@ -26,54 +26,12 @@ export default function AppMenu() {
                 Home
               </a>
             </Link>
-            {/* <ul
-              id="collapse-0"
-              className="collapse slow_3s list-unstyled pl-2 py-2 border-bottom border-dark"
-              data-parent="#accordion_menumobile"
-            >
-              <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="index.html"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Home 1
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="home-2.html"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Home 2
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="home-3.html"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Home 3
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="home-4.html"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Home 4
-                </a>
-              </li>
-            </ul> */}
           </li>
           <li className="has_sub">
             <a
               className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
               title="Vehicles"
-              href="/vehicles/search"
+              href="#"
               data-toggle="collapse"
               data-target="#collapse-1"
               aria-expanded="false"
@@ -87,24 +45,39 @@ export default function AppMenu() {
               data-parent="#accordion_menumobile"
             >
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/vehicles/search"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Search Vehicles
-                </a>
+                <Link href="/vehicles/search">
+                  <a
+                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i> Search
+                    Vehicles
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/vehicles/compare"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Compare Vehicles
-                </a>
+                <Link href="/vehicles/compare">
+                  <a
+                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i> Compare
+                    Vehicles
+                  </a>
+                </Link>
               </li>
             </ul>
+          </li>
+
+          <li className="">
+            <Link href="/finance">
+              <a
+                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                title="finance"
+              >
+                Finance
+              </a>
+            </Link>
           </li>
           <li className="has_sub">
             <a
@@ -145,7 +118,7 @@ export default function AppMenu() {
           </li>
           <li className="has_sub">
             <a
-              href="/about/page"
+              href="#"
               className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
               title="about"
               data-toggle="collapse"
@@ -162,23 +135,25 @@ export default function AppMenu() {
               data-parent="#accordion_menumobile"
             >
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/about/page"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i>About Us
-                </a>
+                <Link href="/about/page">
+                  <a
+                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i>About Us
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/about/feedback"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i>Customer
-                  Feedbacks
-                </a>
+                <Link href="/about/feedback">
+                  <a
+                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i>Customer
+                    Feedbacks
+                  </a>
+                </Link>
               </li>
             </ul>
           </li>
