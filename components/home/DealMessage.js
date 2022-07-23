@@ -1,4 +1,4 @@
-import { f1 } from "../../styles/variables.module.scss";
+import { f1, f2 } from "../../styles/variables.module.scss";
 export default function DealMessage() {
   return (
     <div className="mx-4 mt-5 p-4 border border-light shadow rounded">
@@ -14,12 +14,12 @@ export default function DealMessage() {
           @media (max-width: 768px) {
             p {
               font-size: 1rem !important;
-              font-family: ${f1} !important;
+              font-family: ${f2} !important;
             }
           }
           p {
             font-size: 1.2rem;
-            font-family: ${f1} !important;
+            font-family: ${f2} !important;
             font-weight: 300;
           }
         `}

@@ -73,8 +73,8 @@ export default function LatestCars({
             font-weight: 200;
           }
           .btnTxt {
-            font-family: ${variables.f4};
-            font-size: 1.1rem;
+            font-family: ${variables.f2};
+            font-size: 1.2rem;
             font-weight: 400;
             background-color: ${variables.secondary};
             color: white;

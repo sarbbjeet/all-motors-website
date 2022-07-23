@@ -30,7 +30,6 @@ export default function AppNav() {
             <Link className="main_brand d-block" href="/">
               <Image
                 style={{ cursor: "pointer" }}
-                className="shadow"
                 width="70px"
                 height="55px"
                 // objectFit="contain"

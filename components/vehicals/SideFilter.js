@@ -7,7 +7,7 @@ export default function SideFilter({ filterEvent }) {
     <>
       <div
         style={{ marginBottom: "1px" }}
-        className="row d-block d-lg-none text-center py-5 px-3  bg-white"
+        className="row col-12 p-0 m-0 d-block d-lg-none text-center pb-2 pt-5 px-3  bg-white"
       >
         <button
           className="btn btn-block btn_height btn-outline-primary j_callFilter"

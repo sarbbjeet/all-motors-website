@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { fontFamily as font, fontSize } from "../utils/constants";
 import styled from "styled-components";
+import * as variables from "../styles/variables.module.scss";
 
 const CardImage = styled.div`
   background: url(${(props) => props.image}) no-repeat center center;
@@ -106,19 +106,19 @@ export default function CarCard({
       <style jsx>
         {`
           .textH {
-            font-family: ${font.f4};
+            font-family: ${variables.f2};
             font-size: 1rem;
             font-weight: 700;
             text-transform: capitalize; !important;
           }
 
           .textF {
-            font-family: ${font.f4};
+            font-family: ${variables.f2};
             font-size: 1.1rem;
             font-weight: 700;
           }
           .varient {
-            font-family: ${font.f4} !important;
+            font-family: ${variables.f2} !important;
             font-size: 0.9rem;
             font-weight: 400;
             text-transform: capitalize; !important;
@@ -127,7 +127,7 @@ export default function CarCard({
             background-color: #fff;
           }
           .var{
-            font-family: ${font.f4};
+            font-family: ${variables.f2};
             font-size: 0.8rem;
             font-weight: 500;
           }

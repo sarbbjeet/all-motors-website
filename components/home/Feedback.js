@@ -1,5 +1,6 @@
 import getDeviceSize from "../../utils/getDeviceSize";
-import { fontFamily as font } from "../../utils/constants";
+
+import * as font from "../../styles/variables.module.scss";
 
 export default function Feedback() {
   return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { fontFamily } from "../../utils/constants";
+import * as fontFamily from "../../styles/variables.module.scss";
 
 export default function index() {
   return (

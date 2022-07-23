@@ -1,10 +1,8 @@
 import Image from "next/image";
 
 import Gallery from "../../../components/vehicals/Gallery/index.js";
-import { useState } from "react";
 import Highlights from "../../../components/vehicals/Highlights.js";
 import VehicleItems from "../../../components/vehicals/VehicleItems.js";
-import Highlights1 from "../../../components/vehicals/Highlights1.js";
 
 import {
   items,
