@@ -1,4 +1,4 @@
-import styles from "./Arrow.module.css";
+import styles from "../../../styles/Arrow.module.scss";
 export default function Arrow({ direction = "left", handleClick = () => {} }) {
   const dir = direction === "left" ? "left" : "right";
   return (

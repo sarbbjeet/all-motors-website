@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import getDeviceSize from "../utils/getDeviceSize";
 import ToggleSwitch from "./ToogleSwitch";
-import styles from "./ShortSearch.module.css";
+import styles from "../styles/ShortSearch.module.scss";
 
 //get option list accotding to toggle selection
 const PBDropdown = ({ isChecked, obj, style }) => {

@@ -2,14 +2,15 @@ import Link from "next/link";
 import styles from "./index.module.css";
 export default function Finance() {
   return (
-    <main className="bg-light mt-5">
+    <main className="bg-light mt-4">
       <section>
         <header
-          className="text-center bg_parallax bg-white "
+          className="text-center bg_parallax bg-white"
           style={{
-            background: `url(/images/bac1.jpg) center no-repeat`,
+            background: `url(/images/new-images/bmw1.jpg) no-repeat center`,
             // height: "300px",
             backgroundSize: "cover",
+            backgroundAttachment: "fixed",
           }}
         >
           <div className="bg_shadow py-5">
@@ -67,8 +68,8 @@ export default function Finance() {
               </div>
             </div>
             <div
-              className="row col-12 col-lg-10 border border-light py-4 bg-white rounded shadow w-100 container application_form mt-4"
-              style={{ marginLeft: "50%", transform: "translate(-50%)" }}
+              className="col-12 col-lg-9 border border-light py-4 bg-white rounded shadow w-100 container application_form mt-4"
+              //   style={{ marginLeft: "50%", transform: "translate(-50%)" }}
             >
               <header className="p-0 col-12 row form_header border-bottom border-light">
                 <h4

@@ -1,13 +1,13 @@
 import React from "react";
 import ToggleSwitch from "../ToogleSwitch";
-import styles from "./SideFilter.module.css";
+import styles from "../../styles/SideFilter.module.scss";
 
 export default function SideFilter({ filterEvent }) {
   return (
     <>
       <div
         style={{ marginBottom: "1px" }}
-        className="row d-block d-lg-none text-center py-3 px-5 mt-5 bg-white"
+        className="row d-block d-lg-none text-center py-5 px-3  bg-white"
       >
         <button
           className="btn btn-block btn_height btn-outline-primary j_callFilter"

@@ -7,17 +7,17 @@ export default function ContactHeader() {
         <div className="d-flex justify-content-between align-items-center">
           <ul className="list-unstyled mb-0 pr-0">
             <li className="float-left">
-              <a className="btn btn-dark" href="#" title="Phone">
+              <a className="text btn btn-dark" href="#" title="Phone">
                 <i className="fas fa-phone-alt"></i> (44) 7927684797
               </a>
             </li>
             <li className="float-left">
-              <a className="btn btn-dark" href="#" title="Whatsapp">
+              <a className="text btn btn-dark" href="#" title="Whatsapp">
                 <i className="fab fa-whatsapp"></i> (44) 7927684797
               </a>
             </li>
             <li className="float-left">
-              <a className="btn btn-dark" href="#" title="E-mail">
+              <a className="text btn btn-dark" href="#" title="E-mail">
                 <i className="far fa-envelope"></i> contact@allmotors.co.uk
               </a>
             </li>
@@ -41,11 +41,20 @@ export default function ContactHeader() {
             </li>
             <li className="float-left">
               <a className="btn btn-dark" href="#" title="Twitter">
-                <i className="fab fa-twitter"></i>
+                <i className=" fab fa-twitter"></i>
               </a>
             </li>
           </ul>
         </div>
+        <style jsx>
+          {`
+            .text {
+              font-family: "Poppins", sans-serif !important;
+              font-size: 14px;
+              font-weight: 300 !important;
+            }
+          `}
+        </style>
       </div>
     </div>
   );

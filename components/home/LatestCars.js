@@ -1,25 +1,28 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CarCard from "../CarCard";
-import getDeviceSize from "../../utils/getDeviceSize";
-
-import { latestCars } from "../../utils/variables";
+// import { colors, fontFamily as font } from "../../utils/constants";
+import * as variables from "../../styles/variables.module.scss";
+import { latestCars } from "../../utils/variables"; //get raw json data
 import Link from "next/link";
-
 export default function LatestCars({
   cars = latestCars,
   title = "Our latest Offers",
   desc = "These deals are based on newly added cars that are reasonably priced.",
 }) {
   return (
-    <section className="section_content py-5">
-      <header className="container section_header text-center py-3">
+    <section className="py-5">
+      <header className="container text-center py-3">
         <div className="row justify-content-center">
           <div className="col-md-10 col-lg-8 col-xl-6">
-            <h2 className="font-weight-bold text-dark section_title">
+            <h2
+              className="text text-dark section_title"
+              // style={{ fontFamily: "Poppins, sans-serif" }}
+            >
               {title}
             </h2>
-            <p className="tagline text-muted">{desc}</p>
+
+            <p className="_tagline">{desc}</p>
           </div>
         </div>
       </header>
@@ -51,11 +54,39 @@ export default function LatestCars({
 
       <div className="text-center">
         <Link href="/vehicles/search">
-          <a className="btn btn-primary btn-lg" title="See more vehicles">
+          <a className="btnTxt btn btn-lg" title="See more vehicles">
             See more vehicles
           </a>
         </Link>
       </div>
+
+      <style jsx>
+        {`
+          .text {
+            font-family: ${variables.f1} !important;
+            font-size: 1.8rem;
+            font-weight: 500;
+          }
+          ._tagline {
+            font-family: ${variables.f4} !important;
+            font-size: 1.2rem;
+            font-weight: 200;
+          }
+          .btnTxt {
+            font-family: ${variables.f4};
+            font-size: 1.1rem;
+            font-weight: 400;
+            background-color: ${variables.secondary};
+            color: white;
+            outline: none;
+            transition: all 0.5s ease-in-out;
+          }
+          .btnTxt:hover {
+            transform: scale(1.0299);
+            background-color: ${variables.secondaryLight};
+          }
+        `}
+      </style>
     </section>
   );
 }

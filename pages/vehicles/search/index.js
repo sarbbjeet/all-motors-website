@@ -3,15 +3,15 @@ import { useState } from "react";
 import BasicSearch from "../../../components/BasicSearch";
 import CarCard from "../../../components/CarCard";
 import SideFilter from "../../../components/vehicals/SideFilter";
+import { fontFamily } from "../../../utils/constants";
 import { latestCars } from "../../../utils/variables";
-import styles from "./search.module.css";
 
 export default function Handler() {
   const [adSearch, setAdSearch] = useState(false);
   return (
     <main className="bg-light m-0 p-0">
       <div className="bg-light pt-4 p-0 m-0">
-        <div className="row col-12 m-0">
+        <div className="row col-12 m-0 p-2 pl-lg-0 pt-4 pr-2">
           <div className="col-lg-3 p-0">
             <SideFilter filterEvent={(state) => setAdSearch(state)} />
           </div>
@@ -21,17 +21,22 @@ export default function Handler() {
             className="col-lg-9 shadow-sm bg-white shadow-sm p-0 pr-lg-2  pl-lg-0"
           >
             <div
-              style={{ marginTop: "1px", marginBottom: "1px" }}
+              style={{
+                fontFamily: "Baloo Bhai 2, cursive",
+                marginTop: "1px",
+                marginBottom: "1px",
+              }}
               className="px-4 row shadow-sm bg-white py-4 justify-content-between align-items-center px-lg-0"
             >
-              <div className="col-auto text-dark font-weight-bold">
-                Total Vehicles Find Is: <span className="text-success">38</span>
+              <div className="text col-auto text-dark">
+                Total Vehicles Find Is:
+                <span className="text text-success ml-2">38</span>
               </div>
 
               <div className="col-auto">
                 <div className="btn-group">
                   <button
-                    className="btn btn-outline-primary btn-lg py-3 dropdown-toggle text_small"
+                    className="_btn btn btn-outline-primary btn-lg py-3 dropdown-toggle text_small"
                     type="button"
                     data-toggle="dropdown"
                     aria-haspopup="true"
@@ -40,16 +45,28 @@ export default function Handler() {
                     Order By
                   </button>
                   <div className="dropdown-menu dropdown-menu-right text-right p-0 shadow-sm rounded-0">
-                    <a className="dropdown-item text_small px-2 py-3" href="#">
+                    <a
+                      className="_btn dropdown-item text_small px-2 py-3"
+                      href="#"
+                    >
                       Price ASC
                     </a>
-                    <a className="dropdown-item text_small px-2 py-3" href="#">
+                    <a
+                      className="_btn  dropdown-item text_small px-2 py-3"
+                      href="#"
+                    >
                       Price DESC
                     </a>
-                    <a className="dropdown-item text_small px-2 py-3" href="#">
+                    <a
+                      className="_btn dropdown-item text_small px-2 py-3"
+                      href="#"
+                    >
                       More seen
                     </a>
-                    <a className="dropdown-item text_small px-2 py-3" href="#">
+                    <a
+                      className="_btn dropdown-item text_small px-2 py-3"
+                      href="#"
+                    >
                       More News
                     </a>
                   </div>
@@ -218,6 +235,22 @@ export default function Handler() {
       >
         <BasicSearch closeBtn={(state) => setAdSearch(state)} />
       </div>
+
+      <style jsx>
+        {`
+          .text {
+            font-family: "${fontFamily.f2}";
+            font-size: 20px;
+            font-weight: 600;
+          }
+          ._btn {
+            font-family: "${fontFamily.f2} !important";
+            outline: none !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+          }
+        `}
+      </style>
     </main>
   );
 }

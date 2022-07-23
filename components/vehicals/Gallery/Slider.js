@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-import stylesExt from "./Slider.module.css";
+import stylesExt from "../../../styles/Slider.module.scss";
 export default function Handler({ slides, handleEvent, selectedIndex }) {
   const sliderRef = useRef(null);
   const resizeRef = useRef(null);
@@ -26,7 +26,7 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
     };
   }, []);
   return (
-    <div className="" style={styles.sliderContainer}>
+    <div style={styles.sliderContainer}>
       <Slide
         ref={sliderRef}
         slidesToScroll={4}

@@ -1,10 +1,18 @@
-html,
+:root {
+  --primary-color: #00d28d;
+  --secondary-color: #0e89ff;
+  --font-style1: "Baloo Bhai 2", cursive;
+  --font-style2: "Poppins", sans-serif;
+}
 body {
   transform: none;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --bs-body-font-family: "Poppins", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
+  font-family: "Baloo Bhai 2", cursive;
+  font-family: "Baloo Tammudu 2", cursive;
+  font-family: "Dosis", sans-serif;
 }
 
 a {
@@ -13,5 +21,7 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }

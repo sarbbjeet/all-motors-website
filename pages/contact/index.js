@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import { fontFamily } from "../../utils/constants";
 
 export default function index() {
   return (
-    <main className="bg-light mt-5">
+    <main className="bg-light mt-4">
       <section>
         <header
           className="text-center bg_parallax bg-white"
@@ -11,15 +12,14 @@ export default function index() {
             background: `url(/images/bac2.jpeg) center no-repeat`,
             // height: "300px",
             backgroundSize: "cover",
+            backgroundAttachment: "fixed",
           }}
         >
           <div className="bg_shadow py-5">
             <div className="container py-3 position-relative text_shadow text-white">
               <div className="row justify-content-center">
                 <div className="col-md-10 col-lg-8 col-xl-6">
-                  <h2 className="font-weight-bold h1 section_title">
-                    Contact Us
-                  </h2>
+                  <h2 className="hText section_title">Contact Us</h2>
 
                   <nav className="d-inline-block" aria-label="breadcrumb">
                     <h2 className="sr-only">Breadcrumb</h2>
@@ -212,6 +212,22 @@ export default function index() {
             </div>
           </div>
         </div>
+
+        <style jsx>
+          {`
+            .text {
+              font-family: "${fontFamily.f2} !important";
+              font-size: 1rem !important;
+              font-weight: 500 !important;
+            }
+            .hText {
+              font-family: "${fontFamily.f2} !important";
+
+              font-size: 2rem !important;
+              font-weight: 600 !important;
+            }
+          `}
+        </style>
       </section>
     </main>
   );

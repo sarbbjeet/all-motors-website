@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <main className="bg-light mt-5">
+    <main className="bg-light mt-4">
       <section>
         <header
           className="text-center bg_parallax bg-white"
@@ -10,6 +10,7 @@ export default function About() {
             background: `url(/images/bac2.jpeg) center no-repeat`,
             // height: "300px",
             backgroundSize: "cover",
+            backgroundAttachment: "fixed",
           }}
         >
           <div className="bg_shadow py-5">

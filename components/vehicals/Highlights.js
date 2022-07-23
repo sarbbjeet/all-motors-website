@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Hightlights.module.css";
+import styles from "../../styles/Hightlights.module.scss";
 export default function Highlights({
   highlights = { color: "white", fuel: "Gesoline" },
 }) {

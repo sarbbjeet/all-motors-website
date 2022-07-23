@@ -7,13 +7,13 @@ import LatestCars from "../components/home/LatestCars";
 import SearchVehicle from "../components/home/SearchVehicle";
 import Slider from "../components/home/Slider";
 import ShortSearch from "../components/ShortSearch";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import getDeviceSize from "../utils/getDeviceSize";
 
 export default function Home() {
   let { width } = getDeviceSize();
   return (
-    <main style={{ position: "relative", zIndex: 1 }}>
+    <main className={styles.main} style={{ position: "relative", zIndex: 1 }}>
       <div
         style={{
           width: "100%",

@@ -30,3 +30,5 @@ yarn-error.log*
 .env
 # vercel
 .vercel
+#html files
+*.html

@@ -17,10 +17,10 @@ export default function AppMenu() {
           </div>
         </div>
         <ul className="list-unstyled mb-0 pr-0">
-          <li className="">
+          <li>
             <Link href="/">
               <a
-                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                className="nav-click btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
                 title="home"
               >
                 Home
@@ -47,7 +47,7 @@ export default function AppMenu() {
               <li className="list-inline-item">
                 <Link href="/vehicles/search">
                   <a
-                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
                     title=""
                   >
                     <i className="fas fa-chevron-right mr-2"></i> Search
@@ -58,7 +58,7 @@ export default function AppMenu() {
               <li className="list-inline-item">
                 <Link href="/vehicles/compare">
                   <a
-                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
                     title=""
                   >
                     <i className="fas fa-chevron-right mr-2"></i> Compare
@@ -69,10 +69,10 @@ export default function AppMenu() {
             </ul>
           </li>
 
-          <li className="">
+          <li>
             <Link href="/finance">
               <a
-                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                className="nav-click btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
                 title="finance"
               >
                 Finance
@@ -97,22 +97,25 @@ export default function AppMenu() {
               data-parent="#accordion_menumobile"
             >
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/services/sellcars"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i> Sell Cars
-                </a>
+                <Link href="services/sellcars">
+                  <a
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i> Sell Cars
+                  </a>
+                </Link>
               </li>
               <li className="list-inline-item">
-                <a
-                  className="btn btn-outline-dark border-0 w-100 text-left py-3"
-                  title=""
-                  href="/services/parts"
-                >
-                  <i className="fas fa-chevron-right mr-2"></i>Vehicle Parts
-                </a>
+                <Link href="/services/parts">
+                  <a
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
+                    title=""
+                    href="/services/parts"
+                  >
+                    <i className="fas fa-chevron-right mr-2"></i>Vehicle Parts
+                  </a>
+                </Link>
               </li>
             </ul>
           </li>
@@ -137,7 +140,7 @@ export default function AppMenu() {
               <li className="list-inline-item">
                 <Link href="/about/page">
                   <a
-                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
                     title=""
                   >
                     <i className="fas fa-chevron-right mr-2"></i>About Us
@@ -147,7 +150,7 @@ export default function AppMenu() {
               <li className="list-inline-item">
                 <Link href="/about/feedback">
                   <a
-                    className="btn btn-outline-dark border-0 w-100 text-left py-3"
+                    className="nav-click btn btn-outline-dark border-0 w-100 text-left py-3"
                     title=""
                   >
                     <i className="fas fa-chevron-right mr-2"></i>Customer
@@ -160,7 +163,7 @@ export default function AppMenu() {
           <li className="list-inline-item">
             <Link href="/contact">
               <a
-                className="btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
+                className="nav-click btn btn-outline-dark border-0 w-100 text-left py-4 font-weight-bold"
                 title=""
               >
                 Contact

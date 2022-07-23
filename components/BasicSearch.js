@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./BasicSearch.module.css";
+import styles from "../styles/BasicSearch.module.scss";
 
 export default function BasicSearch({ closeBtn = () => {} }) {
   const cars = {

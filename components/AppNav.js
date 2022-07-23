@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BasicSearch from "./BasicSearch";
+import ContactHeader from "./ContactHeader";
+import { colors } from "../utils/constants";
+import styled from "styled-components";
+import styles from "../styles/AppNav.module.scss";
 
+const Wrapper = styled.div``;
 export default function AppNav() {
   const [browse, setBrowse] = useState(false);
   return (
     //header_bottom
-    <>
+    <Wrapper>
       <div
         style={{
           position: "fixed",
@@ -16,48 +21,41 @@ export default function AppNav() {
           // borderBottom: "2px solid red",
           boxShadow: "1px 1px 2px rgba(255, 0,0, 0.1)",
         }}
-        className="slow_7s py-2 shadow-md w-100 bg-white"
+        className="nav-container slow_7s shadow-md w-100 bg-white"
       >
+        <ContactHeader />
         <div className="container">
-          <nav className="d-flex justify-content-between no-gutters align-items-center">
+          <nav className="py-1 d-flex justify-content-between no-gutters align-items-center">
             <h2 className="sr-only">Main Nav</h2>
-            <Link className="main_brand d-inline-block" href="/">
-              <div
-                className="position-relative"
-                style={{ display: "flex", height: "4.3rem", width: "5rem" }}
-              >
-                <Image
-                  style={{ cursor: "pointer" }}
-                  className="d-block w-100 logoA"
-                  layout="fill"
-                  objectFit="contain"
-                  src="/images/logo3.png"
-                  alt="MaxMotors"
-                  title="MaxMotors"
-                />
-              </div>
+            <Link className="main_brand d-block" href="/">
+              <Image
+                style={{ cursor: "pointer" }}
+                className="shadow"
+                width="70px"
+                height="55px"
+                // objectFit="contain"
+                src="/images/logo3.png"
+                alt="AllMotors"
+                title="AllMotors"
+              />
+              {/* </div> */}
             </Link>
             <div className="d-none d-lg-inline-block">
               <ul
-                style={{ fontSize: "18px" }}
-                className="main_nav list-unstyled mb-0 pr-0"
+                className={`${styles.linkFont} main_nav list-unstyled mb-0 pr-0`}
               >
                 <li className="float-left position-relative mx-2">
-                  <Link
-                    className="btn btn-outline-dark border-0 py-3 font-weight-bold"
-                    title=""
-                    href="/"
-                    as="/"
-                  >
-                    <a className="btn uppercase btn-outline-dark border-0 py-3 font-weight-bold">
+                  <Link title="" href="/">
+                    <a
+                      className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
+                    >
                       Home
                     </a>
                   </Link>
                 </li>
                 <li className="float-left position-relative has_sub mx-2">
                   <a
-                    className="btn btn-outline-dark border-0 py-3 font-weight-bold"
-                    title=""
+                    className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     href="#"
                   >
                     Purchase Cars
@@ -66,7 +64,7 @@ export default function AppNav() {
                     <li className="w-100">
                       <Link href="/vehicles/search">
                         <a
-                          className="btn btn-dark w-100 text-left py-3"
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
                           <i className="fas fa-chevron-right mr-2"></i> Search
@@ -77,7 +75,7 @@ export default function AppNav() {
                     <li className="w-100">
                       <Link href="/vehicles/compare">
                         <a
-                          className="btn btn-dark w-100 text-left py-3"
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
                           <i className="fas fa-chevron-right mr-2"></i> Compare
@@ -90,7 +88,9 @@ export default function AppNav() {
 
                 <li className="float-left position-relative mx-2">
                   <Link href="/finance">
-                    <a className="btn uppercase btn-outline-dark border-0 py-3 font-weight-bold">
+                    <a
+                      className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
+                    >
                       Finance
                     </a>
                   </Link>
@@ -98,39 +98,40 @@ export default function AppNav() {
 
                 <li className="float-left position-relative has_sub mx-2">
                   <a
-                    className="btn btn-outline-dark border-0 py-3 font-weight-bold"
-                    title=""
+                    className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     href="#"
                   >
                     Services
                   </a>
                   <ul className="list-unstyled position-absolute slow_3s shadow-8dp">
                     <li className="w-100">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/services/sellcars"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> Sell Car
-                      </a>
+                      <Link href="/services/sellcars">
+                        <a
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> Sell Car
+                        </a>
+                      </Link>
                     </li>
                     <li className="w-100">
-                      <a
-                        className="btn btn-dark w-100 text-left py-3"
-                        title=""
-                        href="/services/parts"
-                      >
-                        <i className="fas fa-chevron-right mr-2"></i> Parts
-                        Exchange
-                      </a>
+                      <Link href="/services/parts">
+                        <a
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
+                          title=""
+                        >
+                          <i className="fas fa-chevron-right mr-2"></i> Parts
+                          Exchange
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li className="float-left position-relative has_sub mx-2">
                   <a
+                    className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     title="about"
                     href="#"
-                    className="btn btn-outline-dark border-0 py-3 font-weight-bold"
                   >
                     About
                   </a>
@@ -139,7 +140,7 @@ export default function AppNav() {
                     <li className="list-inline-item">
                       <Link href="/about/page">
                         <a
-                          className="btn btn-dark w-100 text-left py-3"
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
                           <i className="fas fa-chevron-right mr-2"></i> About Us
@@ -149,7 +150,7 @@ export default function AppNav() {
                     <li className="list-inline-item">
                       <Link href="/about/reviews">
                         <a
-                          className="btn btn-dark w-100 text-left py-3"
+                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
                           <i className="fas fa-chevron-right mr-2"></i> Customer
@@ -161,7 +162,9 @@ export default function AppNav() {
                 </li>
                 <li className="float-left mx-2">
                   <Link title="" href="/contact">
-                    <a className="btn btn-outline-dark border-0 py-3 font-weight-bold">
+                    <a
+                      className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
+                    >
                       Contact
                     </a>
                   </Link>
@@ -184,16 +187,25 @@ export default function AppNav() {
             <div
               id="searchIcon"
               style={{ cursor: "pointer" }}
-              className="d-md-none text-center"
+              className="d-lg-none text-center"
               onClick={() => setBrowse(!browse)}
             >
               <span>
                 <i
-                  style={{ color: "#666" }}
+                  style={{ color: colors.primary }}
                   className="fas fa-search fa-lg"
                 ></i>
               </span>
-              <div style={{ fontSize: "16px", color: "#666" }}>Browse</div>
+              <div
+                style={{
+                  textShadow: "1px 1px rgba(0, 0, 0, 0.1)",
+                  fontSize: "0.9rem",
+                  fontWeight: "400",
+                  color: "#555",
+                }}
+              >
+                Search
+              </div>
             </div>
 
             <div className="d-lg-none">
@@ -207,7 +219,6 @@ export default function AppNav() {
           </nav>
         </div>
       </div>
-
       <div
         className={`d-lg-none  ${browse ? "" : "d-none"}`}
         style={{
@@ -222,6 +233,6 @@ export default function AppNav() {
       >
         <BasicSearch />
       </div>
-    </>
+    </Wrapper>
   );
 }

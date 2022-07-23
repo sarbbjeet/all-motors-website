@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,4 +20,10 @@ const nextConfig = {
   //  return config;
   //  },
 };
-module.exports = nextConfig;
+module.exports = {
+  optimizeFonts: false,
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
+  },
+  nextConfig,
+};

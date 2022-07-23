@@ -1,47 +1,36 @@
-import Image from "next/image";
+import styled from "styled-components";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import { bannerImages as images } from "../utils/variables";
+import getDeviceSize from "../utils/getDeviceSize";
 
-const Slide = ({ image }) => {
-  return (
-    //  <Image
-    //    src={image}
-    //    layout="fill"
-    //    // width="100%"
-    //    // // width="100%"
-    //    objectFit="cover"
-    //  />
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        backgroundImage: `url(${image})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        //   objectFit: "fill",
-      }}
-    />
-  );
-};
+const ImageDiv = ({ image }) => (
+  <div>
+    <style jsx>
+      {`
+        div {
+          background: url(${image}) no-repeat center white;
+          background-size: cover;
+          height: 600px;
+          background-attachment: fixed;
+        }
+      `}
+    </style>
+  </div>
+);
 
 export default function Banner1() {
   return (
-    <div
-      id="carouselExampleSlidesOnly"
-      className="carousel slide"
-      data-ride="carousel"
-      style={{ overflow: "hidden" }}
-    >
-      <div className="carousel-inner">
-        <div style={{ height: "700px" }} className="carousel-item active">
-          <Slide image={"/images/banner1.jpg"} />
-        </div>
-        <div style={{ height: "700px" }} className="carousel-item">
-          <Slide image={"/images/feedback.jpeg"} />
-        </div>
-        <div style={{ height: "700px" }} className="carousel-item">
-          <Slide image={"/images/feedback.jpeg"} />
-        </div>
-      </div>
-    </div>
+    <>
+      {getDeviceSize().width > 768 ? (
+        <Slide slidesToScroll={1} slidesToShow={1} indicators={true}>
+          {images?.map((img, i) => (
+            <ImageDiv key={i} image={img} />
+          ))}
+        </Slide>
+      ) : (
+        <ImageDiv image={images[1]} />
+      )}
+    </>
   );
 }

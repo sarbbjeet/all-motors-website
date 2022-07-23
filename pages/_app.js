@@ -1,11 +1,11 @@
-import "../styles/globals.css";
-
 import "../public/assets/_css/style.css";
 import "../public/assets/plugins/slick/slick.min.css";
 import "../public/assets/fonts/fontawesome-free/css/all.min.css";
 
+import variables from "../styles/variables.module.scss";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
+import "../styles/globals.css";
 import Layout from "../components/Layout";
 import * as React from "react";
 import PropTypes from "prop-types";

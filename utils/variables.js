@@ -1,3 +1,10 @@
+const bannerImages = [
+  "/images/new-images/car1.jpg",
+  "/images/new-images/car2.jpg",
+  "/images/new-images/car5.jpg",
+  "/images/new-images/car6.jpg",
+];
+
 const latestCars = [
   {
     model: "VOLKSWAGEN TIGUAN R ",
@@ -53,4 +60,4 @@ const latestCars = [
   },
 ];
 
-export { latestCars };
+export { latestCars, bannerImages };
