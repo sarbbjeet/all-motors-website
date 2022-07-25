@@ -22,9 +22,11 @@ import { height } from "@mui/system";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
+import { useRouter } from "next/router";
+
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
+  const router = useRouter();
   React.useEffect(() => {
     //import("slick-carousel")
     import("../public/assets/plugins/slick/slick.min.js");
@@ -42,9 +44,14 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Layout>
+
+        {router.route === "/admin" ? (
           <Component {...pageProps} />
-        </Layout>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </ThemeProvider>
 
       {/* add script used in  */}
