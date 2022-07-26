@@ -8,7 +8,6 @@ export default function VehicleItems({ items }) {
       </header>
       <ul className="product_elements list-unstyled text-muted clearfix row">
         {!items && <p className="w-100 text-center">List of items is empty</p>}
-
         {items?.map((item, i) => (
           <li key={i} className="col-sm-6 col-md-4 col-lg-6 col-xl-4">
             {item}

@@ -44,14 +44,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-
-        {router.route === "/admin" ? (
-          <Component {...pageProps} />
-        ) : (
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        )}
+        <Component {...pageProps} />
       </ThemeProvider>
 
       {/* add script used in  */}

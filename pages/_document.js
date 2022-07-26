@@ -24,8 +24,9 @@ export default class MyDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin={"true"}
           />
+
           <link
-            href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700&family=Baloo+Tammudu+2&family=Dosis:wght@200;400;500;600&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700&family=Baloo+Tammudu+2&family=Dosis:wght@200;400;500;600&family=Edu+TAS+Beginner:wght@600;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap"
             rel="stylesheet"
           />
 
