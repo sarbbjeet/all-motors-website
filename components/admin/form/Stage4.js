@@ -1,12 +1,48 @@
 import Image from "next/image";
 import Script from "next/script";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
 import DropImages from "./DropImages";
 
+const dataURItoBlob = async (dataURI) => {
+  return await fetch(dataURI)
+    .then((r) => r.blob())
+    .then((Blob) => {
+      return new File([Blob], "img.jpg", { type: "image/jpeg" });
+    });
+};
+
 export default function Stage4() {
+  const SuccessAlert = useRef(null);
   const [ssr, setSSR] = useState(false);
   const [files, setFiles] = useState([]);
+
+  const publishEvent = async (e) => {
+    e.preventDefault();
+    if (!files.length > 0)
+      return alert("Error: " + " --no image to publish-- ");
+
+    //const inputElement = document.getElementById("image");
+    const formData = new FormData();
+    //send multiple files with same key
+    //convert back dataURl to Blob
+    for (let file of files)
+      formData.append("images", await dataURItoBlob(file));
+    const response = await fetch("/api/usedcars/gallery", {
+      method: "POST",
+      body: formData,
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+    });
+    if (response.status !== 200)
+      return alert("Error: " + "error to publish images");
+    //remove images from upload section and
+    //displaysuccess message
+    SuccessAlert.current.style.display = "block";
+    setFiles([]);
+  };
+
   useEffect(() => {
     setSSR(true);
   }, []);
@@ -32,48 +68,26 @@ export default function Stage4() {
         </div>
 
         {ssr && (
-          <div className="collapse slow_3s py-5" id="collapseDropzone">
-            <form
-              method="post"
-              encType="multipart/form-data"
-              action="/api/usedcars/gallery"
+          <div
+            onClick={() => (SuccessAlert.current.style.display = "none")}
+            className="collapse slow_3s py-5"
+            id="collapseDropzone"
+          >
+            <div
+              ref={SuccessAlert}
+              className="alert alert-success"
+              role="alert"
             >
-              <DropImages files={files} setFiles={setFiles} />
-              <button
-                type="submit"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  //const obj = document.getElementById("image");
-                  const formData = new FormData();
-                  for (let file of files) {
-                    //send multiple files with same key
-                    formData.append("images", file);
-                  }
-
-                  const response = await fetch("/api/usedcars/gallery", {
-                    method: "POST",
-                    body: formData,
-                    //   headers: {
-                    //     "Content-Type": "application/json",
-                    //   },
-                  });
-                  console.log(response);
-                  //    const oReq = new XMLHttpRequest();
-                  //    oReq.open("POST", "/api/usedcars/gallery", true);
-                  //    oReq.onload = function (oEvent) {
-                  //      if (oReq.status === 200) {
-                  //        console.log("success..");
-                  //      } else {
-                  //        console.log("errror..");
-                  //      }
-                  //    };
-                  //    oReq.send(_form);
-                }}
-                className="upload-btn btn btn-primary float-right"
-              >
-                Publish
-              </button>
-            </form>
+              Great! image was successfully published!
+            </div>
+            <DropImages files={files} setFiles={setFiles} />
+            <button
+              type="submit"
+              onClick={publishEvent}
+              className="upload-btn btn btn-primary float-right"
+            >
+              Publish
+            </button>
           </div>
         )}
       </div>
@@ -142,6 +156,9 @@ export default function Stage4() {
             padding: 5px;
             width: 150px;
             margin: 5px 0;
+          }
+          .alert {
+            display: none;
           }
         `}
       </style>

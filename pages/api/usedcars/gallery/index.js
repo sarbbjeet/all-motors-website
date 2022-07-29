@@ -7,12 +7,10 @@ export default async function index(req, res) {
     return res.json(await prisma.VehicleGallary.findMany());
   } else if (req.method === "POST") {
     try {
-      console.log("request received.........");
       const data = await uploadImage(req, res, "images");
-      console.log(data);
-      res.json(data);
+      res.json({ data });
     } catch (err) {
-      console.log(err);
+      console.log({ error: err });
     }
   }
 }

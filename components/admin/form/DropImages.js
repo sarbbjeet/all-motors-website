@@ -11,8 +11,9 @@ export default function DropImages({ files, setFiles }) {
     const convertFiles = [];
     if (new_files?.length > 0) {
       for (let f of new_files) {
-        convertFiles.push(f); //URL.createObjectURL
+        convertFiles.push(URL.createObjectURL(f)); //URL.createObjectURL
       }
+      //setFiles({dataURL:[...files, ...convertFiles]})
       setFiles([...files, ...convertFiles]);
     }
   };
@@ -22,9 +23,13 @@ export default function DropImages({ files, setFiles }) {
         className="drop-wrapper"
         id="drop-wrapper"
         onChange={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           storeDragImages(e.target.files);
         }}
         onDrop={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           storeDragImages(e.dataTransfer.files);
         }}
       >
@@ -55,7 +60,7 @@ export default function DropImages({ files, setFiles }) {
                 onMouseOver={() => setImageHover(i)}
                 onMouseOut={() => setImageHover(-1)}
               >
-                <Image src={`${URL.createObjectURL(file)}`} layout="fill" />
+                <Image src={file} layout="fill" />
                 {i == imageHover && (
                   <div className="trash">
                     <i
