@@ -58,8 +58,8 @@ export default function Vehicles() {
           to check...
         </div>
         <VehiclesList />
-        <Footer />
       </div>
+      <Footer />
     </AdminWrapper>
   );
 }

@@ -125,7 +125,7 @@ export default function AppFooter() {
                   title="E-mail"
                 >
                   <i className="far fa-envelope mr-2"></i>
-                  contact@allmotors.co.uk
+                  contact@allmotorsltd.co.uk
                 </a>
               </li>
               <li className="list-inline-item w-100">
@@ -174,7 +174,7 @@ export default function AppFooter() {
       </div>
       <div className="content_copy bg-primary text-light text-center py-3">
         <div className="container text_small">
-          AllMotors © 2022. All rights reserved.
+          AllMotorsLtd © 2022. All rights reserved.
         </div>
       </div>
     </footer>

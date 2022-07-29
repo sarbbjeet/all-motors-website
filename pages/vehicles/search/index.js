@@ -77,20 +77,11 @@ export default function Handler() {
           <div className="row p-0 m-0 mt-1 col-12 shadow-sm justify-content-content pt-5 bg-white">
             {latestCars.map(
               (
-                { year, model, km, description, brandImage, image, price },
+                car,
+
                 i
               ) => (
-                <CarCard
-                  id={i}
-                  key={i}
-                  info={description}
-                  price={price}
-                  km={km}
-                  img={image}
-                  brandLogo={brandImage}
-                  year={year}
-                  model={model}
-                />
+                <CarCard key={i} data={car} id={i} />
 
                 // <article
                 //   className="col-md-6 col-xl-4 mb-5 post_item"

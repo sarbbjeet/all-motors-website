@@ -1,3 +1,4 @@
+import { slice } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -9,17 +10,7 @@ const CardImage = styled.div`
   height: 300px;
 `;
 
-export default function CarCard({
-  img,
-  model,
-  info,
-  year,
-  fuel,
-  km,
-  price,
-  finance = 600,
-  id,
-}) {
+export default function CarCard({ data, id }) {
   return (
     <article
       className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4 post_item"
@@ -30,7 +21,7 @@ export default function CarCard({
           className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded"
           title="Vehicles Datails"
         >
-          <CardImage image={img} />
+          <CardImage image={data?.image} />
 
           {/* <span className="product_brand position-absolute bg-white shadow-sm rounded-circle p-1">
               <Image
@@ -43,35 +34,37 @@ export default function CarCard({
             </span> */}
           {/* </div> */}
           <header>
-            <h2
+            <div
               className="textH d-flex align-items-center px-2 mt-4 mb-0 text-uppercase"
               style={{ minHeight: "30px" }}
             >
-              {model}
+              {data?.model}
               <i className="fas fa-check-circle text-success ml-1"></i>
-            </h2>
+            </div>
             <p
               className="varient text-uppercase d-flex align-items-center text-secondary px-2 mb-0"
-              style={{ minHeight: "40px" }}
+              style={{ minHeight: "40px", height: "40px" }}
             >
-              {info}
+              {data?.description?.length > 100
+                ? (data?.description).slice(0, 100) + "..."
+                : data?.description}
             </p>
 
             <span className="features text-muted text_small product_content py-2 mt-2">
               <span className="var p-1">
                 <i className="fas fa-calendar-check fa-2x text-muted"></i>
                 <br />
-                {year}
+                {data?.year}
               </span>
               <span className="var p-1">
                 <i className="fas fa-gas-pump fa-2x  text-muted"></i>
                 <br />
-                {fuel}
+                {data?.fuel}
               </span>
               <span className="var p-1">
                 <i className="fas fa-tachometer-alt fa-2x  text-muted"></i>
                 <br />
-                {km}
+                {data?.km}
               </span>
             </span>
             <span
@@ -81,13 +74,13 @@ export default function CarCard({
               <div className="flex text-center">
                 <span className="textF fText text-success ml-1">£</span>
                 <span className="textF fText text-success">
-                  {finance}/month
+                  {data?.finance || "600"}/month
                 </span>
               </div>
 
               <div className="flex w-100 text-right">
                 <span className="textF ml-1">£</span>
-                <span className="textF">{price}</span>
+                <span className="textF">{data?.price}</span>
               </div>
             </span>
           </header>

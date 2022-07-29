@@ -206,10 +206,10 @@ export default function About() {
             <div className="container py-5 text-center text-white">
               <div className="row justify-content-center">
                 <div className="col-lg-9 col-xl-7">
-                  <p className="h2 font_exbold mb-4 text_shadow">
+                  <p className="font_exbold mb-4 text_shadow">
                     We help you find the vehicle you want
                   </p>
-                  <p className="h5 text_shadow">
+                  <p className="text_shadow">
                     With professional video guides&#44; articles&#44; and
                     information on what&#39;s cool in the world of used
                     cars&#44; we aim to make the process of finding the suitable

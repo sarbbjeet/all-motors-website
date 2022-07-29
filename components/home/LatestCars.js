@@ -5,14 +5,15 @@ import CarCard from "../CarCard";
 import * as variables from "../../styles/variables.module.scss";
 import { latestCars } from "../../utils/variables"; //get raw json data
 import Link from "next/link";
+import VehicleCard from "../admin/VehicleCard";
 export default function LatestCars({
   cars = latestCars,
   title = "Our latest Offers",
   desc = "These deals are based on newly added cars that are reasonably priced.",
 }) {
   return (
-    <section className="py-5">
-      <header className="container text-center py-3">
+    <section className="mt-5 px-3 px-md-5">
+      <header className="text-center py-3">
         <div className="row justify-content-center">
           <div className="col-md-10 col-lg-8 col-xl-6">
             <h2
@@ -27,29 +28,15 @@ export default function LatestCars({
         </div>
       </header>
 
-      <div className="bg-white pt-5 overflow-hidden">
-        <div className="row px-md-5 px-2">
-          {/* <div className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
+      {/* <div className="bg-white pt-5 overflow-hidden"> */}
+      <div className="product_elements list-unstyled text-muted clearfix row">
+        {/* <div className="row px-md-5 px-2"> */}
+        {/* <div className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
         > */}
-          {cars?.map(
-            (
-              { price, image, model, description, year, fuel, km, brandImage },
-              i
-            ) => (
-              <CarCard
-                key={i}
-                img={image}
-                brandLogo={brandImage}
-                model={model}
-                info={description}
-                year={year}
-                fuel={fuel}
-                km={km}
-                price={price}
-              />
-            )
-          )}
-        </div>
+        {cars?.map((car, i) => (
+          <CarCard key={i} id={i} data={car} />
+        ))}
+        {/* </div> */}
       </div>
 
       <div className="text-center">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { f2 } from "../../styles/variables.module.scss";
@@ -30,13 +31,13 @@ export default function VehicleCard({ data }) {
             </div>
           </span>
 
-          <h2
+          <div
             className="textH d-flex align-items-center px-2 mt-2 mb-0 text-uppercase"
             style={{ minHeight: "30px" }}
           >
             {data.model}
             <i className="fas fa-check-circle text-success ml-1"></i>
-          </h2>
+          </div>
           <p
             className=" varient text-uppercase d-flex align-items-center text-secondary px-2 mb-0"
             style={{
@@ -70,9 +71,16 @@ export default function VehicleCard({ data }) {
             <a className="bg-success">
               <i className="fas fa-eye"></i>
             </a>
-            <a className="bg-info">
-              <i className="fas fa-edit"></i>
-            </a>
+            <Link
+              href={{
+                pathname: "/admin/vehicles/register",
+                query: { page: "edit" },
+              }}
+            >
+              <a className="bg-info">
+                <i className="fas fa-edit"></i>
+              </a>
+            </Link>
             <a className="bg-danger">
               <i className="fas fa-trash-alt"></i>
             </a>
