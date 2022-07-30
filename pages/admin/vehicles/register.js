@@ -1,19 +1,37 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import AdminWrapper from "../../../components/admin/AdminWrapper";
-
 import { useRouter } from "next/router";
-import Image from "next/image";
-import Script from "next/script";
+
 import Indicator from "../../../components/admin/form/Indicator";
 import Stage1 from "../../../components/admin/form/Stage1";
 import Stage2 from "../../../components/admin/form/Stage2";
-import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
 import Stage3 from "../../../components/admin/form/Stage3";
 import Stage4 from "../../../components/admin/form/Stage4";
+import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
+
+const stages = ["Initial", "Features", "Business", "Gallery", "Publish"];
+
+const displayStage = (currentStage) => {
+  switch (currentStage) {
+    case 1:
+      return <Stage1 />;
+    case 2:
+      return <Stage2 />;
+    case 3:
+      return <Stage3 />;
+    case 4:
+      return <Stage4 />;
+    default:
+      break;
+  }
+};
+
 export default function Register({ props }) {
   const { query } = useRouter(); //page-->edit
   const [ssr, setSSR] = useState(true);
+  const [currentStage, setCurrentStage] = useState(1);
+
   useEffect(() => {
     //useEffect run on client side
     setSSR(false); //when window is fully loaded
@@ -46,8 +64,12 @@ export default function Register({ props }) {
         </header>
         <div className="py-3">
           <div className="position-relative bg-white rounded border shadow-sm py-3">
-            <Indicator>
-              <Stage4 />
+            <Indicator
+              stages={stages}
+              currentStage={currentStage}
+              changeStageEvent={(stage) => setCurrentStage(stage)}
+            >
+              {displayStage(currentStage)}
             </Indicator>
           </div>
         </div>

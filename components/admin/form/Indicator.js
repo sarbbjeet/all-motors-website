@@ -5,12 +5,20 @@ import {
   secondaryLight,
 } from "../../../styles/variables.module.scss";
 
+const updateStage = (currentState, numberOfStages, step) => {
+  if (currentState != 1 || currentState != numberOfStages)
+    currentState = currentState + step;
+
+  return currentState;
+};
+
 export default function Indicator({
   stages = ["search", "download", "initial"],
   currentStage = 1,
+  changeStageEvent = () => {},
+  numberOfStages = stages.length + 1,
   children,
 }) {
-  const numberOfStages = stages.length;
   return (
     <div>
       <div className="step_wizard_list d-flex">
@@ -25,9 +33,23 @@ export default function Indicator({
         ))}
       </div>
       {children}
-      <div className="button_group d-flex justify-content-center px-2">
-        <button className="previous d-none">Previous</button>
-        <button className="next">Next</button>
+      <div className="d-flex justify-content-center px-2">
+        <button
+          onClick={() =>
+            changeStageEvent(updateStage(currentStage, numberOfStages, -1))
+          }
+          className={`previous  ${currentStage === 1 && `d-none`}`}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() =>
+            changeStageEvent(updateStage(currentStage, numberOfStages, 1))
+          }
+          className={`next ${numberOfStages <= currentStage && "d-none"}`}
+        >
+          Next
+        </button>
       </div>
 
       <style jsx>{`
