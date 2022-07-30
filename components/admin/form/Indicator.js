@@ -16,6 +16,7 @@ export default function Indicator({
       <div className="step_wizard_list d-flex">
         {stages.map((stage, i) => (
           <div
+            key={i}
             className={`step_wizard ${i == currentStage - 1 ? "current" : ""}`}
           >
             <span className="digit">{i + 1}</span>

@@ -53,8 +53,10 @@ export default function Stage1({
               placeholder="make of the vehicle"
               required
             >
-              {make_list?.map((m) => (
-                <option>{m}</option>
+              {make_list?.map((m, i) => (
+                <option key={i} value={m}>
+                  {m}
+                </option>
               ))}
             </select>
           </div>
@@ -87,8 +89,10 @@ export default function Stage1({
               placeholder="color of the vehicle"
               required
             >
-              {color_list?.map((c) => (
-                <option>{c}</option>
+              {color_list?.map((c, i) => (
+                <option key={i} value={c}>
+                  {c}
+                </option>
               ))}
             </select>
           </div>
@@ -121,8 +125,10 @@ export default function Stage1({
               placeholder="color of the vehicle"
               required
             >
-              {transmission_list?.map((t) => (
-                <option value={t}>{t}</option>
+              {transmission_list?.map((t, i) => (
+                <option key={i} value={t}>
+                  {t}
+                </option>
               ))}
             </select>
           </div>

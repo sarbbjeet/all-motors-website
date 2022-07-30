@@ -3,6 +3,28 @@ import Script from "next/script";
 import React, { useEffect, useRef, useState } from "react";
 import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
 import DropImages from "./DropImages";
+import axios from "axios";
+import AppImage from "./AppImage";
+
+const api_url = "/api/usedcars/gallery";
+//get published images for the server
+const reloadImages = async (setStoredImages) => {
+  //axios or fetch
+  try {
+    const response = await fetch(api_url)
+      .then((data) => data.text())
+      .then((text) => JSON.parse(text));
+    if (response && response.length >= 0)
+      setStoredImages(
+        response.map(({ id, image }) => ({
+          id,
+          image: image.split("public")[1],
+        }))
+      );
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
 const dataURItoBlob = async (dataURI) => {
   return await fetch(dataURI)
@@ -16,31 +38,56 @@ export default function Stage4() {
   const SuccessAlert = useRef(null);
   const [ssr, setSSR] = useState(false);
   const [files, setFiles] = useState([]);
+  const [storedImages, setStoredImages] = useState([]);
 
+  useEffect(() => {
+    reloadImages(setStoredImages);
+  }, []);
+
+  //delete image from
+  const deleteEvent = async (id) => {
+    //delete request
+    try {
+      await axios.request(api_url, {
+        method: "DELETE",
+        data: { id },
+      });
+      //reload images gallery
+      reloadImages(setStoredImages);
+    } catch (err) {
+      alert("Error" + `${err.message}`);
+    }
+  };
+
+  // publish images
   const publishEvent = async (e) => {
     e.preventDefault();
     if (!files.length > 0)
       return alert("Error: " + " --no image to publish-- ");
-
     //const inputElement = document.getElementById("image");
     const formData = new FormData();
     //send multiple files with same key
     //convert back dataURl to Blob
     for (let file of files)
       formData.append("images", await dataURItoBlob(file));
-    const response = await fetch("/api/usedcars/gallery", {
+    const response = await fetch(api_url, {
       method: "POST",
       body: formData,
       //   headers: {
       //     "Content-Type": "application/json",
       //   },
     });
-    if (response.status !== 200)
-      return alert("Error: " + "error to publish images");
-    //remove images from upload section and
-    //displaysuccess message
+    if (response.status !== 200) {
+      const error_text = await response
+        .text()
+        .then((text) => JSON.parse(text).error);
+      //console.log(response.text());
+      return alert("Error: " + `${error_text}`);
+    }
+    //remove images from upload section and display success message
     SuccessAlert.current.style.display = "block";
     setFiles([]);
+    reloadImages(setStoredImages);
   };
 
   useEffect(() => {
@@ -96,18 +143,16 @@ export default function Stage4() {
         <p style={{ margin: 0 }}>Published images</p>
         <div className="uploaded-images-wrapper">
           <div className="uploaded-images">
-            {[
-              1, 43, 23, 12, 1, 4, 6, 4, 2, 1, 1, 3, 5, 6, 7, 4, 2, 1, 2, 4, 3,
-              4,
-            ].map((img) => (
-              <Image
-                className="m-2"
-                src="/images/no-image.jpg"
-                width="340px"
-                height="200px"
-                objectFit="cover"
-              />
-            ))}
+            {storedImages.length > 0 &&
+              storedImages.map(({ id, image }, i) => (
+                <AppImage
+                  key={i}
+                  image={image}
+                  id={id}
+                  dimension={{ width: "340px", height: "250px" }}
+                  deleteEvent={deleteEvent}
+                />
+              ))}
           </div>
         </div>
       </div>
@@ -162,35 +207,6 @@ export default function Stage4() {
           }
         `}
       </style>
-
-      <Script>
-        {`
-              $(document).ready(function () {
-               Dropzone.autoDiscover = false;
-               $(function () {
-
-                   $(".dropzone").dropzone({
-
-                       method: "post",
-                       url: "_yourURL",
-                       paramName: 'name',
-                       uploadMultiple: true,
-                       parallelUploads: 100,
-                       maxFiles: 100,
-                       acceptedFiles: ".png, .jpg, .jpeg",
-                       init: function () {
-                           this.on("complete", function () {});
-                           this.on("sendingmultiple", function () {});
-                           this.on("successmultiple", function (files, response) {});
-                           this.on("errormultiple", function (files, response) {});
-                       }
-
-                   });
-
-               });
-           });
-              `}
-      </Script>
     </section>
   );
 }

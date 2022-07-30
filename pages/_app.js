@@ -28,16 +28,16 @@ export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   React.useEffect(() => {
-    //import("slick-carousel")
-    // import("../public/assets/plugins/slick/slick.min.js");
-    // import("jquery").then(($) => {
-    //   window.$ = window.jQuery = $;
-    //   import("bootstrap");
-    //   import("../public/assets/_js/slide.js");
-    //   import("../public/assets/_js/base.js");
-    //   import("../public/assets/_js/compare.js");
-    //   import("../public/assets/_js/search.js");
-    //});
+    import("slick-carousel");
+    import("../public/assets/plugins/slick/slick.min.js");
+    import("jquery").then(($) => {
+      window.$ = window.jQuery = $;
+      import("bootstrap");
+      import("../public/assets/_js/slide.js");
+      import("../public/assets/_js/base.js");
+      import("../public/assets/_js/compare.js");
+      import("../public/assets/_js/search.js");
+    });
   }, []);
   return (
     <CacheProvider value={emotionCache}>

@@ -14,7 +14,7 @@ export default function Stage2() {
         <div className="form-row">
           <div className="col-6 col-lg-3">
             <div className="form-group">
-              <label for="Vehicles_type">Vehicles Type:</label>
+              <label htmlFor="Vehicles_type">Vehicles Type:</label>
               <select
                 name="Vehicles_type"
                 id="Vehicles_type"
@@ -33,7 +33,7 @@ export default function Stage2() {
 
           <div className="col-6 col-lg-3">
             <div className="form-group">
-              <label for="Vehicles_body">Body Style</label>
+              <label htmlFor="Vehicles_body">Body Style</label>
               <select
                 name="Vehicles_body"
                 id="Vehicles_body"
@@ -102,7 +102,7 @@ export default function Stage2() {
         <div className="form-row">
           <div className="col-6  col-lg-3">
             <div className="form-group">
-              <label for="Vehicles_fuel">Fuel</label>
+              <label htmlFor="Vehicles_fuel">Fuel</label>
               <select
                 name="Vehicles_fuel"
                 id="Vehicles_fuel"
@@ -121,7 +121,7 @@ export default function Stage2() {
           </div>
           <div className="col-6 col-lg-3">
             <div className="form-group">
-              <label for="Vehicles_year_model">Year of Model</label>
+              <label htmlFor="Vehicles_year_model">Year of Model</label>
               <input
                 placeholder="2019"
                 type="number"
@@ -154,7 +154,7 @@ export default function Stage2() {
           </div>
           <div className="col-6  col-lg-3">
             <div className="form-group">
-              <label for="Vehicles_steerin">Steering</label>
+              <label htmlFor="Vehicles_steerin">Steering</label>
               <select
                 name="Vehicles_steerin"
                 id="Vehicles_steerin"
@@ -173,7 +173,7 @@ export default function Stage2() {
         </div>
 
         <div className="form-group">
-          <label for="Vehicles_particulars">
+          <label htmlFor="Vehicles_particulars">
             Features:
             <i
               className="far fa-question-circle text-warning"

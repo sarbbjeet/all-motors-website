@@ -1,12 +1,8 @@
-import Image from "next/image";
-import Script from "next/script";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { f2 as ff, secondary } from "../../../styles/variables.module.scss";
+import AppImage from "./AppImage";
 
 export default function DropImages({ files, setFiles }) {
-  const [imageHover, setImageHover] = useState(-1);
-  const [isTrashHover, setisTrashHover] = useState(false);
-
   const storeDragImages = (new_files) => {
     const convertFiles = [];
     if (new_files?.length > 0) {
@@ -52,28 +48,14 @@ export default function DropImages({ files, setFiles }) {
         <div className="render-images">
           {files?.length > 0 &&
             files.map((file, i) => (
-              <div
+              <AppImage
                 key={i}
-                className={`image-container ${
-                  i == imageHover && "animate-image"
-                }`}
-                onMouseOver={() => setImageHover(i)}
-                onMouseOut={() => setImageHover(-1)}
-              >
-                <Image src={file} layout="fill" />
-                {i == imageHover && (
-                  <div className="trash">
-                    <i
-                      className="fas fa-trash fa-lg trash-hover"
-                      onMouseOver={() => setisTrashHover(true)}
-                      onMouseOut={() => setisTrashHover(false)}
-                      onClick={() => {
-                        setFiles(files.filter((_f) => files.indexOf(_f) !== i));
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+                id={i}
+                image={file}
+                deleteEvent={(id) =>
+                  setFiles(files.filter((_f) => files.indexOf(_f) !== id))
+                }
+              />
             ))}
         </div>
       </div>
@@ -100,37 +82,6 @@ export default function DropImages({ files, setFiles }) {
           margin: 20px;
         }
 
-        .trash {
-          position: absolute !important;
-          z-index: 101;
-          width: 100%;
-          height: 100%;
-          color: red;
-          align-items: center;
-          justify-content: center;
-          background-color: rgba(255, 255, 255, 0.6);
-          display: flex;
-          transition: all 0.5s;
-        }
-        .animate-image {
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-          transform: rotate(-2deg);
-        }
-
-        .trash-hover {
-          transition: all 0.5s;
-          cursor: pointer;
-          transform: ${isTrashHover && "scale(1.4)"};
-        }
-
-        .image-container {
-          position: relative;
-          min-width: 200px;
-          min-height: 180px;
-          margin: 0.3rem;
-          border: 1px solid #ddd;
-          transition: all 0.5s;
-        }
         .render-images {
           padding-bottom: 1rem;
           bottom: 0;
@@ -156,17 +107,6 @@ export default function DropImages({ files, setFiles }) {
           font-family: ${ff};
         }
       `}</style>
-      <Script>
-        {`
-            //  var drop_wrapper = document.querySelector('#drop-wrapper');
-            //   drop_wrapper.addEventListener('drop',(e)=>{
-            //    e.stopPropagation();
-            //      e.preventDefault();
-            //      console.log(e.target);
-            //   });
-
-              `}
-      </Script>
     </div>
   );
 }
