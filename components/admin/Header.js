@@ -1,4 +1,4 @@
-import { f1, f2, f5 } from "../../styles/variables.module.scss";
+import { f1, f2 as ff, f5 } from "../../styles/variables.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 export default function index() {
@@ -14,7 +14,7 @@ export default function index() {
                 style={{
                   textShadow: "2px 2px 5px rgba(0,100,0,0.9)",
                   fontFamily: f5,
-                  fontSize: "1.5rem",
+                  fontSize: "1.7rem",
                 }}
               >
                 All-
@@ -40,9 +40,11 @@ export default function index() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="dashboard.html">
-                Home <span className="sr-only">(current)</span>
-              </a>
+              <Link href="/admin">
+                <a className="nav-link">
+                  Home <span className="sr-only">(current)</span>
+                </a>
+              </Link>
             </li>
             <li className="nav-item dropdown ">
               <a
@@ -168,6 +170,24 @@ export default function index() {
           </ul>
         </div>
       </div>
+
+      <style jsx>
+        {`
+          div,
+          p,
+          a,
+          li,
+          label,
+          span,
+          h3 {
+            font-family: ${ff};
+          }
+          a {
+            font-size: 18px;
+            font-weight: 600;
+          }
+        `}
+      </style>
     </nav>
   );
 }

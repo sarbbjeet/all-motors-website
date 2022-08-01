@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { f2 as ff } from "../../styles/variables.module.scss";
 export default function Services() {
   return (
     <section>
@@ -12,7 +13,6 @@ export default function Services() {
           <Link href="/admin/vehicles">
             <a
               className="btn btn-block btn-success text-white py-lg-4 px-lg-3"
-              href="dashboard-vehicles-list.html"
               title="My Vehicles"
               style={{ height: "100%" }}
             >
@@ -61,6 +61,21 @@ export default function Services() {
           </Link>
         </div>
       </div>
+
+      <style jsx>
+        {`
+          div,
+          p,
+          a,
+          li,
+          label,
+          span,
+          h3,
+          h4 {
+            font-family: ${ff};
+          }
+        `}
+      </style>
     </section>
   );
 }

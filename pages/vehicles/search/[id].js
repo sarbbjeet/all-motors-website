@@ -15,41 +15,43 @@ import VideoSection from "../../../components/vehicals/VideoSection.js";
 import Dealer from "../../../components/vehicals/Dealer.js";
 import RequestForm from "../../../components/vehicals/RequestForm.js";
 import LatestCars from "../../../components/home/LatestCars.js";
+import Layout from "../../../components/Layout.js";
 
 export default function handler({ params }) {
   //vehicles items
 
   const moveItem = (n) => {};
   return (
-    <div className="pt-5">
-      <main className="bg-light">
-        <Gallery slides={slides} />
-        <div className="px-lg-3 m-0 row overflow-hidden">
-          <div className="col-lg-7 col-xl-8">
-            <Highlights highlights={highlights} />
-            <VehicleItems items={items} />
-            <Description description={vehicleDescriptions} />
-            <VideoSection />
-          </div>
+    <Layout>
+      <div className="pt-5 mt-3">
+        <main className="bg-light">
+          <Gallery slides={slides} />
+          <div className="px-lg-3 m-0 row overflow-hidden">
+            <div className="col-lg-7 col-xl-8">
+              <Highlights highlights={highlights} />
+              <VehicleItems items={items} />
+              <Description description={vehicleDescriptions} />
+              <VideoSection />
+            </div>
 
-          {/* sidebar   */}
-          <div className="col-lg-5 col-xl-4 d-print-none pt-5 pt-lg-0">
-            <div className="row justify-content-center">
-              <Dealer />
-              <RequestForm />
+            {/* sidebar   */}
+            <div className="col-lg-5 col-xl-4 d-print-none pt-5 pt-lg-0">
+              <div className="row justify-content-center">
+                <Dealer />
+                <RequestForm />
+              </div>
+            </div>
+
+            <div className="col-12 bg-white">
+              <LatestCars title="Similar Vehicles" />
             </div>
           </div>
 
-          <div className="col-12 bg-white">
-            <LatestCars title="Similar Vehicles" />
-          </div>
-        </div>
-
-        {/* <div style={{ display: "flex" }}>
+          {/* <div style={{ display: "flex" }}>
           <Slider1 slides={images} />
         </div> */}
 
-        {/* <div
+          {/* <div
           style={{
             display: "flex",
             width: "100%",
@@ -106,8 +108,9 @@ export default function handler({ params }) {
             ></i>
           </div>
         </div> */}
-      </main>
-    </div>
+        </main>
+      </div>
+    </Layout>
   );
 }
 

@@ -4289,6 +4289,11 @@
     "merge-stream" "^2.0.0"
     "supports-color" "^8.0.0"
 
+"joi-browser@13.4":
+  "integrity" "sha512-TfzJd2JaJ/lg/gU+q5j9rLAjnfUNF9DUmXTP9w+GfmG79LjFOXFeM7hIFuXCBcZCivUDFwd9l1btTV9rhHumtQ=="
+  "resolved" "https://registry.npmjs.org/joi-browser/-/joi-browser-13.4.0.tgz"
+  "version" "13.4.0"
+
 "joi-objectid@^4.0.2":
   "integrity" "sha512-OjYM+wK/JGo2bSb9ADEyzxxROJPZYtrqIwBbywpJ2a98oKlbLtWTKvpzmrnXzou69Ey9EsjHsFvZYzpjeCdKuA=="
   "resolved" "https://registry.npmjs.org/joi-objectid/-/joi-objectid-4.0.2.tgz"

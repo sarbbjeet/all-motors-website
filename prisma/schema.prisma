@@ -32,3 +32,61 @@ model UsedCar{
   fprice Int?
   body_style String
 }
+
+
+
+// vehicle databases
+
+model Initial {
+ id String @id @default(uuid())
+  image String?
+  make String
+  model String
+  color String
+  engine_size String
+  transmission String
+  registration String
+  previous_owners Int 
+  decription String? @default("")
+
+  //relational models 
+  features Features?
+  business Business?
+  imageGallery ImageGallery[]
+}
+
+model Features {
+  id String @id @default(uuid())
+
+  vehicle_type String @default("car")
+  body_style String
+  mileage Int? @default(-1)
+  numberOfCylider Int? @default(-1)
+  fuel String
+  yearOfModel Int
+  doors Int
+  steering String
+  features String? @default("")
+
+  vehicleId String @unique
+  vehicle Initial @relation(fields: [vehicleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Business {
+  id String @id @default(uuid())
+  price Int? @default(-1)
+  finance_month Int? @default(-1)
+  insurance_group Int? @default(-1)
+  months12_tax Int? @default(-1)
+  months6_tax Int? @default(-1)
+
+  vehicleId String @unique
+  vehicle Initial @relation(fields: [vehicleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model ImageGallery{
+  id String @id @default(uuid())
+  image String
+  vehicleId String
+  vehicle Initial @relation(fields: [vehicleId ], references:[id],onDelete: Cascade, onUpdate: Cascade)
+}

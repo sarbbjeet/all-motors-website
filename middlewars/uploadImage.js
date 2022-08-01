@@ -47,9 +47,11 @@ const uploadImage = async (
       async (err) => {
         try {
           if (err instanceof multer.MulterError)
-            return res.json({ error: err });
+            return res.status(404).json({ error: err.message });
           else if (err)
-            return res.json({ error: err?.message || "error to upload image" });
+            return res
+              .status(404)
+              .json({ error: err?.message || "error to upload image" });
           //Everthing is fine
           await validation({ ...req.body });
 
@@ -61,7 +63,9 @@ const uploadImage = async (
           // remove file if error occured
           const path = req?.file?.path;
           if (path) fs.unlinkSync(path);
-          return res.json({ error: err?.message || "error to upload image" });
+          return res
+            .status(404)
+            .json({ error: err?.message || "error to upload image" });
         }
       }
     );

@@ -18,7 +18,7 @@ export default function ContactHeader() {
             </li>
             <li className="float-left">
               <a className="text btn btn-dark" href="#" title="E-mail">
-                <i className="far fa-envelope"></i> contact@allmotors.co.uk
+                <i className="far fa-envelope"></i> contact@allmotorsltd.co.uk
               </a>
             </li>
           </ul>

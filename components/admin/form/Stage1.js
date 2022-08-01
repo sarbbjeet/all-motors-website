@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { f2 as ff, secondary } from "../../../styles/variables.module.scss";
-import getDeviceSize from "../../../utils/getDeviceSize";
-export default function Stage1({
-  make_list = ["BMW", "audi"],
-  color_list = ["red", "green", "blue", "white", "black", "gray"],
-  transmission_list = ["manual", "automatic", "semi auto"],
-  stageName = "search",
-}) {
-  const [image_file, setImage_file] = useState("/images/no-image.jpg");
+import AppInput from "./AppInput";
+import AppSelect from "./AppSelect";
+import AppTextArea from "./AppTextArea";
+import { color, transmission, make } from "../../../utils/selectOptions";
+
+export default function Stage1({ state, setState }) {
+  const onChangeEvent = ({ target }) => {
+    //initial object data
+    setState({
+      ...state,
+      initial: { ...state["initial"], [`${target.name}`]: target.value },
+    });
+  };
+
+  const { errors, initial } = state; //
   return (
     <section className="px-4 position-relative">
       <header className="border-bottom my-4">
@@ -15,23 +22,26 @@ export default function Stage1({
           <i className="fas fa-laptop-house"></i> Basic Setup:
         </h4>
       </header>
+
       <div className="row justify-content-center">
-        <div className="col-11 image_container border col-md-5 p-2 mb-5 mb-lg-2">
+        <div
+          className={`col-11 image_container border col-md-5 p-2 mb-5 mb-lg-2 ${
+            errors?.initial?.image && "border-danger"
+          }`}
+        >
           <input
             className="w-100 h-100 p-0 m-0 position-relative placeholder"
             type="file"
             id="img"
             name="img"
             onChange={(e) => {
-              setImage_file(URL.createObjectURL(e.target.files[0]));
-              /*
-                   //another way to display image
-                 const fr = new FileReader();
-                  fr.addEventListener("load", () => {
-                 setImage_file(fr.result);
-                  });
-                  fr.readAsDataURL(e.target.files[0]);
-                  */
+              onChangeEvent({
+                target: {
+                  name: "image",
+                  value: URL.createObjectURL(e?.target?.files[0]),
+                },
+              });
+              //setImage_file(URL.createObjectURL(e.target.files[0]));
             }}
             accept="image/png, image/jpeg, image/jpg"
           />
@@ -39,154 +49,100 @@ export default function Stage1({
             Cover: (JPG 1280x628px)
           </label>
         </div>
+
         <div className="row col-12 col-md-7">
-          <div className="form-group col-md-6 col-12">
-            <label
-              htmlFor="make"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              make:
-            </label>
-            <select
-              id="make"
-              className="form-control text-uppercase"
-              placeholder="make of the vehicle"
-              required
-            >
-              {make_list?.map((m, i) => (
-                <option key={i} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group col-12 col-md-6">
-            <label
-              htmlFor="model"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              model:
-            </label>
-            <input
-              id="model"
-              className="form-control"
-              placeholder="model of the vehicle"
-              required
+          <div className="col-md-6 col-12">
+            <AppSelect
+              name="make"
+              label="make"
+              error={errors?.initial?.make}
+              list={make}
+              onChange={onChangeEvent}
+              value={state?.initial?.make}
             />
           </div>
 
-          <div className="form-group col-md-6 col-12">
-            <label
-              htmlFor="color"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              color:
-            </label>
-            <select
-              id="color"
-              className="form-control text-lowercase"
-              placeholder="color of the vehicle"
-              required
-            >
-              {color_list?.map((c, i) => (
-                <option key={i} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
+          <div className="col-md-6 col-12">
+            <AppInput
+              name="model"
+              label="model"
+              error={errors?.initial?.model}
+              onChange={onChangeEvent}
+              placeholder="model of your vehicle"
+              value={initial?.model}
+            />
           </div>
 
-          <div className="form-group col-md-6 col-12">
-            <label
-              htmlFor="engine_size"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              engine size:
-            </label>
-            <input
-              id="engine_size"
-              className="form-control text-lowercase"
+          <div className="col-md-6 col-12">
+            <AppSelect
+              name="color"
+              label="color"
+              list={color}
+              onChange={onChangeEvent}
+              value={initial?.color}
+              error={errors?.initial?.color}
+            />
+          </div>
+
+          <div className="col-md-6 col-12">
+            <AppInput
+              name="engine_size"
+              label="Engine Size"
+              onChange={onChangeEvent}
               placeholder="2 l"
-              required
+              value={initial?.engine_size}
+              error={errors?.initial?.engine_size}
             />
           </div>
 
-          <div className="form-group col-12 col-md-6 col-lg-4">
-            <label
-              htmlFor="transmission"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              transmission:
-            </label>
-            <select
-              id="transmission"
-              className="form-control text-lowercase"
-              placeholder="color of the vehicle"
-              required
-            >
-              {transmission_list?.map((t, i) => (
-                <option key={i} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group col-12 col-md-6 col-lg-4">
-            <label
-              htmlFor="reg"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              Registration:
-            </label>
-            <input
-              id="reg"
-              className="form-control text-lowercase"
-              placeholder="67267879"
-              required
+          <div className="col-12 col-md-6 col-lg-4">
+            <AppSelect
+              name="transmission"
+              label="Transmission"
+              list={transmission}
+              onChange={onChangeEvent}
+              value={initial?.transmission}
+              error={errors?.initial?.transmission}
             />
           </div>
-          <div
-            style={{ whiteSpace: "nowrap" }}
-            className="form-group col-12 col-lg-4"
-          >
-            <label
-              htmlFor="reg"
-              className="text-capitalize label w-100 p-0 m-0 "
-            >
-              Previous Owners:
-            </label>
-            <input
-              id="reg"
+
+          <div className="col-12 col-md-6 col-lg-4">
+            <AppInput
+              name="registration"
+              label="Registration"
+              onChange={onChangeEvent}
+              placeholder="679632"
+              value={initial?.registration}
+              error={errors?.initial?.registration}
+            />
+          </div>
+          <div style={{ whiteSpace: "nowrap" }} className="col-12 col-lg-4">
+            <AppInput
+              name="previous_owners"
+              label="Previous Owners"
               type="number"
+              onChange={onChangeEvent}
+              placeholder="2"
               min="0"
               max="10"
-              className="form-control text-lowercase"
-              placeholder="2"
-              required
+              value={initial?.previous_owners}
+              error={errors?.initial?.previous_owners}
             />
           </div>
         </div>
-        <div className="col-12 my-3 px-4 ">
-          <label htmlFor="description" className="m-0 text-capitalize">
-            description<small className="text-success">(Optional)</small>
-            <i
-              className="far fa-question-circle text-warning"
-              data-toggle="popover"
-              data-placement="top"
-              data-content="details about the vehicle!"
-            ></i>
-          </label>
-          <textarea
-            id="description"
-            type="text"
-            rows="5"
-            className="form-control"
+
+        <div className="col-12 my-3 px-4">
+          <AppTextArea
+            name="decription"
+            label="Description"
             placeholder="description"
+            onChange={onChangeEvent}
+            value={initial?.decription}
+            error={errors?.initial?.decription}
           />
         </div>
       </div>
+
       <style jsx>
         {`
           section,
@@ -195,6 +151,12 @@ export default function Stage1({
           p {
             font-size: 20px;
             font-weight: 500;
+            font-family: ${ff};
+          }
+
+          span {
+            font-size: 18px;
+            font-weight: 400;
             font-family: ${ff};
           }
           h4 {
@@ -221,7 +183,8 @@ export default function Stage1({
             content: "";
             width: 100%;
             height: 100%;
-            background: url(${image_file}) no-repeat center;
+            background: url(${initial?.image || "/images/no-image.jpg"})
+              no-repeat center;
             background-size: cover;
             // position: absolute;
             display: inline-block;

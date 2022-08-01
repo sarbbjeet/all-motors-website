@@ -1,7 +1,18 @@
 import React from "react";
 import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
+import AppInput from "./AppInput";
 
-export default function Stage3() {
+export default function Stage3({ state, setState }) {
+  const onChangeEvent = ({ target }) => {
+    //initial object data
+    setState({
+      ...state,
+      business: { ...state["business"], [`${target.name}`]: target.value },
+    });
+  };
+
+  const { errors, business } = state; //
+
   return (
     <section className="px-4 pb-2">
       <header className="my-4">
@@ -12,67 +23,66 @@ export default function Stage3() {
 
       <div className="form-row" style={{ whiteSpace: "nowrap" }}>
         <div className="form-group col-12 col-sm-6 col-md-4">
-          <label htmlFor="Vehicles_price">
-            £ Price
-            <small className="text-success">(OPTIONAL)</small>
-          </label>
-          <input
+          <AppInput
+            name="price"
+            label="£ Price"
+            placeholder="price"
+            optional
             type="number"
-            name="Vehicles_price"
-            id="Vehicles_price"
-            className="form-control form-control-lg formCurrency"
-            placeholder="15000"
+            onChange={onChangeEvent}
+            error={errors?.business?.price}
+            value={business?.price}
           />
         </div>
         <div className="form-group col-12 col-sm-6 col-md-4">
-          <label htmlFor="Vehicles_finance">
-            £ Finance/month <small className="text-success">(OPTIONAL)</small>
-          </label>
-          <input
+          <AppInput
+            name="finance_month"
+            label="£ Finance/month"
+            placeholder="finance price"
             type="number"
-            name="Vehicles_finance"
-            id="Vehicles_finance"
-            className="form-control form-control-lg formCurrency"
-            placeholder="600"
-          />
-        </div>
-
-        <div className="form-group col-12 col-sm-6 col-md-4">
-          <label htmlFor="Vehicles_insurance" style={{ whiteSpace: "nowrap" }}>
-            Insurance group <small className="text-success">(OPTIONAL)</small>
-          </label>
-          <input
-            type="number"
-            name="Vehicles_insurance"
-            id="Vehicles_insurance"
-            className="form-control form-control-lg"
-            placeholder="0"
+            optional
+            onChange={onChangeEvent}
+            error={errors?.business?.finance_month}
+            value={business?.finance_month}
           />
         </div>
 
         <div className="form-group col-12 col-sm-6 col-md-4">
-          <label htmlFor="Vehicles_12month_tax">
-            £ 12-months tax<small className="text-success">(OPTIONAL)</small>
-          </label>
-          <input
+          <AppInput
+            name="insurance_group"
+            label="Insurance Group"
+            placeholder="insurance group"
             type="number"
-            name="Vehicles_12month_tax"
-            id="Vehicles_12month_tax"
-            className="form-control form-control-lg"
-            placeholder="120"
+            optional
+            onChange={onChangeEvent}
+            error={errors?.business?.insurance_group}
+            value={business?.insurance_group}
           />
         </div>
 
         <div className="form-group col-12 col-sm-6 col-md-4">
-          <label htmlFor="Vehicles_6month_tax">
-            £ 6-months tax<small className="text-success">(OPTIONAL)</small>
-          </label>
-          <input
+          <AppInput
+            name="months12_tax"
+            label="12 months tax"
+            placeholder="12 months tax"
             type="number"
-            name="Vehicles_6month_tax"
-            id="Vehicles_6month_tax"
-            className="form-control form-control-lg"
-            placeholder="60"
+            optional
+            onChange={onChangeEvent}
+            error={errors?.business?.months12_tax}
+            value={business?.months12_tax}
+          />
+        </div>
+
+        <div className="form-group col-12 col-sm-6 col-md-4">
+          <AppInput
+            name="months6_tax"
+            label="6 months tax"
+            placeholder="6 months tax"
+            type="number"
+            optional
+            onChange={onChangeEvent}
+            error={errors?.business?.months6_tax}
+            value={business?.months6_tax}
           />
         </div>
       </div>

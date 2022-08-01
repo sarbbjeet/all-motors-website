@@ -7,10 +7,11 @@ import * as variables from "../styles/variables.module.scss";
 const CardImage = styled.div`
   background: url(${(props) => props.image}) no-repeat center center;
   background-size: cover;
-  height: 300px;
+  height: 210px;
 `;
 
-export default function CarCard({ data, id }) {
+export default function CarCard({ data, _id }) {
+  const { id, features, business } = data;
   return (
     <article
       className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4 post_item"
@@ -38,33 +39,33 @@ export default function CarCard({ data, id }) {
               className="textH d-flex align-items-center px-2 mt-4 mb-0 text-uppercase"
               style={{ minHeight: "30px" }}
             >
-              {data?.model}
+              {data?.model} {data?.transmission} {data?.engine_size}
               <i className="fas fa-check-circle text-success ml-1"></i>
             </div>
             <p
               className="varient text-uppercase d-flex align-items-center text-secondary px-2 mb-0"
               style={{ minHeight: "40px", height: "40px" }}
             >
-              {data?.description?.length > 100
-                ? (data?.description).slice(0, 100) + "..."
-                : data?.description}
+              {data?.decription?.length > 100
+                ? (data?.decription).slice(0, 100) + "..."
+                : data?.decription}
             </p>
 
             <span className="features text-muted text_small product_content py-2 mt-2">
               <span className="var p-1">
                 <i className="fas fa-calendar-check fa-2x text-muted"></i>
                 <br />
-                {data?.year}
+                {features?.yearOfModel}
               </span>
               <span className="var p-1">
                 <i className="fas fa-gas-pump fa-2x  text-muted"></i>
                 <br />
-                {data?.fuel}
+                {features?.fuel}
               </span>
               <span className="var p-1">
                 <i className="fas fa-tachometer-alt fa-2x  text-muted"></i>
                 <br />
-                {data?.km}
+                {features?.mileage || "..."}
               </span>
             </span>
             <span
@@ -72,15 +73,21 @@ export default function CarCard({ data, id }) {
               style={{ minHeight: "50px" }}
             >
               <div className="flex text-center">
-                <span className="textF fText text-success ml-1">£</span>
-                <span className="textF fText text-success">
-                  {data?.finance || "600"}/month
+                <span
+                  style={{ whiteSpace: "nowrap" }}
+                  className="textF fText text-success"
+                >
+                  {`£ ${business?.finance_month || ".."}/month`}
                 </span>
               </div>
 
               <div className="flex w-100 text-right">
-                <span className="textF ml-1">£</span>
-                <span className="textF">{data?.price}</span>
+                <span
+                  style={{ whiteSpace: "nowrap", fontSize: "20px" }}
+                  className="textF"
+                >
+                  {`£ ${business?.price || ".."}`}
+                </span>
               </div>
             </span>
           </header>

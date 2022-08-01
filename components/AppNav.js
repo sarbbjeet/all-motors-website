@@ -7,6 +7,8 @@ import { colors } from "../utils/constants";
 import styled from "styled-components";
 import styles from "../styles/AppNav.module.scss";
 
+import { primary } from "../styles/variables.module.scss";
+
 const Wrapper = styled.div``;
 export default function AppNav() {
   const [browse, setBrowse] = useState(false);
@@ -27,18 +29,20 @@ export default function AppNav() {
         <div className="container">
           <nav className="py-1 d-flex justify-content-between no-gutters align-items-center">
             <h2 className="sr-only">Main Nav</h2>
-            <Link className="main_brand d-block" href="/">
-              <Image
-                style={{ cursor: "pointer" }}
-                width="70px"
-                height="55px"
-                // objectFit="contain"
-                src="/images/logo3.png"
-                alt="AllMotors"
-                title="AllMotors"
-              />
-              {/* </div> */}
+            <Link href="/admin">
+              <a className="navbar-brand">
+                {/* LOGO */}
+                <div>
+                  <p className={styles.logoP}>
+                    All<span> </span>
+                    <span style={{ font: "inherit", color: primary }}>
+                      Motors
+                    </span>
+                  </p>
+                </div>
+              </a>
             </Link>
+
             <div className="d-none d-lg-inline-block">
               <ul
                 className={`${styles.linkFont} main_nav list-unstyled mb-0 pr-0`}

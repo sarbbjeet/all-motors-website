@@ -6,6 +6,7 @@ import Feedback from "../components/home/Feedback";
 import LatestCars from "../components/home/LatestCars";
 import SearchVehicle from "../components/home/SearchVehicle";
 import Slider from "../components/home/Slider";
+import Layout from "../components/Layout";
 import ShortSearch from "../components/ShortSearch";
 import styles from "../styles/Home.module.scss";
 import getDeviceSize from "../utils/getDeviceSize";
@@ -13,17 +14,18 @@ import getDeviceSize from "../utils/getDeviceSize";
 export default function Home() {
   let { width } = getDeviceSize();
   return (
-    <main className={styles.main} style={{ position: "relative", zIndex: 1 }}>
-      <div
-        style={{
-          width: "100%",
-          overflow: "auto",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <Banner1 />
-        {/* <div
+    <Layout>
+      <main className={styles.main} style={{ position: "relative", zIndex: 1 }}>
+        <div
+          style={{
+            width: "100%",
+            overflow: "auto",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <Banner1 />
+          {/* <div
           style={{
             position: "absolute",
             backgroundColor: "rgba(50, 50, 50, 0.2)",
@@ -33,28 +35,29 @@ export default function Home() {
           }}
         /> */}
 
-        <ShortSearch
-          exStyle={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            zIndex: 1,
-            padding: width < 768 ? "30px" : "15px 30px",
-            backgroundColor: "rgba(50, 50, 50, 0.5)",
-            transform:
-              width < 768 ? "translate(-50%, -50%)" : "translate(-50%, 50%)",
-          }}
-        />
-      </div>
+          <ShortSearch
+            exStyle={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              zIndex: 1,
+              padding: width < 768 ? "30px" : "15px 30px",
+              backgroundColor: "rgba(50, 50, 50, 0.5)",
+              transform:
+                width < 768 ? "translate(-50%, -50%)" : "translate(-50%, 50%)",
+            }}
+          />
+        </div>
 
-      <DealMessage />
-      {/* <Card /> */}
+        <DealMessage />
+        {/* <Card /> */}
 
-      <LatestCars />
+        <LatestCars />
 
-      <Feedback />
-      {/* <Slider />
+        <Feedback />
+        {/* <Slider />
        <FeatureCars /> */}
-    </main>
+      </main>
+    </Layout>
   );
 }

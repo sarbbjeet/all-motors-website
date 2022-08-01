@@ -1,18 +1,48 @@
+import axios from "axios";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { f2 } from "../../styles/variables.module.scss";
+import { Router, useRouter } from "next/router";
+const url = "/api/vehicles";
 
 const CardImage = styled.div`
   background: url(${(props) => props.image}) no-repeat center center;
   background-size: cover;
   height: 250px;
 `;
+const deleteCard = async ({ id, router }) => {
+  try {
+    const res = await fetch(`${url}?id=${id}`, {
+      method: "DELETE",
+    });
+    const json_res = await res.json();
+    if (res.status !== 200) throw new Error(json_res.error);
+    console.info(json_res);
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    router.push("/admin/vehicles");
+  }
+};
+
 export default function VehicleCard({ data }) {
+  const {
+    make,
+    id,
+    model,
+    color,
+    decription,
+    transmission,
+    engine_size,
+    features,
+    business,
+  } = data;
+  const router = useRouter();
   return (
     <article className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4" id="vehicles">
       <div className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded">
-        <CardImage image={data.image} />
+        <CardImage image={data?.image} />
         <header className="mx-2">
           <span
             className="d-flex align-items-center px-4  border-top text-muted bg-light mb-0"
@@ -21,13 +51,12 @@ export default function VehicleCard({ data }) {
             <div className="flex text-center">
               <span className="textF fText text-success ml-1">£</span>
               <span className="textF fText text-success">
-                {data.finance || "600"}/month
+                {business?.finance_month || "600"}/month
               </span>
             </div>
-
             <div className="flex w-100 text-right">
               <span className="textF ml-1">£</span>
-              <span className="textF">{data.price}</span>
+              <span className="textF">{business?.price || " .."}</span>
             </div>
           </span>
 
@@ -35,7 +64,7 @@ export default function VehicleCard({ data }) {
             className="textH d-flex align-items-center px-2 mt-2 mb-0 text-uppercase"
             style={{ minHeight: "30px" }}
           >
-            {data.model}
+            {`${model} ${transmission} ${engine_size}`}
             <i className="fas fa-check-circle text-success ml-1"></i>
           </div>
           <p
@@ -46,25 +75,25 @@ export default function VehicleCard({ data }) {
               //  overflowWrap: "break-word",
             }}
           >
-            {data.description.length > 100
-              ? data.description.substring(0, 100) + "..."
-              : data.description}
+            {decription?.length > 100
+              ? decription?.substring(0, 100) + "..."
+              : data?.decription}
           </p>
           <span className="features text-muted text_small product_content py-2 mt-2 bg-light border mb-2">
             <span className="var p-1">
               <i className="fas fa-calendar-check fa-2x text-muted"></i>
               <br />
-              {data.year}
+              {features?.yearOfModel}
             </span>
             <span className="var p-1">
               <i className="fas fa-gas-pump fa-2x  text-muted"></i>
               <br />
-              {data.fuel}
+              {features?.fuel}
             </span>
             <span className="var p-1">
               <i className="fas fa-tachometer-alt fa-2x  text-muted"></i>
               <br />
-              {data.km}
+              {`${features?.mileage || "..."}`}
             </span>
           </span>
           <nav className="cardEdit">
@@ -74,14 +103,18 @@ export default function VehicleCard({ data }) {
             <Link
               href={{
                 pathname: "/admin/vehicles/register",
-                query: { page: "edit" },
+                query: { id },
               }}
             >
               <a className="bg-info">
                 <i className="fas fa-edit"></i>
               </a>
             </Link>
-            <a className="bg-danger">
+            <a
+              className="bg-danger"
+              //href="/admin/vehicles" //redirect
+              onClick={() => deleteCard({ id, router })}
+            >
               <i className="fas fa-trash-alt"></i>
             </a>
           </nav>

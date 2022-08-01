@@ -15,6 +15,8 @@ export default function Footer() {
             .footer,
             span,
             p {
+              font-size: 16px;
+              font-weight: 700;
               font-family: ${f2};
             }
             .footer span {

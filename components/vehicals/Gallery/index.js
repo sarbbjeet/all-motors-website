@@ -15,11 +15,14 @@ export default function Index({ slides }) {
   return (
     <article className="pb-4 overflow-hidden">
       <div className="row">
-        <div className="col-lg-8 col-12 position-relative order-0">
+        <div
+          style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
+          className="col-lg-8 col-12 position-relative order-0"
+        >
           <div
             style={{
               ...styles.headerImage,
-              backgroundImage: `url(${slides[selectedIndex]?.image}`,
+              background: `url(${slides[selectedIndex]?.image}) center no-repeat`,
             }}
           />
           <Arrow direction="left" handleClick={changeImage} />
@@ -56,11 +59,9 @@ export default function Index({ slides }) {
 const styles = {
   headerImage: {
     height: "450px",
-    margin: "1px",
     overflow: "hidden",
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
+    // backgroundPosition: "center center",
     transition: "transform 0.2s",
   },
   logo: {

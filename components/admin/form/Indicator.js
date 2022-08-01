@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Joi from "joi-browser";
 import {
   f2 as f2,
   secondary,
   secondaryLight,
 } from "../../../styles/variables.module.scss";
 
+import schema from "../../../validation/schema";
+const { initialSchema, featuresSchema, businessSchema } = schema();
+
+import Script from "next/script";
 const updateStage = (currentState, numberOfStages, step) => {
   if (currentState != 1 || currentState != numberOfStages)
     currentState = currentState + step;
-
   return currentState;
 };
 
@@ -17,8 +21,41 @@ export default function Indicator({
   currentStage = 1,
   changeStageEvent = () => {},
   numberOfStages = stages.length + 1,
+  state,
+  setState,
   children,
+  onPublishEvent,
 }) {
+  const [isWindowLoad, setIsWindowLoad] = useState(false);
+  useEffect(() => {
+    setIsWindowLoad(true);
+  }, []);
+  const validate = (key = "initial") => {
+    setState({ ...state, errors: {} });
+
+    const schema = {
+      initial: {
+        ...initialSchema,
+        image: Joi.string().required(),
+      },
+      features: {
+        ...featuresSchema,
+      },
+      business: {
+        ...businessSchema,
+      },
+      gallery: {},
+    };
+    const { error } = Joi.validate(state[key], schema[key]);
+    console.log("error=", error);
+    if (error) {
+      const { path, message } = error.details[0];
+      setState({ ...state, errors: { [key]: { [`${path[0]}`]: message } } });
+    }
+    // if (typeof key === "undefined") return false;
+    return error;
+  };
+
   return (
     <div>
       <div className="step_wizard_list d-flex">
@@ -35,20 +72,30 @@ export default function Indicator({
       {children}
       <div className="d-flex justify-content-center px-2">
         <button
+          type="button"
           onClick={() =>
             changeStageEvent(updateStage(currentStage, numberOfStages, -1))
           }
-          className={`previous  ${currentStage === 1 && `d-none`}`}
+          className={`prev  ${currentStage === 1 && `d-none`}`}
         >
           Previous
         </button>
         <button
-          onClick={() =>
-            changeStageEvent(updateStage(currentStage, numberOfStages, 1))
-          }
-          className={`next ${numberOfStages <= currentStage && "d-none"}`}
+          type="button"
+          onClick={() => {
+            if (!validate(stages[currentStage - 1].toLowerCase()))
+              changeStageEvent(updateStage(currentStage, numberOfStages, 1));
+          }}
+          className={`next ${numberOfStages - 1 == currentStage && "d-none"}`}
         >
           Next
+        </button>
+        <button
+          type="button"
+          onClick={onPublishEvent}
+          className={`next ${numberOfStages - 1 > currentStage && "d-none"}`}
+        >
+          Publish
         </button>
       </div>
 
@@ -78,7 +125,6 @@ export default function Indicator({
           position: relative;
         }
         .step_wizard {
-          padding: 0 20px;
           flex-basis: 0;
           -webkit-box-flex: 1;
           -ms-flex-positive: 1;
@@ -88,7 +134,7 @@ export default function Indicator({
           text-align: center;
           width: 170px;
           position: relative;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 500;
           font-family: ${f2};
           white-space: nowrap;
@@ -136,7 +182,6 @@ export default function Indicator({
           content: "";
           height: 10px;
           width: 20px;
-
           border-left: 3px solid #fff;
           border-bottom: 3px solid #fff;
           left: 50%;
@@ -165,17 +210,43 @@ export default function Indicator({
           padding: 5px;
           border-radius: 5px;
           margin: 5px;
+          transition: all 0.5s;
+        }
+        .button-hover {
+          transform: scale(1.044);
+          color: #fff !important;
+
+          background-color: ${secondaryLight}!important;
         }
         button.next {
           background-color: ${secondary};
         }
 
-        button.previous {
+        button.prev {
           background-color: #fff;
           color: ${secondary};
           border: 1px solid ${secondary};
         }
       `}</style>
+
+      <Script id="my-script">
+        {isWindowLoad &&
+          `   
+           document.querySelector(".next").addEventListener("mouseover",(e)=>
+           e.target.classList.add("button-hover")
+           )
+           document.querySelector(".next").addEventListener("mouseout",(e)=>
+           e.target.classList.remove("button-hover")
+           )   
+           
+           document.querySelector(".prev").addEventListener("mouseover",(e)=>
+           e.target.classList.add("button-hover")
+           )
+           document.querySelector(".prev").addEventListener("mouseout",(e)=>
+           e.target.classList.remove("button-hover")
+           )  
+          `}
+      </Script>
     </div>
   );
 }

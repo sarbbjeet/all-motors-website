@@ -3,8 +3,11 @@ import React from "react";
 import AdminWrapper from "../../../components/admin/AdminWrapper";
 import Footer from "../../../components/admin/Footer";
 import VehiclesList from "../../../components/admin/VehiclesList";
+import { prisma } from "../../../database/prisma";
+import { f2 as ff } from "../../../styles/variables.module.scss";
 
-export default function Vehicles() {
+export default function Vehicles({ vehicles }) {
+  console.log(vehicles);
   return (
     <AdminWrapper>
       <div className="container py-3">
@@ -18,7 +21,6 @@ export default function Vehicles() {
             <li className="breadcrumb-item active">My Vehicles</li>
           </ol>
         </nav>
-
         {/* SERACH  */}
         <div className="row">
           <form
@@ -47,19 +49,49 @@ export default function Vehicles() {
         </div>
 
         {/* unpublished vehicles */}
-        <div className="alert alert-info alert-dismissible my-4">
+        <div className="alert alert-info alert-dismissible my-4 d-none">
           <h4 className="font-weight-light">
             <i className="fas fa-store-alt-slash"></i> Deactivated Vehicles
           </h4>
-          You own an unpublished Vehicles.{" "}
+          You own an unpublished Vehicles.
           <a href="#" title="">
             Click here
-          </a>{" "}
+          </a>
           to check...
         </div>
-        <VehiclesList />
+        <VehiclesList items={vehicles} />
+
+        <style jsx>
+          {`
+            div,
+            p,
+            a,
+            li,
+            label,
+            span,
+            h3 {
+              font-family: ${ff};
+            }
+
+            a,
+            li {
+              font-weight: 700;
+              font-size: 16px;
+            }
+          `}
+        </style>
       </div>
       <Footer />
     </AdminWrapper>
   );
 }
+
+export const getServerSideProps = async () => {
+  const vehicles = await prisma.Initial.findMany({
+    include: {
+      features: true,
+      business: true,
+    },
+  });
+  return { props: { vehicles } };
+};
