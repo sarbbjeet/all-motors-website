@@ -2,7 +2,7 @@ import { useState } from "react";
 import BasicSearch from "../../../components/BasicSearch";
 import CarCard from "../../../components/CarCard";
 import SideFilter from "../../../components/vehicals/SideFilter";
-import { latestCars } from "../../../utils/variables";
+import { prisma } from "../../../database/prisma";
 
 import * as variables from "../../../styles/variables.module.scss";
 import Layout from "../../../components/Layout";

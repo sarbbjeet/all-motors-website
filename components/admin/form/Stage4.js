@@ -5,13 +5,14 @@ import { f1 as ff, secondary } from "../../../styles/variables.module.scss";
 import DropImages from "./DropImages";
 import axios from "axios";
 import AppImage from "./AppImage";
+import { useRouter } from "next/router";
 
-const api_url = "/api/usedcars/gallery";
+const api_url = "/api/image_gallery";
 //get published images for the server
-const reloadImages = async (setStoredImages) => {
+const reloadImages = async ({ setStoredImages, vehicleId }) => {
   //axios or fetch
   try {
-    const response = await fetch(api_url)
+    const response = await fetch(`${api_url}?id=${vehicleId}`)
       .then((data) => data.text())
       .then((text) => JSON.parse(text));
     if (response && response.length >= 0)
@@ -39,21 +40,24 @@ export default function Stage4() {
   const [ssr, setSSR] = useState(false);
   const [files, setFiles] = useState([]);
   const [storedImages, setStoredImages] = useState([]);
+  const router = useRouter();
+  const {
+    query: { id: vehicleId },
+  } = router;
 
   useEffect(() => {
-    reloadImages(setStoredImages);
+    reloadImages({ setStoredImages, vehicleId });
   }, []);
 
   //delete image from
   const deleteEvent = async (id) => {
     //delete request
     try {
-      await axios.request(api_url, {
+      await axios.request(`${api_url}?image_id=${id}`, {
         method: "DELETE",
-        data: { id },
       });
       //reload images gallery
-      reloadImages(setStoredImages);
+      reloadImages({ setStoredImages, vehicleId });
     } catch (err) {
       alert("Error" + `${err.message}`);
     }
@@ -70,7 +74,7 @@ export default function Stage4() {
     //convert back dataURl to Blob
     for (let file of files)
       formData.append("images", await dataURItoBlob(file));
-    const response = await fetch(api_url, {
+    const response = await fetch(`${api_url}?id=${vehicleId}`, {
       method: "POST",
       body: formData,
       //   headers: {
@@ -87,7 +91,7 @@ export default function Stage4() {
     //remove images from upload section and display success message
     SuccessAlert.current.style.display = "block";
     setFiles([]);
-    reloadImages(setStoredImages);
+    reloadImages({ setStoredImages, vehicleId });
   };
 
   useEffect(() => {

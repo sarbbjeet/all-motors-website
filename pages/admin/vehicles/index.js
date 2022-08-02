@@ -7,7 +7,6 @@ import { prisma } from "../../../database/prisma";
 import { f2 as ff } from "../../../styles/variables.module.scss";
 
 export default function Vehicles({ vehicles }) {
-  console.log(vehicles);
   return (
     <AdminWrapper>
       <div className="container py-3">

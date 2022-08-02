@@ -17,6 +17,7 @@ import {
 } from "../../../validation/dataPicker";
 const registerPageStages = ["Initial", "Features", "Business"];
 const editPageStages = ["Initial", "Features", "Business", "Gallery"];
+const url = "/api/vehicles";
 
 const dataURItoBlob = async (dataURI) => {
   return await fetch(dataURI)
@@ -28,6 +29,9 @@ const dataURItoBlob = async (dataURI) => {
 
 const onPublishEvent = async (data, router) => {
   try {
+    const {
+      query: { id },
+    } = router;
     const formData = new FormData();
     //convert dataUrl image to Blob format
     for (let key in data) {
@@ -37,15 +41,16 @@ const onPublishEvent = async (data, router) => {
         else formData.append(nestedKey, data[key][nestedKey]);
       }
     }
-    await fetch("/api/vehicles", {
-      method: "post",
+
+    await fetch(`${url}${id ? `?id=${id}` : ""}`, {
+      method: `${id ? "PUT" : "POST"}`,
       body: formData,
     }).then(async (response) => {
       const jsonData = await JSON.parse(await response.text());
       console.log(jsonData);
       if (response.status != 200) throw jsonData;
       //successfully published vehicle
-      setTimeout(() => router.push("/admin/vehicles"), 2000);
+      setTimeout(() => router.push("/admin/vehicles"), 1000);
     });
   } catch (err) {
     alert(`Error: ${err.error || "unknown server error"}`);
@@ -65,7 +70,6 @@ export default function Register({ vehicle }) {
   });
 
   useEffect(() => {
-    console.log(vehicle);
     if (vehicle) setState(vehicle);
   }, []);
 
@@ -169,6 +173,9 @@ export const getServerSideProps = async (context) => {
     });
     if (!res)
       return {
+        redirect: {
+          destination: "/admin/vehicles/register", // M
+        },
         props: {},
       };
     const initial = initialPicker(res);

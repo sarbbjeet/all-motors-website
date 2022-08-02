@@ -7,7 +7,7 @@ import { latestCars } from "../../utils/variables"; //get raw json data
 import Link from "next/link";
 import VehicleCard from "../admin/VehicleCard";
 export default function LatestCars({
-  cars = latestCars,
+  vehicles,
   title = "Our latest Offers",
   desc = "These deals are based on newly added cars that are reasonably priced.",
 }) {
@@ -33,13 +33,13 @@ export default function LatestCars({
         {/* <div className="row px-md-5 px-2"> */}
         {/* <div className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
         > */}
-        {cars?.map((car, i) => (
-          <CarCard key={i} id={i} data={car} />
+        {vehicles?.map((car, i) => (
+          <CarCard key={i} data={car} />
         ))}
         {/* </div> */}
       </div>
 
-      <div className="text-center">
+      <div className="text-center mb-4">
         <Link href="/vehicles/search">
           <a className="btnTxt btn btn-lg" title="See more vehicles">
             See more vehicles

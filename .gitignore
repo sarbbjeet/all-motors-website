@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+
+# image folder
+/public/_uploads
+
 # testing
 /coverage
 

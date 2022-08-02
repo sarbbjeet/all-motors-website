@@ -11,7 +11,9 @@ import ShortSearch from "../components/ShortSearch";
 import styles from "../styles/Home.module.scss";
 import getDeviceSize from "../utils/getDeviceSize";
 
-export default function Home() {
+import { prisma } from "../database/prisma";
+
+export default function Home({ vehicles }) {
   let { width } = getDeviceSize();
   return (
     <Layout>
@@ -52,7 +54,7 @@ export default function Home() {
         <DealMessage />
         {/* <Card /> */}
 
-        <LatestCars />
+        <LatestCars vehicles={vehicles} />
 
         <Feedback />
         {/* <Slider />
@@ -61,3 +63,13 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async () => {
+  const vehicles = await prisma.Initial.findMany({
+    include: {
+      features: true,
+      business: true,
+    },
+  });
+  return { props: { vehicles } };
+};
