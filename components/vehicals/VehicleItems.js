@@ -7,12 +7,15 @@ export default function VehicleItems({ items }) {
         <h4 className="text-dark font-weight-bold mb-3">Vehicle Items</h4>
       </header>
       <ul className="product_elements list-unstyled text-muted clearfix row">
-        {!items && <p className="w-100 text-center">List of items is empty</p>}
-        {items?.map((item, i) => (
-          <li key={i} className="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-            {item}
-          </li>
-        ))}
+        {!(items?.length > 0) && (
+          <p className="w-100 text-center">List of items is empty</p>
+        )}
+        {items?.length > 0 &&
+          items?.map((item, i) => (
+            <li key={i} className="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+              {item}
+            </li>
+          ))}
       </ul>
     </section>
   );

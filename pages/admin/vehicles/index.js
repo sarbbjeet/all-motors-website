@@ -59,7 +59,6 @@ export default function Vehicles({ vehicles }) {
           to check...
         </div>
         <VehiclesList items={vehicles} />
-
         <style jsx>
           {`
             div,

@@ -28,11 +28,11 @@ const deleteCard = async ({ id, router }) => {
 
 export default function VehicleCard({ data }) {
   const {
-    make,
     id,
     model,
+    title,
     color,
-    decription,
+    description,
     transmission,
     engine_size,
     features,
@@ -64,20 +64,20 @@ export default function VehicleCard({ data }) {
             className="textH d-flex align-items-center px-2 mt-2 mb-0 text-uppercase"
             style={{ minHeight: "30px" }}
           >
-            {`${model} ${transmission} ${engine_size}`}
-            <i className="fas fa-check-circle text-success ml-1"></i>
+            {title}
+            {title && <i className="fas fa-check-circle text-success ml-1"></i>}
           </div>
           <p
             className=" varient text-uppercase d-flex align-items-center text-secondary px-2 mb-0"
             style={{
-              minHeight: "30px",
-              height: "30px",
+              height: "40px",
               //  overflowWrap: "break-word",
             }}
           >
-            {decription?.length > 100
-              ? decription?.substring(0, 100) + "..."
-              : data?.decription}
+            {`${model} ${transmission} ${engine_size} ${color}`}
+            {/* {description?.length > 90
+              ? description?.substring(0, 90) + "..."
+              : data?.description} */}
           </p>
           <span className="features text-muted text_small product_content py-2 mt-2 bg-light border mb-2">
             <span className="var p-1">
@@ -85,7 +85,7 @@ export default function VehicleCard({ data }) {
               <br />
               {features?.yearOfModel}
             </span>
-            <span className="var p-1">
+            <span className="var p-1 text-capitalize">
               <i className="fas fa-gas-pump fa-2x  text-muted"></i>
               <br />
               {features?.fuel}
@@ -150,7 +150,7 @@ text-align: center;
 
        .textH {
          font-family: ${f2};
-         font-size: 1rem;
+         font-size: 1.2rem;
          font-weight: 700;
          text-transform: capitalize; !important;
        }
@@ -162,8 +162,9 @@ text-align: center;
        }
        .varient {
          font-family: ${f2} !important;
-         font-size: 0.9rem;
-         font-weight: 400;
+         font-size: 1rem;
+         color:#777!important;
+         font-weight: 500;
          text-transform: capitalize; !important;
        }
        header {
@@ -171,7 +172,7 @@ text-align: center;
        }
        .var{
          font-family: ${f2};
-         font-size: 0.8rem;
+         font-size: 0.9rem;
          font-weight: 500;
        }
        .features{

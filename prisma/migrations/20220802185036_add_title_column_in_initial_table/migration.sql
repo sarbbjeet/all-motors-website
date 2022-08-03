@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Initial` ADD COLUMN `title` VARCHAR(191) NULL DEFAULT '';

@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import ToggleSwitch from "../ToogleSwitch";
 import styles from "../../styles/SideFilter.module.scss";
+import {
+  fCars,
+  dropEvent,
+  filterObj as filters,
+} from "../../utils/filterOptionsGroup";
 
-export default function SideFilter({ filterEvent }) {
+export default function SideFilter({ filterEvent, data, setFilteredVehicles }) {
+  const filteredVehicles = () => {
+    setFilteredVehicles(
+      data.filter((d) => {
+        let found = true;
+        filters?.forEach((c) => {
+          if (found && c["value"] != null && d[`${c?.key}`] != c?.value)
+            found = false;
+        });
+        return found;
+      })
+    );
+  };
+
+  const [optionsObj, setOptionsObj] = useState(fCars(data));
+
   return (
     <>
       <div
@@ -17,7 +37,6 @@ export default function SideFilter({ filterEvent }) {
           Advanced Filter
         </button>
       </div>
-
       <div className="advFilter_box slow_3s h-100">
         <div
           className={`text-muted text_small d-block advFilter ${styles.sticky}`}
@@ -31,23 +50,27 @@ export default function SideFilter({ filterEvent }) {
               encType="multipart/form-data"
             >
               <h2 className={styles.title}>Advanced Filter</h2>
-              <select className={styles.select}>
-                <option>Any make</option>
-              </select>
-              <select className={styles.select}>
-                <option>Any model</option>
-              </select>
-              <select className={styles.select}>
-                <option>Any color</option>
-              </select>
+              {filters.map((filter, i) => (
+                <select
+                  key={i}
+                  name={filter["key"]}
+                  className={styles.select}
+                  onChange={({ target }) => {
+                    setOptionsObj(dropEvent(target, data));
+                    filteredVehicles();
+                  }}
+                >
+                  <option key="a">Any {filter["key"]}</option>
+                  {filter["key"] in optionsObj &&
+                    Object.keys(optionsObj[`${filter?.key}`]).map((k, i) => (
+                      <option key={i}>{`${k} (${
+                        optionsObj[`${filter?.key}`][k]
+                      })`}</option>
+                    ))}
+                </select>
+              ))}
 
-              <select className={styles.select}>
-                <option>Any doors</option>
-              </select>
-              <select className={styles.select}>
-                <option>Any fuel type</option>
-              </select>
-              <div className="my-2 d-flex justify-content-center align-items-center">
+              {/* <div className="my-2 d-flex justify-content-center align-items-center">
                 <span className={`${styles.toggleText} mr-2 `}>Price</span>
                 <ToggleSwitch />
                 <span className={`${styles.toggleText} ml-2`}>Budget</span>
@@ -58,12 +81,12 @@ export default function SideFilter({ filterEvent }) {
               </select>
               <select className={styles.select}>
                 <option>Price max</option>
-              </select>
+              </select> */}
             </form>
           </div>
-          <div className={styles.btnWrapper}>
+          {/* <div>
             <button className={`${styles.btn}`}>Search</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

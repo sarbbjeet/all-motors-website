@@ -164,7 +164,7 @@ const convertToInt = (data) => {
   const int_keys = [
     "previous_owners",
     "mileage",
-    "numberOfCylider",
+    "numberOfCylinders",
     "yearOfModel",
     "doors",
     "price",

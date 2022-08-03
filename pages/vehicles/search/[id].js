@@ -1,9 +1,9 @@
-import Image from "next/image";
+import { prisma } from "../../../database/prisma";
 
+import _ from "lodash";
 import Gallery from "../../../components/vehicals/Gallery/index.js";
 import Highlights from "../../../components/vehicals/Highlights.js";
 import VehicleItems from "../../../components/vehicals/VehicleItems.js";
-
 import {
   items,
   highlights,
@@ -16,21 +16,47 @@ import Dealer from "../../../components/vehicals/Dealer.js";
 import RequestForm from "../../../components/vehicals/RequestForm.js";
 import LatestCars from "../../../components/home/LatestCars.js";
 import Layout from "../../../components/Layout.js";
+import { initialPicker } from "../../../validation/dataPicker";
 
-export default function handler({ params }) {
+const url = "/api/image_gallery";
+
+export default function handler({ vehicle }) {
   //vehicles items
+  const highlights = {
+    ...initialPicker(vehicle),
+    ..._.pick(vehicle?.features, [
+      "fuel",
+      "doors",
+      "body_style",
+      "vehicle_type",
+      "mileage",
+      "yearOfModel",
+      "numberOfCylinders",
+      "steering",
+    ]),
+  };
+  //modified keywords
+  highlights["year"] = highlights["yearOfModel"];
+  highlights["number of cylinder"] = highlights["numberOfCylinders"];
+  delete highlights?.yearOfModel;
+  delete highlights?.numberOfCylinders;
+  delete highlights?.image;
+  delete highlights?.description;
+  //features
+  const vehicleItems = vehicle?.features?.features?.split(",");
+  const description = vehicle?.description;
 
-  const moveItem = (n) => {};
+  //initial can get from directly vehicles
   return (
     <Layout>
       <div className="pt-5 mt-3">
-        <main className="bg-light">
-          <Gallery slides={slides} />
+        <main style={{ backgroundColor: "#eee" }}>
+          <Gallery vehicle={vehicle} />
           <div className="px-lg-3 m-0 row overflow-hidden">
             <div className="col-lg-7 col-xl-8">
               <Highlights highlights={highlights} />
-              <VehicleItems items={items} />
-              <Description description={vehicleDescriptions} />
+              <VehicleItems items={vehicleItems} />
+              <Description description={description} />
               <VideoSection />
             </div>
 
@@ -46,88 +72,23 @@ export default function handler({ params }) {
               <LatestCars title="Similar Vehicles" />
             </div>
           </div>
-
-          {/* <div style={{ display: "flex" }}>
-          <Slider1 slides={images} />
-        </div> */}
-
-          {/* <div
-          style={{
-            display: "flex",
-            width: "100%",
-            height: "100px",
-            backgroundColor: "green",
-            marginBottom: "10px",
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((z) => (
-            <div
-              style={{
-                minWidth: "100px",
-                height: "100%",
-                backgroundColor: "red",
-                border: "1px solid red",
-                marginLeft: "2px",
-                marginRight: "2px",
-                transform: "translateX(-600px)",
-              }}
-            >
-              {z}
-            </div>
-          ))}
-
-          <div
-            onClick={() => moveItem(-1)}
-            style={{
-              position: "absolute",
-              top: "50%",
-              padding: "10px",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <i
-              class="fas text-white fa-arrow-left fa-2x"
-              aria-hidden="true"
-            ></i>
-          </div>
-          <div
-            onClick={() => moveItem(1)}
-            style={{
-              padding: "10px",
-              position: "absolute",
-              top: "50%",
-              right: 0,
-              transform: "translateY(-50%)",
-            }}
-          >
-            <i
-              class="text-white fas fa-arrow-right fa-2x"
-              aria-hidden="true"
-            ></i>
-          </div>
-        </div> */}
         </main>
       </div>
     </Layout>
   );
 }
 
-export const getServerSideProps = (content) => {
-  const { params } = content;
-  return {
-    props: {
-      params,
+export const getServerSideProps = async (context) => {
+  const {
+    params: { id },
+  } = context;
+  const vehicle = await prisma.Initial.findUnique({
+    where: { id },
+    include: {
+      imageGallery: true,
+      features: true,
+      business: true,
     },
-  };
-};
-
-const styles = {
-  headerImage: {
-    height: "400px",
-    backgroundSize: "contain",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-  },
+  });
+  return { props: { vehicle } };
 };

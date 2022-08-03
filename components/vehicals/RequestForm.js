@@ -25,7 +25,6 @@ export default function RequestForm() {
               type="text"
               className="form-control text-muted border-0 bg-light"
               name="client_name"
-              value=""
               id="name"
               placeholder="Name"
               required
@@ -42,7 +41,6 @@ export default function RequestForm() {
               type="text"
               className="form-control border-0 text-muted bg-light"
               name="client_email"
-              value=""
               id="email"
               placeholder="E-mail"
               required
@@ -61,7 +59,6 @@ export default function RequestForm() {
               name="client_phone"
               id="phone"
               placeholder="Phone"
-              value=""
               required
             />
           </div>
@@ -72,9 +69,8 @@ export default function RequestForm() {
               name="client_message"
               rows="5"
               id="message"
-            >
-              I liked this Vehicles and would like more information.
-            </textarea>
+              placeholder="I liked this Vehicles and would like more information."
+            />
           </div>
 
           <button className="btn btn-primary btn-block py-3" type="submit">

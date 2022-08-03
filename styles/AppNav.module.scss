@@ -1,9 +1,10 @@
 @import "./variables.module.scss";
 
 .linkFont {
-  font-family: "Poppins", sans-serif !important;
-  font-size: 18px;
-  font-weight: 600 !important;
+  font-family: $f2 !important;
+  font-size: 1.5rem;
+  font-weight: 900 !important;
+  color: #292929ad;
   text-transform: uppercase;
 }
 .logoP {
@@ -16,10 +17,14 @@
   font-size: 2rem;
 }
 
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1200px) {
   .logoP {
     font-weight: 700 !important;
     text-shadow: 2px 2px 5px rgba(0, 0, 10, 0.6);
     font-size: 1.6rem;
+  }
+  .linkFont {
+    font-size: 1.2rem;
+    font-weight: 900 !important;
   }
 }

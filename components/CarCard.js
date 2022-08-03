@@ -39,16 +39,18 @@ export default function CarCard({ data, _id }) {
               className="textH d-flex align-items-center px-2 mt-4 mb-0 text-uppercase"
               style={{ minHeight: "30px" }}
             >
-              {data?.model} {data?.transmission} {data?.engine_size}
-              <i className="fas fa-check-circle text-success ml-1"></i>
+              {data?.title && (
+                <>
+                  {data?.title}
+                  <i className="fas fa-check-circle text-success ml-1"></i>
+                </>
+              )}
             </div>
             <p
               className="varient text-uppercase d-flex align-items-center text-secondary px-2 mb-0"
               style={{ minHeight: "40px", height: "40px" }}
             >
-              {data?.decription?.length > 100
-                ? (data?.decription).slice(0, 100) + "..."
-                : data?.decription}
+              {`${data?.model} ${data?.transmission} ${data?.engine_size} ${data?.color}`}
             </p>
 
             <span className="features text-muted text_small product_content py-2 mt-2">
@@ -57,7 +59,7 @@ export default function CarCard({ data, _id }) {
                 <br />
                 {features?.yearOfModel}
               </span>
-              <span className="var p-1">
+              <span className="var p-1 text-capitalize">
                 <i className="fas fa-gas-pump fa-2x  text-muted"></i>
                 <br />
                 {features?.fuel}
@@ -107,7 +109,7 @@ export default function CarCard({ data, _id }) {
         {`
           .textH {
             font-family: ${variables.f2};
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             text-transform: capitalize; !important;
           }
@@ -119,8 +121,9 @@ export default function CarCard({ data, _id }) {
           }
           .varient {
             font-family: ${variables.f2} !important;
-            font-size: 0.9rem;
-            font-weight: 400;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #777!important;
             text-transform: capitalize; !important;
           }
           header {
@@ -128,7 +131,7 @@ export default function CarCard({ data, _id }) {
           }
           .var{
             font-family: ${variables.f2};
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
           }
           .features{

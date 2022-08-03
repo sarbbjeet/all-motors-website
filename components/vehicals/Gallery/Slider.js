@@ -29,7 +29,7 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
     <div style={styles.sliderContainer}>
       <Slide
         ref={sliderRef}
-        slidesToScroll={4}
+        slidesToScroll={2}
         slidesToShow={width > 900 ? 7 : 4}
         indicators={true}
       >
@@ -40,7 +40,12 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
             style={{ ...styles.imageItem }}
             onClick={() => handleEvent(i)}
           >
-            <Image src={s?.image} alt="item" layout="fill" objectFit="center" />
+            <Image
+              src={(s?.image).split("public")[1]}
+              alt="item"
+              layout="fill"
+              objectFit="center"
+            />
             <div
               className={`${stylesExt.shild} ${
                 i == selectedIndex && stylesExt.activeImage
@@ -49,6 +54,19 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
           </div>
         ))}
       </Slide>
+      <div className="frameToHide" />
+
+      <style jsx>
+        {`
+          .frameToHide {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            bottom: 0;
+            background-color: #eee;
+          }
+        `}
+      </style>
     </div>
   );
 }
@@ -57,10 +75,12 @@ const styles = {
   imageItem: {
     display: "flex",
     aspectRatio: "16/12",
-    // height: "150px",
+
+    padding: "0 !important",
+    margin: "0 !important",
+    margin: 0,
     cursor: "pointer",
     // margin: "2px",
-
     borderLeft: "1.5px solid black",
     borderRight: "1.5px solid black",
     borderTop: "3px solid black",
@@ -69,7 +89,9 @@ const styles = {
     transition: "all 0.5s",
   },
   sliderContainer: {
-    backgroundColor: "black",
-    display: "inline",
+    backgroundColor: "rgba(0, 0, 0, 0.9)",
+    padding: "0!important",
+    margin: "0 !important",
+    position: "relative",
   },
 };

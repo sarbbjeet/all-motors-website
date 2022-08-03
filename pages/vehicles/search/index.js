@@ -7,17 +7,24 @@ import { prisma } from "../../../database/prisma";
 import * as variables from "../../../styles/variables.module.scss";
 import Layout from "../../../components/Layout";
 import VehicleItems from "../../../components/vehicals/VehicleItems";
+
 import { f2 as ff } from "../../../styles/variables.module.scss";
+import Pagination from "../../../components/Pagination";
 
 export default function Handler({ vehicles }) {
   const [adSearch, setAdSearch] = useState(false);
+  const [filteredVehicles, setFilteredVehicles] = useState(vehicles);
   return (
     <Layout>
       <main className="bg-light">
         {/* <div className="bg-light p-0 pt-4 m-0"> */}
         <div className="row m-0 p-0 pt-5">
           <div className="col-lg-3 p-0 px-2">
-            <SideFilter filterEvent={(state) => setAdSearch(state)} />
+            <SideFilter
+              data={vehicles}
+              setFilteredVehicles={setFilteredVehicles}
+              filterEvent={(state) => setAdSearch(state)}
+            />
           </div>
 
           <div
@@ -33,8 +40,10 @@ export default function Handler({ vehicles }) {
               className="p-0 m-0 row col-12 shadow-sm bg-white py-2 pt-lg-5 justify-content-between align-items-center px-lg-0"
             >
               <div className={`text col-auto text-dark`}>
-                Total Vehicles Find Is:
-                <span className="text text-success ml-2">38</span>
+                Total vehicles find is:
+                <span className="text text-success ml-2">
+                  {vehicles?.length}
+                </span>
               </div>
 
               <div className="col-auto">
@@ -49,85 +58,22 @@ export default function Handler({ vehicles }) {
                     Order By
                   </button>
                   <div className="dropdown-menu dropdown-menu-right text-right p-0 shadow-sm rounded-0">
-                    <a
-                      className="_btn dropdown-item text_small px-2 py-3"
-                      href="#"
-                    >
-                      Price ASC
-                    </a>
-                    <a
-                      className="_btn  dropdown-item text_small px-2 py-3"
-                      href="#"
-                    >
-                      Price DESC
-                    </a>
-                    <a
-                      className="_btn dropdown-item text_small px-2 py-3"
-                      href="#"
-                    >
-                      More seen
-                    </a>
-                    <a
-                      className="_btn dropdown-item text_small px-2 py-3"
-                      href="#"
-                    >
-                      More News
-                    </a>
+                    {["Price ASC", "Price DESC"].map((item, i) => (
+                      <a
+                        key={i}
+                        className="_btn dropdown-item text_small px-2 py-3"
+                        href="#"
+                      >
+                        {item}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="row p-0 m-0 mt-1 col-12 shadow-sm justify-content-content pt-5 bg-white">
-              {!vehicles && (
-                <div className="list-empty">
-                  <p>no vehicle found ...</p>
-                </div>
-              )}
-              {vehicles?.map((car, i) => (
-                <CarCard key={i} data={car} id={i} />
-              ))}
+              <Pagination data={filteredVehicles} RenderComponent={CarCard} />
             </div>
-
-            <nav
-              aria-label="Navigation Pagination"
-              style={{ marginTop: "1px", marginBottom: "1px" }}
-              className="row m-0 p-0 mt-1 col-12 justify-content-content align-items-center"
-            >
-              <ul className="col-12 py-2 bg-white pagination pagination-lg justify-content-center shadow-sm">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">
-                      <i className="fas fa-angle-double-left"></i>
-                    </span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li className="page-item active">
-                  <a className="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">
-                      <i className="fas fa-angle-double-right"></i>
-                    </span>
-                    <span className="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
 
@@ -156,18 +102,20 @@ export default function Handler({ vehicles }) {
             }
             button {
               font-weight: 600 !important;
-              font-size: 1rem;
+              font-size: 0.9rem;
+              padding: 0 !important;
+              padding: 0 5px !important;
             }
             span,
             a {
               font-weight: 600;
-              font-size: 18px !important;
+              font-size: 0.9rem !important;
             }
             .text {
               font-family: ${variables.f2}!important;
-              font-size: 1rem;
+              font-size: 1.2rem !important;
               font-weight: 500;
-              text-transform: lowercase;
+              // text-transform: lowercase;
             }
             ._btn {
               font-family: "${variables.f2} !important";
@@ -203,5 +151,14 @@ export const getServerSideProps = async () => {
       business: true,
     },
   });
-  return { props: { vehicles } };
+  const _vehicles = [
+    ...vehicles.map((vehicle) => ({
+      ...vehicle,
+      doors: vehicle?.features?.doors,
+      fuel: vehicle?.features?.fuel,
+    })),
+  ];
+
+  console.log(_vehicles);
+  return { props: { vehicles: _vehicles } };
 };

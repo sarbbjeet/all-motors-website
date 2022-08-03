@@ -1,4 +1,14 @@
-export const make = ["BMW", "AUDI", "Farari", "Honda", "mahindra", "Ford"];
+export const make = [
+  "BMW",
+  "AUDI",
+  "Farari",
+  "Honda",
+  "mahindra",
+  "Ford",
+  "Range Rover",
+  "Maruti Suzuki",
+  "Mercedes",
+];
 export const color = [
   "white",
   "black",

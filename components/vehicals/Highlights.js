@@ -12,21 +12,29 @@ export default function Highlights({
       <div className="text-muted text_small product_content d-flex flex-wrap">
         {typeof highlights != "undefined" &&
           highlights &&
-          Object.keys(highlights)?.map((key, i) => (
-            <div key={i} className={styles.itemWrapper}>
-              <span className={styles.headerText}>{key}</span>
-              {/* <i className="mb-2 fas fa-calendar-check fa-2x text-muted"></i> */}
-              <span
-                style={{
-                  fontSize: "1rem",
-                  textTransform: "capitalize",
-                  fontWeight: 500,
-                }}
-              >
-                {highlights[key]}
-              </span>
-            </div>
-          ))}
+          Object.keys(highlights)?.map((key, i) => {
+            let keyName = "";
+            if (key.includes("_"))
+              keyName = `${key.split("_")[0]} ${key.split("_")[1]}`;
+
+            return (
+              <div key={i} className={styles.itemWrapper}>
+                <span className={styles.headerText}>
+                  {key.includes("_") ? keyName : key}
+                </span>
+                {/* <i className="mb-2 fas fa-calendar-check fa-2x text-muted"></i> */}
+                <span
+                  style={{
+                    fontSize: "1rem",
+                    textTransform: "capitalize",
+                    fontWeight: 500,
+                  }}
+                >
+                  {highlights[key]}
+                </span>
+              </div>
+            );
+          })}
 
         {/* <div className="itemWrapper">
           <i className="mb-2 fas fa-paint-brush fa-2x text-muted"></i>

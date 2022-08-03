@@ -4,20 +4,21 @@ export const initialPicker = (data = {}) =>
   _.pick(data, [
     "make",
     "model",
+    "title",
     "color",
     "image",
     "registration",
     "engine_size",
     "previous_owners",
     "transmission",
-    "decription",
+    "description",
   ]);
 export const featuresPicker = (data = {}) =>
   _.pick(data, [
     "vehicle_type",
     "body_style",
     "mileage",
-    "numberOfCylider",
+    "numberOfCylinders",
     "fuel",
     "yearOfModel",
     "doors",

@@ -71,12 +71,12 @@ export default function Stage2({ state, setState }) {
 
           <div className="col-6 col-lg-3">
             <AppInput
-              name="numberOfCylider"
-              label="Number of Cylinder"
+              name="numberOfCylinders"
+              label="Number of Cylinders"
               type="number"
               optional
-              value={features?.numberOfCylider}
-              error={errors?.features?.numberOfCylider}
+              value={features?.numberOfCylinders}
+              error={errors?.features?.numberOfCylinders}
               onChange={onChangeEvent}
             />
           </div>

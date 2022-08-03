@@ -73,7 +73,17 @@ export default function Stage1({ state, setState }) {
             />
           </div>
 
-          <div className="col-md-6 col-12">
+          <div className="col-md-4 col-12">
+            <AppInput
+              name="title"
+              label="title"
+              onChange={onChangeEvent}
+              placeholder="vehicle name"
+              value={initial?.title}
+              error={errors?.initial?.title}
+            />
+          </div>
+          <div className="col-md-4 col-12">
             <AppSelect
               name="color"
               label="color"
@@ -84,7 +94,7 @@ export default function Stage1({ state, setState }) {
             />
           </div>
 
-          <div className="col-md-6 col-12">
+          <div className="col-md-4 col-12">
             <AppInput
               name="engine_size"
               label="Engine Size"
@@ -133,12 +143,12 @@ export default function Stage1({ state, setState }) {
 
         <div className="col-12 my-3 px-4">
           <AppTextArea
-            name="decription"
+            name="description"
             label="Description"
             placeholder="description"
             onChange={onChangeEvent}
-            value={initial?.decription}
-            error={errors?.initial?.decription}
+            value={initial?.description}
+            error={errors?.initial?.description}
           />
         </div>
       </div>
@@ -183,7 +193,8 @@ export default function Stage1({ state, setState }) {
             content: "";
             width: 100%;
             height: 100%;
-            background: url(${initial?.image || "/images/no-image.jpg"})
+            background: url(${initial?.image?.split("public") ||
+              "/images/no-image.jpg"})
               no-repeat center;
             background-size: cover;
             // position: absolute;
