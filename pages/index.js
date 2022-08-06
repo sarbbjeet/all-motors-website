@@ -53,7 +53,6 @@ export default function Home({ vehicles }) {
 
         <DealMessage />
         {/* <Card /> */}
-
         <LatestCars vehicles={vehicles} />
 
         <Feedback />

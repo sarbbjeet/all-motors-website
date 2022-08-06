@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server.js",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-5000}",
+    "start": "nodemon server.js -H 0.0.0.0 -p ${PORT:-3000} ",
     "lint": "next lint"
   },
   "dependencies": {

@@ -12,8 +12,8 @@ export default function LatestCars({
   desc = "These deals are based on newly added cars that are reasonably priced.",
 }) {
   return (
-    <section className="mt-5 px-3 px-md-5">
-      <header className="text-center py-3">
+    <section className="w-100 mt-5 px-3 px-md-5 row">
+      <header className="col-12 text-center py-3">
         <div className="row justify-content-center">
           <div className="col-md-10 col-lg-8 col-xl-6">
             <h2
@@ -29,17 +29,18 @@ export default function LatestCars({
       </header>
 
       {/* <div className="bg-white pt-5 overflow-hidden"> */}
-      <div className="product_elements list-unstyled text-muted clearfix row">
+      <div className="product_elements list-unstyled text-muted clearfix row col-12 m-0 p-0">
         {/* <div className="row px-md-5 px-2"> */}
         {/* <div className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
         > */}
         {vehicles?.map((car, i) => (
           <CarCard key={i} data={car} />
         ))}
+
         {/* </div> */}
       </div>
 
-      <div className="text-center mb-4">
+      <div className="text-center mb-4 col-12">
         <Link href="/vehicles/search">
           <a className="btnTxt btn btn-lg" title="See more vehicles">
             See more vehicles

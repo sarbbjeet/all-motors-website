@@ -103,6 +103,7 @@ export default async function index(req, res) {
       const {
         query: { id: vehicleId },
       } = req;
+
       //verify is vehicleId is exist or not
       const _vehicleOld = await prisma.Initial.findUnique({
         where: { id: vehicleId },

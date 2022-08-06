@@ -41,12 +41,10 @@ export default function Stage4() {
   const [files, setFiles] = useState([]);
   const [storedImages, setStoredImages] = useState([]);
   const router = useRouter();
-  const {
-    query: { id: vehicleId },
-  } = router;
+  const { query } = router;
 
   useEffect(() => {
-    reloadImages({ setStoredImages, vehicleId });
+    reloadImages({ setStoredImages, vehicleId: query?.id });
   }, []);
 
   //delete image from

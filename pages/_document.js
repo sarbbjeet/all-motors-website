@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
           <Script src="/assets/_js/compare.js async" />
           <Script src="/assets/plugins/slick/slick.min.js async" /> */}
 
-          <link rel="stylesheet" href="/assets/_css/dashboard.css" />
+          {/* <link rel="stylesheet" href="/assets/_css/dashboard.css" /> */}
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>

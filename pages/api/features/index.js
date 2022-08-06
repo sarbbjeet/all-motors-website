@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
+    res.json({ messgae: "helloddd" });
   } else if (req.method === "POST") {
     //create startup setup of vehicles
     try {
@@ -28,8 +29,8 @@ const convertToInt = (data) => {
   let _data = { ...data };
   if (typeof _data?.mileage !== "undefined")
     _data["mileage"] = parseInt(_data["mileage"]);
-  if (typeof _data?.numberOfCylider !== "undefined")
-    _data["numberOfCylider"] = parseInt(_data["numberOfCylider"]);
+  if (typeof _data?.numberOfCylinders !== "undefined")
+    _data["numberOfCylinders"] = parseInt(_data["numberOfCylinders"]);
 
   _data["yearOfModel"] = parseInt(_data["yearOfModel"]);
   return _data;
@@ -40,7 +41,7 @@ const validation = async (data) => {
     vehicle_type: Joi.string().max(40).required(),
     body_style: Joi.string().max(40).required(),
     mileage: Joi.number().min(0),
-    numberOfCylider: Joi.number().min(0),
+    numberOfCylinders: Joi.number().min(0),
     fuel: Joi.string().max(40).required(),
     yearOfModel: Joi.number().min(1950).required(),
     doors: Joi.number().min(1).max(10).required(),
