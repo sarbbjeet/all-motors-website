@@ -193,8 +193,9 @@ export default function Stage1({ state, setState }) {
             content: "";
             width: 100%;
             height: 100%;
-            background: url(${initial?.image?.split("public")[0] ||
-              "/images/no-image.jpg"})
+            background: url(${initial?.image
+                ? `/store/${initial?.image}`
+                : "/images/no-image.jpg"})
               no-repeat center;
             background-size: cover;
             // position: absolute;
