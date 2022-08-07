@@ -2,7 +2,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import { f2 as ff } from "../../../styles/variables.module.scss";
-
+import styled from "styled-components";
+const CardImage = styled.div`
+  background: url(${(props) => props.image}) no-repeat center center;
+  background-size: contain;
+  height: 100%;
+  //height: 250px;
+`;
 export default function AppImage({
   id,
   deleteEvent,
@@ -17,7 +23,8 @@ export default function AppImage({
       onMouseOver={() => setImageHover(id)}
       onMouseOut={() => setImageHover(-1)}
     >
-      <Image alt="car-" src={image} layout="fill" priority />
+      <CardImage image={image} />
+      {/* <Image alt="car-" src={`${image}`} layout="fill" priority /> */}
       {id == imageHover && (
         <div className="trash">
           <i
@@ -56,6 +63,7 @@ export default function AppImage({
           .trash {
             position: absolute !important;
             z-index: 101;
+            top: 0;
             width: 100%;
             height: 100%;
             color: red;

@@ -36,7 +36,7 @@ export default async function Gallery(req, res) {
         throw new Error("error uploading images");
       const _images = [];
       for (let file of data?.images)
-        _images.push({ vehicleId: id, image: file });
+        _images.push({ vehicleId: id, image: file?.split("public")[1] });
       const response = await prisma.ImageGallery.createMany({
         data: _images,
         skipDuplicates: true, // Skip 'Bobo'
@@ -55,7 +55,7 @@ export default async function Gallery(req, res) {
         where: { id: image_id },
       });
       if (!_oldImage) throw new Error("image not available");
-      fs.unlink(_oldImage?.image, () => {});
+      fs.unlink(`public/${_oldImage?.image}`, () => {});
       res.json({ data: _oldImage });
     } catch (err) {
       return res.status(404).json({ error: err.message });

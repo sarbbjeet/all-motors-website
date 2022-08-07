@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Arrow from "./Arrow";
 import Slider from "./Slider";
 import HeaderText from "./HeaderText";
-import Image from "next/image";
+import styled from "styled-components";
 
+const CardImage = styled.div`
+  background: url(${(props) => props.image}) no-repeat center center;
+  background-size: cover;
+  height: 100%;
+`;
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
   const headerProps = {
@@ -26,16 +31,11 @@ export default function Index({ vehicle }) {
           style={{
             backgroundColor: "rgba(0,0,0,0.7)",
             height: "470px",
-            border: "2px solid black",
+            // border: "2px solid black",
           }}
-          className="col-lg-7 col-12 position-relative order-0"
+          className="col-lg-7 col-12 position-relative order-0 p-0 m-0"
         >
-          <Image
-            alt="car-"
-            src={(slides[selectedIndex]?.image).split("public")[1]}
-            layout="fill"
-            priority
-          />
+          <CardImage image={`/store/${slides[selectedIndex]?.image}`} />
           <Arrow direction="left" handleClick={changeImage} />
           <Arrow direction="right" handleClick={changeImage} />
 

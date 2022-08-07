@@ -22,7 +22,8 @@ export default function CarCard({ data, _id }) {
           className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded"
           title="Vehicles Datails"
         >
-          <CardImage image={data?.image} />
+          {/* access from custom store express route */}
+          <CardImage image={`store/${data?.image}`} />
 
           {/* <span className="product_brand position-absolute bg-white shadow-sm rounded-circle p-1">
               <Image

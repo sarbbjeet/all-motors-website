@@ -114,7 +114,7 @@ export default async function index(req, res) {
         convertToInt(await uploadImage(req, res, "image", validation, false))
       );
       //delete image from file system before insert new image
-      fs.unlink(_vehicleOld?.image, () => {});
+      fs.unlink(`public/${_vehicleOld?.image}`, () => {});
       //initial --update
       const vehicle = await prisma.Initial.update({
         where: { id: vehicleId },

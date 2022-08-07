@@ -42,7 +42,7 @@ export default function VehicleCard({ data }) {
   return (
     <article className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4" id="vehicles">
       <div className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded">
-        <CardImage image={data?.image} />
+        <CardImage image={`/store/${data?.image}`} />
         <header className="mx-2">
           <span
             className="d-flex align-items-center px-4  border-top text-muted bg-light mb-0"

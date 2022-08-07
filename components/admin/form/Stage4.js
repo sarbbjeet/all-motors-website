@@ -19,7 +19,7 @@ const reloadImages = async ({ setStoredImages, vehicleId }) => {
       setStoredImages(
         response.map(({ id, image }) => ({
           id,
-          image: image.split("public")[1],
+          image,
         }))
       );
   } catch (err) {
@@ -41,10 +41,12 @@ export default function Stage4() {
   const [files, setFiles] = useState([]);
   const [storedImages, setStoredImages] = useState([]);
   const router = useRouter();
-  const { query } = router;
+  const {
+    query: { id: vehicleId },
+  } = router;
 
   useEffect(() => {
-    reloadImages({ setStoredImages, vehicleId: query?.id });
+    reloadImages({ setStoredImages, vehicleId });
   }, []);
 
   //delete image from
@@ -149,7 +151,8 @@ export default function Stage4() {
               storedImages.map(({ id, image }, i) => (
                 <AppImage
                   key={i}
-                  image={image}
+                  // custom express image route
+                  image={`/store/${image}`}
                   id={id}
                   dimension={{ width: "340px", height: "250px" }}
                   deleteEvent={deleteEvent}
