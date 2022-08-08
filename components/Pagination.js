@@ -7,7 +7,7 @@ export default function Pagination({
   pageLimit = 3,
   dataLimit = 6,
 }) {
-  const [pages] = useState(Math.round(data.length / dataLimit));
+  const [pages] = useState(Math.round(data?.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
   const goToNextPage = () => {
@@ -24,7 +24,7 @@ export default function Pagination({
   const getPaginatedData = () => {
     const startIndex = currentPage * dataLimit - dataLimit;
     const endIndex = startIndex + dataLimit;
-    return data.slice(startIndex, endIndex);
+    return data?.slice(startIndex, endIndex);
   };
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
@@ -34,7 +34,7 @@ export default function Pagination({
   return (
     <div className="w-100">
       <div className="w-100 row p-0 m-0" style={{ minHeight: "500px" }}>
-        {getPaginatedData().map((d, idx) => (
+        {getPaginatedData()?.map((d, idx) => (
           <RenderComponent key={idx} data={d} />
         ))}
       </div>

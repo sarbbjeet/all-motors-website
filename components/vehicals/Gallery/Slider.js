@@ -35,28 +35,30 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
   }, []);
   return (
     <div style={styles.sliderContainer}>
-      <Slide
-        ref={sliderRef}
-        slidesToScroll={2}
-        slidesToShow={width > 900 ? 7 : 4}
-        indicators={true}
-      >
-        {slides?.map((s, i) => (
-          <div
-            className={stylesExt.imageItem}
-            key={i}
-            style={{ ...styles.imageItem }}
-            onClick={() => handleEvent(i)}
-          >
-            <CardImage image={`/store/${s?.image}`} />
+      {slides?.length > 0 && (
+        <Slide
+          ref={sliderRef}
+          slidesToScroll={2}
+          slidesToShow={width > 900 ? 7 : 4}
+          indicators={true}
+        >
+          {slides?.map((s, i) => (
             <div
-              className={`${stylesExt.shild} ${
-                i == selectedIndex && stylesExt.activeImage
-              }`}
-            ></div>
-          </div>
-        ))}
-      </Slide>
+              className={stylesExt.imageItem}
+              key={i}
+              style={{ ...styles.imageItem }}
+              onClick={() => handleEvent(i)}
+            >
+              <CardImage image={`/store/${s?.image}`} />
+              <div
+                className={`${stylesExt.shild} ${
+                  i == selectedIndex && stylesExt.activeImage
+                }`}
+              ></div>
+            </div>
+          ))}
+        </Slide>
+      )}
       <div className="frameToHide" />
 
       <style jsx>
@@ -92,6 +94,7 @@ const styles = {
     transition: "all 0.5s",
   },
   sliderContainer: {
+    minHeight: "180px !important",
     backgroundColor: "rgba(0, 0, 0, 0.9)",
     padding: "0!important",
     margin: "0 !important",

@@ -40,6 +40,7 @@ export default function Stage4() {
   const [ssr, setSSR] = useState(false);
   const [files, setFiles] = useState([]);
   const [storedImages, setStoredImages] = useState([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     query: { id: vehicleId },
@@ -66,9 +67,11 @@ export default function Stage4() {
   // publish images
   const publishEvent = async (e) => {
     e.preventDefault();
+
     if (!files.length > 0)
       return alert("Error: " + " --no image to publish-- ");
     //const inputElement = document.getElementById("image");
+    setLoading(true);
     const formData = new FormData();
     //send multiple files with same key
     //convert back dataURl to Blob
@@ -85,6 +88,7 @@ export default function Stage4() {
       const error_text = await response
         .text()
         .then((text) => JSON.parse(text).error);
+      setLoading(false);
       //console.log(response.text());
       return alert("Error: " + `${error_text}`);
     }
@@ -92,6 +96,7 @@ export default function Stage4() {
     SuccessAlert.current.style.display = "block";
     setFiles([]);
     reloadImages({ setStoredImages, vehicleId });
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -133,10 +138,12 @@ export default function Stage4() {
             </div>
             <DropImages files={files} setFiles={setFiles} />
             <button
+              disabled={loading}
               type="submit"
               onClick={publishEvent}
               className="upload-btn btn btn-primary float-right"
             >
+              {loading && <i className="fas fa-spinner mx-1" />}
               Publish
             </button>
           </div>
@@ -206,6 +213,7 @@ export default function Stage4() {
             padding: 5px;
             width: 150px;
             margin: 5px 0;
+            background-color: ${loading && "gray"}!important;
           }
           .alert {
             display: none;

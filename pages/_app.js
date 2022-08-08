@@ -3,31 +3,40 @@ import "../public/assets/plugins/slick/slick.min.css";
 import "../public/assets/fonts/fontawesome-free/css/all.min.css";
 
 // import "../public/assets/_css/dashboard.css";
-import variables from "../styles/variables.module.scss";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../styles/globals.css";
-import Layout from "../components/Layout";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Script from "next/script";
 
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+//import { ThemeProvider } from "@mui/material/styles";
+//import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
-import theme from "../src/theme";
+//import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
-import { height } from "@mui/system";
+
+import { wrapper } from "../store/store";
+import { Provider } from "react-redux";
+
 // import "../scss/custom.scss";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+import Router from "next/router";
 
-import { useRouter } from "next/router";
+// progress bar
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
 
-export default function MyApp(props) {
+//Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
+function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const router = useRouter();
+
   React.useEffect(() => {
     import("slick-carousel");
     import("../public/assets/plugins/slick/slick.min.js");
@@ -42,12 +51,13 @@ export default function MyApp(props) {
   }, []);
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-
-        <Component {...pageProps} />
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}> */}
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      {/* <CssBaseline /> */}
+      {/* <Provider store={store}> */}
+      <Component {...pageProps} />
+      {/* </Provider> */}
+      {/* </ThemeProvider> */}
 
       {/* add script used in  */}
 
@@ -69,3 +79,5 @@ MyApp.propTypes = {
   emotionCache: PropTypes.object,
   pageProps: PropTypes.object.isRequired,
 };
+
+export default wrapper.withRedux(MyApp);

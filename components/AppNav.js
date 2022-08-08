@@ -61,28 +61,34 @@ export default function AppNav() {
                     className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     href="#"
                   >
-                    Purchase Cars
+                    Approved Vehicles
                   </a>
-                  <ul className="list-unstyled position-absolute slow_3s shadow-8dp">
+                  <ul
+                    style={{
+                      minWidth: "250px !important",
+                      backgroundColor: "rgba(0, 0, 0,0.9)",
+                    }}
+                    className="list-unstyled position-absolute slow_3s shadow-8dp"
+                  >
                     <li className="w-100">
                       <Link href="/vehicles/search">
                         <a
                           className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
-                          <i className="fas fa-chevron-right mr-2"></i> Search
-                          Vehicles
+                          <i className="fas fa-chevron-right mr-2"></i> Approved
+                          Cars
                         </a>
                       </Link>
                     </li>
                     <li className="w-100">
-                      <Link href="/vehicles/compare">
+                      <Link href="/vehicles/search">
                         <a
                           className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
-                          <i className="fas fa-chevron-right mr-2"></i> Compare
-                          Vehicles
+                          <i className="fas fa-chevron-right mr-2"></i> Approved
+                          Vans
                         </a>
                       </Link>
                     </li>

@@ -27,8 +27,9 @@ const dataURItoBlob = async (dataURI) => {
     });
 };
 
-const onPublishEvent = async (data, router) => {
+const onPublishEvent = async (data, setState, router) => {
   try {
+    setState({ ...data, loading: true });
     const {
       query: { id },
     } = router;
@@ -47,12 +48,13 @@ const onPublishEvent = async (data, router) => {
       body: formData,
     }).then(async (response) => {
       const jsonData = await JSON.parse(await response.text());
-      console.log(jsonData);
       if (response.status != 200) throw jsonData;
       //successfully published vehicle
-      setTimeout(() => router.push("/admin/vehicles"), 1000);
+      router.push("/admin/vehicles");
+      setState({ ...data, loading: false });
     });
   } catch (err) {
+    setState({ ...data, loading: false });
     alert(`Error: ${err.error || "unknown server error"}`);
   }
 };
@@ -67,6 +69,7 @@ export default function Register({ vehicle }) {
     features: {},
     business: {},
     errors: {}, //pass all validation error of
+    loading: false,
   });
 
   useEffect(() => {
@@ -129,7 +132,7 @@ export default function Register({ vehicle }) {
               setState={setState}
               currentStage={currentStage}
               changeStageEvent={(stage) => setCurrentStage(stage)}
-              onPublishEvent={() => onPublishEvent(state, router)}
+              onPublishEvent={() => onPublishEvent(state, setState, router)}
             >
               {displayStage(currentStage)}
             </Indicator>

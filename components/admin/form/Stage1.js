@@ -38,7 +38,7 @@ export default function Stage1({ state, setState }) {
               onChangeEvent({
                 target: {
                   name: "image",
-                  value: URL.createObjectURL(e?.target?.files[0]),
+                  value: URL?.createObjectURL(e?.target?.files[0]),
                 },
               });
               //setImage_file(URL.createObjectURL(e.target.files[0]));
@@ -193,9 +193,9 @@ export default function Stage1({ state, setState }) {
             content: "";
             width: 100%;
             height: 100%;
-            background: url(${initial?.image
+            background: url(${initial?.image?.startsWith("/")
                 ? `/store/${initial?.image}`
-                : "/images/no-image.jpg"})
+                : `${initial?.image || "/images/no-image.jpg"}`})
               no-repeat center;
             background-size: cover;
             // position: absolute;

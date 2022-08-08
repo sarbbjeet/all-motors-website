@@ -47,7 +47,6 @@ export default function Indicator({
       gallery: {},
     };
     const { error } = Joi.validate(state[key], schema[key]);
-    console.log("error=", error);
     if (error) {
       const { path, message } = error.details[0];
       setState({ ...state, errors: { [key]: { [`${path[0]}`]: message } } });
@@ -91,10 +90,12 @@ export default function Indicator({
           Next
         </button>
         <button
+          disabled={state.loading}
           type="button"
           onClick={onPublishEvent}
-          className={`next ${numberOfStages - 1 > currentStage && "d-none"}`}
+          className={`pub ${numberOfStages - 1 > currentStage && "d-none"}`}
         >
+          {state.loading && <i className="fas fa-spinner mx-1" />}
           Publish
         </button>
       </div>
@@ -220,6 +221,9 @@ export default function Indicator({
         }
         button.next {
           background-color: ${secondary};
+        }
+        button.pub {
+          background-color: ${state.loading ? "gray" : secondary};
         }
 
         button.prev {

@@ -25,6 +25,7 @@ export const fCars = (cars) => {
   filterObj.forEach(({ key }, i) => {
     cars?.forEach((car) => {
       //apply filter
+
       car = applyFilter(car, key);
       if (car) {
         cObj[key] = {

@@ -11,7 +11,15 @@ import VehicleItems from "../../../components/vehicals/VehicleItems";
 import { f2 as ff } from "../../../styles/variables.module.scss";
 import Pagination from "../../../components/Pagination";
 
-export default function Handler({ vehicles }) {
+import { useSelector, useDispatch } from "react-redux";
+import {
+  vehiclesAdded,
+  changeFilterKey,
+} from "../../../store/slice/filtersSlice";
+import { wrapper } from "../../../store/store";
+export default function Handler() {
+  const { vehicles, filtered_data, filterOptionsGroup, filterKeySelector } =
+    useSelector((state) => state.filters);
   const [adSearch, setAdSearch] = useState(false);
   const [filteredVehicles, setFilteredVehicles] = useState(vehicles);
   return (
@@ -23,7 +31,7 @@ export default function Handler({ vehicles }) {
             <SideFilter
               data={vehicles}
               setFilteredVehicles={setFilteredVehicles}
-              filterEvent={(state) => setAdSearch(state)}
+              // filterEvent={(state) => setAdSearch(state)}
             />
           </div>
 
@@ -42,7 +50,7 @@ export default function Handler({ vehicles }) {
               <div className={`text col-auto text-dark`}>
                 Total vehicles find is:
                 <span className="text text-success ml-2">
-                  {vehicles?.length}
+                  {filteredVehicles?.length}
                 </span>
               </div>
 
@@ -144,7 +152,27 @@ export default function Handler({ vehicles }) {
   );
 }
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   //const dispatch = useDispatch();
+
+//   const vehicles = await prisma.Initial.findMany({
+//     include: {
+//       features: true,
+//       business: true,
+//     },
+//   });
+//   const _vehicles = [
+//     ...vehicles.map((vehicle) => ({
+//       ...vehicle,
+//       doors: vehicle?.features?.doors,
+//       fuel: vehicle?.features?.fuel,
+//     })),
+//   ];
+
+//   return { props: { vehicles: _vehicles } };
+// };
+
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   const vehicles = await prisma.Initial.findMany({
     include: {
       features: true,
@@ -158,7 +186,8 @@ export const getServerSideProps = async () => {
       fuel: vehicle?.features?.fuel,
     })),
   ];
+  //vehicles list added to redux store
+  store.dispatch(vehiclesAdded({ vehicles: _vehicles }));
 
-  console.log(_vehicles);
   return { props: { vehicles: _vehicles } };
-};
+});

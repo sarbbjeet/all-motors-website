@@ -1,8 +1,10 @@
 const bannerImages = [
-  "/images/new-images/car1.jpg",
-  "/images/new-images/car2.jpg",
+  "/images/banner1.jpg",
+  "/images/new-images/car4.jpg",
   "/images/new-images/car5.jpg",
   "/images/new-images/car6.jpg",
+  "/images/new-images/car7.jpg",
+  "/images/new-images/car8.jpg",
 ];
 
 const latestCars = [

@@ -23,7 +23,7 @@ export default function CarCard({ data, _id }) {
           title="Vehicles Datails"
         >
           {/* access from custom store express route */}
-          <CardImage image={`store/${data?.image}`} />
+          <CardImage image={`/store/${data?.image}`} />
 
           {/* <span className="product_brand position-absolute bg-white shadow-sm rounded-circle p-1">
               <Image

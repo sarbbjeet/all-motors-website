@@ -9,7 +9,7 @@ export default function Finance() {
           <header
             className="text-center bg_parallax bg-white"
             style={{
-              background: `url(/images/new-images/bmw1.jpg) no-repeat center`,
+              background: `url(/images/bac2.jpeg) no-repeat center`,
               // height: "300px",
               backgroundSize: "cover",
               backgroundAttachment: "fixed",
