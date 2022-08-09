@@ -13,8 +13,20 @@ import getDeviceSize from "../utils/getDeviceSize";
 
 import { prisma } from "../database/prisma";
 
-export default function Home({ vehicles }) {
+import { useSelector, useDispatch } from "react-redux";
+import { vehiclesAdded, applyFilter } from "../store/slice/filtersSlice";
+import { wrapper } from "../store/store";
+import { useEffect } from "react";
+
+export default function Home() {
   let { width } = getDeviceSize();
+  const dispatch = useDispatch();
+  const { vehicles } = useSelector((state) => state.filters);
+
+  useEffect(() => {
+    //applyFilter
+    dispatch(applyFilter());
+  }, []);
   return (
     <Layout>
       <main className={styles.main} style={{ position: "relative", zIndex: 1 }}>
@@ -63,12 +75,23 @@ export default function Home({ vehicles }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   const vehicles = await prisma.Initial.findMany({
     include: {
       features: true,
       business: true,
     },
   });
-  return { props: { vehicles } };
-};
+  const _vehicles = [
+    ...vehicles.map((vehicle) => ({
+      ...vehicle,
+      doors: vehicle?.features?.doors,
+      fuel: vehicle?.features?.fuel,
+      vehicle_type: vehicle?.features?.vehicle_type,
+    })),
+  ];
+  //vehicles list added to redux store
+  store.dispatch(vehiclesAdded(_vehicles));
+
+  return { props: { vehicles: _vehicles } };
+});

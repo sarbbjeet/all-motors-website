@@ -1,27 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToggleSwitch from "../ToogleSwitch";
 import styles from "../../styles/SideFilter.module.scss";
-import {
-  fCars,
-  dropEvent,
-  filterObj as filters,
-} from "../../utils/filterOptionsGroup";
-
-export default function SideFilter({ filterEvent, data, setFilteredVehicles }) {
-  const filteredVehicles = () => {
-    setFilteredVehicles(
-      data.filter((d) => {
-        let found = true;
-        filters?.forEach((c) => {
-          if (found && c["value"] != null && d[`${c?.key}`] != c?.value)
-            found = false;
-        });
-        return found;
-      })
-    );
-  };
-
-  const [optionsObj, setOptionsObj] = useState(fCars(data));
+import { useDispatch, useSelector } from "react-redux";
+import AppFilterSelect from "../AppFilterSelect";
+export default function SideFilter({ filterEvent }) {
+  const dispatch = useDispatch();
+  const { filterKeysValues } = useSelector((state) => state.filters);
 
   return (
     <>
@@ -50,24 +34,14 @@ export default function SideFilter({ filterEvent, data, setFilteredVehicles }) {
               encType="multipart/form-data"
             >
               <h2 className={styles.title}>Advanced Filter</h2>
-              {filters.map((filter, i) => (
-                <select
+              {filterKeysValues.map((filter, i) => (
+                <AppFilterSelect
+                  disabled={
+                    i == 2 && filterKeysValues[0]?.value == null && true
+                  }
+                  filter={filter}
                   key={i}
-                  name={filter["key"]}
-                  className={styles.select}
-                  onChange={({ target }) => {
-                    setOptionsObj(dropEvent(target, data));
-                    filteredVehicles();
-                  }}
-                >
-                  <option key="a">Any {filter["key"]}</option>
-                  {filter["key"] in optionsObj &&
-                    Object.keys(optionsObj[`${filter?.key}`]).map((k, i) => (
-                      <option key={i}>{`${k} (${
-                        optionsObj[`${filter?.key}`][k]
-                      })`}</option>
-                    ))}
-                </select>
+                />
               ))}
 
               {/* <div className="my-2 d-flex justify-content-center align-items-center">

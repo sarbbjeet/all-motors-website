@@ -18,10 +18,12 @@ const masterReducer = (state, action) => {
       //   ...state.filters,
       //   vehicles: action.payload.filters.vehicles,
       // },
-      filters: action.payload.filters,
+      filters: { ...state.filters, vehicles: action.payload.filters?.vehicles },
     };
     //  return { ...state, vehicles: action.payload.filters.vehicles};
-  } else return combineReducer(state, action);
+  } else {
+    return combineReducer(state, action);
+  }
 };
 
 export const makeStore = () =>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import BasicSearch from "../../../components/BasicSearch";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import CarCard from "../../../components/CarCard";
 import SideFilter from "../../../components/vehicals/SideFilter";
 import { prisma } from "../../../database/prisma";
@@ -14,24 +14,40 @@ import Pagination from "../../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import {
   vehiclesAdded,
+  applyFilter,
   changeFilterKey,
 } from "../../../store/slice/filtersSlice";
 import { wrapper } from "../../../store/store";
-export default function Handler() {
-  const { vehicles, filtered_data, filterOptionsGroup, filterKeySelector } =
-    useSelector((state) => state.filters);
+import MobileFilter from "../../../components/vehicals/MobileFilter";
+export default function Handler({ query }) {
+  const { vehicles, filtered_data } = useSelector((state) => state.filters);
   const [adSearch, setAdSearch] = useState(false);
-  const [filteredVehicles, setFilteredVehicles] = useState(vehicles);
+  const dispatch = useDispatch();
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  useEffect(() => {
+    if (Object.keys(query).length > 0)
+      dispatch(
+        changeFilterKey({
+          key: "vehicle_type",
+          value: capitalizeFirstLetter(query?.vehicle_type),
+        })
+      );
+    dispatch(applyFilter());
+  }, [query?.vehicle_type]);
+  //const [filteredVehicles, setFilteredVehicles] = useState(vehicles);
   return (
     <Layout>
       <main className="bg-light">
         {/* <div className="bg-light p-0 pt-4 m-0"> */}
         <div className="row m-0 p-0 pt-5">
-          <div className="col-lg-3 p-0 px-2">
+          <div className="col-lg-3 p-0 px-lg-2">
             <SideFilter
               data={vehicles}
-              setFilteredVehicles={setFilteredVehicles}
-              // filterEvent={(state) => setAdSearch(state)}
+              // setFilteredVehicles={setFilteredVehicles}
+              filterEvent={(state) => setAdSearch(state)}
             />
           </div>
 
@@ -50,7 +66,7 @@ export default function Handler() {
               <div className={`text col-auto text-dark`}>
                 Total vehicles find is:
                 <span className="text text-success ml-2">
-                  {filteredVehicles?.length}
+                  {filtered_data?.length}
                 </span>
               </div>
 
@@ -80,25 +96,12 @@ export default function Handler() {
               </div>
             </div>
             <div className="row p-0 m-0 mt-1 col-12 shadow-sm justify-content-content pt-5 bg-white">
-              <Pagination data={filteredVehicles} RenderComponent={CarCard} />
+              <Pagination data={filtered_data} RenderComponent={CarCard} />
             </div>
           </div>
         </div>
 
-        <div
-          className={`d-lg-none ${adSearch ? "" : "d-none"}`}
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "fixed",
-            zIndex: 9,
-            backgroundColor: "#ddd",
-            top: 0,
-            left: 0,
-          }}
-        >
-          <BasicSearch closeBtn={(state) => setAdSearch(state)} />
-        </div>
+        <MobileFilter hidden={!adSearch} setHidden={setAdSearch} />
 
         <style jsx>
           {`
@@ -152,42 +155,28 @@ export default function Handler() {
   );
 }
 
-// export const getServerSideProps = async () => {
-//   //const dispatch = useDispatch();
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ query }) => {
+      const vehicles = await prisma.Initial.findMany({
+        include: {
+          features: true,
+          business: true,
+        },
+      });
 
-//   const vehicles = await prisma.Initial.findMany({
-//     include: {
-//       features: true,
-//       business: true,
-//     },
-//   });
-//   const _vehicles = [
-//     ...vehicles.map((vehicle) => ({
-//       ...vehicle,
-//       doors: vehicle?.features?.doors,
-//       fuel: vehicle?.features?.fuel,
-//     })),
-//   ];
+      const _vehicles = [
+        ...vehicles.map((vehicle) => ({
+          ...vehicle,
+          doors: vehicle?.features?.doors,
+          fuel: vehicle?.features?.fuel,
+          vehicle_type: vehicle?.features?.vehicle_type,
+        })),
+      ];
+      //vehicles list added to redux store
+      store.dispatch(vehiclesAdded(_vehicles));
+      //apply filter
 
-//   return { props: { vehicles: _vehicles } };
-// };
-
-export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  const vehicles = await prisma.Initial.findMany({
-    include: {
-      features: true,
-      business: true,
-    },
-  });
-  const _vehicles = [
-    ...vehicles.map((vehicle) => ({
-      ...vehicle,
-      doors: vehicle?.features?.doors,
-      fuel: vehicle?.features?.fuel,
-    })),
-  ];
-  //vehicles list added to redux store
-  store.dispatch(vehiclesAdded({ vehicles: _vehicles }));
-
-  return { props: { vehicles: _vehicles } };
-});
+      return { props: { vehicles: _vehicles, query } };
+    }
+);

@@ -1,3 +1,38 @@
+export const workshop_list = [
+  {
+    image: "/images/icons/service.png",
+    name: "General Repair",
+  },
+  {
+    image: "/images/icons/clutches.png",
+    name: "Clutches",
+  },
+  {
+    image: "/images/icons/transmission.png",
+    name: "Transmission",
+  },
+  {
+    image: "/images/icons/engine.png",
+    name: "Engine Rebuild",
+  },
+  {
+    image: "/images/icons/suspension.png",
+    name: "Suspension",
+  },
+  {
+    image: "/images/icons/brake.png",
+    name: "Brakes",
+  },
+  {
+    image: "/images/icons/mot.png",
+    name: "Mot",
+  },
+  {
+    image: "/images/icons/welding.png",
+    name: "Welding",
+  },
+];
+
 const bannerImages = [
   "/images/banner1.jpg",
   "/images/new-images/car4.jpg",

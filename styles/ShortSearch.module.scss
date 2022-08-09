@@ -31,14 +31,15 @@
 .select {
   width: 100%;
   height: 100%;
-  border: 0;
-  font-family: "Baloo Bhai 2", cursive;
+  margin: 0 !important;
+  border: none !important;
+  font-family: $f2 !important;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 600 !important;
   text-transform: capitalize;
   border-radius: 5px;
   color: $gray-2;
-  border-right: 2px solid $gray-1;
+  border-right: 2px solid $gray-1 !important;
 }
 .title {
   font-family: "Baloo Bhai 2", cursive;

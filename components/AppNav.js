@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import BasicSearch from "./BasicSearch";
 import ContactHeader from "./ContactHeader";
 import { colors } from "../utils/constants";
 import styled from "styled-components";
 import styles from "../styles/AppNav.module.scss";
+import { f2 as ff } from "../styles/variables.module.scss";
 
 import { primary } from "../styles/variables.module.scss";
+import MobileFilter from "./vehicals/MobileFilter";
 
+import { workshop_list } from "../utils/variables";
 const Wrapper = styled.div``;
+
 export default function AppNav() {
   const [browse, setBrowse] = useState(false);
   return (
@@ -50,6 +53,7 @@ export default function AppNav() {
                 <li className="float-left position-relative mx-2">
                   <Link title="" href="/">
                     <a
+                      href="/"
                       className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     >
                       Home
@@ -65,30 +69,63 @@ export default function AppNav() {
                   </a>
                   <ul
                     style={{
-                      minWidth: "250px !important",
                       backgroundColor: "rgba(0, 0, 0,0.9)",
+                      left: "50%",
+                      top: "100%",
                     }}
                     className="list-unstyled position-absolute slow_3s shadow-8dp"
                   >
                     <li className="w-100">
-                      <Link href="/vehicles/search">
+                      <Link href="/vehicles/search?vehicle_type=car">
                         <a
                           className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
-                          <i className="fas fa-chevron-right mr-2"></i> Approved
-                          Cars
+                          <div
+                            style={{ whiteSpace: "nowrap" }}
+                            className="d-flex align-items-center"
+                          >
+                            <Image
+                              src="/images/icons/car (1).png"
+                              width="40px"
+                              height="40px"
+                              objectFit="center"
+                              color="white"
+                            />
+                            <span
+                              style={{ marginLeft: "10px", fontSize: "1rem" }}
+                            >
+                              Used Cars
+                            </span>
+                          </div>
                         </a>
                       </Link>
                     </li>
                     <li className="w-100">
-                      <Link href="/vehicles/search">
+                      <Link href="/vehicles/search?vehicle_type=van">
                         <a
                           className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
                           title=""
                         >
-                          <i className="fas fa-chevron-right mr-2"></i> Approved
-                          Vans
+                          <div
+                            style={{ whiteSpace: "nowrap" }}
+                            className="d-flex align-items-center"
+                          >
+                            <Image
+                              src="/images/icons/van.png"
+                              width="35px"
+                              height="35px"
+                              color="white"
+                            />
+                            <span
+                              style={{ marginLeft: "10px", fontSize: "1rem" }}
+                            >
+                              Used Vans
+                            </span>
+                          </div>
+
+                          {/* <i className="fas fa-chevron-right mr-2"></i> Approved
+                          Vans */}
                         </a>
                       </Link>
                     </li>
@@ -110,30 +147,37 @@ export default function AppNav() {
                     className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     href="#"
                   >
-                    Services
+                    Workshop
                   </a>
-                  <ul className="list-unstyled position-absolute slow_3s shadow-8dp">
-                    <li className="w-100">
-                      <Link href="/services/sellcars">
-                        <a
-                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
-                          title=""
-                        >
-                          <i className="fas fa-chevron-right mr-2"></i> Sell Car
-                        </a>
-                      </Link>
-                    </li>
-                    <li className="w-100">
-                      <Link href="/services/parts">
-                        <a
-                          className={`${styles.linkFont} btn btn-dark w-100 text-left py-3`}
-                          title=""
-                        >
-                          <i className="fas fa-chevron-right mr-2"></i> Parts
-                          Exchange
-                        </a>
-                      </Link>
-                    </li>
+                  <ul className="overflow-scroll list-unstyled position-absolute slow_3s shadow-8dp">
+                    {workshop_list.map((item, i) => (
+                      <li className="w-100" key={i}>
+                        <Link href={`/workshop?query=${item?.name}`}>
+                          <a
+                            className={`${styles.linkFont} btn btn-dark w-100 text-left py-2`}
+                            title=""
+                          >
+                            <div
+                              style={{ whiteSpace: "nowrap" }}
+                              className="d-flex align-items-center"
+                            >
+                              <Image
+                                src={item?.image}
+                                width="35px"
+                                height="35px"
+                                color="white"
+                              />
+                              <span
+                                style={{ marginLeft: "10px", fontSize: "1rem" }}
+                              >
+                                {item?.name}
+                              </span>
+                            </div>
+                            {/* <i className="fas fa-chevron-right mr-2"></i> {item} */}
+                          </a>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </li>
                 <li className="float-left position-relative has_sub mx-2">
@@ -199,22 +243,14 @@ export default function AppNav() {
               className="d-lg-none text-center"
               onClick={() => setBrowse(!browse)}
             >
-              <span>
+              <span className="search-btn">
                 <i
                   style={{ color: colors.primary }}
                   className="fas fa-search fa-lg"
                 ></i>
+                <br />
+                Filter
               </span>
-              <div
-                style={{
-                  textShadow: "1px 1px rgba(0, 0, 0, 0.1)",
-                  fontSize: "0.9rem",
-                  fontWeight: "400",
-                  color: "#555",
-                }}
-              >
-                Search
-              </div>
             </div>
 
             <div className="d-lg-none">
@@ -227,21 +263,19 @@ export default function AppNav() {
             </div>
           </nav>
         </div>
+
+        <style jsx>
+          {`
+            .search-btn {
+              font-family: ${ff};
+              font-size: 1rem;
+              font-weight: 600;
+              text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            }
+          `}
+        </style>
       </div>
-      <div
-        className={`d-lg-none  ${browse ? "" : "d-none"}`}
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "fixed",
-          zIndex: 10,
-          backgroundColor: "#ddd",
-          top: 0,
-          left: 0,
-        }}
-      >
-        <BasicSearch />
-      </div>
+      <MobileFilter hidden={!browse} setHidden={setBrowse} />
     </Wrapper>
   );
 }

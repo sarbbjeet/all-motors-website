@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import getDeviceSize from "../utils/getDeviceSize";
 import ToggleSwitch from "./ToogleSwitch";
 import styles from "../styles/ShortSearch.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import AppFilterSelect from "./AppFilterSelect";
+import { useRouter } from "next/router";
 
 //get option list accotding to toggle selection
 const PBDropdown = ({ isChecked, obj, style }) => {
@@ -82,6 +85,9 @@ const MobileSearch = ({
 //main function
 export default function ShortSearch({ exStyle }) {
   const [toggleState, setToggleState] = useState(0);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { filterKeysValues } = useSelector((state) => state.filters);
 
   const optionsObj = {
     price: {
@@ -128,42 +134,28 @@ export default function ShortSearch({ exStyle }) {
       >
         <div className="row">
           <h4 className={`${styles.title} col-md-6 p-1`}>Search Our Stock</h4>
-          <div className="col-md-6 p-1 d-flex align-items-center justify-content-start">
+          {/* <div className="col-md-6 p-1 d-flex align-items-center justify-content-start">
             <h4 className={`${styles.toggleText} px-2`}>Price</h4>
             <ToggleSwitch checked={(isChecked) => setToggleState(isChecked)} />
             <h4 className={`${styles.toggleText} px-2`}>Finance</h4>
-          </div>
+          </div> */}
         </div>
-
         <div
           className="row p-2 bg-white"
           style={{ borderRadius: "5px", height: "70px" }}
         >
           <div className="col-md-3 p-1">
-            <select
+            <AppFilterSelect
               className={styles.select}
-              onChange={({ target: { value } }) => setSelectedCar(value)}
-            >
-              <option>Any make</option>
-              {Object.keys(cars).map((car, i) => (
-                <option key={i} value={car}>
-                  {car}
-                </option>
-              ))}
-            </select>
+              filter={filterKeysValues[0]}
+            />
           </div>
           <div className="col-md-3 p-1">
-            <select
+            <AppFilterSelect
+              disabled={filterKeysValues[0]?.value == null && true}
               className={styles.select}
-              disabled={cars[selectedCar] ? false : true}
-            >
-              <option>Any model</option>
-              {cars[selectedCar]?.map((model, i) => (
-                <option value={model} key={i}>
-                  {model}
-                </option>
-              ))}
-            </select>
+              filter={filterKeysValues[2]}
+            />
           </div>
           <div className="col-md-3 p-1">
             <PBDropdown
@@ -173,7 +165,15 @@ export default function ShortSearch({ exStyle }) {
             />
           </div>
           <div className="px-2 col-md-3 py-1 m-0">
-            <button className={styles.btn}>Search</button>
+            <button
+              className={styles.btn}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/vehicles/search");
+              }}
+            >
+              Search
+            </button>
           </div>
         </div>
       </form>
