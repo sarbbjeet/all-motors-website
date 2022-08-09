@@ -19,8 +19,8 @@ import {
 } from "../../../store/slice/filtersSlice";
 import { wrapper } from "../../../store/store";
 import MobileFilter from "../../../components/vehicals/MobileFilter";
-export default function Handler({ query }) {
-  const { vehicles, filtered_data } = useSelector((state) => state.filters);
+export default function Handler({ query, vehicles }) {
+  const { filtered_data } = useSelector((state) => state.filters);
   const [adSearch, setAdSearch] = useState(false);
   const dispatch = useDispatch();
 
@@ -28,6 +28,9 @@ export default function Handler({ query }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   useEffect(() => {
+    //store vehicles to redux store
+    dispatch(vehiclesAdded(vehicles));
+    //apply query
     if (Object.keys(query).length > 0)
       dispatch(
         changeFilterKey({
@@ -155,28 +158,47 @@ export default function Handler({ query }) {
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query }) => {
-      const vehicles = await prisma.Initial.findMany({
-        include: {
-          features: true,
-          business: true,
-        },
-      });
+export const getServerSideProps = async ({ query }) => {
+  const vehicles = await prisma.Initial.findMany({
+    include: {
+      features: true,
+      business: true,
+    },
+  });
+  const _vehicles = [
+    ...vehicles.map((vehicle) => ({
+      ...vehicle,
+      doors: vehicle?.features?.doors,
+      fuel: vehicle?.features?.fuel,
+      vehicle_type: vehicle?.features?.vehicle_type,
+    })),
+  ];
 
-      const _vehicles = [
-        ...vehicles.map((vehicle) => ({
-          ...vehicle,
-          doors: vehicle?.features?.doors,
-          fuel: vehicle?.features?.fuel,
-          vehicle_type: vehicle?.features?.vehicle_type,
-        })),
-      ];
-      //vehicles list added to redux store
-      store.dispatch(vehiclesAdded(_vehicles));
-      //apply filter
+  return { props: { vehicles: _vehicles, query } };
+};
 
-      return { props: { vehicles: _vehicles, query } };
-    }
-);
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) =>
+//     async ({ query }) => {
+//       const vehicles = await prisma.Initial.findMany({
+//         include: {
+//           features: true,
+//           business: true,
+//         },
+//       });
+
+//       const _vehicles = [
+//         ...vehicles.map((vehicle) => ({
+//           ...vehicle,
+//           doors: vehicle?.features?.doors,
+//           fuel: vehicle?.features?.fuel,
+//           vehicle_type: vehicle?.features?.vehicle_type,
+//         })),
+//       ];
+//       //vehicles list added to redux store
+//       store.dispatch(vehiclesAdded(_vehicles));
+//       //apply filter
+
+//       return { props: { vehicles: _vehicles, query } };
+//     }
+// );
