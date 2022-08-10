@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { f2 as ff } from "../../styles/variables.module.scss";
@@ -52,11 +53,18 @@ export default function Services() {
             >
               <div className="d-flex justify-content-between">
                 <span className="h1">
-                  <i className="far fa-list-alt"></i>
+                  <Image
+                    src="/images/icons/information.png"
+                    alt=""
+                    width="50px"
+                    height="50px"
+                  />
+                  {/* <i className="far fa-list-alt"></i> */}
                 </span>
+
                 <i className="fas fa-chevron-right align-self-center"></i>
               </div>
-              <h4 className="mt-3 text-left h5">Reports</h4>
+              <h4 className="mt-3 text-left h5">Workshop Enquiries</h4>
             </a>
           </Link>
         </div>

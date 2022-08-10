@@ -1,12 +1,29 @@
+import api from "../services/api";
+
 // const auth = (handler) => {
 //   return (req, res) => {
 //     return handler(req, res);
 //   };
 // };
-const auth = (handler) => (req, res) => {
-  req.cookies["authToken"] = "hjskhfkjhsjkdhklsjdlkmnqjoiu029u3908092";
-  if (req.cookies && req.cookies["authToken"]) return handler(req, res);
-  return res.status(400).json({ message: "token not found" });
+
+const extractToken = (req) => {
+  if (
+    req.headers?.authorization &&
+    req.headers?.authorization?.split(" ")[0] === "Bearer"
+  )
+    return req.headers?.authorization.split(" ")[1];
+  return null;
+};
+const auth = (handler) => async (req, res) => {
+  const token = extractToken(req);
+  if (token) {
+    //send token to get user data
+    // axios.defaults.headers.Authorization = `Bearer ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+    const { data: user } = await api.get("/api/user/login");
+    if (user?.data) req.user = user?.data;
+  }
+  return handler(req, res);
 };
 
 export default auth;

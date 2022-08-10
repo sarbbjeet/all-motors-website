@@ -4,14 +4,14 @@ import "react-slideshow-image/dist/styles.css";
 import { bannerImages as images } from "../utils/variables";
 import getDeviceSize from "../utils/getDeviceSize";
 
-const ImageDiv = ({ image }) => (
+const ImageDiv = ({ image, height = "600px" }) => (
   <div>
     <style jsx>
       {`
         div {
           background: url(${image}) no-repeat center white;
           background-size: cover;
-          height: 600px;
+          height: ${height};
           background-attachment: fixed;
         }
       `}
@@ -29,7 +29,7 @@ export default function Banner1() {
           ))}
         </Slide>
       ) : (
-        <ImageDiv image={images[1]} />
+        <ImageDiv image={images[1]} height="450px" />
       )}
     </>
   );

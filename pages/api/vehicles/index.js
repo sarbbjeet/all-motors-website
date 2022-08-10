@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 import _ from "lodash";
 import fs from "fs";
 
+import Cookies from "js-cookie";
 import schema from "../../../validation/schema";
 const { initialSchema, featuresSchema, businessSchema } = schema(false);
 import {
@@ -12,6 +13,7 @@ import {
   featuresPicker,
   initialPicker,
 } from "../../../validation/dataPicker";
+import auth from "../../../middlewars/auth";
 
 //divide key/values per according to database table name
 const dataPicker = (data) => {
@@ -24,9 +26,10 @@ const dataPicker = (data) => {
     business: businessPicker(data),
   };
 };
-export default async function index(req, res) {
+async function handler(req, res) {
   if (req.method === "GET") {
     try {
+      // console.log(req?.user);
       const { query } = req;
       if (!Object.keys(query).length > 0)
         //query not exist return all vehicles
@@ -72,16 +75,18 @@ export default async function index(req, res) {
       res.status(404).json({ error: err.message });
     }
   } else if (req.method === "POST") {
-    //upload single image
     try {
+      //before insert data to database check id user is logged in
+      if (!req?.user) throw new Error("user is not logged in");
+      //upload single image
       const { initial, features, business } = dataPicker(
         convertToInt(await uploadImage(req, res, "image", validation, false))
       );
+
       //initial --insert
       const vehicle = await prisma.Initial.create({
         data: initial,
       });
-      console.log(vehicle);
       //features --insert
       await prisma.Features.create({
         data: { ...features, vehicleId: vehicle.id },
@@ -93,17 +98,18 @@ export default async function index(req, res) {
       res.status(200).json({ data: vehicle });
     } catch (err) {
       if (err instanceof Prisma.PrismaClientKnownRequestError)
-        return res.status(404).json({ error: err.meta.cause });
+        return res.status(401).json({ error: err.meta.cause });
       else if (err instanceof Prisma.PrismaClientValidationError)
-        return res.status(404).json({ error: err.message });
-      res.status(404).json({ error: err.message });
+        return res.status(401).json({ error: err.message });
+      res.status(401).json({ error: err.message });
     }
   } else if (req.method === "PUT") {
     try {
+      //before updating data to database check id user is logged in
+      if (!req?.user) throw new Error("user is not logged in");
       const {
         query: { id: vehicleId },
       } = req;
-
       //verify is vehicleId is exist or not
       const _vehicleOld = await prisma.Initial.findUnique({
         where: { id: vehicleId },
@@ -133,11 +139,14 @@ export default async function index(req, res) {
       res.json({ data: vehicle });
     } catch (err) {
       if (err instanceof Prisma.PrismaClientKnownRequestError)
-        return res.status(404).json({ error: err.meta.cause });
-      res.json({ error: err.message });
+        return res.status(401).json({ error: err.meta.cause });
+      res.status(401).json({ error: err.message });
     }
   } else if (req.method === "DELETE") {
     try {
+      //before deleting data to database check id user is logged in
+      if (!req?.user) throw new Error("user is not logged in");
+
       const {
         query: { id: vehicleId },
       } = req;
@@ -191,7 +200,7 @@ const validation = async (data) => {
   return await schema.validateAsync(data);
 };
 
-//  export default auth(handler);
+export default auth(handler);
 
 export const config = {
   api: {

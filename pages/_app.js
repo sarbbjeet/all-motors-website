@@ -28,6 +28,7 @@ import Router from "next/router";
 // progress bar
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
+import { AuthProvider } from "../components/auth/auth";
 
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -55,7 +56,9 @@ function MyApp(props) {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       {/* <CssBaseline /> */}
       {/* <Provider store={store}> */}
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
       {/* </Provider> */}
       {/* </ThemeProvider> */}
 

@@ -28,41 +28,31 @@ const PBDropdown = ({ isChecked, obj, style }) => {
     </select>
   );
 };
-
 const MobileSearch = ({
+  filterKeysValues,
   toggleState,
   setToggleState,
+  router,
   optionsObj,
-  cars,
-  selectedCar,
-  setSelectedCar,
 }) => {
   return (
     <form className={`${getDeviceSize().width > 768 ? "d-none" : ""}`}>
-      <select
-        className={`${styles.select} w-100 p-2 mb-4`}
-        onChange={({ target: { value } }) => setSelectedCar(value)}
-      >
-        <option>Any make</option>
-        {Object.keys(cars).map((car, i) => (
-          <option key={i} value={car}>
-            {car}
-          </option>
-        ))}
-      </select>
+      <div style={{ marginBottom: "15px" }}>
+        <AppFilterSelect
+          className={`mb-4 ${styles.select} w-100 p-2`}
+          filter={filterKeysValues[0]}
+        />
+      </div>
 
-      <select
-        className={`${styles.select} w-100 p-2 mb-4`}
-        disabled={cars[selectedCar] ? false : true}
-      >
-        <option>Any model</option>
-        {cars[selectedCar]?.map((model, i) => (
-          <option key={i} value={model}>
-            {model}
-          </option>
-        ))}
-      </select>
-      <div
+      <div style={{ marginBottom: "15px" }}>
+        <AppFilterSelect
+          disabled={filterKeysValues[0]?.value == null && true}
+          className={`${styles.select} w-100 p-2 mb-4`}
+          filter={filterKeysValues[2]}
+        />
+      </div>
+
+      {/* <div
         style={{
           maxWidth: "235px",
         }}
@@ -71,13 +61,26 @@ const MobileSearch = ({
         <h4 className={`${styles.toggleText} px-2`}>Price</h4>
         <ToggleSwitch checked={(isChecked) => setToggleState(isChecked)} />
         <h4 className={`${styles.toggleText} px-2`}>Finance</h4>
+      </div> */}
+      <div style={{ marginBottom: "15px" }}>
+        <PBDropdown
+          style={`${styles.select} w-100 p-2 mb-4`}
+          isChecked={toggleState}
+          obj={optionsObj}
+        />
       </div>
-      <PBDropdown
-        style={`${styles.select} w-100 p-2 mb-4`}
-        isChecked={toggleState}
-        obj={optionsObj}
-      />
-      <button className={styles.btn}>Search</button>
+
+      <div style={{ marginTop: "20px" }}>
+        <button
+          className={styles.btn}
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/vehicles/search");
+          }}
+        >
+          Search
+        </button>
+      </div>
     </form>
   );
 };
@@ -102,13 +105,6 @@ export default function ShortSearch({ exStyle }) {
     },
   };
 
-  const cars = {
-    BMW: ["bl-21", "ay90", "c56"],
-    Audi: ["S01", "S02", "S12"],
-    Ford: ["figo", "ford 3600"],
-  };
-  const [selectedCar, setSelectedCar] = useState("");
-
   return (
     <div
       style={{
@@ -120,12 +116,11 @@ export default function ShortSearch({ exStyle }) {
       }}
     >
       <MobileSearch
+        filterKeysValues={filterKeysValues}
         optionsObj={optionsObj}
         toggleState={toggleState}
         setToggleState={setToggleState}
-        cars={cars}
-        selectedCar={selectedCar}
-        setSelectedCar={setSelectedCar}
+        router={router}
       />
       <form
         className={`${getDeviceSize().width < 768 ? "d-none" : ""}`}

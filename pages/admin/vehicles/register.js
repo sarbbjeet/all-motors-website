@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import AdminWrapper from "../../../components/admin/AdminWrapper";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 import Indicator from "../../../components/admin/form/Indicator";
 import Stage1 from "../../../components/admin/form/Stage1";
@@ -42,10 +43,13 @@ const onPublishEvent = async (data, setState, router) => {
         else formData.append(nestedKey, data[key][nestedKey]);
       }
     }
+    //read cookie from browser if available
+    const token = Cookies.get("authToken");
 
     await fetch(`${url}${id ? `?id=${id}` : ""}`, {
       method: `${id ? "PUT" : "POST"}`,
       body: formData,
+      headers: { authorization: `Bearer ${token}` },
     }).then(async (response) => {
       const jsonData = await JSON.parse(await response.text());
       if (response.status != 200) throw jsonData;

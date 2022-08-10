@@ -1,7 +1,9 @@
 import { f1, f2 as ff, f5 } from "../../styles/variables.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "../auth/auth";
 export default function index() {
+  const { user, logout } = useAuth();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
@@ -79,7 +81,7 @@ export default function index() {
                 </Link>
               </div>
             </li>
-            <li className="nav-item dropdown notifications_menu">
+            {/* <li className="nav-item dropdown notifications_menu">
               <a
                 className="nav-link dropdown-toggle position-relative"
                 href="#"
@@ -118,7 +120,7 @@ export default function index() {
                   View notification details
                 </a>
               </div>
-            </li>
+            </li> */}
             <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle"
@@ -129,7 +131,13 @@ export default function index() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Hello <b>Admin!</b>
+                Hello
+                <b>
+                  {" "}
+                  {`${(user?.data?.name)
+                    .charAt(0)
+                    .toUpperCase()}${(user?.data?.name).slice(1)}` || "Admin"}
+                </b>
               </a>
               <div
                 className="dropdown-menu dropdown-menu-right overflow-hidden p-0 overflow-hidden"
@@ -147,23 +155,25 @@ export default function index() {
                   <h5 className="mb-0 mt-2">Admin System</h5>
                   <small>Super Admin (adm)</small>
                 </div>
-                <a
+                {/* <a
                   className="dropdown-item py-3"
                   href="dashboard-profile.html"
                   title="My profile"
                 >
                   <i className="far fa-id-badge mr-2"></i> My profile
-                </a>
+                </a> */}
                 <div className="dropdown-divider"></div>
                 <span
+                  style={{ cursor: "pointer" }}
                   className="dropdown-item py-3 j_confirm_url"
                   title="Disconnect from System"
                   data-title="Go out now?"
                   data-icon="warning"
                   data-url="account-login.html"
                   data-textgo="I want to leave now"
+                  onClick={() => logout()}
                 >
-                  <i className="fas fa-sign-out-alt"></i> Go out
+                  <i className="fas fa-sign-out-alt"></i> Log Out
                 </span>
               </div>
             </li>
@@ -183,7 +193,7 @@ export default function index() {
             font-family: ${ff};
           }
           a {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
           }
         `}
