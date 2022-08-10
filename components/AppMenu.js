@@ -34,6 +34,7 @@ export default function AppMenu() {
                     src="/images/icons/home.png"
                     width="35px"
                     height="35px"
+                    alt=""
                     color="white"
                   />
                   <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
@@ -62,6 +63,7 @@ export default function AppMenu() {
                   width="35px"
                   height="35px"
                   color="white"
+                  alt=""
                 />
                 <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
                   Approved Vehicles
@@ -111,6 +113,7 @@ export default function AppMenu() {
                     width="35px"
                     height="35px"
                     color="white"
+                    alt=""
                   />
                   <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
                     Finance
@@ -207,6 +210,7 @@ export default function AppMenu() {
                   width="35px"
                   height="35px"
                   color="white"
+                  alt=""
                 />
                 <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
                   About
@@ -257,6 +261,7 @@ export default function AppMenu() {
                     width="35px"
                     height="35px"
                     color="white"
+                    alt=""
                   />
                   <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
                     Contact

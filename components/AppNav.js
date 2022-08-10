@@ -53,7 +53,6 @@ export default function AppNav() {
                 <li className="float-left position-relative mx-2">
                   <Link title="" href="/">
                     <a
-                      href="/"
                       className={`${styles.linkFont} btn btn-outline-dark border-0 py-3`}
                     >
                       Home
@@ -91,6 +90,7 @@ export default function AppNav() {
                               height="40px"
                               objectFit="center"
                               color="white"
+                              alt=""
                             />
                             <span
                               style={{ marginLeft: "10px", fontSize: "1rem" }}
@@ -116,6 +116,7 @@ export default function AppNav() {
                               width="35px"
                               height="35px"
                               color="white"
+                              alt=""
                             />
                             <span
                               style={{ marginLeft: "10px", fontSize: "1rem" }}

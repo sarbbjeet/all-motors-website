@@ -2,7 +2,7 @@ import { f1, f2 as ff, f5 } from "../../styles/variables.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "../auth/auth";
-export default function index() {
+export default function Header() {
   const { user, logout } = useAuth();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
