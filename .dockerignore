@@ -1,0 +1,4 @@
+# ignore docker files 
+node_modules
+.env
+.next

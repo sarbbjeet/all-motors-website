@@ -1,0 +1,15 @@
+version: "3.9" # optional since v1.27.0
+services:
+  web:
+    build: .
+    image: next-js-app
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306
+    volumes:
+      - app:/var/lib/mysql
+volumes:
+  app:
