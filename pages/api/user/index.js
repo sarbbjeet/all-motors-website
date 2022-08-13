@@ -1,6 +1,6 @@
 import Joi from "joi";
 import { prisma } from "../../../database/prisma";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export default async function index(req, res) {

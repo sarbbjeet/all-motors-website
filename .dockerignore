@@ -1,4 +1,9 @@
 # ignore docker files 
 node_modules
-.env
 .next
+.eslintrc.json
+# .env 
+# .env.local
+README.md
+Dockerfile
+# docker-compose.yml

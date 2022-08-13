@@ -6,6 +6,8 @@ import Axios from "axios";
 //   development: "http://localhost:3000/",
 //   // production: "http://localhost:5000/",
 // };
+//djkjokjok
+
 const api = Axios.create({
   // baseURL: urls[process.env.NODE_ENV],
   headers: {
@@ -13,5 +15,4 @@ const api = Axios.create({
     "Content-Type": "application/json",
   },
 });
-
 export default api;

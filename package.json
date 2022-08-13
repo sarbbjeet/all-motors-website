@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "generate": "npx prisma generate",
+    "dev": "npm run generate && nodemon --watch \"src/**\" --ext \"js,json\" --exec \"node server.js\"",
+    "prisma:migrate": "npx prisma migrate deploy",
+    "build": "npm run generate && next build",
+    "start": "node server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -20,7 +22,7 @@
     "@prisma/client": "^4.0.0",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "4.6",
     "classnames": "^2.3.1",
     "cookies-next": "^2.1.1",

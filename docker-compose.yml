@@ -1,15 +1,30 @@
 version: "3.9" # optional since v1.27.0
 services:
-  web:
-    build: .
-    image: next-js-app
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+  mysql-db:
+    # platform: linux/amd64
+    image: mysql:8
+    container_name: mysql_db
     ports:
-      - 3307:3306
+      - 3320:3306
+    restart: always
+    environment:
+      # MYSQL_DATABASE: allmotors_db
+      MYSQL_ROOT_PASSWORD: root
     volumes:
-      - app:/var/lib/mysql
+      - project-db:/var/lib/mysql
+  web:
+    links:
+      - mysql-db
+    depends_on:
+      - mysql-db
+    container_name: next-js
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+
 volumes:
-  app:
+  project-db:

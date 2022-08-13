@@ -1,5 +1,5 @@
 import Joi from "joi";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../../database/prisma";
 import { getCookies, setCookie, deleteCookie } from "cookies-next";
