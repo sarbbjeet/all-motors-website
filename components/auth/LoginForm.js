@@ -33,7 +33,7 @@ export default function LoginForm() {
       //successfully Login
       //return router.back();
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setCredentials({
         ...credentials,
         error: err?.response?.data?.error || "unknown error",

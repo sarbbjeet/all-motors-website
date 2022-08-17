@@ -45,7 +45,6 @@ const onPublishEvent = async (data, setState, router) => {
     }
     //read cookie from browser if available
     const token = Cookies.get("authToken");
-
     await fetch(`${url}${id ? `?id=${id}` : ""}`, {
       method: `${id ? "PUT" : "POST"}`,
       body: formData,

@@ -19,10 +19,11 @@ services:
       - mysql-db
     container_name: next-js
     ports:
-      - 3000:3000
-    build:
-      context: .
-      dockerfile: Dockerfile
+      - 80:3000
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: sarb123/allmotors:1.0
     env_file:
       - .env
 

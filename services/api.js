@@ -1,15 +1,10 @@
 // api.js
 import Axios from "axios";
-
-// let urls = {
-//   test: `http://localhost:3000`,
-//   development: "http://localhost:3000/",
-//   // production: "http://localhost:5000/",
-// };
-//djkjokjok
+const port = process.env.PORT || 3000;
+let url = `http://localhost:${port}`;
 
 const api = Axios.create({
-  // baseURL: urls[process.env.NODE_ENV],
+  baseURL: url,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
