@@ -3,10 +3,10 @@ export default function DealMessage() {
   return (
     <div className="mx-4 mt-5 p-4 border border-light shadow rounded">
       <p>
-        If you&apos;re based in Edinburgh and are looking for a used car,
-        allmotors.co.uk can provide you with the details of 14 used car
-        dealerships to make your car search a lot easier, whether you&apos;re
-        searching by make or model and no matter what the budget.
+        If you live in Edinburgh and are looking for a used car, All Motors Ltd
+        can provide you car with very reasonable price and make your search much
+        easier, whether of the make or model you&apos;re looking for or your
+        budget.
       </p>
 
       <style jsx>

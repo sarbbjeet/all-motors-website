@@ -179,7 +179,7 @@ export default function handler() {
                     title="E-mail"
                   >
                     <i className="far fa-envelope mr-2"></i>{" "}
-                    contact@allmotors.co.uk
+                    contact@allmotorsltd.co.uk
                   </a>
 
                   <p className="h5 font-weight-bold footer_title mb-2 mt-4 text-light">

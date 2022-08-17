@@ -69,19 +69,18 @@ export default function About() {
                   </header>
                   <div className="text-muted">
                     <p>
-                      Curabitur in dignissim lectus. Ut tincidunt enim quis
-                      neque tempor&apos; mollis imperdiet felis convallis.
-                      Phasellus commodo magna eget varius semper. Morbi id
-                      dictum sem. Ut varius volutpat sapien in congue.
+                      The feedback from our clients is important to us at All
+                      Motors Ltd. As a reputable used vehicle dealership in
+                      Edinburgh, Midlothian, it is our goal to develop strong
+                      bonds with each of our clients. Therefore, if you have any
+                      concerns about our used cars or services, don&apos;t
+                      hesitate to get in touch with us by phone or email. We
+                      also always appreciate your comments and suggestions.
                     </p>
                     <p>
-                      Nam ex nulla&apos; scelerisque at porttitor at&apos;
-                      egestas at dolor. Nulla sit amet nunc ac dolor egestas
-                      rhoncus id et nunc. Donec volutpat sem eget tellus
-                      volutpat pretium. Pellentesque mollis&apos; nibh id
-                      maximus ultrices, lectus metus porta dui, quis scelerisque
-                      purus turpis et libero. Praesent laoreet venenatis justo,
-                      in lacinia metus elementum sit amet.
+                      Our friendly service will go beyond and above to make sure
+                      you get the guidance you require. The majority of our
+                      clients return to us because of this.
                     </p>
                   </div>
 
@@ -134,12 +133,13 @@ export default function About() {
                       role="tabpanel"
                     >
                       <p>
-                        Curabitur in dignissim lectus. Ut tincidunt enim quis
-                        neque tempor, mollis imperdiet felis convallis.
-                        Phasellus commodo magna eget varius semper. Morbi id
-                        dictum sem. Ut varius volutpat sapien in congue. Nam ex
-                        nulla, scelerisque at porttitor at&#44; egestas at
-                        dolor.
+                        The feedback from our clients is important to us at All
+                        Motors Ltd. As a reputable used vehicle dealership in
+                        Edinburgh, Midlothian, it is our goal to develop strong
+                        bonds with each of our clients. Therefore, if you have
+                        any concerns about our used cars or services, don&apos;t
+                        hesitate to get in touch with us by phone or email. We
+                        also always appreciate your comments and suggestions.
                       </p>
                     </div>
                     <div
@@ -148,11 +148,9 @@ export default function About() {
                       role="tabpanel"
                     >
                       <p>
-                        Nulla sit amet nunc ac dolor egestas rhoncus id et nunc.
-                        Donec volutpat sem eget tellus volutpat pretium.
-                        Pellentesque mollis&#44; nibh id maximus ultrices&#44;
-                        lectus metus porta dui&#44; quis scelerisque purus
-                        turpis et libero.
+                        Our friendly staff will go the extra mile to guarantee
+                        that you receive the advice you need. This is the reason
+                        why many of our customers keep coming back to us.
                       </p>
                     </div>
                     <div
@@ -161,10 +159,11 @@ export default function About() {
                       role="tabpanel"
                     >
                       <p>
-                        Praesent laoreet venenatis justo, in lacinia metus
-                        elementum sit amet. Morbi id dictum sem. Ut varius
-                        volutpat sapien in congue. Nam ex nulla, scelerisque at
-                        porttitor at, egestas at dolor.
+                        Our aim is simple: to provide a wide choice of cars at
+                        fantastic prices in a pleasant environment with no sales
+                        pressure. Our sales team do not have sales targets, so
+                        you will be left in peace to browse with help at hand
+                        when you need it.
                       </p>
                     </div>
                   </div>
