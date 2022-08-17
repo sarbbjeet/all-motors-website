@@ -45,10 +45,9 @@ export default function AppFooter() {
                 </Link>
               </li>
               <li className="list-inline-item w-100">
-                <Link href="/vehicle/compare">
+                <Link href="/finance">
                   <a
                     className="btn btn-block btn-dark text-left border-0 px-1"
-                    href="/finance"
                     title=""
                   >
                     <i className="fas fa-angle-double-right"></i> Finance
