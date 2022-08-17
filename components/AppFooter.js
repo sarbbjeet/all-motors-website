@@ -181,15 +181,15 @@ export default function AppFooter() {
           </header>
 
           <span className="company-registration">
-            VAT No. 249 8202 86
-            <span className="space" /> Company No. 543547
+            {/* VAT No. 249 8202 86 */}
+            Company No. SC602887
             <span className="space" />
-            FCA No. 790567
+            FCA No. 970414
             <br />
           </span>
           <span className="body">
             All Motors Ltd has authorisation and supervision from the Financial
-            Conduct Authority.The company&apos;s FRN is 790567. All aspects of
+            Conduct Authority.The company&apos;s FRN is 970414. All aspects of
             finance are influenced by status and income. Request for a written
             quotation. We act as a broker, not a lender, of credit. We work with
             a number of highly vetted credit companies who may be able to offer
@@ -237,7 +237,7 @@ export default function AppFooter() {
           }
 
           .space {
-            padding: 0 5px;
+            padding: 0 10px;
           }
 
           .opening-list {
