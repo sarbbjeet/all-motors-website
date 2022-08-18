@@ -3,12 +3,21 @@ import Arrow from "./Arrow";
 import Slider from "./Slider";
 import HeaderText from "./HeaderText";
 import styled from "styled-components";
+import Image from "next/image";
 
 const CardImage = styled.div`
   background: url(${(props) => props.image}) no-repeat center center;
   background-size: cover;
   height: 100%;
 `;
+// const CardImage = ({ image }) => (
+//   <Image
+//     layout="fill"
+//     alt="image-gallery"
+//     src={image}
+//   />
+// );
+
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
   const headerProps = {
@@ -27,14 +36,7 @@ export default function Index({ vehicle }) {
   return (
     <article className="pb-4 overflow-hidden">
       <div className="row">
-        <div
-          style={{
-            backgroundColor: "rgba(0,0,0,0.7)",
-            height: "470px",
-            // border: "2px solid black",
-          }}
-          className="col-lg-7 col-12 position-relative order-0 p-0 m-0"
-        >
+        <div className="show-image col-lg-7 col-12 position-relative order-0 p-0 m-0">
           <CardImage image={`/store/${slides[selectedIndex]?.image}`} />
           <Arrow direction="left" handleClick={changeImage} />
           <Arrow direction="right" handleClick={changeImage} />
@@ -53,7 +55,12 @@ export default function Index({ vehicle }) {
           </span> */}
         </div>
         <div className="col-lg-4 d-lg-block d-none">
-          <HeaderText />
+          <HeaderText
+            price={headerProps.price}
+            make={headerProps.make}
+            info={headerProps.info}
+            quality={headerProps.quality}
+          />
         </div>
       </div>
       <Slider
@@ -69,6 +76,20 @@ export default function Index({ vehicle }) {
           quality={headerProps.quality}
         />
       </div>
+
+      <style jsx>
+        {`
+          .show-image {
+            backgroundcolor: rgba(0, 0, 0, 0.7);
+            height: 470px;
+          }
+          @media (max-width: 500px) {
+            .show-image {
+              height: 300px;
+            }
+          }
+        `}
+      </style>
     </article>
   );
 }

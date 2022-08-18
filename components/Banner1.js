@@ -4,15 +4,18 @@ import "react-slideshow-image/dist/styles.css";
 import { bannerImages as images } from "../utils/variables";
 import getDeviceSize from "../utils/getDeviceSize";
 
-const ImageDiv = ({ image, height = "600px" }) => (
+const ImageDiv = ({ image, height = "650px" }) => (
   <div>
     <style jsx>
       {`
         div {
-          background: url(${image}) no-repeat center white;
+          background: url(${image}) no-repeat center center;
           background-size: cover;
           height: ${height};
-          background-attachment: fixed;
+          // to overcome error of safari
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
         }
       `}
     </style>

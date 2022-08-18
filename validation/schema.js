@@ -17,11 +17,11 @@ export default (browser = true) => {
       vehicle_type: Joi.string().max(40).required(),
       body_style: Joi.string().max(40).required(),
       mileage: Joi.number().allow("", null).default(-1),
-      numberOfCylinders: Joi.number().min(-1).allow("", null).default(-1),
+      //numberOfCylinders: Joi.number().min(-1).allow("", null).default(-1),
       fuel: Joi.string().max(40).required(),
       yearOfModel: Joi.number().min(1950).required(),
       doors: Joi.number().min(1).max(10).required(),
-      steering: Joi.string().max(40).required(),
+      //steering: Joi.string().max(40).allow("", null).default("hydrolic"),
       features: Joi.string().allow("", null).default(""),
     },
     businessSchema: {

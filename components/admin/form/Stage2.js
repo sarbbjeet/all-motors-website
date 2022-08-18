@@ -35,7 +35,7 @@ export default function Stage2({ state, setState }) {
       </header>
       <div className="py-3">
         <div className="form-row">
-          <div className="col-6 col-lg-3">
+          <div className="col-6 col-lg-4">
             <AppSelect
               name="vehicle_type"
               label="Vehicle Type"
@@ -46,7 +46,7 @@ export default function Stage2({ state, setState }) {
             />
           </div>
 
-          <div className="col-6 col-lg-3">
+          <div className="col-6 col-lg-4">
             <AppSelect
               name="body_style"
               label="Body Style"
@@ -57,7 +57,7 @@ export default function Stage2({ state, setState }) {
             />
           </div>
 
-          <div className="col-6 col-lg-3">
+          <div className="col-6 col-lg-4">
             <AppInput
               name="mileage"
               label="Mileage"
@@ -69,7 +69,7 @@ export default function Stage2({ state, setState }) {
             />
           </div>
 
-          <div className="col-6 col-lg-3">
+          {/* <div className="col-6 col-lg-3">
             <AppInput
               name="numberOfCylinders"
               label="Number of Cylinders"
@@ -79,10 +79,10 @@ export default function Stage2({ state, setState }) {
               error={errors?.features?.numberOfCylinders}
               onChange={onChangeEvent}
             />
-          </div>
+          </div> */}
         </div>
         <div className="form-row">
-          <div className="col-6  col-lg-3">
+          <div className="col-6  col-lg-4">
             <AppSelect
               name="fuel"
               label="Fuel"
@@ -92,7 +92,7 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          <div className="col-6 col-lg-3">
+          <div className="col-6 col-lg-4">
             <AppInput
               name="yearOfModel"
               label="Year of Model"
@@ -102,7 +102,7 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          <div className="col-6  col-lg-3">
+          <div className="col-6 col-lg-4">
             <AppSelect
               name="doors"
               label="Doors"
@@ -112,7 +112,7 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          <div className="col-6  col-lg-3">
+          {/* <div className="col-6  col-lg-3">
             <AppSelect
               name="steering"
               label="Steering"
@@ -121,7 +121,7 @@ export default function Stage2({ state, setState }) {
               error={errors?.features?.steering}
               onChange={onChangeEvent}
             />
-          </div>
+          </div> */}
         </div>
         <AppTextArea
           name="features"

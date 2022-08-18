@@ -30,18 +30,19 @@ export default function AppNav() {
       >
         <ContactHeader />
         <div className="container">
-          <nav className="py-1 d-flex justify-content-between no-gutters align-items-center">
+          <nav className="position-relative py-1 d-flex justify-content-between no-gutters align-items-center">
             <h2 className="sr-only">Main Nav</h2>
             <Link href="/admin">
               <a className="navbar-brand">
                 {/* LOGO */}
-                <div>
-                  <p className={styles.logoP}>
+                <div className="position-absolute " style={{ top: 0 }}>
+                  <Image src="/images/icon90.png" width="60px" height="60px" />
+                  {/* <p className={styles.logoP}>
                     All<span> </span>
                     <span style={{ font: "inherit", color: primary }}>
                       Motors
                     </span>
-                  </p>
+                  </p> */}
                 </div>
               </a>
             </Link>

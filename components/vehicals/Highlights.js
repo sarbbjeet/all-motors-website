@@ -16,7 +16,6 @@ export default function Highlights({
             let keyName = "";
             if (key.includes("_"))
               keyName = `${key.split("_")[0]} ${key.split("_")[1]}`;
-
             return (
               <div key={i} className={styles.itemWrapper}>
                 <span className={styles.headerText}>

@@ -45,10 +45,10 @@ export default function Services() {
           </Link>
         </div>
         <div className="col-md-4 pb-4">
-          <Link href="/admin/vehicles/report">
+          <Link href="/admin/workshop-inquiries">
             <a
               className="btn btn-block btn-warning text-white py-lg-4 px-lg-3"
-              title="Report"
+              title="inquires"
               style={{ height: "100%" }}
             >
               <div className="d-flex justify-content-between">
@@ -64,7 +64,7 @@ export default function Services() {
 
                 <i className="fas fa-chevron-right align-self-center"></i>
               </div>
-              <h4 className="mt-3 text-left h5">Workshop Enquiries</h4>
+              <h4 className="mt-3 text-left h5">Workshop Inquiries</h4>
             </a>
           </Link>
         </div>

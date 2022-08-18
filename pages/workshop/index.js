@@ -1,11 +1,55 @@
 import Layout from "../../components/Layout";
 import { f2 as ff } from "../../styles/variables.module.scss";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+const url = "/api/customer_query";
+import _ from "lodash";
+import axios from "axios";
 
-export default function handler() {
+const initialQueryObj = {
+  name: "",
+  email: "",
+  phone: "",
+  type: "general",
+  message: "",
+  loading: "",
+  error: "",
+  success: false,
+};
+export default function Handler({ queryType }) {
+  const [query, setQuery] = useState(initialQueryObj);
+  const onChangeInput = ({ target: { name, value } }) => {
+    setQuery({ ...query, [name]: value, success: false, error: "" });
+  };
+
+  useEffect(() => {
+    setQuery({ ...query, type: queryType });
+  }, [queryType]);
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+      setQuery({ ...initialQueryObj, loading: true });
+      await axios(url, {
+        method: "POST",
+        data: _.pick(query, ["name", "email", "phone", "type", "message"]),
+      });
+      setQuery({ ...initialQueryObj, success: true });
+    } catch (err) {
+      console.log(err);
+      setQuery({
+        ...query,
+        loading: false,
+        error: err?.response?.data?.error || err?.message,
+        success: false,
+      });
+    }
+  };
   return (
     <Layout>
-      <main className="bg-light mt-4">
+      <main
+        className="bg-light mt-4"
+        onClick={() => setQuery({ ...query, success: false, error: "" })}
+      >
         <section>
           <header
             className="text-center bg_parallax bg-white"
@@ -52,13 +96,23 @@ export default function handler() {
                       Send us a query
                     </h4>
                   </div>
-                  <div className="return"></div>
+                  <div className="notification">
+                    {query?.success && (
+                      <p className="alert alert-success">
+                        Successfully sent query <br />
+                        Any member of the team will contact you soon!
+                      </p>
+                    )}
+                    {query?.error != "" && (
+                      <p className="alert alert-danger">{query?.error}</p>
+                    )}
+                  </div>
 
                   <form
                     className="text-muted formContact"
-                    action="#"
                     method="post"
                     encType="multipart/form-data"
+                    onSubmit={onSubmitForm}
                   >
                     <div className="form-row">
                       <div className="col-xl-6">
@@ -74,6 +128,8 @@ export default function handler() {
                             name="name"
                             placeholder="Name"
                             required
+                            onChange={onChangeInput}
+                            value={query.name}
                           />
                         </div>
                       </div>
@@ -86,12 +142,14 @@ export default function handler() {
                           </div>
                           <input
                             type="number"
-                            min={9}
-                            max={15}
+                            // min={9}
+                            // max={15}
                             className="form-control border-left-0 text-muted bg-light rounded-0"
                             name="phone"
+                            value={query.phone}
                             placeholder="Phone Number"
-                            required
+                            // required
+                            onChange={onChangeInput}
                           />
                         </div>
                       </div>
@@ -110,6 +168,8 @@ export default function handler() {
                         id="email"
                         placeholder="Email"
                         required
+                        value={query.email}
+                        onChange={onChangeInput}
                       />
                     </div>
 
@@ -123,6 +183,8 @@ export default function handler() {
                         id="message"
                         placeholder="Message"
                         rows="5"
+                        value={query.message}
+                        onChange={onChangeInput}
                       ></textarea>
                     </div>
 
@@ -223,6 +285,20 @@ export default function handler() {
 
           <style jsx>
             {`
+              .query-form {
+                position: relative;
+                height: 100%;
+              }
+              .notification {
+                // position: absolute;
+                // width: 100%;
+                // height: 100%;
+                // border: 1px solid red;
+                // padding: 0 !important;
+                // margin: 0 !important;
+                // z-index: 100;
+              }
+
               .text {
                 font-family: ${ff} !important;
                 font-size: 1rem !important;
@@ -233,6 +309,9 @@ export default function handler() {
                 font-size: 2rem !important;
                 font-weight: 600 !important;
               }
+              .form-control:focus {
+                border-color: #ccc;
+              }
             `}
           </style>
         </section>
@@ -240,3 +319,11 @@ export default function handler() {
     </Layout>
   );
 }
+
+export const getServerSideProps = (content) => {
+  return {
+    props: {
+      queryType: content?.query?.query || "",
+    },
+  };
+};

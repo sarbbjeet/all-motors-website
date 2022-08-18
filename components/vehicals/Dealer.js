@@ -21,10 +21,11 @@ export default function Dealer({
             className="d-block bg_cover position-relative agent_bg mb-n3"
             style={{ backgroundImage: `url(${image})` }}
           ></div>
-          <div className="agent_avatar rounded-circle d-inline-block overflow-hidden p-1 bg-primary position-relative shadow-sm mt-n5">
+          <div className="agent_avatar rounded-circle d-inline-block overflow-hidden p-1 bg-white position-relative shadow-sm mt-n5">
             <Image
-              src={profileImage}
+              src={"/images/profile-icon.png"}
               layout="fill"
+              objectFit="center"
               className="d-block w-100 rounded-circle p-1 slow_7s"
               alt="Silvio Camargo"
             />
@@ -75,13 +76,13 @@ export default function Dealer({
               </a>
             </div>
 
-            <a
+            {/* <a
               href="agents-single.html"
               title="View Profile"
               className="btn py-3 btn-outline-secondary w-100 mt-3 d-flex justify-content-between align-items-center py-2"
             >
               View Profile <i className="fas fa-angle-right"></i>
-            </a>
+            </a> */}
           </div>
         </div>
       </section>

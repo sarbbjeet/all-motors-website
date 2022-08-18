@@ -37,9 +37,9 @@ export default function handler({ vehicle }) {
   };
   //modified keywords
   highlights["year"] = highlights["yearOfModel"];
-  highlights["number of cylinder"] = highlights["numberOfCylinders"];
+  //highlights["number of cylinder"] = highlights["numberOfCylinders"];
   delete highlights?.yearOfModel;
-  delete highlights?.numberOfCylinders;
+  // delete highlights?.numberOfCylinders;
   delete highlights?.image;
   delete highlights?.description;
   //features
@@ -55,8 +55,8 @@ export default function handler({ vehicle }) {
           <div className="px-lg-3 m-0 row overflow-hidden">
             <div className="col-lg-7 col-xl-8">
               <Highlights highlights={highlights} />
-              <VehicleItems items={vehicleItems} />
               <Description description={description} />
+              <VehicleItems items={vehicleItems} />
               <VideoSection />
             </div>
 

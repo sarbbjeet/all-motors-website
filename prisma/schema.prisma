@@ -61,11 +61,11 @@ model Features {
   vehicle_type String @default("car")
   body_style String
   mileage Int? @default(-1)
-  numberOfCylinders Int? @default(-1)
+ // numberOfCylinders Int? @default(-1)
   fuel String
   yearOfModel Int
   doors Int
-  steering String
+  //steering String
   //default VarChar(191) for mysql 
   features String? @default("") @db.VarChar(4000)
 
@@ -102,6 +102,15 @@ verified Boolean @default(false)
 created_at DateTime @default(now())
 }
 
+model CustomerQuery {
+id String @id @default(uuid())
+name String 
+email String 
+phone String? @default("") 
+message String? @default("") @db.VarChar(4000)
+type String
+created_at DateTime @default(now())  
+}
 
 enum Role {
   USER

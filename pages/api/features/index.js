@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    res.json({ messgae: "helloddd" });
+    res.json({ messgae: "get request ..... " });
   } else if (req.method === "POST") {
     //create startup setup of vehicles
     try {
