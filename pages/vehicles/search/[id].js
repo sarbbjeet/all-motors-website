@@ -55,7 +55,7 @@ export default function handler({ vehicle }) {
           <div className="px-lg-3 m-0 row overflow-hidden">
             <div className="col-lg-7 col-xl-8">
               <Highlights highlights={highlights} />
-              <Description description={description} />
+              {/* <Description description={description} /> */}
               <VehicleItems items={vehicleItems} />
               <VideoSection />
             </div>

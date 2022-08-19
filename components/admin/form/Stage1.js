@@ -126,7 +126,10 @@ export default function Stage1({ state, setState }) {
               error={errors?.initial?.registration}
             />
           </div>
-          <div style={{ whiteSpace: "nowrap" }} className="col-12 col-lg-4">
+          <div
+            style={{ whiteSpace: "nowrap" }}
+            className="col-12 col-lg-4 mb-4"
+          >
             <AppInput
               name="previous_owners"
               label="Previous Owners"
@@ -141,7 +144,7 @@ export default function Stage1({ state, setState }) {
           </div>
         </div>
 
-        <div className="col-12 my-3 px-4">
+        {/* <div className="col-12 my-3 px-4">
           <AppTextArea
             name="description"
             label="Description"
@@ -150,7 +153,7 @@ export default function Stage1({ state, setState }) {
             value={initial?.description}
             error={errors?.initial?.description}
           />
-        </div>
+        </div> */}
       </div>
 
       <style jsx>
