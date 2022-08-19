@@ -139,6 +139,7 @@ export default function AppMenu() {
                 <Image
                   src="/images/icons/maintenance.png"
                   width="35px"
+                  alt="maintenance"
                   height="35px"
                   color="white"
                 />
@@ -168,6 +169,7 @@ export default function AppMenu() {
                           width="35px"
                           height="35px"
                           color="white"
+                          alt="logo"
                         />
                         <span style={{ marginLeft: "10px", fontSize: "1rem" }}>
                           {item?.name}

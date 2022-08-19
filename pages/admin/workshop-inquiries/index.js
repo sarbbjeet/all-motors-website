@@ -4,7 +4,7 @@ import Footer from "../../../components/admin/Footer";
 import { prisma } from "../../../database/prisma";
 
 import { f2 as ff } from "../../../styles/variables.module.scss";
-export default function index({ inquiries }) {
+export default function Index({ inquiries }) {
   const [filter, setFilter] = useState({
     name: "",
     type: "",

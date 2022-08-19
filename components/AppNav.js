@@ -36,7 +36,12 @@ export default function AppNav() {
               <a className="navbar-brand">
                 {/* LOGO */}
                 <div className="position-absolute " style={{ top: 0 }}>
-                  <Image src="/images/icon90.png" width="60px" height="60px" />
+                  <Image
+                    alt="logo"
+                    src="/images/icon90.png"
+                    width="60px"
+                    height="60px"
+                  />
                   {/* <p className={styles.logoP}>
                     All<span> </span>
                     <span style={{ font: "inherit", color: primary }}>
@@ -168,6 +173,7 @@ export default function AppNav() {
                                 width="35px"
                                 height="35px"
                                 color="white"
+                                alt="image"
                               />
                               <span
                                 style={{ marginLeft: "10px", fontSize: "1rem" }}
