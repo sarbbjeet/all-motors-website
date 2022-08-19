@@ -35,12 +35,12 @@ export default function AppNav() {
             <Link href="/admin">
               <a className="navbar-brand">
                 {/* LOGO */}
-                <div className="position-absolute " style={{ top: 0 }}>
+                <div className="logo-container" style={{ top: 0 }}>
                   <Image
                     alt="logo"
-                    src="/images/icon90.png"
-                    width="60px"
-                    height="60px"
+                    src="/images/logo_new.png"
+                    layout="fill"
+                    objectFit="center"
                   />
                   {/* <p className={styles.logoP}>
                     All<span> </span>
@@ -279,6 +279,20 @@ export default function AppNav() {
               font-size: 1rem;
               font-weight: 600;
               text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            }
+            .logo-container {
+              width: 130px;
+              height: 60px;
+              position: absolute;
+              margin-top: 3px;
+            }
+
+            @media (max-width: 1200px) {
+              .logo-container {
+                margin-top: 2px;
+                width: 120px;
+                height: 55px;
+              }
             }
           `}
         </style>
