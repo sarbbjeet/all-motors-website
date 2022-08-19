@@ -1,17 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminWrapper from "../../../components/admin/AdminWrapper";
 import Footer from "../../../components/admin/Footer";
 import { prisma } from "../../../database/prisma";
 
 import { f2 as ff } from "../../../styles/variables.module.scss";
 export default function index({ inquiries }) {
+  const [filter, setFilter] = useState({
+    name: "",
+    type: "",
+  });
+  const { name, type } = filter;
+
+  const applyFilter = () => {
+    if (name != "") {
+      return inquiries.filter((inq) =>
+        inq.name.toLowerCase().startsWith(name.toLowerCase())
+      );
+    } else if (type != "") {
+      return inquiries.filter((inq) =>
+        inq.type?.toLowerCase().startsWith(type?.toLowerCase())
+      );
+    }
+
+    return inquiries;
+  };
+
+  const onChangeFilter = ({ target: { name, value } }) => {
+    // if (name == "type") setFilter({ ...filter, name: "" });
+    // else if (name == "name") setFilter({ ...filter, type: "" });
+
+    setFilter({ ...filter, [name]: value });
+  };
+
   return (
     <AdminWrapper>
       <div className="body px-4">
         <header>
-          <h4>Customers Inquiries</h4>
+          <h4>Customer Inquiries</h4>
         </header>
-
+        <div className="filters row">
+          <div className="col-6 col-lg-3 mb-2">
+            <input
+              name="name"
+              onChange={onChangeFilter}
+              className="form-control"
+              placeholder="Filter Name"
+              value={filter.name}
+            />
+          </div>
+          <div className="col-6 col-lg-3 mb-2">
+            <input
+              name="type"
+              onChange={onChangeFilter}
+              className="form-control "
+              placeholder="Filter Type"
+              value={filter.type}
+            />
+          </div>
+        </div>
         <div className="inquiry-container">
           <table className="table table-hover position-relative">
             <thead className="table-header">
@@ -28,7 +74,7 @@ export default function index({ inquiries }) {
               </tr>
             </thead>
             <tbody>
-              {inquiries.map((inq, i) => (
+              {applyFilter().map((inq, i) => (
                 <tr key={i}>
                   <th>{i + 1}</th>
                   <td>{inq?.name}</td>
@@ -48,7 +94,7 @@ export default function index({ inquiries }) {
         {`
           .body {
             padding-top: 30px;
-            min-height: 620px;
+            min-height: 650px;
           }
           header {
             margin-bottom: 20px;
@@ -87,6 +133,12 @@ export default function index({ inquiries }) {
           }
           .msg {
             width: 250px;
+          }
+
+          .filters input {
+            font-family: ${ff};
+            outline: none !important;
+            border-radius: 5px !important;
           }
         `}
       </style>
