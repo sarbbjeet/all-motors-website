@@ -16,9 +16,9 @@ export default function MobileFilter({ hidden = true, setHidden }) {
       className={`d-lg-none ${hidden ? "d-none" : ""}`}
       style={{
         width: "100%",
-        height: "100%",
+        height: "200%",
         position: "fixed",
-        zIndex: 9,
+        zIndex: 102,
         backgroundColor: "#eee",
         top: 0,
         left: 0,

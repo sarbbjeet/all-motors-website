@@ -1,4 +1,5 @@
 import React from "react";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function VehicleItems({ items }) {
   return (
@@ -17,6 +18,18 @@ export default function VehicleItems({ items }) {
             </li>
           ))}
       </ul>
+
+      <style jsx>{`
+        h4,
+        p,
+        li,
+        span {
+          font-family: ${ff};
+        }
+        li {
+          font-size: 1.1rem;
+        }
+      `}</style>
     </section>
   );
 }

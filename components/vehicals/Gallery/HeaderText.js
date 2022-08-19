@@ -1,4 +1,5 @@
 import React from "react";
+import { f2 as ff } from "../../../styles/variables.module.scss";
 
 export default function HeaderText({
   info = "4.5 V8 Gasoline F1-DCT",
@@ -17,13 +18,30 @@ export default function HeaderText({
           {make}
           <i className="fas fa-check-circle text-success ml-1"></i>
         </h3>
-        <p className="text-muted mb-0">{info}</p>
+        <p className="text-muted mb-0">
+          {/* make first char capitalize */}
+          {info.charAt(0).toUpperCase() + info.slice(1)}
+        </p>
 
         <span className="text-success mb-1 font-weight-bold">
           <sup style={{ fontSize: "20px" }}>£</sup>
           <span className="h2">{price}</span>
         </span>
       </div>
+
+      <style jsx>
+        {`
+          span,
+          h3,
+          p {
+            font-family: ${ff};
+          }
+
+          p {
+            font-size: 1.2rem;
+          }
+        `}
+      </style>
     </header>
   );
 }

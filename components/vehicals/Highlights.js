@@ -1,4 +1,5 @@
 import React from "react";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 import styles from "../../styles/Hightlights.module.scss";
 export default function Highlights({
@@ -27,6 +28,7 @@ export default function Highlights({
                     fontSize: "1rem",
                     textTransform: "capitalize",
                     fontWeight: 500,
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {highlights[key]}
@@ -41,7 +43,12 @@ export default function Highlights({
         </div> */}
       </div>
 
-      <style jsx>{``}</style>
+      <style jsx>{`
+        h4,
+        span {
+          font-family: ${ff};
+        }
+      `}</style>
     </section>
   );
 }

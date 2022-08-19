@@ -83,7 +83,7 @@ export default function AppFooter() {
               <li className="list-inline-item w-100">
                 <a
                   className="btn btn-block btn-dark text-left border-0 px-1"
-                  href="#"
+                  href="tel:+44792-768-4797"
                   title="Phone"
                 >
                   <i className="fas fa-phone-alt mr-2"></i> (44) 7927684797
@@ -92,7 +92,7 @@ export default function AppFooter() {
               <li className="list-inline-item w-100">
                 <a
                   className="btn btn-block  btn-dark text-left border-0 px-1"
-                  href="#"
+                  href="https://wa.me/0447927684797"
                   title="Whatsapp"
                 >
                   <i className="fab fa-whatsapp mr-2"></i> (44) 7927684797
@@ -129,21 +129,31 @@ export default function AppFooter() {
               Opening Hours
             </p>
             <ul className="list-unstyled opening-list">
-              {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
+              {["Mon", "Tue", "Wed", "Thu", "Fri"].map((day, i) => (
                 <li key={i}>
                   <span className="day-name">
                     <i className="fas fa-calendar pr-2" aria-hidden="true" />
                     {day}
                   </span>
-                  <span className="day-time">10:00 - 18:00</span>
+                  <span className="day-time">09:00 - 18:00</span>
                 </li>
               ))}
               <li>
                 <span className="day-name">
                   <i className="fas fa-calendar pr-2" aria-hidden="true" />
+                  Sat
+                </span>
+                <span className="day-time">09:00 - 16:00</span>
+              </li>
+
+              <li>
+                <span className="day-name">
+                  <i className="fas fa-calendar pr-2" aria-hidden="true" />
                   Sun
                 </span>
-                <span className="day-time">10:00 - 14:00</span>
+                <span className="day-time" style={{ whiteSpace: "nowrap" }}>
+                  appointment only
+                </span>
               </li>
             </ul>
           </div>

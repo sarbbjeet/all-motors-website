@@ -7,12 +7,20 @@ export default function ContactHeader() {
         <div className="d-flex justify-content-between align-items-center">
           <ul className="list-unstyled mb-0 pr-0">
             <li className="float-left">
-              <a className="text btn btn-dark" href="#" title="Phone">
+              <a
+                className="text btn btn-dark"
+                href="tel:+44792-768-4797"
+                title="Phone"
+              >
                 <i className="fas fa-phone-alt"></i> (44) 7927684797
               </a>
             </li>
             <li className="float-left">
-              <a className="text btn btn-dark" href="#" title="Whatsapp">
+              <a
+                className="text btn btn-dark"
+                href="https://wa.me/0447927684797"
+                title="Whatsapp"
+              >
                 <i className="fab fa-whatsapp"></i> (44) 7927684797
               </a>
             </li>

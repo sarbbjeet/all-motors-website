@@ -1,4 +1,5 @@
 import React from "react";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function Description({ description }) {
   return (
@@ -9,6 +10,17 @@ export default function Description({ description }) {
       <div className="text-muted">
         <p>{description}</p>
       </div>
+
+      <style jsx>{`
+        h4,
+        p,
+        span {
+          font-family: ${ff};
+        }
+        p {
+          font-size: 1.1rem;
+        }
+      `}</style>
     </section>
   );
 }

@@ -46,6 +46,7 @@ export default function Index({ inquiries }) {
               className="form-control"
               placeholder="Filter Name"
               value={filter.name}
+              autoComplete="off"
             />
           </div>
           <div className="col-6 col-lg-3 mb-2">
@@ -55,6 +56,7 @@ export default function Index({ inquiries }) {
               className="form-control "
               placeholder="Filter Type"
               value={filter.type}
+              autoComplete="off"
             />
           </div>
         </div>

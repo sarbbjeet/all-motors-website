@@ -1,3 +1,4 @@
+import { f2 as ff } from "../../styles/variables.module.scss";
 export default function VideoSection({
   link = "https://www.youtube.com/embed/s8WWCddvAKy2E?rel=0&amp;showprimary=0&autoplay=0",
 }) {
@@ -16,6 +17,12 @@ export default function VideoSection({
           />
         </div>
       </div>
+
+      <style jsx>{`
+        h4 {
+          font-family: ${ff};
+        }
+      `}</style>
     </section>
   );
 }

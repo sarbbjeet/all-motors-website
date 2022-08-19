@@ -163,14 +163,14 @@ export default function index() {
 
                   <a
                     className="btn btn-dark text-left py-3"
-                    href="#"
+                    href="tel:+44792-768-4797"
                     title="Phone"
                   >
                     <i className="fas fa-phone-alt mr-2"></i> (44) 7927684797
                   </a>
                   <a
                     className="btn btn-dark text-left py-3"
-                    href="#"
+                    href="https://wa.me/0447927684797"
                     title="Whatsapp"
                   >
                     <i className="fab fa-whatsapp mr-2"></i> (44) 7927684797

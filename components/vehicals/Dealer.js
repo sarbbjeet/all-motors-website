@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function Dealer({
   numberOfVehicles = "240",
@@ -49,7 +50,7 @@ export default function Dealer({
                 className="btn btn-lg btn-outline-secondary flex-grow-1"
                 data-toggle="tooltip"
                 data-placement="top"
-                href="#"
+                href="https://wa.me/0447927684797"
                 title="(99) 44444-4444"
               >
                 <i className="fab fa-whatsapp fa-2x"></i>
@@ -69,7 +70,7 @@ export default function Dealer({
                 className="btn btn-lg btn-outline-secondary flex-grow-1"
                 data-toggle="tooltip"
                 data-placement="top"
-                href="#"
+                href="tel:+44792-768-4797"
                 title="(99) 22222-2222"
               >
                 <i className="fas fa-phone-alt fa-2x"></i>
@@ -86,6 +87,17 @@ export default function Dealer({
           </div>
         </div>
       </section>
+      <style jsx>{`
+        h4,
+        p,
+        li,
+        span {
+          font-family: ${ff};
+        }
+        p {
+          font-size: 1.1rem;
+        }
+      `}</style>
     </div>
   );
 }
