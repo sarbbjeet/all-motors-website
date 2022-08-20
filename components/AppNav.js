@@ -297,7 +297,7 @@ export default function AppNav() {
               .logo-container {
                 margin-top: 2px;
                 width: 120px;
-                height: 55px;
+                height: 50px;
               }
             }
           `}

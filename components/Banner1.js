@@ -3,7 +3,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { bannerImages as images } from "../utils/variables";
 
-const ImageDiv = ({ image, height = "650px" }) => (
+const ImageDiv = ({ image, height = "670px" }) => (
   <div>
     <style jsx>
       {`

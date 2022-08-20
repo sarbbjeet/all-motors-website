@@ -31,7 +31,7 @@ export default function Home({ vehicles }) {
   }, []);
   return (
     <Layout>
-      <main className={styles.main} style={{ position: "relative", zIndex: 1 }}>
+      <main className="main-container">
         <div
           style={{
             width: "100%",
@@ -71,6 +71,16 @@ export default function Home({ vehicles }) {
         {/* <Slider />
        <FeatureCars /> */}
       </main>
+
+      <style jsx>
+        {`
+          .main-container {
+            position: relative;
+            z-index: 1;
+            padding-top: 60px;
+          }
+        `}
+      </style>
     </Layout>
   );
 }
