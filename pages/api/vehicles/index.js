@@ -1,6 +1,6 @@
 import { prisma } from "../../../database/prisma";
 import Joi from "joi";
-import uploadImage from "../../../middlewars/uploadImage";
+//import uploadImage from "../../../middlewars/uploadImage";
 import { Prisma } from "@prisma/client";
 import _ from "lodash";
 import fs from "fs";
@@ -14,6 +14,7 @@ import {
   initialPicker,
 } from "../../../validation/dataPicker";
 import auth from "../../../middlewars/auth";
+import uploadImage1 from "../../../middlewars/uploadImage1";
 
 //divide key/values per according to database table name
 const dataPicker = (data) => {
@@ -116,7 +117,7 @@ async function handler(req, res) {
       if (!_vehicleOld) throw new Error("vehicle id not found");
 
       const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImage(req, res, "image", validation, false))
+        convertToInt(await uploadImage1(req, res, "image", validation, false))
       );
       //delete image from file system before insert new image
       fs.unlink(`public/${_vehicleOld?.image}`, () => {});

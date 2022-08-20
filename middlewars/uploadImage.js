@@ -2,35 +2,35 @@ import multer from "multer";
 const storagePath = process.env.STORAGE_PATH || "public/uploads";
 const tempStoragePath = storagePath + "temp";
 import fs from "fs";
-import compressImages from "compress-images";
+//import compressImages from "compress-images";
 
 //compress image or images
-const compress_template = (filePath, compressedFilePath, callback) => {
-  const compression = 40;
-  compressImages(
-    filePath,
-    compressedFilePath,
-    { compress_force: false, statistic: true, autoupdate: true },
-    false,
-    { jpg: { engine: "mozjpeg", command: ["-quality", compression] } },
-    {
-      png: {
-        engine: "pngquant",
-        command: ["--quality=" + compression + "-" + compression, "-o"],
-      },
-    },
-    { svg: { engine: "svgo", command: "--multipass" } },
-    {
-      gif: {
-        engine: "gifsicle",
-        command: ["--colors", "64", "--use-col=web"],
-      },
-    },
-    async function (error, completed, statistic) {
-      callback(error, completed, statistic);
-    }
-  );
-};
+// const compress_template = (filePath, compressedFilePath, callback) => {
+//   const compression = 60;
+//   compressImages(
+//     filePath,
+//     compressedFilePath,
+//     { compress_force: false, statistic: true, autoupdate: true },
+//     false,
+//     { jpg: { engine: "mozjpeg", command: ["-quality", compression] } },
+//     {
+//       png: {
+//         engine: "pngquant",
+//         command: ["--quality=" + compression + "-" + compression, "-o"],
+//       },
+//     },
+//     { svg: { engine: "svgo", command: "--multipass" } },
+//     {
+//       gif: {
+//         engine: "gifsicle",
+//         command: ["--colors", "64", "--use-col=web"],
+//       },
+//     },
+//     async function (error, completed, statistic) {
+//       callback(error, completed, statistic);
+//     }
+//   );
+// };
 
 // middleware that process files uploaded in multipart/form-data format.
 const upload = multer({
@@ -80,36 +80,36 @@ const uploadImage = async (
           if (multiple) {
             // const files = await new Promise((_resolve) => {
             let files = [];
-            for (let file of req.files) {
-              compress_template(
-                file?.path,
-                storagePath,
-                (error, completed, statistic) => {
-                  files.push(statistic?.path_out_new);
-                  //remove original file
-                  fs.unlinkSync(file?.path);
-                  if (req.files.length == files.length) {
-                    resolve({
-                      ...req.body,
-                      [`${fdataKey}`]: files,
-                    });
-                  }
-                }
-              );
-            }
+            // for (let file of req.files) {
+            //   compress_template(
+            //     file?.path,
+            //     storagePath,
+            //     (error, completed, statistic) => {
+            //       files.push(statistic?.path_out_new);
+            //       //remove original file
+            //       fs.unlinkSync(file?.path);
+            //       if (req.files.length == files.length) {
+            //         resolve({
+            //           ...req.body,
+            //           [`${fdataKey}`]: files,
+            //         });
+            //       }
+            //     }
+            //   );
+            // }
           } else {
-            compress_template(
-              req.file?.path,
-              storagePath,
-              (error, completed, statistic) => {
-                //remove original file
-                fs.unlinkSync(req.file?.path);
-                resolve({
-                  ...req.body,
-                  [`${fdataKey}`]: statistic?.path_out_new,
-                });
-              }
-            );
+            // compress_template(
+            //   req.file?.path,
+            //   storagePath,
+            //   (error, completed, statistic) => {
+            //     //remove original file
+            //     fs.unlinkSync(req.file?.path);
+            //     resolve({
+            //       ...req.body,
+            //       [`${fdataKey}`]: statistic?.path_out_new,
+            //     });
+            //   }
+            // );
           }
         } catch (err) {
           // remove file if error occured

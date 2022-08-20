@@ -1,5 +1,5 @@
 import { prisma } from "../../../database/prisma";
-import uploadImage from "../../../middlewars/uploadImage";
+import uploadImage1 from "../../../middlewars/uploadImage1";
 import fs from "fs";
 
 export default async function Gallery(req, res) {
@@ -31,7 +31,7 @@ export default async function Gallery(req, res) {
         where: { id },
       });
       if (!_vehicle) throw new Error("vehicle not found");
-      const data = await uploadImage(req, res, "images");
+      const data = await uploadImage1(req, res, "images");
 
       console.log("data==", data);
       if (typeof data?.images === "undefined")
