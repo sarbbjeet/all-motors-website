@@ -97,14 +97,14 @@ export default function CarCard({ data, _id }) {
         </a>
       </Link>
 
-      <span
+      {/* <span
         className="btn_compare j_compare position-absolute text_shadow fa-2x py-1 px-2"
         data-toggle="tooltip"
         data-placement="top"
         title="Compare"
       >
         <i className="fas fa-heart"></i>
-      </span>
+      </span> */}
 
       <style jsx>
         {`

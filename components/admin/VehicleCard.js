@@ -3,18 +3,24 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { f2 } from "../../styles/variables.module.scss";
+import Cookies from "js-cookie";
 import { Router, useRouter } from "next/router";
 const url = "/api/vehicles";
+const toggleFavoriteUrl = "/api/initial/toggle_favorite";
 
 const CardImage = styled.div`
   background: url(${(props) => props.image}) no-repeat center center;
   background-size: cover;
   height: 250px;
 `;
-const deleteCard = async ({ id, router }) => {
+
+//delete or toggle favorite card
+const event = async ({ id, router, toggle = false }) => {
   try {
-    const res = await fetch(`${url}?id=${id}`, {
-      method: "DELETE",
+    const token = Cookies.get("authToken");
+    const res = await fetch(`${toggle ? toggleFavoriteUrl : url}?id=${id}`, {
+      method: toggle ? "GET" : "DELETE",
+      headers: { authorization: `Bearer ${token}` },
     });
     const json_res = await res.json();
     if (res.status !== 200) throw new Error(json_res.error);
@@ -32,6 +38,7 @@ export default function VehicleCard({ data }) {
     model,
     title,
     color,
+    favorite,
     description,
     transmission,
     engine_size,
@@ -113,13 +120,22 @@ export default function VehicleCard({ data }) {
             <a
               className="bg-danger"
               //href="/admin/vehicles" //redirect
-              onClick={() => deleteCard({ id, router })}
+              onClick={() => event({ id, router })}
             >
               <i className="fas fa-trash-alt"></i>
             </a>
           </nav>
         </header>
       </div>
+      <span
+        onClick={() => event({ id, router, toggle: true })}
+        className="btn_compare position-absolute text_shadow fa-2x py-1 px-2"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Compare"
+      >
+        <i className={`fas fa-heart ${favorite && "text-danger"}`}></i>
+      </span>
 
       <style jsx>
         {`

@@ -27,15 +27,12 @@ export default function LatestCars({
           </div>
         </div>
       </header>
-
       {/* <div className="bg-white pt-5 overflow-hidden"> */}
       <div className="product_elements list-unstyled text-muted clearfix row col-12 m-0 p-0">
-        {/* <div className="row px-md-5 px-2"> */}
-        {/* <div className="d-flex align-items-center flex-sm-column flex-md-row flex-wrap"
-        > */}
-        {vehicles?.map((car, i) => (
-          <CarCard key={i} data={car} />
-        ))}
+        {/* only favorite car shows */}
+        {vehicles?.map(
+          (car, i) => car.favorite && <CarCard key={i} data={car} />
+        )}
 
         {/* </div> */}
       </div>

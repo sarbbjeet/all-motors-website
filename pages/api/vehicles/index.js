@@ -82,7 +82,6 @@ async function handler(req, res) {
       const { initial, features, business } = dataPicker(
         convertToInt(await uploadImage(req, res, "image", validation, false))
       );
-
       //initial --insert
       const vehicle = await prisma.Initial.create({
         data: initial,

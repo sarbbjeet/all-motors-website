@@ -47,7 +47,8 @@ model Initial {
   engine_size String
   transmission String
   registration String
-  previous_owners Int 
+  previous_owners Int
+  favorite Boolean? @default(false) 
   description String? @default("") @db.VarChar(4000)
 
   //relational models 

@@ -64,11 +64,9 @@ export default function Home({ vehicles }) {
             }}
           />
         </div>
-
         <DealMessage />
         {/* <Card /> */}
         <LatestCars vehicles={vehicles} />
-
         <Feedback />
         {/* <Slider />
        <FeatureCars /> */}

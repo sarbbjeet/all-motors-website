@@ -34,12 +34,12 @@ export const workshop_list = [
 ];
 
 const bannerImages = [
-  "/images/banner1.jpg",
-  "/images/new-images/car4.jpg",
-  "/images/new-images/car5.jpg",
-  "/images/new-images/car6.jpg",
-  "/images/new-images/car7.jpg",
-  "/images/new-images/car8.jpg",
+  "/images/banner/banner1.jpg",
+  "/images/banner/car4.jpg",
+  "/images/banner/car5.jpg",
+  "/images/banner/car6.jpg",
+  "/images/banner/car7.jpg",
+  "/images/banner/car8.jpg",
 ];
 
 const latestCars = [

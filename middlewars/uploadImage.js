@@ -1,19 +1,41 @@
 import multer from "multer";
 const storagePath = process.env.STORAGE_PATH || "public/uploads";
+const tempStoragePath = storagePath + "temp";
 import fs from "fs";
+import compressImages from "compress-images";
 
-//function to get path of files if multiple files are uploading
-const filesPathArr = (files) => {
-  const _filesPath = [];
-  for (let f of files) {
-    _filesPath.push(f.path);
-  }
-  return _filesPath;
+//compress image or images
+const compress_template = (filePath, compressedFilePath, callback) => {
+  const compression = 40;
+  compressImages(
+    filePath,
+    compressedFilePath,
+    { compress_force: false, statistic: true, autoupdate: true },
+    false,
+    { jpg: { engine: "mozjpeg", command: ["-quality", compression] } },
+    {
+      png: {
+        engine: "pngquant",
+        command: ["--quality=" + compression + "-" + compression, "-o"],
+      },
+    },
+    { svg: { engine: "svgo", command: "--multipass" } },
+    {
+      gif: {
+        engine: "gifsicle",
+        command: ["--colors", "64", "--use-col=web"],
+      },
+    },
+    async function (error, completed, statistic) {
+      callback(error, completed, statistic);
+    }
+  );
 };
+
 // middleware that process files uploaded in multipart/form-data format.
 const upload = multer({
   storage: multer.diskStorage({
-    destination: storagePath, //add timestamping with image name
+    destination: tempStoragePath, //add timestamping with image name
     filename: (req, file, cb) =>
       cb(null, `${new Date().toISOString()}-${file.originalname}`),
   }),
@@ -33,6 +55,7 @@ const upload = multer({
   limits: { filename: 1024 * 1024 * 2 }, //only 2mb image size allowed to upload
 });
 
+//main function
 const uploadImage = async (
   req,
   res,
@@ -54,11 +77,40 @@ const uploadImage = async (
               .json({ error: err?.message || "error to upload image" });
           //Everthing is fine
           await validation({ ...req.body });
-
-          resolve({
-            ...req.body,
-            [`${fdataKey}`]: multiple ? filesPathArr(req.files) : req.file.path,
-          });
+          if (multiple) {
+            // const files = await new Promise((_resolve) => {
+            let files = [];
+            for (let file of req.files) {
+              compress_template(
+                file?.path,
+                storagePath,
+                (error, completed, statistic) => {
+                  files.push(statistic?.path_out_new);
+                  //remove original file
+                  fs.unlinkSync(file?.path);
+                  if (req.files.length == files.length) {
+                    resolve({
+                      ...req.body,
+                      [`${fdataKey}`]: files,
+                    });
+                  }
+                }
+              );
+            }
+          } else {
+            compress_template(
+              req.file?.path,
+              storagePath,
+              (error, completed, statistic) => {
+                //remove original file
+                fs.unlinkSync(req.file?.path);
+                resolve({
+                  ...req.body,
+                  [`${fdataKey}`]: statistic?.path_out_new,
+                });
+              }
+            );
+          }
         } catch (err) {
           // remove file if error occured
           const path = req?.file?.path;

@@ -32,6 +32,8 @@ export default async function Gallery(req, res) {
       });
       if (!_vehicle) throw new Error("vehicle not found");
       const data = await uploadImage(req, res, "images");
+
+      console.log("data==", data);
       if (typeof data?.images === "undefined")
         throw new Error("error uploading images");
       const _images = [];

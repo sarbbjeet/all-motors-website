@@ -35,10 +35,10 @@ export default function AppNav() {
             <Link href="/admin">
               <a className="navbar-brand">
                 {/* LOGO */}
-                <div className="logo-container" style={{ top: 0 }}>
+                <div className="logo-container" style={{ top: "2px" }}>
                   <Image
                     alt="logo"
-                    src="/images/logo_new.png"
+                    src="/images/GroupB.png"
                     layout="fill"
                     objectFit="center"
                   />
@@ -274,17 +274,23 @@ export default function AppNav() {
 
         <style jsx>
           {`
+            #searchIcon {
+              margin-left: 50px;
+            }
             .search-btn {
               font-family: ${ff};
               font-size: 1rem;
               font-weight: 600;
+
               text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
             }
             .logo-container {
+              cursor: pointer;
               width: 130px;
               height: 60px;
               position: absolute;
               margin-top: 3px;
+              box-shadow: 0.5px 0.5px 1px 1px rgba(0, 0, 0, 0.1);
             }
 
             @media (max-width: 1200px) {

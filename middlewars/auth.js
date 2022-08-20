@@ -13,14 +13,21 @@ const extractToken = (req) => {
   return null;
 };
 const auth = (handler) => async (req, res) => {
-  const token = extractToken(req);
-  if (token) {
-    //send token to get user data
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-    const { data: user } = await api.get("/api/user/login");
-    if (user?.data) req.user = user?.data;
+  try {
+    const token = extractToken(req);
+    if (!token) throw new Error("authorization token not found");
+    if (token) {
+      //send token to get user data
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+      const { data: user } = await api.get("/api/user/login"); //verify token
+      req.user = user?.data;
+    }
+    return handler(req, res);
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ error: err.response?.data?.error || err.message });
   }
-  return handler(req, res);
 };
 
 export default auth;
