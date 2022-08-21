@@ -41,15 +41,6 @@ export default function Home({ vehicles }) {
           }}
         >
           <Banner1 />
-          {/* <div
-          style={{
-            position: "absolute",
-            backgroundColor: "rgba(50, 50, 50, 0.2)",
-            width: "100%",
-            top: 0,
-            height: "100%",
-          }}
-        /> */}
 
           <ShortSearch
             exStyle={{

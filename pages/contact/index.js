@@ -1,9 +1,11 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout";
-import * as fontFamily from "../../styles/variables.module.scss";
+import SendUsMessage from "../../components/SendUsMessage";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function index() {
+  const [closeWindow, setCloseWindow] = useState(false);
   return (
     <Layout>
       <main className="bg-light mt-4">
@@ -21,7 +23,9 @@ export default function index() {
               <div className="container py-3 position-relative text_shadow text-white">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-8 col-xl-6">
-                    <h2 className="hText section_title">Contact Us</h2>
+                    <h2 className="font-weight-bold h1 section_title">
+                      Contact Us
+                    </h2>
 
                     <nav className="d-inline-block" aria-label="breadcrumb">
                       <h2 className="sr-only">Breadcrumb</h2>
@@ -41,111 +45,14 @@ export default function index() {
               </div>
             </div>
           </header>
+
+          <div className="message-wrapper">
+            <SendUsMessage closeEvent={(state) => setCloseWindow(state)} />
+          </div>
+
           <div className="container py-5">
             <div className="row py-3">
-              <div className="col-lg-6 col-xl-7 mb-5 mb-lg-0">
-                <div
-                  className="bg-white p-4 p-lg-4 border"
-                  style={{ height: "100%" }}
-                >
-                  <div className="border-bottom border-dark mb-4">
-                    <h4 className="text-dark font-weight-bold mb-3">
-                      Send us a message
-                    </h4>
-                  </div>
-                  <div className="return"></div>
-
-                  <form
-                    className="text-muted formContact"
-                    action="#"
-                    method="post"
-                    encType="multipart/form-data"
-                  >
-                    <div className="form-row">
-                      <div className="col-xl-6">
-                        <div className="input-group mb-3">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text bg-light border-right-0 text-muted rounded-0">
-                              <i className="far fa-user"></i>
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            className="form-control text-muted border-left-0 bg-light rounded-0"
-                            name="name"
-                            value=""
-                            placeholder="Name"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-xl-6">
-                        <div className="input-group mb-3">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text border-right-0 text-muted bg-light rounded-0">
-                              <i className="far fa-envelope"></i>
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            className="form-control border-left-0 text-muted bg-light rounded-0"
-                            name="email"
-                            value=""
-                            placeholder="Email"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="input-group mb-3">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text border-right-0 text-muted bg-light rounded-0">
-                          <i className="fas fa-bullhorn"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        className="form-control border-left-0 text-muted bg-light rounded-0"
-                        name="subject"
-                        value=""
-                        id="subject"
-                        placeholder="Subject"
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="message" className="sr-only">
-                        Message:
-                      </label>
-                      <textarea
-                        className="form-control bg-light rounded-0"
-                        name="message"
-                        id="message"
-                        placeholder="Message"
-                        rows="5"
-                      ></textarea>
-                    </div>
-
-                    <div className="form-group">
-                      <button
-                        className="btn btn-block btn-lg btn-primary position-relative"
-                        type="submit"
-                      >
-                        Send Message
-                        <span
-                          className="spinner-border text-light spinner form_load position-absolute"
-                          role="status"
-                          style={{ display: "none" }}
-                        >
-                          <span className="sr-only">Mostrar Mais...</span>
-                        </span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              <SendUsMessage hiddenCloseBtn={true} />
               <div className="col-lg-6 col-xl-5">
                 <div
                   className="bg-dark border px-3 px-md-4 py-3"
@@ -176,6 +83,7 @@ export default function index() {
                     <i className="fab fa-whatsapp mr-2"></i> (44) 7927684797
                   </a>
                   <a
+                    onClick={() => setCloseWindow(true)}
                     className="btn btn-dark text-left py-3"
                     href="#"
                     title="E-mail"
@@ -225,16 +133,28 @@ export default function index() {
 
           <style jsx>
             {`
-              .text {
-                font-family: "${fontFamily.f2} !important";
-                font-size: 1rem !important;
-                font-weight: 500 !important;
+              h2,
+              h4,
+              a,
+              li,
+              label,
+              div,
+              span,
+              button,
+              p {
+                font-family: ${ff};
               }
-              .hText {
-                font-family: "${fontFamily.f2} !important";
 
-                font-size: 2rem !important;
-                font-weight: 600 !important;
+              .message-wrapper {
+                top: 0;
+                width: 100%;
+                height: 200%;
+                padding-top: 70px;
+                justify-content: center;
+                z-index: 100;
+                position: fixed;
+                background-color: rgba(0, 0, 0, 0.9);
+                display: ${closeWindow ? "flex" : "none"};
               }
             `}
           </style>

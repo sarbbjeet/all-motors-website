@@ -1,11 +1,18 @@
 //import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { f2 as ff } from "../styles/variables.module.scss";
+import SendUsMessage from "./SendUsMessage";
 
 export default function AppFooter() {
+  const [closeWindow, setCloseWindow] = useState(false);
   return (
-    <footer className="main_footer bg-dark text-light d-print-none">
+    <footer className="position-relative main_footer bg-dark text-light d-print-none">
+      <div className="message-wrapper">
+        <SendUsMessage closeEvent={(state) => setCloseWindow(state)} />
+      </div>
+
       <div className="container">
         <div className="row pt-5">
           <div className="col-sm-6 col-lg-3 pb-2">
@@ -98,7 +105,10 @@ export default function AppFooter() {
                   <i className="fab fa-whatsapp mr-2"></i> (44) 7927684797
                 </a>
               </li>
-              <li className="list-inline-item w-100">
+              <li
+                className="list-inline-item w-100"
+                onClick={() => setCloseWindow(true)}
+              >
                 <a
                   className="btn btn-block  btn-dark text-left border-0 px-1 text_small"
                   href="#"
@@ -258,6 +268,19 @@ export default function AppFooter() {
             display: flex;
             padding: 2px 0;
             justify-content: space-between;
+          }
+
+          .message-wrapper {
+            top: 0;
+            width: 100%;
+            height: 200%;
+            padding-top: 70px;
+
+            justify-content: center;
+            z-index: 100;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: ${closeWindow ? "flex" : "none"};
           }
         `}
       </style>

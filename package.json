@@ -54,6 +54,7 @@
     "python": "^0.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-lazy-load-image-component": "^1.5.5",
     "react-redux": "^8.0.2",
     "react-slideshow-image": "^4.0.3",
     "redux": "^4.2.0",

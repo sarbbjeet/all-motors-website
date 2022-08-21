@@ -2,21 +2,7 @@ import React, { useState } from "react";
 import Arrow from "./Arrow";
 import Slider from "./Slider";
 import HeaderText from "./HeaderText";
-import styled from "styled-components";
-import Image from "next/image";
-
-const CardImage = styled.div`
-  background: url(${(props) => props.image}) no-repeat center center;
-  background-size: cover;
-  height: 100%;
-`;
-// const CardImage = ({ image }) => (
-//   <Image
-//     layout="fill"
-//     alt="image-gallery"
-//     src={image}
-//   />
-// );
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
@@ -37,7 +23,16 @@ export default function Index({ vehicle }) {
     <article className="pb-4 overflow-hidden">
       <div className="row">
         <div className="show-image col-lg-7 col-12 position-relative order-0 p-0 m-0">
-          <CardImage image={`/store/${slides[selectedIndex]?.image}`} />
+          <LazyLoadImage
+            src={`/store/${slides[selectedIndex]?.image}`}
+            alt=""
+            property
+            width="100%"
+            height="100%"
+            effect="blur"
+          />
+
+          {/* <CardImage image={`/store/${slides[selectedIndex]?.image}`} /> */}
           <Arrow direction="left" handleClick={changeImage} />
           <Arrow direction="right" handleClick={changeImage} />
 
@@ -54,7 +49,7 @@ export default function Index({ vehicle }) {
             />
           </span> */}
         </div>
-        <div className="col-lg-4 d-lg-block d-none">
+        <div className="pt-4 col-lg-4 d-lg-block d-none">
           <HeaderText
             price={headerProps.price}
             make={headerProps.make}

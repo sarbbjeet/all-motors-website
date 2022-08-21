@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import styles from "./index.module.css";
+import { f2 as ff } from "../../styles/variables.module.scss";
+
 export default function Finance() {
   return (
     <Layout>
@@ -168,6 +170,27 @@ export default function Finance() {
           </div>
         </section>
       </main>
+
+      <style jsx>
+        {`
+          h4,
+          div,
+          label,
+          li,
+          h2,
+          a,
+          ul,
+          button,
+          p,
+          input {
+            font-family: ${ff};
+          }
+          label {
+            font-size: 1rem;
+            font-weight: 500;
+          }
+        `}
+      </style>
     </Layout>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function About() {
   return (
@@ -229,6 +230,22 @@ export default function About() {
           </div>
         </section>
       </main>
+
+      <style jsx>{`
+        h2,
+        h4,
+        a,
+        li,
+        label,
+        div,
+        span,
+        p {
+          font-family: ${ff};
+        }
+        .font_exbold {
+          font-size: 1.2rem;
+        }
+      `}</style>
     </Layout>
   );
 }

@@ -4,8 +4,6 @@ import createEmotionServer from "@emotion/server/create-instance";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import { ServerStyleSheet } from "styled-components";
-import Script from "next/script";
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -15,40 +13,10 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin={"true"}
-          />
-          <link
             href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700&family=Baloo+Tammudu+2&family=Dosis:wght@200;400;500;600&family=Edu+TAS+Beginner:wght@600;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap"
             rel="stylesheet"
           />
-          {/* <Script src="/assets/plugins/jquery/jquery.min.js async"></Script>
-          <Script src="/assets/plugins/jquery/jquery.form.min.js async"></Script>
-          <Script src="/assets/plugins/bootstrap/popper.min.js async"></Script>
-          <Script src="/assets/plugins/bootstrap/bootstrap.min.js async"></Script>
-          <Script src="/assets/plugins/bootstrap/bootstrap-notify.min.js async"></Script>
-          <Script src="/assets/plugins/sweetalert/sweetalert.min.js async"></Script>
-          <Script src="/assets/plugins/dropzone/dropzone.min.js async"></Script>
-          <Script src="/assets/plugins/maskinput/maskinput.js async"></Script>
-          <Script src="/assets/plugins/jquery/jquery.validate.min.js async"></Script>
-          <Script src="/assets/plugins/step_wizard/jquery.steps.min.js async"></Script>
-          <Script src="/assets/plugins/step_wizard/wizard_step_init.js async"></Script>
-          <Script src="/assets/_js/dashboard-base.js async"></Script>
-          <Script src="/assets/_js/dashboard-form.js async"></Script>
-          <Script src="/assets/plugins/datepicker/datepicker.min.js async"></Script>
-          <Script src="/assets/plugins/datepicker/datepicker.en-US.js async"></Script>
-          <Script src="/assets/_js/slide.js async" />
-          <Script src="/assets/_js/compare.js async" />
-          <Script src="/assets/plugins/slick/slick.min.js async" /> */}
 
-          {/* <link rel="stylesheet" href="/assets/_css/dashboard.css" /> */}
-          {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>
         {/* fixed position sticky problem  */}

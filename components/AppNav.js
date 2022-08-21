@@ -41,6 +41,7 @@ export default function AppNav() {
                     src="/images/GroupB.png"
                     layout="fill"
                     objectFit="center"
+                    priority
                   />
                   {/* <p className={styles.logoP}>
                     All<span> </span>

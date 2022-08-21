@@ -19,17 +19,16 @@ export default function Feedback() {
             style={{ letterSpacing: "1px", fontSize: "18px" }}
             className="messageText text-center letter-spacing-1 text_shadow mb-5"
           >
-            Decent selection and the guy took his time with us as we werenâ€™t
-            sure what we wanted got a car in the end and itâ€™s been good itâ€™s
-            done everything itâ€™s says on the tin
+            Car are clean and well condition. I am fully satisfied with the give
+            services.
           </p>
-          <h5 className="sendText">Sarbjit Singh </h5>
+          <h5 className="sendText">Pool Cambell </h5>
           <div className="starRating">
             <i style={{ color: "white" }} className="fas fa-star p-1"></i>
             <i style={{ color: "white" }} className="fas fa-star p-1"></i>
             <i style={{ color: "white" }} className="fas fa-star p-1"></i>
-            <i style={{ color: "white" }} className="far fa-star p-1"></i>
-            <i style={{ color: "white" }} className="far fa-star p-1"></i>
+            <i style={{ color: "white" }} className="fas fa-star p-1"></i>
+            <i style={{ color: "white" }} className="fas fa-star p-1"></i>
           </div>
         </div>
       </div>

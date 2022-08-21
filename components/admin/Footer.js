@@ -1,6 +1,7 @@
 import React from "react";
 
 import { f2, f1 } from "../../styles/variables.module.scss";
+import SendUsMessage from "../SendUsMessage";
 export default function Footer() {
   return (
     <div className="border-top">

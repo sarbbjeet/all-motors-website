@@ -49,7 +49,7 @@ export default function handler({ vehicle }) {
   //initial can get from directly vehicles
   return (
     <Layout>
-      <div className="pt-5 mt-3">
+      <div className="pt-4 mt-3">
         <main style={{ backgroundColor: "#eee" }}>
           <Gallery vehicle={vehicle} />
           <div className="px-lg-3 m-0 row overflow-hidden">

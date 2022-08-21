@@ -28,7 +28,7 @@ const validation = async (data) => {
   const schema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
-    phone: Joi.string(),
+    phone: Joi.string().allow("", null).default(""),
     type: Joi.string().required(),
     message: Joi.string().allow("", null).default(""),
   });
