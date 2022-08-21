@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import SendUsMessage from "../../components/SendUsMessage";
 import { f2 as ff } from "../../styles/variables.module.scss";
 
-export default function index() {
+export default function Index() {
   const [closeWindow, setCloseWindow] = useState(false);
   return (
     <Layout>
