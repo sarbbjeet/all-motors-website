@@ -35,14 +35,37 @@ export default function Stage1({ state, setState }) {
             id="img"
             name="img"
             onChange={(e) => {
-              onChangeEvent({
-                target: {
-                  name: "image",
-                  value: URL?.createObjectURL(e?.target?.files[0]),
-                },
+              let WIDTH = 1080;
+              let image = document.createElement("img");
+              image.src = URL?.createObjectURL(e?.target?.files[0]);
+              image.addEventListener("load", (e) => {
+                let canvas = document.createElement("canvas");
+                let ratio = WIDTH / e.target.width;
+                canvas.width = WIDTH;
+                canvas.height = e.target.height * ratio;
+                const context = canvas.getContext("2d");
+                context.drawImage(image, 0, 0, canvas.width, canvas.height);
+                const newImageUrl = context.canvas.toDataURL("image/jpeg", 90);
+                onChangeEvent({
+                  target: {
+                    name: "image",
+                    value: newImageUrl,
+                  },
+                });
               });
-              //setImage_file(URL.createObjectURL(e.target.files[0]));
+
+              //remove image element
+              image.remove();
             }}
+            // onChange={(e) => {
+            //   onChangeEvent({
+            //     target: {
+            //       name: "image",
+            //       value: URL?.createObjectURL(e?.target?.files[0]),
+            //     },
+            //   });
+            //   //setImage_file(URL.createObjectURL(e.target.files[0]));
+            // }}
             accept="image/png, image/jpeg, image/jpg"
           />
           <label className="d-block w-100 text-muted text_small text-center">

@@ -22,8 +22,9 @@ export default function Index({ vehicle }) {
   return (
     <article className="pb-4 overflow-hidden">
       <div className="row">
-        <div className="show-image col-lg-7 col-12 position-relative order-0 p-0 m-0">
+        <div className="show-image bg-dark  col-lg-7 col-12 position-relative order-0 p-0 m-0">
           <LazyLoadImage
+            style={{ objectFit: "contain" }}
             src={`/store/${slides[selectedIndex]?.image}`}
             alt=""
             property

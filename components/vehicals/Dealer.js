@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { useState } from "react";
 import { f2 as ff } from "../../styles/variables.module.scss";
+import SendUsMessage from "../SendUsMessage";
 
 export default function Dealer({
   numberOfVehicles = "240",
@@ -8,6 +10,7 @@ export default function Dealer({
   image = "/images/backgroundProfileImage.jpeg",
   profileImage = "/images/profile1.jpeg",
 }) {
+  const [closeWindow, setCloseWindow] = useState(false);
   return (
     <div className="col-md-6 col-lg-12 mb-4">
       <section className="bg-white border p-3 px-lg-4 pt-4">
@@ -55,13 +58,13 @@ export default function Dealer({
               >
                 <i className="fab fa-whatsapp fa-2x"></i>
               </a>
-
               <a
                 className="btn btn-lg btn-outline-secondary flex-grow-1 mx-1"
                 data-toggle="tooltip"
                 data-placement="top"
                 href="#"
                 title="mail@mail.com"
+                onClick={() => setCloseWindow(true)}
               >
                 <i className="far fa-envelope fa-2x"></i>
               </a>
@@ -96,6 +99,17 @@ export default function Dealer({
         }
         p {
           font-size: 1.1rem;
+        }
+        .message-wrapper {
+          top: 0;
+          width: 100%;
+          height: 200%;
+          padding-top: 70px;
+          justify-content: center;
+          z-index: 100;
+          position: fixed;
+          background-color: rgba(0, 0, 0, 0.9);
+          display: ${closeWindow ? "flex" : "none"};
         }
       `}</style>
     </div>

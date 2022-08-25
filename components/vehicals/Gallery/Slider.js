@@ -37,7 +37,13 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
               key={i}
               onClick={() => handleEvent(i)}
             >
-              <LazyLoadImage alt="" src={`/store/${s?.image}`} />
+              <LazyLoadImage
+                alt=""
+                style={{ objectFit: "contain" }}
+                src={`/store/${s?.image}`}
+                width="100%"
+                height="100%"
+              />
               <div
                 className={`${stylesExt.shild} ${
                   i == selectedIndex && stylesExt.activeImage

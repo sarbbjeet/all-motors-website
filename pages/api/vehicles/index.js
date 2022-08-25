@@ -15,6 +15,7 @@ import {
 } from "../../../validation/dataPicker";
 import auth from "../../../middlewars/auth";
 import uploadImage1 from "../../../middlewars/uploadImage1";
+import uploadImage from "../../../middlewars/uploadImage";
 
 //divide key/values per according to database table name
 const dataPicker = (data) => {
@@ -81,7 +82,7 @@ async function handler(req, res) {
       if (!req?.user) throw new Error("user is not logged in");
       //upload single image
       const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImage(req, res, "image", validation, false))
+        convertToInt(await uploadImage1(req, res, "image", validation, false))
       );
       //initial --insert
       const vehicle = await prisma.Initial.create({

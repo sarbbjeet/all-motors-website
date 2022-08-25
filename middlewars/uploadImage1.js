@@ -58,7 +58,7 @@ const uploadImage1 = async (
             destination: storagePath,
             plugins: [
               //imageminJpegtran({ quality: 50 }),
-              imageminMozjpeg({ quality: 40 }),
+              imageminMozjpeg({ quality: 60 }),
               imageminPngquant({
                 quality: [0.6, 0.8],
               }),
