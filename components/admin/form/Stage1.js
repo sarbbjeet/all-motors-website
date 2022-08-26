@@ -219,9 +219,10 @@ export default function Stage1({ state, setState }) {
             content: "";
             width: 100%;
             height: 100%;
+            // background: url(${`http://localhost:4000/store${initial?.image}`});
             background: url(${initial?.image?.startsWith("/")
-                ? `/store/${initial?.image}`
-                : `${initial?.image || "/images/no-image.jpg"}`})
+                ? `http://localhost:4000/store${initial?.image}`
+                : "/images/no-image.jpg"})
               no-repeat center;
             background-size: cover;
             // position: absolute;

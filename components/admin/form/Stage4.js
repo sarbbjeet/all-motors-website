@@ -159,7 +159,7 @@ export default function Stage4() {
                 <AppImage
                   key={i}
                   // custom express image route
-                  image={`/store/${image}`}
+                  image={`http://localhost:4000/store/${image}`}
                   id={id}
                   dimension={{ width: "340px", height: "250px" }}
                   deleteEvent={deleteEvent}

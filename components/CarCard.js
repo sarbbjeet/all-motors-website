@@ -22,9 +22,20 @@ export default function CarCard({ data, _id }) {
           className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded"
           title="Vehicles Datails"
         >
+          <div
+            className="position-relative"
+            style={{ width: "100%", height: "220px" }}
+          >
+            <Image
+              src={`http://localhost:4000/store${data?.image}`}
+              layout="fill"
+              alt=""
+              objectFit="center"
+            />
+          </div>
           {/* access from custom store express route */}
           {/* <CardImage image={`/store/${data?.image}`} /> */}
-          <CardImage image={`${data?.image}`} />
+          {/* <CardImage image={`http://localhost:4000/store${data?.image}`} /> */}
 
           {/* <span className="product_brand position-absolute bg-white shadow-sm rounded-circle p-1">
               <Image

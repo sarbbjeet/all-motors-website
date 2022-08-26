@@ -3,6 +3,7 @@ import Arrow from "./Arrow";
 import Slider from "./Slider";
 import HeaderText from "./HeaderText";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from "next/image";
 
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
@@ -23,7 +24,19 @@ export default function Index({ vehicle }) {
     <article className="pb-4 overflow-hidden">
       <div className="row">
         <div className="show-image bg-dark  col-lg-7 col-12 position-relative order-0 p-0 m-0">
-          <LazyLoadImage
+          {/* <div
+            className="position-relative"
+            style={{ width: "100%", height: "300px" }}
+          > */}
+          <Image
+            src={`http://localhost:4000/store${slides[selectedIndex]?.image}`}
+            layout="fill"
+            alt=""
+            objectFit="contain"
+          />
+          {/* </div> */}
+
+          {/* <LazyLoadImage
             style={{ objectFit: "contain" }}
             src={`${slides[selectedIndex]?.image}`}
             alt=""
@@ -31,7 +44,7 @@ export default function Index({ vehicle }) {
             width="100%"
             height="100%"
             effect="blur"
-          />
+          /> */}
 
           {/* <CardImage image={`/store/${slides[selectedIndex]?.image}`} /> */}
           <Arrow direction="left" handleClick={changeImage} />

@@ -4,6 +4,7 @@ import "react-slideshow-image/dist/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import stylesExt from "../../../styles/Slider.module.scss";
+import Image from "next/image";
 export default function Handler({ slides, handleEvent, selectedIndex }) {
   const sliderRef = useRef(null);
   const resizeRef = useRef(null);
@@ -37,13 +38,20 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
               key={i}
               onClick={() => handleEvent(i)}
             >
-              <LazyLoadImage
+              <Image
+                src={`http://localhost:4000/store${s?.image}`}
+                layout="fill"
+                alt=""
+                objectFit="contain"
+              />
+
+              {/* <LazyLoadImage
                 alt=""
                 style={{ objectFit: "contain" }}
                 src={`${s?.image}`}
                 width="100%"
                 height="100%"
-              />
+              /> */}
               <div
                 className={`${stylesExt.shild} ${
                   i == selectedIndex && stylesExt.activeImage

@@ -1,6 +1,6 @@
 const next = require("next");
 const express = require("express"); //
-const port = 3000;
+const port = 5000;
 const hostname = "localhost";
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev, hostname, port });
