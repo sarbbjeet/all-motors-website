@@ -11,7 +11,7 @@ import ShortSearch from "../components/ShortSearch";
 import styles from "../styles/Home.module.scss";
 import getDeviceSize from "../utils/getDeviceSize";
 
-// import { prisma } from "../database/prisma";
+import { prisma } from "../database/prisma";
 
 import { useSelector, useDispatch } from "react-redux";
 import { vehiclesAdded, applyFilter } from "../store/slice/filtersSlice";
@@ -76,23 +76,23 @@ export default function Home({ vehicles }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  // const vehicles = await prisma.Initial.findMany({
-  //   include: {
-  //     features: true,
-  //     business: true,
-  //   },
-  // });
-  // const _vehicles = [
-  //   ...vehicles.map((vehicle) => ({
-  //     ...vehicle,
-  //     doors: vehicle?.features?.doors,
-  //     fuel: vehicle?.features?.fuel,
-  //     vehicle_type: vehicle?.features?.vehicle_type,
-  //   })),
-  // ];
+export const getStaticProps = async () => {
+  const vehicles = await prisma.Initial.findMany({
+    include: {
+      features: true,
+      business: true,
+    },
+  });
+  const _vehicles = [
+    ...vehicles.map((vehicle) => ({
+      ...vehicle,
+      doors: vehicle?.features?.doors,
+      fuel: vehicle?.features?.fuel,
+      vehicle_type: vehicle?.features?.vehicle_type,
+    })),
+  ];
 
-  return { props: { vehicles: [] } };
+  return { props: { vehicles: _vehicles } };
 };
 
 // export const getStaticProps = wrapper.getStaticProps((store) => async () => {

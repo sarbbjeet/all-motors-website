@@ -6,8 +6,6 @@ import { colors } from "../utils/constants";
 import styled from "styled-components";
 import styles from "../styles/AppNav.module.scss";
 import { f2 as ff } from "../styles/variables.module.scss";
-
-import { primary } from "../styles/variables.module.scss";
 import MobileFilter from "./vehicals/MobileFilter";
 
 import { workshop_list } from "../utils/variables";

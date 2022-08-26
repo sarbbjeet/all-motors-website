@@ -3,6 +3,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { bannerImages as images } from "../utils/variables";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from "next/image";
 
 // const ImageDiv = ({ image, height = "670px" }) => (
 //   <div>
@@ -25,18 +26,20 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function Banner1() {
   return (
     <div>
-      <div className="web_bac">
+      <div className="web_bac h-100">
         <Slide slidesToScroll={1} slidesToShow={1} indicators={true}>
           {images?.map((img, i) => (
             <LazyLoadImage
-              key={i}
               style={{ objectFit: "cover" }}
+              key={i}
               src={img}
               alt=""
               property
+              //layout="fill"
               width="100%"
               height="670px"
               effect="blur"
+              // objectFit="cover"
             />
 
             // <ImageDiv key={i} image={img} />
