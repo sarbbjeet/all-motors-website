@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "generate": "npx prisma generate",
-    "dev": "npm run generate && nodemon --watch \"src/**\" --ext \"js,json\" --exec \"node server.js\"",
+    "dev": "npm run generate && nodemon --watch \"src/**\" --ext \"js,json\" --exec \"next\"",
     "prisma:migrate": "npx prisma migrate deploy",
     "build": "npm run generate && next build",
-    "start": "node server.js",
+    "start": "next start -p 3000",
     "lint": "next lint"
   },
   "dependencies": {

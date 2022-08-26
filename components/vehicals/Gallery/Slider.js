@@ -40,7 +40,7 @@ export default function Handler({ slides, handleEvent, selectedIndex }) {
               <LazyLoadImage
                 alt=""
                 style={{ objectFit: "contain" }}
-                src={`/store/${s?.image}`}
+                src={`${s?.image}`}
                 width="100%"
                 height="100%"
               />
