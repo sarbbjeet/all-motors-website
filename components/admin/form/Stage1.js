@@ -4,6 +4,7 @@ import AppInput from "./AppInput";
 import AppSelect from "./AppSelect";
 import AppTextArea from "./AppTextArea";
 import { color, transmission, make } from "../../../utils/selectOptions";
+import Image from "next/image";
 
 export default function Stage1({ state, setState }) {
   const onChangeEvent = ({ target }) => {
@@ -30,7 +31,7 @@ export default function Stage1({ state, setState }) {
           }`}
         >
           <input
-            className="w-100 h-100 p-0 m-0 position-relative placeholder"
+            className="w-100 h-100 p-0 m-0 placeholder"
             type="file"
             id="img"
             name="img"
@@ -68,6 +69,19 @@ export default function Stage1({ state, setState }) {
             // }}
             accept="image/png, image/jpeg, image/jpg"
           />
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              alt="logo-image"
+              layout="fill"
+              objectFit="center"
+              src={`${
+                initial?.image?.startsWith("/")
+                  ? `http://localhost:4000/store${initial?.image}`
+                  : initial?.image || "/images/no-image.jpg"
+              }
+                `}
+            />
+          </div>
           <label className="d-block w-100 text-muted text_small text-center">
             Cover: (JPG 1280x628px)
           </label>
@@ -214,19 +228,11 @@ export default function Stage1({ state, setState }) {
           }
           #img {
             cursor: pointer;
-          }
-          #img:before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            // background: url(${`http://localhost:4000/store${initial?.image}`});
-            background: url(${initial?.image?.startsWith("/")
-                ? `http://localhost:4000/store${initial?.image}`
-                : "/images/no-image.jpg"})
-              no-repeat center;
-            background-size: cover;
-            // position: absolute;
-            display: inline-block;
+            z-index: 10;
+            color: transparent;
+            background-color: transparent;
+            opacity: 0;
+            position: absolute;
           }
 
           .image_container {

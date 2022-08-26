@@ -23,7 +23,8 @@ export default function AppImage({
       onMouseOver={() => setImageHover(id)}
       onMouseOut={() => setImageHover(-1)}
     >
-      <CardImage image={image} />
+      {/* <CardImage image={image} /> */}
+      <Image src={image} layout="fill" alt="" objectFit="contain" />
       {/* <Image alt="car-" src={`${image}`} layout="fill" priority /> */}
       {id == imageHover && (
         <div className="trash">
