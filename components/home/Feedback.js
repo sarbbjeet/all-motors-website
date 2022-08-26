@@ -1,6 +1,6 @@
-import getDeviceSize from "../../utils/getDeviceSize";
-
+import Image from "next/image";
 import * as font from "../../styles/variables.module.scss";
+import { f2 as ff } from "../../styles/variables.module.scss";
 
 export default function Feedback() {
   return (
@@ -36,13 +36,13 @@ export default function Feedback() {
       <style jsx>
         {`
           .messageText {
-            font-family: ${font.f1} !important;
-            font-size: 1rem !important;
+            font-family: ${ff} !important;
+            font-size: 1.1rem !important;
             font-weight: 300;
           }
           .senderText {
-            font-family: ${font.f1} !important;
-            font-size: 1rem !important;
+            font-family: ${ff} !important;
+            font-size: 1.1rem !important;
             font-weight: 500;
             letter-spacing: 1px !important;
           }

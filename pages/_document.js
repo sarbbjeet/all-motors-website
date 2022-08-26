@@ -4,6 +4,7 @@ import createEmotionServer from "@emotion/server/create-instance";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import { ServerStyleSheet } from "styled-components";
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -12,10 +13,6 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/static/favicon.ico" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700&family=Baloo+Tammudu+2&family=Dosis:wght@200;400;500;600&family=Edu+TAS+Beginner:wght@600;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap"
-            rel="stylesheet"
-          />
 
           {this.props.emotionStyleTags}
         </Head>

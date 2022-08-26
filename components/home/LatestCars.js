@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CarCard from "../CarCard";
 // import { colors, fontFamily as font } from "../../utils/constants";
 import * as variables from "../../styles/variables.module.scss";
+
 import { latestCars } from "../../utils/variables"; //get raw json data
 import Link from "next/link";
 import VehicleCard from "../admin/VehicleCard";
@@ -48,12 +49,12 @@ export default function LatestCars({
       <style jsx>
         {`
           .text {
-            font-family: ${variables.f1} !important;
+            font-family: ${variables.f2} !important;
             font-size: 1.8rem;
             font-weight: 500;
           }
           ._tagline {
-            font-family: ${variables.f4} !important;
+            font-family: ${variables.f2} !important;
             font-size: 1.2rem;
             font-weight: 200;
           }

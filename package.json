@@ -15,6 +15,8 @@
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
+    "@fontsource/baloo-bhai-2": "^4.5.9",
+    "@fontsource/poppins": "^4.5.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@mui/icons-material": "latest",
     "@mui/material": "^5.9.1",

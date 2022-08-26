@@ -99,9 +99,7 @@ export default function AppNav() {
                               color="white"
                               alt=""
                             />
-                            <span
-                              style={{ marginLeft: "10px", fontSize: "1rem" }}
-                            >
+                            <span className={`nested-nav ml-2 text-white`}>
                               Used Cars
                             </span>
                           </div>
@@ -125,9 +123,7 @@ export default function AppNav() {
                               color="white"
                               alt=""
                             />
-                            <span
-                              style={{ marginLeft: "10px", fontSize: "1rem" }}
-                            >
+                            <span className={`nested-nav ml-2 text-white`}>
                               Used Vans
                             </span>
                           </div>
@@ -176,9 +172,7 @@ export default function AppNav() {
                                 color="white"
                                 alt="image"
                               />
-                              <span
-                                style={{ marginLeft: "10px", fontSize: "1rem" }}
-                              >
+                              <span className={`nested-nav ml-2 text-white`}>
                                 {item?.name}
                               </span>
                             </div>
@@ -282,8 +276,12 @@ export default function AppNav() {
               font-family: ${ff};
               font-size: 1rem;
               font-weight: 600;
-
               text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            }
+
+            .nested-nav {
+              font-family: ${ff};
+              font-weight: 700 !important;
             }
             .logo-container {
               cursor: pointer;

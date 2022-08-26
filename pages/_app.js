@@ -1,6 +1,12 @@
 import "../public/assets/_css/style.css";
 // import "../public/assets/plugins/slick/slick.min.css";
 import "../public/assets/fonts/fontawesome-free/css/all.min.css";
+// import "@fontsource/poppins";
+import "@fontsource/baloo-bhai-2/800.css";
+import "@fontsource/baloo-bhai-2/700.css";
+import "@fontsource/baloo-bhai-2/600.css";
+import "@fontsource/baloo-bhai-2/500.css";
+import "@fontsource/baloo-bhai-2/400.css";
 
 // import "../styles/globals.css";
 import * as React from "react";
