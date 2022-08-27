@@ -67,36 +67,42 @@ export default function Stage4() {
   // publish images
   const publishEvent = async (e) => {
     e.preventDefault();
+    try {
+      if (!files.length > 0)
+        return alert("Error: " + " --no image to publish-- ");
+      //const inputElement = document.getElementById("image");
+      setLoading(true);
+      const formData = new FormData();
+      //send multiple files with same key
+      //convert back dataURl to Blob
+      for (let file of files)
+        formData.append("images", await dataURItoBlob(file));
 
-    if (!files.length > 0)
-      return alert("Error: " + " --no image to publish-- ");
-    //const inputElement = document.getElementById("image");
-    setLoading(true);
-    const formData = new FormData();
-    //send multiple files with same key
-    //convert back dataURl to Blob
-    for (let file of files)
-      formData.append("images", await dataURItoBlob(file));
-    const response = await fetch(`${api_url}?id=${vehicleId}`, {
-      method: "POST",
-      body: formData,
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-    });
-    if (response.status !== 200) {
-      const error_text = await response
-        .text()
-        .then((text) => JSON.parse(text).error);
+      const response = await axios(`${api_url}?id=${vehicleId}`, {
+        method: "POST",
+        data: formData,
+      });
+      // const response = await fetch(`${api_url}?id=${vehicleId}`, {
+      //   method: "POST",
+      //   body: formData,
+      // });
+      if (response.status !== 200) {
+        // const error_text = await response
+        //   .text()
+        //   .then((text) => JSON.parse(text).error);
+        setLoading(false);
+        //console.log(response.text());
+        return alert(`Error to uploading images..`);
+      }
+      //remove images from upload section and display success message
+      SuccessAlert.current.style.display = "block";
+      setFiles([]);
+      reloadImages({ setStoredImages, vehicleId });
       setLoading(false);
-      //console.log(response.text());
-      return alert("Error: " + `${error_text}`);
+    } catch (err) {
+      setLoading(false);
+      alert(`Error: ${err.error || "unknown server error"}`);
     }
-    //remove images from upload section and display success message
-    SuccessAlert.current.style.display = "block";
-    setFiles([]);
-    reloadImages({ setStoredImages, vehicleId });
-    setLoading(false);
   };
 
   useEffect(() => {
