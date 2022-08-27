@@ -6,6 +6,7 @@ const nextConfig = {
   optimizeFonts: true,
   trailingSlash: true,
   images: {
+    minimumCacheTTL: 60,
     domains: ["localhost"],
   },
   sassOptions: {

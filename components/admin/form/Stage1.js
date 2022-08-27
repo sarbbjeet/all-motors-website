@@ -36,7 +36,7 @@ export default function Stage1({ state, setState }) {
             id="img"
             name="img"
             onChange={(e) => {
-              let WIDTH = 1080;
+              let WIDTH = 1280;
               let image = document.createElement("img");
               image.src = URL?.createObjectURL(e?.target?.files[0]);
               image.addEventListener("load", (e) => {
@@ -76,7 +76,7 @@ export default function Stage1({ state, setState }) {
               objectFit="center"
               src={`${
                 initial?.image?.startsWith("/")
-                  ? `http://localhost:4000/store${initial?.image}`
+                  ? `http://localhost:4000/store/${initial?.image}`
                   : initial?.image || "/images/no-image.jpg"
               }
                 `}

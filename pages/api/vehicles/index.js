@@ -16,6 +16,7 @@ import {
 import auth from "../../../middlewars/auth";
 import uploadImage1 from "../../../middlewars/uploadImage1";
 import uploadImage from "../../../middlewars/uploadImage";
+import uploadImages from "../../../middlewars/uploadImages";
 
 //divide key/values per according to database table name
 const dataPicker = (data) => {
@@ -82,7 +83,7 @@ async function handler(req, res) {
       if (!req?.user) throw new Error("user is not logged in");
       //upload single image
       const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImage1(req, res, "image", validation, false))
+        convertToInt(await uploadImages(req, res, "image", validation, false))
       );
       //initial --insert
       const vehicle = await prisma.Initial.create({
@@ -118,7 +119,7 @@ async function handler(req, res) {
       if (!_vehicleOld) throw new Error("vehicle id not found");
 
       const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImage1(req, res, "image", validation, false))
+        convertToInt(await uploadImages(req, res, "image", validation, false))
       );
       //delete image from file system before insert new image
       fs.unlink(`public/${_vehicleOld?.image}`, () => {});

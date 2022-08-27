@@ -4,6 +4,7 @@ import { useAuth, ProtectRoute } from "../../components/auth/auth";
 
 export default function AdminWrapper({ children }) {
   return (
+    //--> authenticate user
     <ProtectRoute>
       <div className="bg-light  dashbord_content">
         {/* <AppHead /> */}

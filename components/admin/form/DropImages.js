@@ -9,7 +9,7 @@ export default function DropImages({ files, setFiles }) {
       setLoading(true);
       const dropImage = [];
       const imagesEvent = [];
-      let WIDTH = 1080;
+      let WIDTH = 1280;
       //let image = document.createElement("img");
       for (let f of new_files) {
         let image = document.createElement("img");

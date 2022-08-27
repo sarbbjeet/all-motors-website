@@ -12,10 +12,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/cache": "latest",
-    "@emotion/react": "latest",
+    "@emotion/react": "^11.10.0",
     "@emotion/server": "latest",
-    "@emotion/styled": "latest",
+    "@emotion/styled": "^11.10.0",
     "@fontsource/baloo-bhai-2": "^4.5.9",
     "@fontsource/poppins": "^4.5.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
