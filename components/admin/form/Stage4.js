@@ -118,6 +118,7 @@ export default function Stage4() {
       <div className="pb-3">
         <div className="text-right pb-3">
           <button
+            onClick={() => (SuccessAlert.current.style.display = "none")}
             className="btn btn-outline-primary"
             type="button"
             data-toggle="collapse"
@@ -135,17 +136,10 @@ export default function Stage4() {
             className="collapse slow_3s py-5"
             id="collapseDropzone"
           >
-            <div
-              ref={SuccessAlert}
-              className="alert alert-success"
-              role="alert"
-            >
-              Great! image was successfully published!
-            </div>
             <DropImages files={files} setFiles={setFiles} />
             <button
               disabled={loading}
-              type="submit"
+              // type="submit"
               onClick={publishEvent}
               className="upload-btn btn btn-primary float-right"
             >
@@ -157,6 +151,9 @@ export default function Stage4() {
       </div>
 
       <div className="wrapper">
+        <div ref={SuccessAlert} className="alert alert-success" role="alert">
+          Great! image was successfully published!
+        </div>
         <p style={{ margin: 0 }}>Published images</p>
         <div className="uploaded-images-wrapper">
           <div className="uploaded-images">

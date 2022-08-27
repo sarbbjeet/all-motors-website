@@ -1,6 +1,7 @@
 import { slice } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../styles/variables.module.scss";
 
@@ -12,6 +13,7 @@ const CardImage = styled.div`
 
 export default function CarCard({ data, _id }) {
   const { id, features, business } = data;
+  const [loading, setLoading] = useState(true);
   return (
     <article
       className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4 post_item"
@@ -30,7 +32,13 @@ export default function CarCard({ data, _id }) {
               src={`http://localhost:4000/store${data?.image}`}
               layout="fill"
               alt=""
+              style={{
+                filter: loading ? "blur(4px)" : "none",
+                scale: loading ? "3" : "1",
+                transition: "all ease-in-out 0.5s",
+              }}
               objectFit="center"
+              onLoadingComplete={() => setLoading(false)}
             />
           </div>
           {/* access from custom store express route */}
@@ -120,6 +128,7 @@ export default function CarCard({ data, _id }) {
 
       <style jsx>
         {`
+      
           .textH {
             font-family: ${variables.f2};
             font-size: 1.2rem;
@@ -153,10 +162,11 @@ export default function CarCard({ data, _id }) {
             align-items:center;
             text-align:center;
             }
-  .fText{
+  .fText {
     color:red;
     font-size: 1.2rem; 
   }
+ 
         `}
       </style>
     </article>

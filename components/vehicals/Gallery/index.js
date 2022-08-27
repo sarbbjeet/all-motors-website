@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
+  const [loading, setLoading] = useState(true);
   const headerProps = {
     info: `${vehicle?.transmission} ${vehicle?.model} ${vehicle.features?.fuel}`,
     make: `${vehicle?.make}`,
@@ -32,6 +33,12 @@ export default function Index({ vehicle }) {
             src={`http://localhost:4000/store${slides[selectedIndex]?.image}`}
             layout="fill"
             alt=""
+            style={{
+              filter: loading ? "blur(4px)" : "none",
+              scale: loading ? "3" : "1",
+              transition: "all ease-in-out 0.5s",
+            }}
+            onLoadingComplete={() => setLoading(false)}
             objectFit="contain"
           />
           {/* </div> */}
