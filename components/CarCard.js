@@ -15,10 +15,7 @@ export default function CarCard({ data, _id }) {
   const { id, features, business } = data;
   const [loading, setLoading] = useState(true);
   return (
-    <article
-      className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4 post_item"
-      id="vehicles"
-    >
+    <article className="col-12 col-sm-6 col-xl-4 mb-4 post_item" id="vehicles">
       <Link href={`/vehicles/search/${id}`}>
         <a
           className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded"
@@ -37,7 +34,7 @@ export default function CarCard({ data, _id }) {
                 scale: loading ? "3" : "1",
                 transition: "all ease-in-out 0.5s",
               }}
-              objectFit="center"
+              // objectFit="cover"
               onLoadingComplete={() => setLoading(false)}
             />
           </div>

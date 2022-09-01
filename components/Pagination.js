@@ -5,9 +5,9 @@ export default function Pagination({
   data,
   RenderComponent,
   pageLimit = 3,
-  dataLimit = 6,
+  dataLimit = 3,
 }) {
-  const [pages] = useState(Math.round(data?.length / dataLimit));
+  const pages = Math.floor(data?.length / dataLimit);
   const [currentPage, setCurrentPage] = useState(1);
 
   const goToNextPage = () => {
@@ -58,7 +58,7 @@ export default function Pagination({
               <div
                 key={i}
                 className={`page-item ${item == currentPage && "active"} ${
-                  item > pages && "disabled"
+                  item > pages + 1 && "disabled"
                 }`}
                 onClick={changePage}
               >
