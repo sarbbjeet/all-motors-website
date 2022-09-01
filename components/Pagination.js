@@ -5,7 +5,7 @@ export default function Pagination({
   data,
   RenderComponent,
   pageLimit = 3,
-  dataLimit = 3,
+  dataLimit = 6,
 }) {
   const pages = Math.floor(data?.length / dataLimit);
   const [currentPage, setCurrentPage] = useState(1);
