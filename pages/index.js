@@ -76,7 +76,7 @@ export default function Home({ vehicles }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const vehicles = await prisma.Initial.findMany({
     include: {
       features: true,
