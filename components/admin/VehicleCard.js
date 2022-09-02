@@ -50,20 +50,19 @@ export default function VehicleCard({ data }) {
   return (
     <article className="col-12 col-sm-6 col-md-6 col-xl-4 mb-4" id="vehicles">
       <div className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded">
-        <CardImage image={`http://localhost:4000/store${data?.image}`} />
-        {/* 
+        {/* <CardImage image={`http://localhost:4000/store${data?.image}`} /> */}
+
         <div
           className="position-relative"
           style={{ width: "100%", height: "240px" }}
         >
-
           <Image
             src={`http://localhost:4000/store${data?.image}`}
             layout="fill"
             alt=""
             objectFit="cover"
           />
-        </div> */}
+        </div>
 
         <header className="mx-2">
           <span
