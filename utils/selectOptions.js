@@ -58,6 +58,8 @@ export const transmission = ["manual", "automatic", "semi auto"];
 export const body = [
   "Convertible",
   "Coupe",
+  "4x4",
+  "mpv",
   "Pick Up",
   "Estate",
   "Hatchback",

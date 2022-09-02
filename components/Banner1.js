@@ -49,7 +49,7 @@ export default function Banner1() {
       <div className="mobile_bac">
         <LazyLoadImage
           style={{ objectFit: "cover" }}
-          src={images[0]}
+          src={images[2]}
           alt=""
           property
           width="100%"

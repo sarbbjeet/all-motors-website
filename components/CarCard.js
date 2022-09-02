@@ -11,11 +11,16 @@ const CardImage = styled.div`
   height: 210px;
 `;
 
-export default function CarCard({ data, _id }) {
+export default function CarCard({ data, _id, itemsPerRow = 3 }) {
   const { id, features, business } = data;
   const [loading, setLoading] = useState(true);
   return (
-    <article className="col-12 col-sm-6 col-xl-4 mb-4 post_item" id="vehicles">
+    <article
+      className={`col-12 col-sm-6 col-xl-${
+        itemsPerRow == 3 ? "4" : "3"
+      } mb-4 post_item`}
+      id="vehicles"
+    >
       <Link href={`/vehicles/search/${id}`}>
         <a
           className="w-100 d-block position-relative text-decoration-none bg-white border border-light shadow rounded"
@@ -23,7 +28,7 @@ export default function CarCard({ data, _id }) {
         >
           <div
             className="position-relative"
-            style={{ width: "100%", height: "220px" }}
+            style={{ width: "100%", height: "300px" }}
           >
             <Image
               src={`http://localhost:4000/store${data?.image}`}
@@ -34,7 +39,7 @@ export default function CarCard({ data, _id }) {
                 scale: loading ? "3" : "1",
                 transition: "all ease-in-out 0.5s",
               }}
-              // objectFit="cover"
+              objectFit="center"
               onLoadingComplete={() => setLoading(false)}
             />
           </div>

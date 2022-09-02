@@ -5,8 +5,49 @@ import AppSelect from "./AppSelect";
 import AppTextArea from "./AppTextArea";
 import { color, transmission, make } from "../../../utils/selectOptions";
 import Image from "next/image";
+import styled from "styled-components";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+const url = "/api/initial/edit_image"; //edit image url
+const CardImage = styled.div`
+  background: url(${(props) => props.image}) no-repeat center center;
+  background-size: contain;
+  height: 100%;
+`;
+
+//update image with
+
+const editImage = async (newImageUrl, id) => {
+  try {
+    const formData = new FormData();
+    formData.append("image", await dataURItoBlob(newImageUrl));
+    //read cookie from browser if available
+    const token = Cookies.get("authToken");
+    await fetch(`${url}?id=${id}`, {
+      method: "PUT",
+      body: formData,
+      headers: { authorization: `Bearer ${token}` },
+    }).then(async (response) => {
+      const jsonData = await JSON.parse(await response.text());
+    });
+  } catch (err) {
+    alert(`Error: ${err.error || "unknown server error"}`);
+  }
+};
+
+const dataURItoBlob = async (dataURI) => {
+  return await fetch(dataURI)
+    .then((r) => r.blob())
+    .then((Blob) => {
+      return new File([Blob], "img.jpg", { type: "image/jpg" });
+    });
+};
 
 export default function Stage1({ state, setState }) {
+  const router = useRouter();
+  const {
+    query: { id },
+  } = router;
   const onChangeEvent = ({ target }) => {
     //initial object data
     setState({
@@ -36,6 +77,7 @@ export default function Stage1({ state, setState }) {
             id="img"
             name="img"
             onChange={(e) => {
+              //logic to reduce image size
               let WIDTH = 1280;
               let image = document.createElement("img");
               image.src = URL?.createObjectURL(e?.target?.files[0]);
@@ -53,24 +95,24 @@ export default function Stage1({ state, setState }) {
                     value: newImageUrl,
                   },
                 });
+                if (id) editImage(newImageUrl, id); //->edit image onChange
               });
-
               //remove image element
               image.remove();
             }}
-            // onChange={(e) => {
-            //   onChangeEvent({
-            //     target: {
-            //       name: "image",
-            //       value: URL?.createObjectURL(e?.target?.files[0]),
-            //     },
-            //   });
-            //   //setImage_file(URL.createObjectURL(e.target.files[0]));
-            // }}
             accept="image/png, image/jpeg, image/jpg"
           />
           <div style={{ position: "relative", width: "100%", height: "100%" }}>
-            <Image
+            <CardImage
+              image={`${
+                initial?.image?.startsWith("/")
+                  ? `http://localhost:4000/store/${initial?.image}`
+                  : initial?.image || "/images/no-image.jpg"
+              }
+                `}
+            />
+
+            {/* <Image
               alt="logo-image"
               layout="fill"
               objectFit="center"
@@ -80,7 +122,7 @@ export default function Stage1({ state, setState }) {
                   : initial?.image || "/images/no-image.jpg"
               }
                 `}
-            />
+            /> */}
           </div>
           <label className="d-block w-100 text-muted text_small text-center">
             Cover: (JPG 1280x628px)

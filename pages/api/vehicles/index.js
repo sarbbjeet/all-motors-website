@@ -17,6 +17,7 @@ import auth from "../../../middlewars/auth";
 import uploadImage1 from "../../../middlewars/uploadImage1";
 import uploadImage from "../../../middlewars/uploadImage";
 import uploadImages from "../../../middlewars/uploadImages";
+import formidable from "formidable";
 
 //divide key/values per according to database table name
 const dataPicker = (data) => {
@@ -118,11 +119,23 @@ async function handler(req, res) {
       });
       if (!_vehicleOld) throw new Error("vehicle id not found");
 
+      const data = await new Promise((resolve, reject) => {
+        const form = formidable();
+        form.parse(req, (err, fields, files) => {
+          if (err) reject({ err });
+          resolve({ err, fields, files });
+        });
+      });
+
       const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImages(req, res, "image", validation, false))
+        convertToInt({ ...data?.fields, image: `public${_vehicleOld?.image}` })
       );
+
+      // const { initial, features, business } = dataPicker(
+      //   convertToInt(await uploadImages(req, res, "image", validation, false))
+      // );
       //delete image from file system before insert new image
-      fs.unlink(`public/${_vehicleOld?.image}`, () => {});
+      // fs.unlink(`public/${_vehicleOld?.image}`, () => {});
       //initial --update
       const vehicle = await prisma.Initial.update({
         where: { id: vehicleId },

@@ -24,7 +24,7 @@ const dataURItoBlob = async (dataURI) => {
   return await fetch(dataURI)
     .then((r) => r.blob())
     .then((Blob) => {
-      return new File([Blob], "img.jpg", { type: "image/jpeg" });
+      return new File([Blob], "img.jpg", { type: "image/jpg" });
     });
 };
 
@@ -38,7 +38,7 @@ const onPublishEvent = async (data, setState, router) => {
     //convert dataUrl image to Blob format
     for (let key in data) {
       for (let nestedKey in data[key]) {
-        if (nestedKey === "image")
+        if (nestedKey === "image" && !id)
           formData.append("image", await dataURItoBlob(data[key][nestedKey]));
         else formData.append(nestedKey, data[key][nestedKey]);
       }
@@ -58,6 +58,7 @@ const onPublishEvent = async (data, setState, router) => {
     });
   } catch (err) {
     setState({ ...data, loading: false });
+    console.log("error.....");
     alert(`Error: ${err.error || "unknown server error"}`);
   }
 };

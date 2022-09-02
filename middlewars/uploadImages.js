@@ -61,14 +61,14 @@ const uploadImages = async (
             for (let file of req.files) {
               await sharp(file?.path)
                 // .resize(200, 200)
-                .webp({ quality: 40 })
+                .webp({ quality: 60 })
                 .toFile(`${storagePath}/${file?.filename}`);
               files.push(`${storagePath}/${file?.filename}`);
             }
           } else {
             await sharp(req?.file?.path)
               // .resize(200, 200)
-              .webp({ quality: 40 })
+              .webp({ quality: 60 })
               .toFile(`${storagePath}/${req?.file?.filename}`);
           }
           //remove folder

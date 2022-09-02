@@ -36,7 +36,7 @@ export default function AppNav() {
                 <div className="logo-container" style={{ top: "2px" }}>
                   <Image
                     alt="logo"
-                    src="/images/GroupB.png"
+                    src="/images/Group1.png"
                     layout="fill"
                     objectFit="center"
                     priority
@@ -283,7 +283,7 @@ export default function AppNav() {
             }
             .logo-container {
               cursor: pointer;
-              width: 130px;
+              width: 160px;
               height: 60px;
               position: absolute;
               margin-top: 3px;
@@ -293,8 +293,8 @@ export default function AppNav() {
             @media (max-width: 1200px) {
               .logo-container {
                 margin-top: 2px;
-                width: 120px;
-                height: 50px;
+                width: 130px;
+                height: 55px;
               }
             }
           `}

@@ -13,8 +13,8 @@ export default function LatestCars({
   desc = "These deals are based on newly added cars that are reasonably priced.",
 }) {
   return (
-    <section className="w-100 mt-5 px-3 px-md-5 row">
-      <header className="col-12 text-center py-3">
+    <section className="w-100 mt-5 px-3 px-md-5 row m-0">
+      <header className="col-12 text-center py-3 ">
         <div className="row justify-content-center">
           <div className="col-md-10 col-lg-8 col-xl-6">
             <h2
@@ -32,7 +32,8 @@ export default function LatestCars({
       <div className="product_elements list-unstyled text-muted clearfix row col-12 m-0 p-0">
         {/* only favorite car shows */}
         {vehicles?.map(
-          (car, i) => car.favorite && <CarCard key={i} data={car} />
+          (car, i) =>
+            car.favorite && <CarCard key={i} data={car} itemsPerRow={4} />
         )}
 
         {/* </div> */}
