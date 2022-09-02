@@ -103,26 +103,26 @@ export default function Stage1({ state, setState }) {
             accept="image/png, image/jpeg, image/jpg"
           />
           <div style={{ position: "relative", width: "100%", height: "100%" }}>
-            <CardImage
+            {/* <CardImage
               image={`${
                 initial?.image?.startsWith("/")
                   ? `http://localhost:4000/store/${initial?.image}`
                   : initial?.image || "/images/no-image.jpg"
               }
                 `}
-            />
+            /> */}
 
-            {/* <Image
+            <Image
               alt="logo-image"
               layout="fill"
-              objectFit="center"
+              objectFit="contain"
               src={`${
                 initial?.image?.startsWith("/")
                   ? `http://localhost:4000/store/${initial?.image}`
                   : initial?.image || "/images/no-image.jpg"
               }
                 `}
-            /> */}
+            />
           </div>
           <label className="d-block w-100 text-muted text_small text-center">
             Cover: (JPG 1280x628px)
