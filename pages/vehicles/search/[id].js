@@ -57,7 +57,7 @@ export default function handler({ vehicle }) {
               <Highlights highlights={highlights} />
               {/* <Description description={description} /> */}
               <VehicleItems items={vehicleItems} />
-              {/* <VideoSection /> */}
+              <VideoSection />
             </div>
 
             {/* sidebar   */}

@@ -79,108 +79,118 @@ async function handler(req, res) {
       res.status(404).json({ error: err.message });
     }
   } else if (req.method === "POST") {
-    try {
-      //before insert data to database check id user is logged in
-      if (!req?.user) throw new Error("user is not logged in");
-      //upload single image
-      const { initial, features, business } = dataPicker(
-        convertToInt(await uploadImages(req, res, "image", validation, false))
-      );
-      //initial --insert
-      const vehicle = await prisma.Initial.create({
-        data: initial,
-      });
-      //features --insert
-      await prisma.Features.create({
-        data: { ...features, vehicleId: vehicle.id },
-      });
-      //business --insert
-      await prisma.Business.create({
-        data: { ...business, vehicleId: vehicle.id },
-      });
-      res.status(200).json({ data: vehicle });
-    } catch (err) {
-      if (err instanceof Prisma.PrismaClientKnownRequestError)
-        return res.status(401).json({ error: err.meta.cause });
-      else if (err instanceof Prisma.PrismaClientValidationError)
-        return res.status(401).json({ error: err.message });
-      res.status(401).json({ error: err.message });
-    }
-  } else if (req.method === "PUT") {
-    try {
-      //before updating data to database check id user is logged in
-      if (!req?.user) throw new Error("user is not logged in");
-      const {
-        query: { id: vehicleId },
-      } = req;
-      //verify is vehicleId is exist or not
-      const _vehicleOld = await prisma.Initial.findUnique({
-        where: { id: vehicleId },
-      });
-      if (!_vehicleOld) throw new Error("vehicle id not found");
-
-      const data = await new Promise((resolve, reject) => {
-        const form = formidable();
-        form.parse(req, (err, fields, files) => {
-          if (err) reject({ err });
-          resolve({ err, fields, files });
+    auth(async () => {
+      //auth
+      try {
+        //before insert data to database check id user is logged in
+        if (!req?.user) throw new Error("user is not logged in");
+        //upload single image
+        const { initial, features, business } = dataPicker(
+          convertToInt(await uploadImages(req, res, "image", validation, false))
+        );
+        //initial --insert
+        const vehicle = await prisma.Initial.create({
+          data: initial,
         });
-      });
+        //features --insert
+        await prisma.Features.create({
+          data: { ...features, vehicleId: vehicle.id },
+        });
+        //business --insert
+        await prisma.Business.create({
+          data: { ...business, vehicleId: vehicle.id },
+        });
+        res.status(200).json({ data: vehicle });
+      } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError)
+          return res.status(401).json({ error: err.meta.cause });
+        else if (err instanceof Prisma.PrismaClientValidationError)
+          return res.status(401).json({ error: err.message });
+        res.status(401).json({ error: err.message });
+      }
+    })(req, res);
+  } else if (req.method === "PUT") {
+    auth(async () => {
+      try {
+        //before updating data to database check id user is logged in
+        if (!req?.user) throw new Error("user is not logged in");
+        const {
+          query: { id: vehicleId },
+        } = req;
+        //verify is vehicleId is exist or not
+        const _vehicleOld = await prisma.Initial.findUnique({
+          where: { id: vehicleId },
+        });
+        if (!_vehicleOld) throw new Error("vehicle id not found");
 
-      const { initial, features, business } = dataPicker(
-        convertToInt({ ...data?.fields, image: `public${_vehicleOld?.image}` })
-      );
+        const data = await new Promise((resolve, reject) => {
+          const form = formidable();
+          form.parse(req, (err, fields, files) => {
+            if (err) reject({ err });
+            resolve({ err, fields, files });
+          });
+        });
 
-      // const { initial, features, business } = dataPicker(
-      //   convertToInt(await uploadImages(req, res, "image", validation, false))
-      // );
-      //delete image from file system before insert new image
-      // fs.unlink(`public/${_vehicleOld?.image}`, () => {});
-      //initial --update
-      const vehicle = await prisma.Initial.update({
-        where: { id: vehicleId },
-        data: initial,
-      });
-      //features --update
-      await prisma.Features.update({
-        where: { vehicleId },
-        data: { ...features, vehicleId },
-      });
-      //business --update
-      await prisma.Business.update({
-        where: { vehicleId },
-        data: { ...business, vehicleId },
-      });
-      res.json({ data: vehicle });
-    } catch (err) {
-      if (err instanceof Prisma.PrismaClientKnownRequestError)
-        return res.status(401).json({ error: err.meta.cause });
-      res.status(401).json({ error: err.message });
-    }
+        const { initial, features, business } = dataPicker(
+          convertToInt({
+            ...data?.fields,
+            image: `public${_vehicleOld?.image}`,
+          })
+        );
+
+        // const { initial, features, business } = dataPicker(
+        //   convertToInt(await uploadImages(req, res, "image", validation, false))
+        // );
+        //delete image from file system before insert new image
+        // fs.unlink(`public/${_vehicleOld?.image}`, () => {});
+        //initial --update
+        const vehicle = await prisma.Initial.update({
+          where: { id: vehicleId },
+          data: initial,
+        });
+        //features --update
+        await prisma.Features.update({
+          where: { vehicleId },
+          data: { ...features, vehicleId },
+        });
+        //business --update
+        await prisma.Business.update({
+          where: { vehicleId },
+          data: { ...business, vehicleId },
+        });
+        res.json({ data: vehicle });
+      } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError)
+          return res.status(401).json({ error: err.meta.cause });
+        res.status(401).json({ error: err.message });
+      }
+    })(req, res);
   } else if (req.method === "DELETE") {
-    try {
-      //before deleting data to database check id user is logged in
-      if (!req?.user) throw new Error("user is not logged in");
+    auth(async () => {
+      try {
+        //before deleting data to database check id user is logged in
+        if (!req?.user) throw new Error("user is not logged in");
 
-      const {
-        query: { id: vehicleId },
-      } = req;
-      //delete vehicle
-      // const _vehicleOld = await prisma.Initial.findUnique({
-      //   where: { id: vehicleId },
-      // });
-      const _vehicleOld = await prisma.Initial.delete({
-        where: { id: vehicleId },
-      });
-      if (!_vehicleOld) throw new Error("vehicle id not found");
-      fs.unlink(`public${_vehicleOld.image}`, () => {}); //delete image from file system
-      res.json({ data: _vehicleOld });
-    } catch (err) {
-      if (err instanceof Prisma.PrismaClientKnownRequestError)
-        return res.status(404).json({ error: err.meta.cause });
-      res.status(404).json({ error: err.message });
-      // console.log("erros====", err.message);
-    }
+        const {
+          query: { id: vehicleId },
+        } = req;
+        //delete vehicle
+        // const _vehicleOld = await prisma.Initial.findUnique({
+        //   where: { id: vehicleId },
+        // });
+        const _vehicleOld = await prisma.Initial.delete({
+          where: { id: vehicleId },
+        });
+        if (!_vehicleOld) throw new Error("vehicle id not found");
+        fs.unlink(`public${_vehicleOld.image}`, () => {}); //delete image from file system
+        res.json({ data: _vehicleOld });
+      } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError)
+          return res.status(404).json({ error: err.meta.cause });
+        res.status(404).json({ error: err.message });
+        // console.log("erros====", err.message);
+      }
+    })(req, res);
   }
 }
 const convertToInt = (data) => {
@@ -215,7 +225,8 @@ const validation = async (data) => {
   return await schema.validateAsync(data);
 };
 
-export default auth(handler);
+// export default auth(handler);
+export default handler;
 
 export const config = {
   api: {

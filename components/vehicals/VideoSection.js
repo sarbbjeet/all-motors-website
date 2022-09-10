@@ -1,6 +1,6 @@
 import { f2 as ff } from "../../styles/variables.module.scss";
 export default function VideoSection({
-  link = "https://www.youtube.com/embed/s8WWCddvAKy2E?rel=0&amp;showprimary=0&autoplay=0",
+  link = "https://www.youtube.com/embed/uHhvdoCGnbI?rel=0&amp;showprimary=0&autoplay=0",
 }) {
   return (
     <section className="bg-white p-3 px-lg-4 pt-4 pb-5 border mb-4 d-print-none">
