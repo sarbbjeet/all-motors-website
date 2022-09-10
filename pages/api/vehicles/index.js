@@ -52,6 +52,7 @@ async function handler(req, res) {
           include: {
             features: true,
             business: true,
+            imageGallery: true,
           },
         });
         if (!vehicle) throw new Error("Invalid vehicle id");
@@ -66,6 +67,7 @@ async function handler(req, res) {
           include: {
             features: true,
             business: true,
+            imageGallery: true,
           },
         });
         if (!vehicle.length > 0) throw new Error("vehicle not found");
