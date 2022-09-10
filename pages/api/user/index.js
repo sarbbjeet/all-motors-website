@@ -2,8 +2,17 @@ import Joi from "joi";
 import { prisma } from "../../../database/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import NextCors from "nextjs-cors";
 
 export default async function index(req, res) {
+  // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   if (req.method === "GET") {
     return res.json({ message: "user page" });
   } else if (req.method === "POST") {

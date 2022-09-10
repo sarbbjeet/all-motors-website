@@ -2,8 +2,17 @@ import { prisma } from "../../../database/prisma";
 import uploadImage1 from "../../../middlewars/uploadImage1";
 import fs from "fs";
 import uploadImages from "../../../middlewars/uploadImages";
+import NextCors from "nextjs-cors";
 
 export default async function Gallery(req, res) {
+  // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   if (req.method === "GET") {
     try {
       const {
