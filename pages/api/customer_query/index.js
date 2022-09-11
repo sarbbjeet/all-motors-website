@@ -2,7 +2,16 @@ import { Prisma } from "@prisma/client";
 import Joi from "joi";
 import { prisma } from "../../../database/prisma";
 
+import NextCors from "nextjs-cors";
+
 export default async function handler(req, res) {
+  //cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
   if (req.method === "GET") {
     return res.json(await prisma.CustomerQuery.findMany());
   } else if (req.method === "POST") {

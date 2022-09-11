@@ -2,7 +2,6 @@ import Joi from "joi";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../../database/prisma";
-import { getCookies, setCookie, deleteCookie } from "cookies-next";
 import NextCors from "nextjs-cors";
 
 function extractToken(req) {
@@ -18,6 +17,7 @@ function extractToken(req) {
 }
 //token verify route   --> api/user/login
 export default async function login(req, res) {
+  // Run the cors middleware
   // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
   await NextCors(req, res, {
     // Options

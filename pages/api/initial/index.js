@@ -3,7 +3,17 @@ import Joi from "joi";
 import uploadImage from "../../../middlewars/uploadImage";
 import { Prisma } from "@prisma/client";
 
+import NextCors from "nextjs-cors";
+
 export default async function handler(req, res) {
+  //cors
+
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
   if (req.method === "GET") {
   } else if (req.method === "POST") {
     //create startup setup of vehicles

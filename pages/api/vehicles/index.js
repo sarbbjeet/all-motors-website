@@ -7,6 +7,8 @@ import fs from "fs";
 
 import Cookies from "js-cookie";
 import schema from "../../../validation/schema";
+import NextCors from "nextjs-cors";
+
 const { initialSchema, featuresSchema, businessSchema } = schema(false);
 import {
   businessPicker,
@@ -32,6 +34,13 @@ const dataPicker = (data) => {
 };
 async function handler(req, res) {
   // This will allow OPTIONS request
+  //cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
 
   if (req.method === "GET") {
     try {

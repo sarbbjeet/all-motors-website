@@ -2,34 +2,21 @@ import Joi from "joi";
 import { prisma } from "../../../database/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import NextCors from "nextjs-cors";
 
 export default async function index(req, res) {
-  // This will allow OPTIONS request
   //cors
-  // res.header("Access-Control-Allow-Origin", "*");
-  // res.header(
-  //   "Access-Control-Allow-Header",
-  //   "Origin",
-  //   "X-Requested-With",
-  //   "Content-Type",
-  //   "Accept",
-  //   "Authorization"
-  // );
-
-  // if (req.method == "OPTIONS") {
-  //   res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE,PATCH, GET");
-  //   return res.status(200).json({});
-  // }
-  // This will allow OPTIONS request
-  if (method === "OPTIONS") {
-    return res.status(200).send("ok");
-  }
-
+  // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
   if (req.method === "GET") {
     return res.json({ message: "user page" });
   } else if (req.method === "POST") {
     //create a new user
-
     try {
       //validation
       await validation(req.body);

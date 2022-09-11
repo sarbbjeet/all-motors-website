@@ -14,7 +14,6 @@ import PropTypes from "prop-types";
 
 import { wrapper } from "../store/store";
 import Router from "next/router";
-
 // progress bar
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress

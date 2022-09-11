@@ -5,6 +5,8 @@ import fs from "fs";
 import formidable from "formidable";
 
 export default async function index(req, res) {
+  //cors
+  if (req.method === "OPTIONS") res.status(200).send("ok");
   if (req.method === "GET") {
     return res.json(await prisma.VehicleGallary.findMany());
   } else if (req.method === "POST") {

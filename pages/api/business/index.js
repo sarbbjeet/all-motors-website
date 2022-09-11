@@ -3,6 +3,8 @@ import Joi from "joi";
 import { Prisma } from "@prisma/client";
 
 export default async function handler(req, res) {
+  //cors
+  if (req.method === "OPTIONS") res.status(200).send("ok");
   if (req.method === "GET") {
   } else if (req.method === "POST") {
     //create startup setup of vehicles

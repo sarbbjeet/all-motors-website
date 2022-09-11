@@ -4,6 +4,8 @@ import Joi from "joi";
 import uploadImage from "../../../middlewars/uploadImage";
 
 const handler = async (req, res) => {
+  //cors
+  if (req.method === "OPTIONS") res.status(200).send("ok");
   if (req?.method === "GET") {
     return res.json(await prisma.UsedCar.findMany());
   } else if (req?.method === "POST") {

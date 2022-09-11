@@ -29,6 +29,7 @@ export default function LoginForm() {
     try {
       //clear error
       setCredentials({ ...credentials, error: "" });
+
       await login(credentials?.email, credentials?.password);
       //successfully Login
       //return router.back();
