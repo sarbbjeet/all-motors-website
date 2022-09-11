@@ -5,6 +5,21 @@ import jwt from "jsonwebtoken";
 
 export default async function index(req, res) {
   // This will allow OPTIONS request
+  //cors
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Header",
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization"
+  );
+
+  if (req.method == "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE,PATCH, GET");
+    return res.status(200).json({});
+  }
 
   if (req.method === "GET") {
     return res.json({ message: "user page" });
