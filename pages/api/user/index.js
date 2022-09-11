@@ -20,11 +20,16 @@ export default async function index(req, res) {
   //   res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE,PATCH, GET");
   //   return res.status(200).json({});
   // }
+  // This will allow OPTIONS request
+  if (method === "OPTIONS") {
+    return res.status(200).send("ok");
+  }
 
   if (req.method === "GET") {
     return res.json({ message: "user page" });
   } else if (req.method === "POST") {
     //create a new user
+
     try {
       //validation
       await validation(req.body);
