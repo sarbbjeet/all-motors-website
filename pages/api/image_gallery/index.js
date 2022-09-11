@@ -5,9 +5,7 @@ import uploadImages from "../../../middlewars/uploadImages";
 
 export default async function Gallery(req, res) {
   // This will allow OPTIONS request
-  if (method === "OPTIONS") {
-    return res.status(200).send("ok");
-  } else if (req.method === "GET") {
+  if (req.method === "GET") {
     try {
       const {
         query: { id: vehicleId },

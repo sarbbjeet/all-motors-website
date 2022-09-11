@@ -5,9 +5,8 @@ import jwt from "jsonwebtoken";
 
 export default async function index(req, res) {
   // This will allow OPTIONS request
-  if (method === "OPTIONS") {
-    return res.status(200).send("ok");
-  } else if (req.method === "GET") {
+
+  if (req.method === "GET") {
     return res.json({ message: "user page" });
   } else if (req.method === "POST") {
     //create a new user
