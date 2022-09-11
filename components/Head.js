@@ -5,10 +5,10 @@ export default function AppHead() {
     <Head>
       {/* <meta charset="UTF-8" /> */}
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta
+      {/* <meta
         httpEquiv="Content-Security-Policy"
         content="upgrade-insecure-requests"
-      />
+      /> */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link href="/images/favicon.png" rel="shortcut icon" />
       <title>All Motors Ltd</title>
