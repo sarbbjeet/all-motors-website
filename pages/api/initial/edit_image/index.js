@@ -2,16 +2,8 @@ import { prisma } from "../../../../database/prisma";
 import auth from "../../../../middlewars/auth";
 import uploadImages from "../../../../middlewars/uploadImages";
 import fs from "fs";
-import NextCors from "nextjs-cors";
 
 async function handler(req, res) {
-  //cors
-  await NextCors(req, res, {
-    // Options
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  });
   if (req.method === "PUT") {
     try {
       if (!req.query?.id) throw new Error("query parameter missing");
