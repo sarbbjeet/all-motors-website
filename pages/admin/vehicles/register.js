@@ -35,6 +35,10 @@ const onPublishEvent = async (data, setState, router) => {
       query: { id },
     } = router;
     const formData = new FormData();
+
+    //remove unwanted keys
+    delete data.errors;
+    delete data.loading;
     //convert dataUrl image to Blob format
     for (let key in data) {
       for (let nestedKey in data[key]) {
