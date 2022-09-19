@@ -65,7 +65,7 @@ export const body = [
   "Hatchback",
   "Saloon",
 ];
-export const vehicles = ["Car", "Truck", "Pick Up"];
+export const vehicles = ["Car", "Van"];
 export const fuel = [
   "gasoline",
   "Ethanol",
