@@ -91,8 +91,27 @@ execa("npx prisma migrate dev", (e, stdout, stderr) => {
 ```
 In the above example prisma migrate command is running using node file code.   
 
-
-
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Production mode 
+Few modification should needed when this project in deployed on the production environment
+```
+sudo nano services/api.js 
+```
+just edit api.js file according to below code
+```
+// api.js
+import Axios from "axios";
+const port = process.env.PORT || 3000;
+let url = `http://localhost:${port}`;
+
+const api = Axios.create({
+//  baseURL: url,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});
+export default api;
+
+```
