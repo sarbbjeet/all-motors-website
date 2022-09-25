@@ -3,6 +3,7 @@ import Joi from "joi";
 import { prisma } from "../../../database/prisma";
 
 import NextCors from "nextjs-cors";
+import { sendMail } from "../../../mailer/nodeMailer";
 
 export default async function handler(req, res) {
   //cors
@@ -20,6 +21,11 @@ export default async function handler(req, res) {
       await validation(req.body);
       const response = await prisma.CustomerQuery.create({
         data: req.body,
+      });
+      // send mail
+      await sendMail(req.body, (err, info) => {
+        if (err) throw err.message;
+        // else console.log(info);
       });
       return res.json({ data: response });
     } catch (err) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { f2 as ff } from "../styles/variables.module.scss";
 import axios from "axios";
 const url = "/api/customer_query";
+const _ = require("lodash");
 
 const initialQueryObj = {
   name: "",
@@ -28,7 +29,6 @@ export default function SendUsMessage({ closeEvent, hiddenCloseBtn = false }) {
       });
       setQuery({ ...initialQueryObj, success: true });
     } catch (err) {
-      console.log(err);
       setQuery({
         ...query,
         loading: false,
