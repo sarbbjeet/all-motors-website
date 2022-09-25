@@ -17,7 +17,7 @@ const sendMail = async (obj, callback) => {
   const mailOptions = {
     from: mail_user, // sender address
     to: "contact@allmotorsltd.co.uk", //
-    subject: obj?.type || "inquery", // Subject line
+    subject: obj?.type || "inquary", // Subject line
     html: inquery_template(obj), // plain text body
   };
   transporter.sendMail(mailOptions, function (err, info) {
