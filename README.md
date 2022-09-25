@@ -1,8 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+This is nextjs based fullstack project which manage vehicle specification, image gallery and many more. 
 
-First, run the development server:
+## Features 
+A. Server
+   1. mysql database 
+   2. images store 
+   3. admin panel 
+   4. login manage 
+   5. cookies handling 
+   6. rest api routes 
+   
+B. Client
+   1. responsive design 
+   2. navbar/ mobile menu 
+   3. image sliders
+   4. multiform handling
+   5. react based components
+   6. redux store 
+   7. serverside rendering 
+   
+   
+## .env variables
+
+```
+DATABASE_URL=mysql://root:root@localhost:3306/mydb11
+STORAGE_PATH=public/_uploads/
+PRIVATE_KEY=secure_jwt_key
+
+```
+
+## express server
+The external Express server in this project is utilised to render dynamic pictures in nextjs. A dedicated express server is utilised in this project since next js only renders pictures that are present at build time, making it impossible for photos that are uploaded after build to be viewable or accessed.
+
+```
+const express = require("express");
+const path = require("path");
+const port = 4000;
+const app = express();
+app.use("/store", express.static(path.join(__dirname, "public")));
+
+app.listen(port, () => {
+  console.log("server is listening on port " + port);
+});
+
+```
+## Run express server and nextjs app together (package.json)
+
+```
+
+  "scripts": {
+    "server": "node server1.js",
+    "dev": "concurrently \"npm run server\" \"npm run generate && next\"",
+    "generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate deploy",
+    "build": "npm run generate && next build",
+    "start": "concurrently \"npm run server\" \"next start -p 3000\"",
+    "lint": "next lint"
+  },
+
+```
+
+
+## Run server on production mode
+
+```
+npm install or yarn install 
+npm run build 
+npm start
+```
+
+## First, run the development server:
 
 ```bash
 npm run dev
@@ -10,25 +77,41 @@ npm run dev
 yarn dev
 ```
 
+## Run commands in the node file
+
+```
+const execa = require("child_process").exec;
+execa("npx prisma migrate dev", (e, stdout, stderr) => {
+  if (e instanceof Error) {
+   console.error(e);
+  }
+   console.log("out", stdout);
+});
+
+```
+In the above example prisma migrate command is running using node file code.   
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Production mode 
+Few modification should needed when this project in deployed on the production environment
+```
+sudo nano services/api.js 
+```
+just edit api.js file according to below code
+```
+// api.js
+import Axios from "axios";
+const port = process.env.PORT || 3000;
+let url = `http://localhost:${port}`;
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+const api = Axios.create({
+//  baseURL: url,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});
+export default api;
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
