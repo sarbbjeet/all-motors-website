@@ -30,7 +30,7 @@ export default function AppNav() {
         <div className="container">
           <nav className="position-relative py-1 d-flex justify-content-between no-gutters align-items-center">
             <h2 className="sr-only">Main Nav</h2>
-            <Link href="/admin">
+            <Link href="/">
               <a className="navbar-brand">
                 {/* LOGO */}
                 <div className="logo-container" style={{ top: "2px" }}>

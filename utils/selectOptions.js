@@ -1,3 +1,4 @@
+export const buying_status = ["available", "reserved", "sold"];
 export const make = [
   "AUDI",
   "BMW",

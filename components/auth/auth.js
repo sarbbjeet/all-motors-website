@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     Cookies.remove("authToken");
     setUser(null);
     delete api.defaults.headers.Authorization;
-    window.location.pathname = "/admin";
+    window.location.pathname = "/1005";
   };
 
   return (

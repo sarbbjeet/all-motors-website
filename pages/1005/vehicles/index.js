@@ -13,7 +13,7 @@ export default function Vehicles({ vehicles }) {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb bg-transparent p-0 text_small">
             <li className="breadcrumb-item">
-              <Link href="/admin">
+              <Link href="/1005">
                 <a href="dashboard.html">Home</a>
               </Link>
             </li>

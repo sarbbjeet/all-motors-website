@@ -21,7 +21,7 @@ export default (browser = true) => {
       fuel: Joi.string().max(40).required(),
       yearOfModel: Joi.number().min(1950).required(),
       doors: Joi.number().min(1).max(10).required(),
-      //steering: Joi.string().max(40).allow("", null).default("hydrolic"),
+      buying_status: Joi.string().max(40).allow("", null).default("available"),
       features: Joi.string().allow("", null).default(""),
     },
     businessSchema: {

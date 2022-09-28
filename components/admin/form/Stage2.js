@@ -6,7 +6,7 @@ import {
   fuel,
   vehicles,
   doors,
-  steering,
+  buying_status,
 } from "../../../utils/selectOptions";
 import AppInput from "./AppInput";
 import AppSelect from "./AppSelect";
@@ -82,7 +82,7 @@ export default function Stage2({ state, setState }) {
           </div> */}
         </div>
         <div className="form-row">
-          <div className="col-6  col-lg-4">
+          <div className="col-6  col-lg-3">
             <AppSelect
               name="fuel"
               label="Fuel"
@@ -92,7 +92,7 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          <div className="col-6 col-lg-4">
+          <div className="col-6 col-lg-3">
             <AppInput
               name="yearOfModel"
               label="Year of Model"
@@ -102,7 +102,7 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          <div className="col-6 col-lg-4">
+          <div className="col-6 col-lg-3">
             <AppSelect
               name="doors"
               label="Doors"
@@ -112,16 +112,17 @@ export default function Stage2({ state, setState }) {
               onChange={onChangeEvent}
             />
           </div>
-          {/* <div className="col-6  col-lg-3">
+          <div className="col-6  col-lg-3">
             <AppSelect
-              name="steering"
-              label="Steering"
-              list={steering}
-              value={features?.steering}
-              error={errors?.features?.steering}
+              name="buying_status"
+              label="buying status"
+              list={buying_status}
+              value={features?.buying_status}
+              error={errors?.features?.buying_status}
               onChange={onChangeEvent}
+              optional
             />
-          </div> */}
+          </div>
         </div>
         <AppTextArea
           name="features"

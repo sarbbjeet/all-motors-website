@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        <Link href="/admin">
+        <Link href="/1005">
           <a className="navbar-brand">
             {/* LOGO */}
             <div>
@@ -42,7 +42,7 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              <Link href="/admin">
+              <Link href="/1005">
                 <a className="nav-link">
                   Home <span className="sr-only">(current)</span>
                 </a>
@@ -64,17 +64,17 @@ export default function Header() {
                 className="dropdown-menu dropdown-menu-right p-0 overflow-hidden"
                 aria-labelledby="VehiclesDropdown"
               >
-                <Link href="/admin/vehicles">
+                <Link href="/1005/vehicles">
                   <a className="dropdown-item py-3">
                     <i className="fas fa-home mr-2"></i> My Vehicles
                   </a>
                 </Link>
-                <Link href="/admin/vehicles/register">
+                <Link href="/1005/vehicles/register">
                   <a className="dropdown-item py-3">
                     <i className="fas fa-sign mr-2"></i> Register Vehicles
                   </a>
                 </Link>
-                <Link href="/admin/vehicles/report">
+                <Link href="/1005/vehicles/report">
                   <a className="dropdown-item py-3">
                     <i className="far fa-list-alt mr-2"></i> Vehicles Report
                   </a>

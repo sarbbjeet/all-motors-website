@@ -57,7 +57,7 @@ const onPublishEvent = async (data, setState, router) => {
       const jsonData = await JSON.parse(await response.text());
       if (response.status != 200) throw jsonData;
       //successfully published vehicle
-      router.push("/admin/vehicles");
+      router.push("/1005/vehicles");
       setState({ ...data, loading: false });
     });
   } catch (err) {
@@ -106,12 +106,12 @@ export default function Register({ vehicle }) {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb bg-transparent p-0 text_small">
             <li className="breadcrumb-item">
-              <Link href="/admin">
+              <Link href="/1005">
                 <a href="dashboard.html">Home</a>
               </Link>
             </li>
             <li className="breadcrumb-item">
-              <Link href="/admin/vehicles">
+              <Link href="/1005/vehicles">
                 <a href="dashboard.html">My Vehicles</a>
               </Link>
             </li>
@@ -185,7 +185,7 @@ export const getServerSideProps = async (context) => {
     if (!res)
       return {
         redirect: {
-          destination: "/admin/vehicles/register", // M
+          destination: "/1005/vehicles/register", // M
         },
         props: {},
       };

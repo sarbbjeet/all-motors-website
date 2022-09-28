@@ -11,7 +11,7 @@ export default function Services() {
 
       <div className="row justify-content-center py-3">
         <div className="col-6 col-md-4 pb-4">
-          <Link href="/admin/vehicles">
+          <Link href="/1005/vehicles">
             <a
               className="btn btn-block btn-success text-white py-lg-4 px-lg-3"
               title="My Vehicles"
@@ -28,7 +28,7 @@ export default function Services() {
           </Link>
         </div>
         <div className="col-6 col-md-4 pb-4">
-          <Link href="/admin/vehicles/register">
+          <Link href="/1005/vehicles/register">
             <a
               className="btn btn-block btn-primary text-white py-lg-4 px-lg-3"
               title="Register Vehicles"
@@ -45,7 +45,7 @@ export default function Services() {
           </Link>
         </div>
         <div className="col-md-4 pb-4">
-          <Link href="/admin/workshop-inquiries">
+          <Link href="/1005/workshop-inquiries">
             <a
               className="btn btn-block btn-warning text-white py-lg-4 px-lg-3"
               title="inquires"

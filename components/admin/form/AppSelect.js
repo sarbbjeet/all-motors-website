@@ -7,12 +7,14 @@ export default function AppSelect({
   error,
   required = true,
   list,
+  optional = false,
   ...props
 }) {
   return (
     <div className="form-group">
       <label htmlFor={name} className="text-capitalize label w-100 p-0 m-0 ">
         {label}
+        {optional && <small> (optional)</small>}
       </label>
       <select
         id={name}
@@ -48,6 +50,12 @@ export default function AppSelect({
             font-size: 16px;
             font-weight: 500;
             font-family: ${ff};
+          }
+          small {
+            font-family: ${ff};
+            color: #449922;
+            font-size: 14px;
+            font-weight: 500;
           }
         `}
       </style>

@@ -29,7 +29,7 @@ const event = async ({ id, router, toggle = false }) => {
   } catch (err) {
     alert(err.message);
   } finally {
-    router.push("/admin/vehicles");
+    router.push("/1005/vehicles");
   }
 };
 
@@ -56,6 +56,41 @@ export default function VehicleCard({ data }) {
           className="position-relative"
           style={{ width: "100%", height: "240px" }}
         >
+          <div
+            className="col-12 m-0 p-0"
+            style={{
+              width: "100%",
+              height: "100px",
+              textAlign: "end",
+              position: "absolute",
+              bottom: "0",
+              zIndex: "10",
+            }}
+          >
+            {features?.buying_status == "sold" && (
+              <Image
+                src="/images/sold_out1.png"
+                width="100px"
+                height="100%"
+                objectFit="center"
+              />
+            )}
+            {features?.buying_status == "reserved" && (
+              <span
+                className="text-danger px-1"
+                style={{
+                  borderRadius: "10%",
+                  fontFamily: f2,
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  letterSpacing: "2px",
+                  backgroundColor: "rgba(255, 255, 255,0.2)",
+                }}
+              >
+                Reserved
+              </span>
+            )}
+          </div>
           <Image
             src={`http://localhost:4000/store${data?.image}`}
             layout="fill"
@@ -123,7 +158,7 @@ export default function VehicleCard({ data }) {
             </a>
             <Link
               href={{
-                pathname: "/admin/vehicles/register",
+                pathname: "/1005/vehicles/register",
                 query: { id },
               }}
             >

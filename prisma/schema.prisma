@@ -60,6 +60,7 @@ model Initial {
 model Features {
   id String @id @default(uuid())
   vehicle_type String @default("car")
+   buying_status String @default("available")
   body_style String
   mileage Int? @default(-1)
  // numberOfCylinders Int? @default(-1)

@@ -4,6 +4,7 @@ import Slider from "./Slider";
 import HeaderText from "./HeaderText";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Image from "next/image";
+import { f2 as ff, primary } from "../../../styles/variables.module.scss";
 
 export default function Index({ vehicle }) {
   const { imageGallery: slides } = vehicle;
@@ -24,7 +25,42 @@ export default function Index({ vehicle }) {
   return (
     <article className="pb-4 overflow-hidden">
       <div className="row">
-        <div className="show-image bg-dark  col-lg-7 col-12 position-relative order-0 p-0 m-0">
+        <div className="show-image bg-dark col-lg-7 col-12 position-relative order-0 p-0 m-0">
+          <div
+            className="col-12 mt-4 mt-lg-5"
+            style={{
+              width: "100%",
+              height: "100px",
+              textAlign: "end",
+              position: "relative",
+              zIndex: "10",
+            }}
+          >
+            {vehicle?.features?.buying_status == "sold" && (
+              <Image
+                src="/images/sold_out1.png"
+                width="100px"
+                height="100%"
+                objectFit="center"
+              />
+            )}
+            {vehicle.features?.buying_status == "reserved" && (
+              <span
+                className="py-2 px-4 text-danger"
+                style={{
+                  borderRadius: "10%",
+                  fontFamily: ff,
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  letterSpacing: "2px",
+                  backgroundColor: "rgba(0, 0, 0,0.2)",
+                }}
+              >
+                Reserved
+              </span>
+            )}
+          </div>
+
           {/* <div
             className="position-relative"
             style={{ width: "100%", height: "300px" }}

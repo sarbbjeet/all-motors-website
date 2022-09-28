@@ -22,7 +22,7 @@ export const featuresPicker = (data = {}) =>
     "fuel",
     "yearOfModel",
     "doors",
-    "steering",
+    "buying_status",
     "features",
   ]);
 export const businessPicker = (data = {}) =>
