@@ -25,4 +25,4 @@ async function handler(req, res) {
   }
 }
 
-export default auth(handler);
+export default handler;
