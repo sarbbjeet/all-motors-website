@@ -23,9 +23,11 @@ B. Client
 ## .env variables
 
 ```
-DATABASE_URL=mysql://root:root@localhost:3306/mydb11
+DATABASE_URL=mysql://root:password@localhost:3306/db_name
 STORAGE_PATH=public/_uploads/
-PRIVATE_KEY=secure_jwt_key
+PRIVATE_KEY=scretpassword
+MAIL_USER =inquery@abc.co.uk
+MAIL_PASS =admin@9863
 
 ```
 
