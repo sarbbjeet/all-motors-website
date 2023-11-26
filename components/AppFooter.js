@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { f2 as ff } from "../styles/variables.module.scss";
 import SendUsMessage from "./SendUsMessage";
+import moment from "moment";
 
 export default function AppFooter() {
   const [closeWindow, setCloseWindow] = useState(false);
@@ -21,9 +22,9 @@ export default function AppFooter() {
             </p>
             <span>
               All Motors Ltd <br />
-              Camps industrial <br />
-              estates Kirknewton <br />
-              EH27 8DF
+              2c Raw Camps Farm <br />
+              Camps Industrial Estate <br />
+              Kirknewton EH27 8DF <br />
             </span>
           </div>
           <div className="col-sm-6 col-lg-3 pb-2">
@@ -220,7 +221,7 @@ export default function AppFooter() {
       </div>
       <div className="content_copy bg-primary text-light text-center py-3">
         <div className="container text_small">
-          AllMotorsLtd © 2022. All rights reserved.
+          AllMotorsLtd © {moment().format("YYYY")}. All rights reserved.
         </div>
       </div>
 

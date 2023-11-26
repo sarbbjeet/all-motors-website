@@ -26,7 +26,7 @@ import Image from "next/image";
 export default function Banner1() {
   return (
     <div>
-      <div className="web_bac h-100">
+      <div className="web_bac h-100 overflow-hidden">
         <Slide slidesToScroll={1} slidesToShow={1} indicators={true}>
           {images?.map((img, i) => (
             <LazyLoadImage
@@ -39,7 +39,7 @@ export default function Banner1() {
               width="100%"
               height="670px"
               effect="blur"
-              // objectFit="cover"
+            // objectFit="cover"
             />
 
             // <ImageDiv key={i} image={img} />

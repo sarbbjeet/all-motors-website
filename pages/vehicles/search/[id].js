@@ -17,6 +17,7 @@ import RequestForm from "../../../components/vehicals/RequestForm.js";
 import LatestCars from "../../../components/home/LatestCars.js";
 import Layout from "../../../components/Layout.js";
 import { initialPicker } from "../../../validation/dataPicker";
+import { useEffect } from "react";
 
 const url = "/api/image_gallery";
 
@@ -63,7 +64,7 @@ export default function handler({ vehicle }) {
             <div className="col-lg-5 col-xl-4 d-print-none pt-5 pt-lg-0">
               <div className="row justify-content-center">
                 <Dealer />
-                <RequestForm />
+                <RequestForm vehicle={vehicle} />
               </div>
             </div>
 

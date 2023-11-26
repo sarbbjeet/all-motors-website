@@ -12,21 +12,23 @@ const initialQueryObj = {
   success: false,
 };
 const url = "/api/customer_query";
-export default function RequestForm() {
+export default function RequestForm({ vehicle }) {
   const [query, setQuery] = useState(initialQueryObj);
   const onChangeInput = ({ target: { name, value } }) => {
     setQuery({ ...query, [name]: value, success: false, error: "" });
   };
 
+
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      setQuery({ ...initialQueryObj, loading: true });
+      setQuery(prev => ({ ...prev, loading: true }))
       await axios(url, {
         method: "POST",
         data: _.pick(query, ["name", "email", "phone", "type", "message"]),
       });
-      setQuery({ ...initialQueryObj, success: true });
+      setQuery(prev => ({ ...prev, name: "", email: "", phone: "", message: "", error: "", success: true }));
     } catch (err) {
       setQuery({
         ...query,
@@ -36,6 +38,17 @@ export default function RequestForm() {
       });
     }
   };
+
+
+  useEffect(() => {
+
+    if (vehicle)
+      setQuery({
+        ...query,
+        loading: false,
+        type: `Car request: ${vehicle?.make || ''}, ${vehicle?.model || ''}`
+      });
+  }, [vehicle])
   return (
     <div
       className="col-md-6 col-lg-12"
@@ -103,21 +116,25 @@ export default function RequestForm() {
             />
           </div>
 
-          <div className="input-group border mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text border-0 text-muted bg-light">
-                <i className="fas fa-phone-alt"></i>
-              </span>
+          <div className="mb-3">
+            <div className="input-group border">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 text-muted bg-light">
+                  <i className="fas fa-phone-alt"></i>
+                </span>
+              </div>
+              <input
+                type="tel"
+                className="form-control text-muted border-0 bg-light"
+                name="phone"
+                id="phone"
+                required
+                placeholder="Phone"
+                value={query.phone}
+                onChange={onChangeInput}
+              />
             </div>
-            <input
-              type="tel"
-              className="form-control text-muted border-0 bg-light"
-              name="phone"
-              id="phone"
-              placeholder="Phone"
-              value={query.phone}
-              onChange={onChangeInput}
-            />
+
           </div>
 
           <div className="form-group mt-2 border">
@@ -126,7 +143,8 @@ export default function RequestForm() {
               name="message"
               rows="5"
               id="message"
-              value={query.messgae}
+              required
+              value={query.message}
               onChange={onChangeInput}
               placeholder="I liked this Vehicles and would like more information."
             />
