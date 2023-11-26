@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     loadUserFromCookies();
   }, []);
   const login = async (email, password) => {
-    const { data: token } = await api.post("/api/user/login", {
+    const { data: token } = await api.post(`${process.env.NODE_ENV == 'production' && 'https://allmotorsltd.co.uk'}/api/user/login`, {
       email,
       password,
     });

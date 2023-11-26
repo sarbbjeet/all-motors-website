@@ -41,7 +41,6 @@ export default function RequestForm({ vehicle }) {
 
 
   useEffect(() => {
-
     if (vehicle)
       setQuery({
         ...query,
