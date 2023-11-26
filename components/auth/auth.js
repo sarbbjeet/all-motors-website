@@ -9,13 +9,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const url = `${process.env.NODE_ENV == 'production' ? 'https://allmotorsltd.co.uk' : ""}/api/user/login`
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get("authToken");
       if (token) {
         console.log("Got a token in the cookies, let's see if it is valid");
         api.defaults.headers.Authorization = `Bearer ${token}`;
-        const { data: user } = await api.get("/api/user/login");
+        const { data: user } = await api.get(url);
         if (user) setUser(user);
       }
       setLoading(false);
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     loadUserFromCookies();
   }, []);
   const login = async (email, password) => {
-    const { data: token } = await api.post(`${process.env.NODE_ENV == 'production' && 'https://allmotorsltd.co.uk'}/api/user/login`, {
+    const { data: token } = await api.post(url, {
       email,
       password,
     });
@@ -31,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       console.log("Got token");
       Cookies.set("authToken", token?.data, { expires: 60 });
       api.defaults.headers.Authorization = `Bearer ${token?.data}`;
-      const { data: user } = await api.get("/api/user/login");
+      const { data: user } = await api.get(url);
       setUser(user);
     }
   };
