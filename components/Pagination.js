@@ -69,7 +69,7 @@ export default function Pagination({
             ))}
             <div
               onClick={goToNextPage}
-              className={`page-item ${currentPage >= pages ? "disabled" : ""}`}
+              className={`page-item ${currentPage > pages ? "disabled" : ""}`}
             >
               <a className="page-link" href="#">
                 Next
